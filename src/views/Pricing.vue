@@ -323,17 +323,25 @@ const startButtonName = "Get Started";
 }
 
 .timeline-steps {
+    margin: 2rem;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center; /* center the whole block horizontally */
     flex-wrap: wrap;
     gap: 1rem;
+    text-align: center; /* ensures steps are aligned center */
 }
 
 .step {
-    text-align: center;
-    flex: 1;
-    min-width: 180px;
+    flex: 0 1 180px; /* keeps steps flexible but with min width */
     max-width: 200px;
+}
+
+.step-arrow {
+    font-size: 1.5rem;
+    color: v-bind(themeColor);
+    align-self: center;
+    margin: 0 1rem;
 }
 
 .step-number {

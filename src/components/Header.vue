@@ -65,8 +65,14 @@ const isDocsOpen = ref(false);
             <div class="button-group">
               <ul  class="site-menu button-menu">
                 <li class="cta-button-outline">
-                  <a :href="app_login_url"
-                     :style="{ color: themeColor }" >Log in</a>
+                  <a
+                    :href="app_login_url"
+                    :style="{ color: themeColor }"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >
+                    Login
+                    </a>
                 </li>
                 <li class="cta-primary">
                   <a :href="demo_url">Demo</a>
