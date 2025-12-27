@@ -1,7 +1,8 @@
 <script setup>
 import mainPhoto from "../data/images/hero_pic_.webp";
 
-import { 
+import {
+  youtubeVideoUrl,
   themeColor, 
   themeColorOrange, 
   themeColorGold, 
@@ -26,14 +27,14 @@ Gates host publicly a CAD Online to funnel orders at your preferred address, whi
 
       <!-- IMAGE -->
       <div class="image-wrapper" data-aos="zoom-in" data-aos-delay="100">
-        <!-- <a :href="youtubeVideoUrl" class="video-overlay" data-fancybox> -->
-        <!--     <div class="play-button" :style="{ backgroundColor: themeColor }"> -->
-        <!--         <svg width="24" height="24" viewBox="0 0 16 16" fill="white"> -->
-        <!--             <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/> -->
-        <!--           </svg> -->
-        <!--       </div> -->
-        <!--     <div class="video-pulse" :style="{ borderColor: themeColor + '30' }"></div> -->
-        <!--   </a> -->
+        <a :href="youtubeVideoUrl" class="video-overlay" data-fancybox>
+            <div class="play-button" :style="{ backgroundColor: themeColor }">
+                <svg width="24" height="24" viewBox="0 0 16 16" fill="white">
+                    <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                  </svg>
+              </div>
+            <div class="video-pulse" :style="{ borderColor: themeColor + '30' }"></div>
+          </a>
           <img 
           :src="mainPhoto" 
           alt="How it works illustration" 

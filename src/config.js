@@ -10,6 +10,8 @@ const demo_url              = import.meta.env.VITE_DEMO_URL;
 const app_login_url         = import.meta.env.VITE_APP_URL
 const partner_app_login_url = import.meta.env.VITE_PARTNER_APP_URL
 
+// const youtubeVideoUrl = 'https://youtu.be/-og2OKAT_UE'
+const youtubeVideoUrl = 'https://www.youtube.com/embed/-og2OKAT_UE?autoplay=1'
 const git_book_url = "https://floating-gates.gitbook.io/gates-docs"
 const survey_link  = "https://forms.gle/JYHXxX2anVp14X6a6"
 
@@ -32,5 +34,6 @@ const contactInfo = {
 export {
     themeColor, themeColorOrange, themeColorWhite, themeColorLille,
     themeColorGold, survey_link, contactInfo, display_price_list,
-    git_book_url, demo_url, app_login_url, partner_app_login_url
+    git_book_url, demo_url, app_login_url, partner_app_login_url,
+    youtubeVideoUrl
 };
