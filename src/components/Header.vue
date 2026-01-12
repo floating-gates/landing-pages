@@ -1,18 +1,8 @@
 <script setup>
-import { ref, defineProps } from "vue";
+import { ref } from "vue";
 import { themeColor, demo_url, git_book_url, survey_link, app_login_url } from "../config.js";
 import { useRouter } from "vue-router"
 const router = useRouter()
-
-defineProps({
-    context: {
-        type: String,
-    },
-    host_address: {
-        type: String,
-        default: demo_url
-    }
-})
 
 const isMenuOpen = ref(false);
 const isDocsOpen = ref(false);
@@ -41,7 +31,6 @@ const isDocsOpen = ref(false);
         <div class="menu-container" :class="{ 'mobile-open': isMenuOpen }">
           
           <!-- LANDING PAGE HEADER -->
-          <template v-if="context === 'landing-page'">
             <ul class="site-menu main-menu">
               <li><a href="/" class="nav-link">Home</a></li>
               <!-- <li><a href="/product" class="nav-link">Product</a></li> -->
@@ -79,7 +68,6 @@ const isDocsOpen = ref(false);
                 </li>
               </ul>
             </div>
-          </template>
         </div>
       </div>
     </div>
@@ -138,11 +126,17 @@ const isDocsOpen = ref(false);
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Dropdown wrapper */
 .dropdown {
     position: relative;
     cursor: pointer;
 }
+
+.site-navigation,
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 
 /* Dropdown menu */
 .dropdown-menu {
@@ -219,7 +213,29 @@ const isDocsOpen = ref(false);
   .button-menu li {
     width: 100%;
   }
+
+/* Center the main nav links */
+  .site-menu li {
+    text-align: center;
+  }
+
+  /* Adjust the dropdown container for mobile */
+  .dropdown-menu {
+    position: static;    /* Removes the floating/absolute behavior */
+    box-shadow: none;    /* Removes the shadow for a cleaner look on mobile */
+    width: 100%;
+    padding: 0;
+    background: transparent; /* Allows it to blend with the mobile menu background */
+    display: flex;
+    align-items: center; /* Centers items horizontally in flex column */
+  }
+
+  .dropdown-menu li {
+    width: 100%;
+    text-align: center;
+  }
 }
+
 .chevron {
   font-size: 14px;
   opacity: 0.7;

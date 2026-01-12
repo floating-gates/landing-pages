@@ -111,7 +111,7 @@ const socialItems = [
             <address>Loc: {{ contactInfo.address }}</address>
             <ul class="list-unstyled links mb-4">
               <li>
-                <a :href="'tel://' + contactInfo.phone1">Tel: {{ contactInfo.phone }}</a>
+                <!-- <a :href="'tel://' + contactInfo.phone1">Tel: {{ contactInfo.phone }}</a> -->
               </li>
               <li>
                 <a :href="'mailto:' + contactInfo.email">

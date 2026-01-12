@@ -11,6 +11,19 @@ const message = "Hi! I'm interested in one of your enterprise services";
 const whatsAppUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
 const services = [
+      {
+    name: "Custom Parametric Mechanical Design",
+    description: "We combine CAD automation and parametric modeling to accelerate your mechanical design process. By embedding key design parameters directly into your models, we enable rapid iteration and optimization guided by measurable physical objectives. Our approach allows you to explore design variations, fine-tune geometries, and converge toward high-performance solutions faster than ever before.",
+    image: param_design,
+    advantages: [
+      "Instantly update and optimize designs through parameter adjustments.",
+      "Reduce manual design work and human error.",
+      "Enable objective-driven design exploration."
+    ],
+    outcome: [
+      "A parametric software system that programmatically generates and modifies CAD models, allowing seamless and fast design iterations."
+    ]
+  },
   {
     name: "Scientific Software Development",
     description: "As modern manufacturing and engineering systems grow in complexity, our expertise empowers you to understand and predict how your products behave under real-world conditions. We design customized scientific software that leverages proven numerical methods—such as Finite Element Analysis (FEA) and other computational modeling techniques—to simulate physical phenomena with high accuracy. From structural integrity and fatigue to vibrations and heat transfer, our simulations enable data-driven design decisions that enhance performance and reliability.",
@@ -25,30 +38,16 @@ const services = [
     ]
   },
   {
-    name: "Parametric Mechanical Design",
-    description: "We combine CAD automation and parametric modeling to accelerate your mechanical design process. By embedding key design parameters directly into your models, we enable rapid iteration and optimization guided by measurable physical objectives. Our approach allows you to explore design variations, fine-tune geometries, and converge toward high-performance solutions faster than ever before.",
-    image: param_design,
-    advantages: [
-      "Instantly update and optimize designs through simple parameter adjustments.",
-      "Reduce manual design work and human error through automation.",
-      "Enable objective-driven design exploration linked to performance metrics."
-    ],
-    outcome: [
-      "A parametric software system that programmatically generates and modifies CAD models, allowing seamless and fast design iterations."
-    ]
-  },
-  {
-    name: "Machine Learning Exploration",
-    description: "We merge the predictive power of machine learning with the rigor of physics-based simulations to unlock new frontiers in design exploration. This hybrid approach enables the efficient analysis of complex systems, identifying optimal configurations with minimal computational cost. By learning from simulated or experimental data, our models can rapidly forecast system performance across a vast design space, accelerating innovation while reducing time and expense.",
+    name: "AI Driven CAD Generation",
+    description: "Traditional parametric workflows require the final users to manually change variables to update the device they intend to purchase/query info. Our AI Design Engine abstracts this complexity, replacing manual parameters editing  with a Natural Language Interface that bridges the gap for non expert customers.",
     image: stochastic_img,
-    advantages: [
-      "Predict the behavior of complex, nonlinear, or multi-physics systems with high accuracy.",
-      "Run hundreds of virtual experiments at a fraction of traditional computational costs.",
-      "Leverage data-driven insights to guide design optimization and decision-making."
-    ],
-    outcome: [
-      "Comprehensive insights and reliable performance predictions for complex systems, empowering smarter and faster design choices."
-    ]
+      advantages: [
+          "Eliminate the 'Technical Tax' by allowing users to define design goals through natural language instead of manual coordinate entry.",
+          "Accelerate the design-to-order cycle by automating the mapping of user requirements to precise parameters.",
+      ],
+      outcome: [
+          "A seamless, intent-driven configuration experience that transforms descriptive text into 3D-ready geometry instantly."
+      ]
   }
 ];
 
@@ -210,6 +209,7 @@ const selectService = (index) => {
   height: auto;
   border-radius: 14px;
   display: block;
+  margin: 0 auto;
 }
 
 .service-section {

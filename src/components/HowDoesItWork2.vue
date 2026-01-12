@@ -2,7 +2,6 @@
 import mainPhoto from "../data/images/hero_pic_.webp";
 
 import {
-  youtubeVideoUrl,
   themeColor, 
   themeColorOrange, 
   themeColorGold, 
@@ -11,7 +10,7 @@ import {
 </script>
 
 <template>
-  <section class="untree_co-section bg-light" id="how_does_it_work">
+  <section class="bg-light" id="how_does_it_work">
     <div class="container text-center">
 
       <h1 class="heading">
@@ -22,19 +21,11 @@ import {
       </h1>
 
       <p class="subtitle">
-Gates host publicly a CAD Online to funnel orders at your preferred address, while it provides to the factory the Manufacturing Hub to control the platform and the subsequent orders. This permit to Your customers to engineer and price the devices ahead of time under your supervison.
+        Gates host publicly a CAD Online to funnel orders at your preferred address, while it provides to the factory the Manufacturing Hub to control the platform and the subsequent orders. This permit to Your customers to engineer and price the devices ahead of time under your supervison.
       </p>
 
       <!-- IMAGE -->
       <div class="image-wrapper" data-aos="zoom-in" data-aos-delay="100">
-        <a :href="youtubeVideoUrl" class="video-overlay" data-fancybox>
-            <div class="play-button" :style="{ backgroundColor: themeColor }">
-                <svg width="24" height="24" viewBox="0 0 16 16" fill="white">
-                    <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-                  </svg>
-              </div>
-            <div class="video-pulse" :style="{ borderColor: themeColor + '30' }"></div>
-          </a>
           <img 
           :src="mainPhoto" 
           alt="How it works illustration" 
@@ -46,14 +37,9 @@ Gates host publicly a CAD Online to funnel orders at your preferred address, whi
 </template>
 
 <style scoped>
-.untree_co-section {
-  overflow-x: hidden;
-  padding: 5rem 1rem;
-  background-color: v-bind(themeColorWhite);
-}
-
 .container {
   max-width: 1400px;
+  padding: 5rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,70 +77,7 @@ Gates host publicly a CAD Online to funnel orders at your preferred address, whi
 }
 
 .main-image:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-}
-
-.enhance-sequential .letter {
-  color: v-bind(themeColor);
-}
-
-.video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* background: rgba(0, 0, 0, 0.3); */
-    /* text-decoration: none; */
-    transition: all 0.3s ease;
-    z-index: 3;
-}
-
-.video-overlay:hover .video-container .hero-image {
-    transform: scale(1.05);
-}
-
-.play-button {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-}
-
-.play-button:hover {
-    transform: scale(1.1);
-}
-
-.video-pulse {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    border: 3px solid;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1.3);
-        opacity: 0;
-    }
 }
 </style>

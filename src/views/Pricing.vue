@@ -1,14 +1,69 @@
 <script setup>
+import { computed } from 'vue'; // Import computed
 import Header from '../components/Header.vue'
-
-import { themeColor, themeColorOrange, themeColorWhite,
-         display_price_list, app_login_url } from "../config.js";
+import { 
+    themeColor, themeColorOrange, themeColorWhite,
+    display_price_list, app_login_url, contactInfo } from "../config.js";
 
 const heading = "Plans and Pricing";
-const subHeading = "Pricing refer only to the hosting services (GATES). You always choose the final price to charge the customer to manufacture their devices. We just suggest.";
-const startButtonName = "Get Started";
-</script>
+const subHeading = "Pricing refer only to the hosting services for the online CAD and its features. You always choose the final price to charge your customers to manufacture their devices. We just smooth the process.";
 
+// Create a unified list for the loop
+const pricingPlans = computed(() => [
+    {
+        name: display_price_list[0].name,
+        price: display_price_list[0].price,
+        suffix: "",
+        features: ["CAD online",
+                   "Manufacturing Hub",
+                   "Brand Customization",
+                   "Max 20MB of Project Storage",
+                   "Non private 3D models"
+                   ],
+        buttonText: "Get Started",
+        buttonUrl: app_login_url,
+        isSecondary: false
+    },
+    {
+        name: display_price_list[1].name,
+        price: display_price_list[1].price,
+        suffix: "€/Month - incl. VAT",
+        features: ["Custom CAD address",
+                   "Automated Quotations",
+                   "Parametric CAD of your best product",
+                   "Private Projects"],
+        buttonText: "Get Started",
+        buttonUrl: app_login_url,
+        isSecondary: false
+    },
+    {
+        name: display_price_list[2].name,
+        price: display_price_list[2].price,
+        suffix: "",
+        features: ["All 'Basic' features",
+                   "Feasability Agent",
+                   "Manufacturing Simulations",
+                   "Conversation on Project",
+                   "Inclusion in Manufacturing World Map"],
+        buttonText: "Get Started",
+        buttonUrl: app_login_url,
+        isSecondary: true // For the white background button
+    },
+    {
+        name: display_price_list[3].name,
+        price: display_price_list[3].price,
+        suffix: "",
+        features: ["One time purchase",
+                   "Free infrastructure set up",
+                   "Totally proprietary URL",
+                   "Syntetization of Manufacturing Knowledge",
+                   "3D Model generation with AI"],
+        buttonText: "Speak to Us",
+        buttonUrl: "mailto:" + contactInfo.email,
+        isSecondary: false
+    }
+]);
+</script>
 
 <template>
 <Header :context="'landing-page'" />
@@ -24,122 +79,57 @@ const startButtonName = "Get Started";
         <p class="mb-5">{{ subHeading }}</p>
       </div>
     </div>
+    
     <div class="col-lg-12">
-       <div class="row justify-content-center g-4"> 
-          <!-- Free Plan -->
-          <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="50">
-            <div class="pricing">
-              <div class="body">
-                <div class="price">
-                  <span class="d-block plan">Free</span>
-                  <span class="price" :style="[{ color: themeColor }]">0<sup>€/Month</sup></span>
-                </div>
-                <ul class="list-unstyled ul-check primary mb-5">
-                  <li>CAD online</li>
-                  <li>Manufacturing Hub to manage orders </li>
-                  <li>Automated Quotations</li>
-                </ul>
-                <p class="text-center mb-0">
-                  <a
-                    :href="app_login_url"
-                    class="btn "
-                    :style="[{ backgroundColor: themeColor },
-                            { borderColor: themeColor },
-                            { color: themeColorWhite }
-                            ]">
-                    Get Started
-                  </a>
-                </p>
+      <div class="row justify-content-center g-4">
+        <div 
+          v-for="(plan, index) in pricingPlans" 
+          :key="plan.name"
+          class="col-md-6 col-lg-3 mb-4"
+          data-aos="fade-up"
+          :data-aos-delay="50 * (index + 1)"
+          >
+          <div class="pricing">
+            <div class="body">
+              <span class="title">{{ plan.name }}</span>
+              
+              <div class="price">
+                <span>
+                  {{ plan.price }}
+                  <sup v-if="plan.suffix">{{ plan.suffix }}</sup>
+                </span>
               </div>
-            </div>
-          </div>
-          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-            <div class="pricing">
-              <div class="body">
-                <div class="price">
-                  <span class="d-block plan">{{ display_price_list[0].name }}</span>
-                  <span class="price" :style="[{ color: themeColor }]"
-                        >{{ display_price_list[0].price }}<sup>€/Month</sup></span>
-                </div>
-                <pre></pre>
-                <ul class="list-unstyled ul-check primary mb-5">
-                  <li> CAD hosted at your address </li>
-                  <li> Manufacturing Hub to manage orders </li>
-                  <li> Automated Quotations </li>
-                  <li> Your Brand in Display </li>
-                </ul>
-                <p class="text-center mb-0">
-                  <a
-                    :href="app_login_url"
-                    class="btn "
-                    :style="[{ backgroundColor: themeColor },
-                            { borderColor: themeColor },
-                            { color: themeColorWhite } ]">
-                    Get Started </a >
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
-            <div class="pricing">
-              <div class="body">
-                <div class="price">
-                  <span class="d-block plan">{{ display_price_list[1].name }}</span>
-                  <span class="price" :style="[{ color: themeColor }]"
-                        ><span><sup>{{ display_price_list[1].price }}</sup></span></span>
-                </div>
-                <ul class="list-unstyled ul-check primary mb-5">
-                  <li>All 'Basic' features</li>
-                  <li>Manufacturing Checks</li>
-                  <li>Feasability Agent</li>
-                  <li>Structural Integrity simulations</li>
-                  <li>Listed in Manufacturing World Map </li>
-                </ul>
-                <p class="text-center mb-0">
-                  <a
-                    :href="app_login_url"
-                    class="btn"
-                    :style="[
-                            { backgroundColor: themeColorWhite },
-                            { borderColor: themeColorWhite },
-                            { color: themeColor }  ]" > In next release</a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="300">
-            <div class="pricing">
-              <div class="body">
-                <div class="price">
-                  <span class="d-block plan">{{ display_price_list[2].name }}</span>
-                  <span class="price" :style="[{ color: themeColor }]">
-                    
-                    <span><sup>{{ display_price_list[2].price }}</sup></span></span >
-                </div>
-                <ul class="list-unstyled ul-check primary mb-5">
-                  <li>Proprietary URL</li>
-                  <li>Shape Optimization </li>
-                  <li>Customer data Ownership</li>
-                  <li>Parametric CAD of your best product</li>
-                  <!-- <li>Non subscription package</li> -->
-                </ul>
-                <p class="text-center mb-0">
-                  <a
-                    href="/services"
-                    class="btn "
-                    :style="[{ backgroundColor: themeColor },
-                            { borderColor: themeColor },
-                            { color: themeColorWhite } ]">
-                    Check Out our Services</a>
-                </p>
-              </div>
+              
+              <ul class="list-unstyled ul-check primary mb-5">
+                <li v-for="feature in plan.features" :key="feature">
+                  {{ feature }}
+                </li>
+              </ul>
+              
+              <p class="text-center mb-0">
+                <a
+                  :href="plan.buttonUrl"
+                  class="btn"
+                  :style="plan.isSecondary ? [
+                          { backgroundColor: themeColorWhite },
+                          { borderColor: themeColorWhite },
+                          { color: themeColor }
+                          ] : [
+                          { backgroundColor: themeColor },
+                          { borderColor: themeColor },
+                          { color: themeColorWhite }
+                          ]"
+                  >
+                  {{ plan.buttonText }}
+                </a>
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
+</div>
 <div class="bg-light refund-guarantee" id="refund-section">
   <div class="container">
     <div class="row justify-content-center">
@@ -184,14 +174,12 @@ const startButtonName = "Get Started";
                   </div>
                 </div>
               </div>
-              <div class="text-center" data-aos="fade-up" data-aos-delay="400">
-                <!-- <div class="refund-cta"> -->
-                  <h5 class="cta-title mb-3">Have Questions?</h5>
-                  <p class="cta-text mb-4">Learn more about our policies and get answers to common questions.</p>
+              <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                  <h5 class="mb-3">Have Questions?</h5>
+                  <p class="mb-4">Learn more about our policies and get answers to common questions.</p>
                   <a href="/faq" class="btn btn-outline-primary btn-lg cta-button">
                     Visit FAQ
                   </a>
-                  <!-- </div> -->
               </div>
             </div>
           </div>
@@ -219,18 +207,22 @@ const startButtonName = "Get Started";
     
     transform: scale(1.05);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-    z-index: 2; /* ensures it overlays above neighbors */
+    z-index: 2;
 }
 
+
 .price {
-    font-size: 1rem; /* smaller than before, adjust as needed */
+    font-size: 1.8rem;
+    margin: 1rem 0 0.9rem 0;
     font-weight: 500;
+    text-align: center;
+    opacity: 0.8;
+    color: v-bind(themeColor);
 }
 
 .price sup {
     font-size: 0.7rem; /* smaller superscript for €/Month */
 }
-
 
 .ul-check.primary li {
     position: relative;
@@ -254,10 +246,20 @@ const startButtonName = "Get Started";
     width: 100%;
 }
 
+.title {
+    display: flex;
+    justify-content: center; /* horizontally center content */
+    align-items: center;     /* vertically center if multiple lines */
+    font-size: 2.4rem;
+    font-weight: 550;
+    color: v-bind(themeColor);
+    margin-bottom: 1.1rem;
+    text-align: center;      /* ensures multi-line text stays centered */
+}
+
 .body {
     background-color: white;
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
-    
 }
 
 .pricing:hover {
@@ -315,11 +317,11 @@ const startButtonName = "Get Started";
 }
 
 .row.justify-content-center {
-  display: flex;
-  flex-wrap: wrap; /* ensures cards wrap on smaller screens */
-  align-items: center; /* vertically centers cards */
-  justify-content: center; /* horizontal centering */
-  min-height: 400px; /* optional: the height you want the cards centered within */
+    display: flex;
+    flex-wrap: wrap; /* ensures cards wrap on smaller screens */
+    align-items: center; /* vertically centers cards */
+    justify-content: center; /* horizontal centering */
+    min-height: 400px; /* optional: the height you want the cards centered within */
 }
 
 .timeline-steps {
@@ -378,42 +380,10 @@ const startButtonName = "Get Started";
     margin: 0 1rem;
 }
 
-
-.cta-title {
-    padding: 2.2rem;
-    
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #212529;
-}
-
-.cta-text {
-    color: #6c757d;
-    font-size: 1.1rem;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.cta-button {
-    border-color: v-bind(themeColor);
-    color: v-bind(themeColor);
-    padding: 0.75rem 2rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.cta-button:hover {
-    background-color: v-bind(themeColor);
-    border-color: v-bind(themeColor);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .refund-heading {
-    font-size: 2rem;
+    .refund-heading {
+        font-size: 2rem;
   }
   
   .timeline-steps {

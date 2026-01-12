@@ -9,7 +9,7 @@ import Contact from "../components/Contact.vue";
 </script>
 
 <template>
-    <Header :context="'landing-page'" />
+    <Header />
     <Hero />
     <HowDoesItWork2 />
     <Why /> 

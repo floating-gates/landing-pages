@@ -1,6 +1,6 @@
 # Gates 
  
-Rethinking digital manufacturing. 
+Rethinking digital manufacturing. The applicative to understand if you can produce the device you are thinking out... price and physics-wise.
 
 <div align="center">
   <img src="src/data/images/hero_pic_.webp" alt="Gates Manufacturing Hub" width="100%" />

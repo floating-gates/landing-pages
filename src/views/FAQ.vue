@@ -4,17 +4,17 @@ import { ref } from "vue";
 import Header from "../components/Header.vue";
 
 const faqs = [
+        {
+        question: "What is Gates?",
+        answer: "Gates is a web app for factories or freelancers composed of an online-CAD and a Manufacturing Hub. Namely, we provide the CAD to engage, and convert customers by guiding them seamlessly towards the product they want, intelligently assessing what you can reasonably produce, with a central place (the Hub) to manage what is going on in the CAD.  We enable manufacturers to stay competitive in an increasingly digital market."
+        },
+    {
+        question: "Who is it for?",
+        answer: "Gates serves from big manufacturing lines (i.g. plastic injection) to small workshops/freelancers that owns just a 3D printer. Our solution is especially valuable for those with well-established production methods who struggle to fully utilize their machines due to cumbersome order inquiries."
+    },
     {
         question: "What does Gates provides to Your Business?",
         answer: "Gates provides to You a Manufacturing Hub to funnel orders, while it host publicly a CAD Online to permit Your customers to engineer/price the devices ahead of time. The platform enables your customer to issue orders and to take the advantage of feasibility checks, instant quotes, and design optimizations. The advantage is that manufacturers can gain new customers and track existing clients thanks to renewed visibility, avoid uncertain prospects and streamline interactions with their customer base."
-    },
-    {
-        question: "Who is it for?",
-        answer: "Gates serves from big manufacturing lines (i.g. plastic injection) to small workshops that owns just a 3D printer. Our solution is especially valuable for those with well-established production methods who struggle to fully utilize their machines due to cumbersome order inquiries."
-    },
-    {
-        question: "What is Floating Gates?",
-        answer: "Gates is a technology proxy for factories. We provide an online-CAD that attract, engage, and convert customers by guiding them seamlessly toward the product they want, intelligently assessing what you can reasonably produce. We enable manufacturers to stay competitive in an increasingly digital market."
     },
     {
         question: "What problem does it solve?",
