@@ -4,7 +4,7 @@ import { themeColor, themeColorOrange, themeColorLille, contactInfo } from "../c
 import Header from "../components/Header.vue";
 import simulation_service_img from "../data/images/simulation_service.jpg";
 import stochastic_img from "../data/images/stochastic_img.webp";
-import param_design from "../data/images/param_design.png";
+import param_design from "../data/images/parametric-design-service.webp";
 
 const phone = contactInfo["phone"].replace(/[\s+]/g, "");
 const message = "Hi! I'm interested in one of your enterprise services";
@@ -12,8 +12,8 @@ const whatsAppUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
 
 const services = [
       {
-    name: "Custom Parametric Mechanical Design",
-    description: "We combine CAD automation and parametric modeling to accelerate your mechanical design process. By embedding key design parameters directly into your models, we enable rapid iteration and optimization guided by measurable physical objectives. Our approach allows you to explore design variations, fine-tune geometries, and converge toward high-performance solutions faster than ever before.",
+    name: "Parametric CAD development",
+    description: "We develop for you the model necessary to parametrize a given device. By embedding key design parameters directly into your models, we enable rapid iteration guided by measurable physical objectives. Those parametric CAD models allows to your customer to explore design variations of your catalog to converge toward a lead faster than ever before.",
     image: param_design,
     advantages: [
       "Instantly update and optimize designs through parameter adjustments.",
@@ -21,22 +21,22 @@ const services = [
       "Enable objective-driven design exploration."
     ],
     outcome: [
-      "A parametric software system that programmatically generates and modifies CAD models, allowing seamless and fast design iterations."
+      "A parametric CAD model generation system that programmatically generates and modifies CAD models, allowing seamless and fast design iterations."
     ]
   },
-  {
-    name: "Scientific Software Development",
-    description: "As modern manufacturing and engineering systems grow in complexity, our expertise empowers you to understand and predict how your products behave under real-world conditions. We design customized scientific software that leverages proven numerical methods—such as Finite Element Analysis (FEA) and other computational modeling techniques—to simulate physical phenomena with high accuracy. From structural integrity and fatigue to vibrations and heat transfer, our simulations enable data-driven design decisions that enhance performance and reliability.",
-    image: simulation_service_img,
-    advantages: [
-      "Test and refine designs virtually, reducing the need for costly physical experiments.",
-      "Access data from locations that are physically unreachable, such as inside mixers, micro-channels, or sealed systems.",
-      "Combine physics-based models with real-world data for informed, predictive design decisions."
-    ],
-    outcome: [
-      "A customized software tool capable of exploring and quantifying the physics behind the specific phenomena relevant to your system or device."
-    ]
-  },
+  // {
+  //   name: "Scientific Software Development",
+  //   description: "As modern manufacturing and engineering systems grow in complexity, our expertise empowers you to understand and predict how your products behave under real-world conditions. We design customized scientific software that leverages proven numerical methods—such as Finite Element Analysis (FEA) and other computational modeling techniques—to simulate physical phenomena with high accuracy. From structural integrity and fatigue to vibrations and heat transfer, our simulations enable data-driven design decisions that enhance performance and reliability.",
+  //   image: simulation_service_img,
+  //   advantages: [
+  //     "Test and refine designs virtually, reducing the need for costly physical experiments.",
+  //     "Access data from locations that are physically unreachable, such as inside mixers, micro-channels, or sealed systems.",
+  //     "Combine physics-based models with real-world data for informed, predictive design decisions."
+  //   ],
+  //   outcome: [
+  //     "A customized software tool capable of exploring and quantifying the physics behind the specific phenomena relevant to your system or device."
+  //   ]
+  // },
   {
     name: "AI Driven CAD Generation",
     description: "Traditional parametric workflows require the final users to manually change variables to update the device they intend to purchase/query info. Our AI Design Engine abstracts this complexity, replacing manual parameters editing  with a Natural Language Interface that bridges the gap for non expert customers.",
@@ -205,10 +205,9 @@ const selectService = (index) => {
 }
 
 .service-image {
-  max-width: 100%;
-  height: auto;
+  max-width: 85%;
+  max-height: 500px;
   border-radius: 14px;
-  display: block;
   margin: 0 auto;
 }
 

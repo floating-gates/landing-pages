@@ -9,12 +9,18 @@ import { themeColor, themeColorOrange, themeColorWhite,
 //     "Be sure your machines runs, as Customers connect to your CAD"
 // ];
 
-const heroHeading = [
-    // "Invested in Manufacturing?",
-    "Your CAD is Online.",
-    "Make sure your Machines and Tools are too."
-];
+// const heroHeading = [
+//     // "Invested in Manufacturing?",
+//     "Close the Manufacturing Loop.",
+//     "While your next CAD is in the Cloud.",
+//     "Make sure your Machines are too."
+// ];
 
+const heroHeading = [
+    "Close the Manufacturing Loop...",
+    "Sell Directly from Your CAD",
+    "Sync your Machines to the Cloud."
+];
 
 // User input state
 const userAddress = ref("");
@@ -120,32 +126,56 @@ onBeforeUnmount(() => {
             <img :src="mainPhoto" alt="Technology Proxy in action"
                  class="img-fluid hero-image" />
             
-            <a
-              :href="youtubeVideoUrl"
+            <div
               class="watch-video"
-              data-fancybox
+              role="button"
+              tabindex="0"
+              @click="showVideo = true"
               >
               <p class="hand-underline">SEE IT IN ACTION</p>
               
               <div class="watch-video-btn">
                 <div class="play-button">
                   <svg width="24" height="24" viewBox="0 0 16 16" fill="white">
-                    <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                    <path
+                      d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"
+                      />
                   </svg>
+                  <div class="video-pulse"></div>
+                  
                 </div>
-
-                <div
-                  class="video-pulse"
-                  ></div>
               </div>
-            </a>
+            </div>
+            
+            <!-- INLINE VIDEO -->
+            <div v-if="showVideo" class="video-overlay">
+              <div class="video-wrapper">
+                <button class="video-close" @click="showVideo = false">✕</button>
+                
+                <iframe
+                  :src="youtubeVideoUrl"
+                  frameborder="0"
+                  allow="autoplay; encrypted-media"
+                  allowfullscreen
+                  ></iframe>
+              </div>
+            </div>
+            
           </div>
           <div class="col-lg-5 ps-lg-5 intro" id="header">
             <h1 class="heading"
-                style="font-size: 2.8rem; line-height: 1.2; max-width: 100%;"
+                style="line-height: 1.4; max-width: 100%;"
                 data-aos="fade-up"
                 data-aos-delay="100">
-              <span v-for="(line, idx) in heroHeading" :key="idx" :style="{ color: themeColor }" class="block">
+              <span
+                v-for="(line, idx) in heroHeading"
+                :key="idx"
+                :style="{
+                        fontSize: idx === 1 ? '2.6rem' : '2.3rem',
+                        color: idx === 1 ? themeColorOrange : themeColor
+                        }"
+                class="block"
+                >
                 {{ line }}
               </span>
             </h1>
@@ -153,9 +183,9 @@ onBeforeUnmount(() => {
             <div class="excerpt"
                  data-aos="fade-up"
                  data-aos-delay="100">
-<p>
-  Empower customers to design and order parts directly through 
-  <strong :style="{ color: themeColorOrange }">your CAD</strong>. 
+              <p>
+                Empower customers to design and order parts directly through 
+                <strong :style="{ color: themeColorOrange }">your CAD</strong>. 
   Our platform instantly verifies feasibility and generates quotes, 
   eliminating manual sales calls so you can keep your shop floor running.
 </p>
@@ -376,6 +406,58 @@ onBeforeUnmount(() => {
 .play-button:hover {
     transform: scale(1.1);
 }
+
+/* Overlay */
+.video-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Video container */
+.video-wrapper {
+  position: relative;
+  width: min(900px, 90vw);
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* Iframe */
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Close button */
+.video-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.video-close:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
 </style>
 
 

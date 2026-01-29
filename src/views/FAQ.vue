@@ -6,7 +6,7 @@ import Header from "../components/Header.vue";
 const faqs = [
         {
         question: "What is Gates?",
-        answer: "Gates is a web app for factories or freelancers composed of an online-CAD and a Manufacturing Hub. Namely, we provide the CAD to engage, and convert customers by guiding them seamlessly towards the product they want, intelligently assessing what you can reasonably produce, with a central place (the Hub) to manage what is going on in the CAD.  We enable manufacturers to stay competitive in an increasingly digital market."
+        answer: "It's a software for factories/individuals who produce hardware. Gates is composed of an online-CAD and a Manufacturing Hub. Namely, we provide the CAD to engage, and convert customers by guiding them towards the product they want, assessing what you can reasonably produce, with a central place (the Hub) to manage what is going on in the CAD.  We enable manufacturers to stay competitive in an increasingly digital market."
         },
     {
         question: "Who is it for?",
@@ -18,7 +18,7 @@ const faqs = [
     },
     {
         question: "What problem does it solve?",
-        answer: "Low sales and a high amount of time spent on preliminaries studies. Gates increase actual orders by spreading and assessing new customer requests. It streamlines quotes and performs technical checks, allowing manufacturers to operate more efficiently and focus on what they do best: build."
+        answer: "Low sales and the enormous amount of time spent on preliminaries studies. Gates addresses this by distributing, and evaluating new customer requests via a CAD managed by you. It streamlines quoting and automates technical checks, enabling manufacturers to operate more efficiently and focus on what they do best: building."
     },
     {
         question: "What differentiates it from competitors?",
@@ -30,7 +30,7 @@ const faqs = [
     },
     {
         question: "How is data handled and stored?",
-        answer: "For the Basic and Standard plans, we offer secure cloud access as well as on-premise options, with all data protected under GDPR-compliant practices. For enterprise customers, software and data governance are fully transferred to the purchaser."
+        answer: "For the Basic, Standard and Pro plans, we offer secure cloud access as well as on-premise options, with all data protected under GDPR-compliant practices. For enterprise customers, software and data governance are fully transferred to the purchaser."
     },
     {
         question: "How does it work the custom address?",
@@ -47,19 +47,13 @@ const faqs = [
 ];
 
 
-const openItems = ref(new Set());
+const openIndex = ref(null); // If you only want one open at a time
 
 const toggleItem = (index) => {
-    const newOpenItems = new Set(openItems.value);
-    if (newOpenItems.has(index)) {
-        newOpenItems.delete(index);
-    } else {
-        newOpenItems.add(index);
-    }
-    openItems.value = newOpenItems;
+  openIndex.value = openIndex.value === index ? null : index;
 };
 
-const isOpen = (index) => openItems.value.has(index);
+const isOpen = (index) => openIndex.value === index;
 </script>
 
 <template>
@@ -116,8 +110,12 @@ const isOpen = (index) => openItems.value.has(index);
 </template>
 
 <style scoped>
+.faq-container {
+    max-width: 60%;
+}
+
 .faq-section {
-    padding: 8rem 0;
+    padding: 6rem 0;
     position: relative;
 }
 
@@ -127,7 +125,8 @@ const isOpen = (index) => openItems.value.has(index);
     left: 0;
     right: 0;
     height: 200px;
-    background: radial-gradient(ellipse at center top, rgba(108, 117, 125, 0.03) 0%, transparent 70%);
+    background: radial-gradient(
+        ellipse at center top, rgba(108, 117, 125, 0.03) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -147,13 +146,8 @@ const isOpen = (index) => openItems.value.has(index);
     font-size: 1.2rem;
     color: #6c757d;
     margin: 0 auto 2rem;
-    max-width: 720px;
+    max-width: 80%;
     line-height: 1.5;
-}
-
-.faq-container {
-    max-width: 800px;
-    margin: 0 auto;
 }
 
 .faq-item {
@@ -278,47 +272,7 @@ const isOpen = (index) => openItems.value.has(index);
     padding: 2rem;
 }
 
-.faq-cta {
-    margin-top: 4rem;
-    text-align: center;
-    background: #fff;
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 28px 50px rgba(0, 0, 0, 0.1);
-    border: 2px solid v-bind(themeColorLille);
-}
 
-.cta-content h3 {
-    color: v-bind(themeColor);
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.cta-content p {
-    color: #6c757d;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-}
-
-.cta-button {
-    background: v-bind(themeColor);
-    color: #fff;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.cta-button:hover {
-    background: v-bind(themeColorOrange);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
 
 /* ===== Mobile Responsive ===== */
 @media (max-width: 768px) {
@@ -359,23 +313,6 @@ const isOpen = (index) => openItems.value.has(index);
     .answer-text {
     font-size: 1rem;
     padding: 1rem 1rem 1.5rem 1.5rem;
-  }
-
-  .faq-cta {
-    padding: 1.5rem 1rem;
-  }
-
-  .cta-content h3 {
-    font-size: 1.5rem;
-  }
-
-  .cta-content p {
-    font-size: 1rem;
-  }
-
-  .cta-button {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
   }
 }
 </style>

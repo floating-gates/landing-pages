@@ -16,7 +16,7 @@ import {
       <h1 class="heading">
         <span :style="{ color: themeColorOrange }">How?  </span>
         <span :style="{ fontSize: '2.5rem' }">
-           We provide the CAD online. Customers use it to purchases.
+           We set your public CAD online. Customers use it to purchases.
         </span>
       </h1>
 
@@ -66,14 +66,19 @@ import {
 }
 
 .main-image {
-  width: 100%;
-  max-width: 1500px;
+  width: 90%;
+  /* max-width: 1500px; */
   height: auto;
   object-fit: cover;
   border-radius: 2rem;
   border: 5px solid v-bind(themeColor);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 32px rgba(0, 1, 0, 0.2);
   transition: transform 0.5s ease, box-shadow 0.5s ease;
+
+  /* The below the image to a GPU layer, and the browser re-rasterizes it at full resolution. Oterherwise is blurry once not hovered */
+  transform: scale(1);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .main-image:hover {

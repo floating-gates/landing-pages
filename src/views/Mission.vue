@@ -3,7 +3,7 @@ import { themeColor, themeColorOrange, themeColorWhite } from "../config.js";
 import mainPhoto from "../data/images/platform_logic_pic.webp";
 import Header from "../components/Header.vue";
 
-const missionSubHeading = "Maximizing Idle Manufacturing Potential";
+const missionSubHeading = "Maximizing your Manufacturing Potential";
 
 const features = [
     { 
@@ -15,9 +15,13 @@ const features = [
         description: 'Verify manufacturing feasibility in real time with robust automated analysis and warn users of modifications' 
     },
     { 
-        title: 'Device Optimization', 
-        description: 'Enhance device performance with optimization tools to make manufacturing easier and improving the customer satisfaction' 
-    }
+        title: 'Conversation on CAD', 
+        description: 'Follow what you customer is asking at an unprecedented precision, with unmistakable precision.' 
+    },
+    // { 
+    //     title: 'Device Optimization', 
+    //     description: 'Enhance device performance with optimization tools to make manufacturing easier and improving the customer satisfaction' 
+    // }
 ]
 </script>
 
