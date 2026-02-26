@@ -46,9 +46,9 @@ import { themeColor, themeColorOrange, themeColorWhite,
                   </svg>
                 </div>
                 <div class="item-content">
-                  <h4 class="item-title">Highlights Manufacturing Issues Ahead</h4>
+                  <h4 class="item-title">Highlights Manufacturing Issues</h4>
                   <p class="item-description">
-                    90% of drawings are corrected automatically, saving countless hours of manual review.
+                    40% of drawings are saved into a un-manufacturable configutation, briging with them countless hours of manual review.
                   </p>
                 </div>
               </li>
@@ -61,7 +61,7 @@ import { themeColor, themeColorOrange, themeColorWhite,
                   </svg>
                 </div>
                 <div class="item-content">
-                  <h4 class="item-title">Shape Optimization</h4>
+                  <h4 class="item-title">Design Correction Suggestions</h4>
                   <p class="item-description">
                     Intelligent shape suggestions will improve the performance of your customer device.
                   </p>
@@ -114,10 +114,12 @@ import { themeColor, themeColorOrange, themeColorWhite,
   position: relative;
   display: inline-block;
   margin-bottom: 1rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .section-title .dot {
-  color: v-bind(themeColorOrange);
+    color: v-bind(themeColorOrange);
+    shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .subtitle {

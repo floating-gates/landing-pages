@@ -7,7 +7,7 @@ import short_logo from "../data/images/logo_short_black.webp"
 
 const copyrightText = "Copyright 2025, All rights reserved.";
 const column1Heading = "About us";
-const column1Text = "We a team focused on building a bridge between unused production capacity and customer abundance. Our mission is to enable makers and innovators to utilise the idle machinery in the territory, through a platform that combines customised production with scalable manufacturing."
+const column1Text = "We are a team based in Italy focused on building a bridge between unused production capacity and customer abundance. Our mission is to enable makers and innovators to utilise the idle machinery in the factories, through a platform that combines customised production with scalable manufacturing."
 
 const connectHeading = "Connect with us";
 

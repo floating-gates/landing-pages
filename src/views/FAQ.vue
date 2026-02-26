@@ -4,25 +4,25 @@ import { ref } from "vue";
 import Header from "../components/Header.vue";
 
 const faqs = [
-        {
+    {
         question: "What is Gates?",
-        answer: "It's a software for factories/individuals who produce hardware. Gates is composed of an online-CAD and a Manufacturing Hub. Namely, we provide the CAD to engage, and convert customers by guiding them towards the product they want, assessing what you can reasonably produce, with a central place (the Hub) to manage what is going on in the CAD.  We enable manufacturers to stay competitive in an increasingly digital market."
-        },
+            answer: "It's a software for factories/individuals who produce hardware, composed of an public-facing Model-Based Definition (MBD) interface and a Manufacturing Agent ( i.e. A program that acts in the background for you constantly ). Namely, the Agent checks the manufacturability and return reports on the health status of the CAD files in your company network. While the MDB interface is provided to guide and insight both customers and employees towards the product they want, assessing what the machines can reasonably produce."
+    },
     {
         question: "Who is it for?",
         answer: "Gates serves from big manufacturing lines (i.g. plastic injection) to small workshops/freelancers that owns just a 3D printer. Our solution is especially valuable for those with well-established production methods who struggle to fully utilize their machines due to cumbersome order inquiries."
     },
     {
         question: "What does Gates provides to Your Business?",
-        answer: "Gates provides to You a Manufacturing Hub to funnel orders, while it host publicly a CAD Online to permit Your customers to engineer/price the devices ahead of time. The platform enables your customer to issue orders and to take the advantage of feasibility checks, instant quotes, and design optimizations. The advantage is that manufacturers can gain new customers and track existing clients thanks to renewed visibility, avoid uncertain prospects and streamline interactions with their customer base."
+        answer: "Internally to the factory, Gates automates manufacturability checks and providing real-time alerts for non-viable designs, saving significant engineering time. While externally, by hosting a public-facing online Model-based Definition interface, the platform empowers your customers to self-serve—engineering, pricing, and optimizing their own parts before an order is even placed. This results in higher-quality leads, instant quoting, and a simplified interaction model that allows manufacturers to expand their client base while focusing only on feasible, ready-to-produce projects."
     },
     {
         question: "What problem does it solve?",
-        answer: "Low sales and the enormous amount of time spent on preliminaries studies. Gates addresses this by distributing, and evaluating new customer requests via a CAD managed by you. It streamlines quoting and automates technical checks, enabling manufacturers to operate more efficiently and focus on what they do best: building."
+        answer: "Low sales and the enormous amount of time spent on preliminaries studies. Gates addresses this by distributing, and evaluating new customer requests via a Model-Based Definition (MBD) managed by your factory. It streamlines quoting and automates technical checks, enabling manufacturers to operate more efficiently and focus on what they do best: building."
     },
     {
         question: "What differentiates it from competitors?",
-        answer: "Unlike standalone tools, we provide a complete infrastructure that connects manufacturers directly with the customers, maximizing visibility and utilization. We do not interfere with your business decisions, instead we provide a framework around it, with the goal of improving operational efficiency."
+        answer: "Unlike standalone tools, we provide a complete pipeline that connects manufacturers directly with the customers and internal engineers without differenciating them, maximizing visibility and utilization. We do not interfere with your business decisions, instead we provide a framework around it, with the goal of improving operational efficiency."
     },
     {
         question: "Can I be listed into one of the Certified Manufacturers list?",
@@ -279,7 +279,11 @@ const isOpen = (index) => openIndex.value === index;
     .faq-section {
         padding: 4rem 1.5rem;
     }
-    
+
+    .faq-container {
+     max-width: 95%;
+    }
+
     .faq-title {
         font-size: 2.2rem;
     }

@@ -6,7 +6,7 @@ import {
     display_price_list, app_login_url, contactInfo } from "../config.js";
 
 const heading = "Plans and Pricing";
-const subHeading = "Pricing refer only to the hosting services for the online CAD and its features. You always choose the final price to charge your customers to manufacture their devices. We just smooth the process.";
+const subHeading = "Pricing refer to the hosting services for the online CAD and its features. You always get to choose the final price to charge your customers to manufacture its devices. We only smooth the process.";
 
 // Create a unified list for the loop
 const pricingPlans = computed(() => [
@@ -14,12 +14,11 @@ const pricingPlans = computed(() => [
         name: display_price_list[0].name,
         price: display_price_list[0].price,
         suffix: "",
-        features: ["CAD online",
-                   "Manufacturing Hub",
-                   "Brand Customization",
-                   "Max 20MB of Project Storage",
-                   "Non private 3D models"
-                   ],
+        features: ["Software-Defined Factory",
+                   "Online-CAD for Factory interaction",
+                   // "Brand Customization",
+                   "Max 50MB of Project Storage",
+                   "Non private 3D models"  ],
         buttonText: "Get Started",
         buttonUrl: app_login_url,
         isSecondary: false
@@ -28,7 +27,7 @@ const pricingPlans = computed(() => [
         name: display_price_list[1].name,
         price: display_price_list[1].price,
         suffix: "€/Month - incl. VAT",
-        features: ["Custom CAD address",
+        features: ["Custom CAD url",
                    "Automated Quotations",
                    "Parametric CAD of your best product",
                    "Private Projects"],
@@ -41,10 +40,10 @@ const pricingPlans = computed(() => [
         price: display_price_list[2].price,
         suffix: "",
         features: ["All 'Basic' features",
-                   "Feasability Agent",
-                   "Manufacturing Simulations",
+                   "Manufacturing Feasability Agent",
+                   // "Manufacturing Simulations",
                    "Conversation on Project",
-                   "Inclusion in Manufacturing World Map"],
+                   "Presence in Manufacturing World Map"],
         buttonText: "Get Started",
         buttonUrl: app_login_url,
         isSecondary: true // For the white background button
@@ -53,11 +52,13 @@ const pricingPlans = computed(() => [
         name: display_price_list[3].name,
         price: display_price_list[3].price,
         suffix: "",
-        features: ["One time purchase",
-                   "Free infrastructure set up",
-                   "Totally proprietary URL",
-                   "Syntetization of Manufacturing Knowledge",
-                   "3D Model generation with AI"],
+        features: [
+            "Factory-Wide Agent to check Manufacturabily",
+            "One time purchase",
+            "Local Installation",
+            "Syntetization of Manufacturing Knowledge",
+            // "AI based 3D Model generation"
+                  ],
         buttonText: "Speak to Us",
         buttonUrl: "mailto:" + contactInfo.email,
         isSecondary: false
@@ -74,7 +75,7 @@ const pricingPlans = computed(() => [
       <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="0">
         <h2 class="heading">
           {{ heading }}
-          <sub :style="{ color: themeColorOrange, 'font-size': '0.8rem' }">for GATES</sub>
+          <!-- <sub :style="{ color: themeColorOrange, 'font-size': '0.8rem' }">for GATES</sub> -->
         </h2>        
         <p class="mb-5">{{ subHeading }}</p>
       </div>
@@ -87,8 +88,7 @@ const pricingPlans = computed(() => [
           :key="plan.name"
           class="col-md-6 col-lg-3 mb-4"
           data-aos="fade-up"
-          :data-aos-delay="50 * (index + 1)"
-          >
+          :data-aos-delay="50 * (index + 1)"  >
           <div class="pricing">
             <div class="body">
               <span class="title">{{ plan.name }}</span>
@@ -193,14 +193,16 @@ const pricingPlans = computed(() => [
 
 <style scoped>
 .heading {
-    margin: 3rem;  
+    margin: 2rem;  
     font-size: 3.0rem;  
-    font-weight: 550;
+    font-weight: 650;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     text-align: center;
 }
 
 .btn {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 0.7rem;
 }
 
 .btn:hover {
@@ -228,6 +230,8 @@ const pricingPlans = computed(() => [
     position: relative;
     padding-left: 1.5rem; /* space for tick */
     margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: v-bind(themeColor)
 }
 
 .ul-check.primary li::before {
@@ -242,30 +246,34 @@ const pricingPlans = computed(() => [
 
 .pricing {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 2rem; /* keep it smooth */
-    width: 100%;
+    border-radius: 1rem; /* keep it smooth */
+    width: 98%;
 }
 
 .title {
     display: flex;
     justify-content: center; /* horizontally center content */
     align-items: center;     /* vertically center if multiple lines */
-    font-size: 2.4rem;
-    font-weight: 550;
+    font-size: 2.8rem;
+    font-weight: 600;
     color: v-bind(themeColor);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     margin-bottom: 1.1rem;
+    margin-top: 0.7rem;
     text-align: center;      /* ensures multi-line text stays centered */
 }
 
 .body {
-    background-color: white;
+    background: linear-gradient(
+        145deg, 
+        v-bind(themeColorWhite) 0%, 
+        #f5eadc 100% /* Slightly darker shade of your theme color */
+    );
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
 }
 
 .pricing:hover {
     transform: scale(1.03);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-    z-index: 2; /* ensures it overlays above neighbors */
 }
 
 

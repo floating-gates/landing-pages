@@ -2,7 +2,7 @@
 import { themeColor, contactInfo } from "../config.js";
 import Header from "../components/Header.vue"
 
-const lastUpdated = 'November 06, 2025';
+const lastUpdated = 'February 10, 2026';
 
 function scrollTo(elementId) {
   const element = document.getElementById(elementId);
@@ -80,9 +80,8 @@ function scrollTo(elementId) {
 
           <h5>Tracking Technologies and Cookies</h5>
           <p>
-            We use Cookies and similar tracking technologies (e.g., web beacons, pixels, and local storage) to monitor activity on our Service, 
-            store user preferences, and collect analytics. You can manage cookie settings through your browser, 
-            but disabling cookies may affect certain Service functionalities.
+            We use technical cookies for the App to function. For profiling and marketing cookies, we request your explicit consent. 
+            You may change this preference at any time in the settings.
           </p>
 
           <h5>Use of Personal Data</h5>
@@ -108,27 +107,32 @@ function scrollTo(elementId) {
         <section id="retention" class="term-section">
           <h2>3. Retention of Your Personal Data</h2>
           <p>
-            We retain Personal Data only as long as necessary for the purposes outlined in this Policy, including maintaining your Account, 
-            fulfilling legal obligations, resolving disputes, and enforcing agreements. 
-            When data is no longer required, it will be securely deleted or anonymized.
+            Account data is kept while the account is active; billing data is kept for 10 years for Italian tax compliance; 
+            and marketing data is kept until consent is withdrawn. When data is no longer required, it will be securely deleted or anonymized.
           </p>
         </section>
 
         <section id="transfer" class="term-section">
           <h2>4. Transfer of Your Personal Data</h2>
           <p>
-            Your data may be transferred and processed in countries other than your own. These jurisdictions may have different data protection laws.
-            We ensure that any such transfers comply with applicable data protection regulations, such as the EU Standard Contractual Clauses or equivalent safeguards.
+            If we transfer data outside the EEA (e.g., to US-based cloud providers), we ensure it is protected by 
+            <strong>Standard Contractual Clauses (SCCs)</strong> approved by the European Commission or Data Privacy Framework adequacy.
           </p>
         </section>
 
         <section id="delete" class="term-section">
           <h2>5. Deleting Your Personal Data</h2>
+          <p>Under the GDPR, you have the following rights regarding your data:</p>
+          <ul>
+            <li><strong>Right of Access:</strong> Request a copy of your data.</li>
+            <li><strong>Right to Rectification:</strong> Correct inaccurate data.</li>
+            <li><strong>Right to Erasure (Right to be Forgotten):</strong> Request data deletion.</li>
+            <li><strong>Right to Restrict Processing:</strong> Limit how we use your data.</li>
+            <li><strong>Right to Data Portability:</strong> Receive your data in a structured, machine-readable format.</li>
+            <li><strong>Right to Object:</strong> Object to processing based on legitimate interests or direct marketing.</li>
+          </ul>
           <p>
-            You may request deletion of your Personal Data at any time. Deletion can be initiated via your account settings or by contacting our support team.
-            Certain information may be retained where required for compliance, fraud prevention, or accounting purposes.
-          </p>
-          <p>
+            To exercise these rights, please contact us at {{ contactInfo.email }}. We will respond within 30 days.
             Upon confirmation, your data will be permanently removed or anonymized within a reasonable timeframe.
           </p>
         </section>
@@ -145,9 +149,10 @@ function scrollTo(elementId) {
         <section id="security" class="term-section">
           <h2>7. Security of Your Personal Data</h2>
           <p>
+            We use industry-standard encryption (TLS/SSL) and secure server protocols. In the event of a data breach, we will notify the
+            relevant supervisory authority and affected users within 72 hours where required by law.
             We implement administrative, technical, and physical safeguards designed to protect your Personal Data from unauthorized access, 
             loss, misuse, or disclosure. These include encryption in transit and at rest, restricted data access, and continuous monitoring.
-            However, no online system can guarantee absolute security, and you use the Service at your own risk.
           </p>
         </section>
 

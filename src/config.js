@@ -15,7 +15,7 @@ const git_book_url = "https://floating-gates.gitbook.io/gates-docs"
 const survey_link  = "https://forms.gle/JYHXxX2anVp14X6a6"
 
 const display_price_list = [
-    {name: 'Basic'     , price: '' },
+    {name: 'Basic'     , price: 'Free' },
     {name: 'Standard'  , price: '49.00' },
     {name: 'Pro'       , price: 'Coming Soon' },
     {name: 'Enterprise', price: ''}

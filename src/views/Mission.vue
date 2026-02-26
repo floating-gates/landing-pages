@@ -3,20 +3,23 @@ import { themeColor, themeColorOrange, themeColorWhite } from "../config.js";
 import mainPhoto from "../data/images/platform_logic_pic.webp";
 import Header from "../components/Header.vue";
 
-const missionSubHeading = "Maximizing your Manufacturing Potential";
+const missionSubHeading
+      = "Scaling Automated Manufacturing with Global Outreach."
+
+// const missionSubHeading = "Maximizing your Manufacturing Potential";
 
 const features = [
     { 
-        title: 'Immediate Price Estimation', 
-        description: 'Provide to your customers fast and transparent quotes aligned with current market standards. Parsing bad prospects at the root.' 
-    },
-    { 
-        title: 'Instant Feasibility Checks', 
+        title: 'Factory-wide Manufacturability Checks', 
         description: 'Verify manufacturing feasibility in real time with robust automated analysis and warn users of modifications' 
     },
     { 
         title: 'Conversation on CAD', 
         description: 'Follow what you customer is asking at an unprecedented precision, with unmistakable precision.' 
+    },
+    { 
+        title: 'Immediate Price Estimation', 
+        description: 'Provide to your customers fast and transparent quotes aligned with current market standards. Parsing bad prospects at the root.' 
     },
     // { 
     //     title: 'Device Optimization', 
@@ -94,7 +97,7 @@ const features = [
             :data-aos-delay="150 + index * 50"
             >
             <div class="feature-icon">
-              <svg  v-if="index === 0"
+              <svg  v-if="index === 2"
                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  width="32" height="32" fill="none"  :stroke="themeColorOrange" stroke-linecap="round" stroke-linejoin="round">>
                 <path fill-rule="evenodd" d="M3.75 3.375c0-1.036.84-1.875 1.875-1.875H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375Zm7.464 9.442c.459-.573 1.019-.817 1.536-.817.517 0 1.077.244 1.536.817a.75.75 0 1 0 1.171-.937c-.713-.892-1.689-1.38-2.707-1.38-1.018 0-1.994.488-2.707 1.38a4.61 4.61 0 0 0-.705 1.245H8.25a.75.75 0 0 0 0 1.5h.763c-.017.25-.017.5 0 .75H8.25a.75.75 0 0 0 0 1.5h1.088c.17.449.406.87.705 1.245.713.892 1.689 1.38 2.707 1.38 1.018 0 1.994-.488 2.707-1.38a.75.75 0 0 0-1.171-.937c-.459.573-1.019.817-1.536.817-.517 0-1.077-.244-1.536-.817-.078-.098-.15-.2-.215-.308h1.751a.75.75 0 0 0 0-1.5h-2.232a3.965 3.965 0 0 1 0-.75h2.232a.75.75 0 0 0 0-1.5H11c.065-.107.136-.21.214-.308Z" clip-rule="evenodd" />
                 <path d="M14.25 5.25a5.23 5.23 0 0 0-1.279-3.434 9.768 9.768 0 0 1 6.963 6.963A5.23 5.23 0 0 0 16.5 7.5h-1.875a.375.375 0 0 1-.375-.375V5.25Z" />
@@ -104,7 +107,7 @@ const features = [
                 <path d="M9 12l2 2 4-4" />
               </svg>
 
-              <svg v-else-if="index === 2"
+              <svg v-else-if="index === 0"
                 xmlns="http://www.w3.org/2000/svg"  width="32" height="32" viewBox="0 0 24 24" fill="none" :stroke="themeColorOrange" stroke-linecap="round" stroke-linejoin="round">>
                 <path fill-rule="evenodd" d="M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm4.5 7.5a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0v-2.25a.75.75 0 0 1 .75-.75Zm3.75-1.5a.75.75 0 0 0-1.5 0v4.5a.75.75 0 0 0 1.5 0V12Zm2.25-3a.75.75 0 0 1 .75.75v6.75a.75.75 0 0 1-1.5 0V9.75A.75.75 0 0 1 13.5 9Zm3.75-1.5a.75.75 0 0 0-1.5 0v9a.75.75 0 0 0 1.5 0v-9Z" clip-rule="evenodd" />
               </svg>
@@ -233,18 +236,18 @@ const features = [
 
 .section-badge {
     display: inline-block;
-    padding: 8px 24px;
+    padding: 10px 24px;
     border-radius: 50px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 16px;
 }
 
 .section-title {
-    font-size: 2.8rem;
-    font-weight: 700;
+    font-size: 2.4rem;
+    font-weight: 600;
     color: #2c3e50;
     margin-bottom: 20px;
 }

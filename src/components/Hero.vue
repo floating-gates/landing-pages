@@ -16,11 +16,29 @@ import { themeColor, themeColorOrange, themeColorWhite,
 //     "Make sure your Machines are too."
 // ];
 
+// const heroHeading = [
+//     "Close the Manufacturing Loop...",
+//     "Sell Directly from Your CAD",
+//     "Sync your Machines to the Cloud"
+// ];
+
+// const heroHeading = [
+//     "Close the Manufacturing Loop",
+//     "Automate Feasibility Studies",
+//     "as a Software-Defined Factory"
+// ];
+
 const heroHeading = [
-    "Close the Manufacturing Loop...",
-    "Sell Directly from Your CAD",
-    "Sync your Machines to the Cloud."
+    "Close the Production Loop",
+    "Automate Manufacturability",
+    "as a Software-Defined factory"
 ];
+
+// const heroHeading = [
+//     "End the Design loop, Automating",
+//     "Manufacturability Analysis",
+//     "as a Software-Defined Factory"
+// ];
 
 // User input state
 const userAddress = ref("");
@@ -122,47 +140,7 @@ onBeforeUnmount(() => {
     <div class="row align-items-center">
       <div class="col-12">
         <div class="row align-items-center">
-          <div class="col-lg-7 ml-auto order-lg-2 image-col">
-            <img :src="mainPhoto" alt="Technology Proxy in action"
-                 class="img-fluid hero-image" />
-            
-            <div
-              class="watch-video"
-              role="button"
-              tabindex="0"
-              @click="showVideo = true"
-              >
-              <p class="hand-underline">SEE IT IN ACTION</p>
-              
-              <div class="watch-video-btn">
-                <div class="play-button">
-                  <svg width="24" height="24" viewBox="0 0 16 16" fill="white">
-                    <path
-                      d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"
-                      />
-                  </svg>
-                  <div class="video-pulse"></div>
-                  
-                </div>
-              </div>
-            </div>
-            
-            <!-- INLINE VIDEO -->
-            <div v-if="showVideo" class="video-overlay">
-              <div class="video-wrapper">
-                <button class="video-close" @click="showVideo = false">✕</button>
-                
-                <iframe
-                  :src="youtubeVideoUrl"
-                  frameborder="0"
-                  allow="autoplay; encrypted-media"
-                  allowfullscreen
-                  ></iframe>
-              </div>
-            </div>
-            
-          </div>
-          <div class="col-lg-5 ps-lg-5 intro" id="header">
+          <div class="col-lg-5" id="header">
             <h1 class="heading"
                 style="line-height: 1.4; max-width: 100%;"
                 data-aos="fade-up"
@@ -184,14 +162,18 @@ onBeforeUnmount(() => {
                  data-aos="fade-up"
                  data-aos-delay="100">
               <p>
-                Empower customers to design and order parts directly through 
-                <strong :style="{ color: themeColorOrange }">your CAD</strong>. 
-  Our platform instantly verifies feasibility and generates quotes, 
-  eliminating manual sales calls so you can keep your shop floor running.
-</p>
+                Let your customers/coworkers define parts directly through 
+                a  <strong :style="{ color: themeColor }">Model-Based
+                  Definition</strong> interface. Gates automate design
+                feasibility and let you start a conversation on the drawings itself.
+              </p>
             </div>
             
-            <form v-if="!isSubmitting" @submit.prevent="submitAddress" class="address-form" data-aos="fade-up" data-aos-delay="200">
+            <form v-if="!isSubmitting"
+                  @submit.prevent="submitAddress"
+                  class="address-form glass mx-1"
+                  data-aos="fade-up"
+                  data-aos-delay="200">
               <input
                 v-model="userAddress"
                 type="text"
@@ -201,7 +183,7 @@ onBeforeUnmount(() => {
                 class="address-input"
                 />
               <button type="submit" class="address-submit" >
-                <span>Get your Online CAD</span>
+                <span>Define your Factory</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" >
                   <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
                 </svg>
@@ -217,6 +199,11 @@ onBeforeUnmount(() => {
               </button>
             </div>
           </div>
+        <div class="col-lg-7 mt-5 ml-auto">
+          <img :src="mainPhoto" alt="Gates CAD"
+               class="img-fluid mx-1" />
+        </div>
+
         </div>
       </div>
     </div>
@@ -225,12 +212,9 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.intro {
-    margin-top: 4rem;
-}
-
 .heading .block {
     display: block;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .btn-hover:hover {
@@ -239,23 +223,21 @@ onBeforeUnmount(() => {
 }
 
 .wider-container {
-    max-width: 1420px; /* Bootstrap’s xl is 1140px, this gives you extra room */
-    margin: 0 auto;
+    max-width: 1420px;
 }
 
 .address-form {
     display: flex;
     gap: 10px;
-    background-color: #fff;
+    margin-top: 2rem;
     border-radius: 14px;
     padding: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
 }
 
 .address-input {
     flex: 1;
     padding: 0.9rem 1.2rem;
-    font-size: 1.05rem;
     border: none;
     border-radius: 14px;
     background-color: v-bind(themeColorWhite);
@@ -280,12 +262,17 @@ onBeforeUnmount(() => {
   font-weight: 600;
   transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
   color: v-bind(themeColorWhite);
-  background-color: v-bind(themeColor);
+  background: linear-gradient(
+    145deg, 
+    v-bind(themeColor) 0%, 
+    #1a1d23 100% /* Slightly darker shade of your theme color */
+  );
+  box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.15),
+      0 6px 20px rgba(0, 0, 0, 0.05);
 }
 
 .address-submit:hover {
-  background-color: v-bind(themeColorOrange);
-  color: v-bind(themeColor);
   transform: translateY(-1px);
   cursor: pointer;
 }

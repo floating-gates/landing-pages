@@ -148,7 +148,9 @@ const isDocsOpen = ref(false);
     padding: 0.5rem 0;
     list-style: none;
     min-width: 180px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.35),
+      0 6px 20px rgba(0, 0, 0, 0.15);
     border-radius: 6px;
     display: flex;
     flex-direction: column;

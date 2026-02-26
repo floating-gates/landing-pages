@@ -16,7 +16,7 @@ import {
       <h1 class="heading">
         <span :style="{ color: themeColorOrange }">How?  </span>
         <span :style="{ fontSize: '2.5rem' }">
-           We set your public CAD online. Customers use it to purchases.
+           Define your Factory as Software. Customers use it to interact with you.
         </span>
       </h1>
 
