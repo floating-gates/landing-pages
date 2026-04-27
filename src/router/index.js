@@ -9,6 +9,7 @@ import Services          from '../views/Services.vue'
 import Guide             from '../views/Guide.vue'
 import FAQ               from '../views/FAQ.vue'
 import CaseStudies       from '../views/CaseStudies.vue'
+import Product           from '../views/Product.vue'
 
 const routes = [
     { path: '/', component: LandingPage },
@@ -21,6 +22,7 @@ const routes = [
     { path: '/guide', component: Guide },
     { path: '/faq',   component: FAQ },
     { path: '/pricing', component: Pricing },
+    { path: '/product', component: Product },
     { path: '/case-studies', component: CaseStudies }
 ]
 

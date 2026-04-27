@@ -2,18 +2,26 @@
 import advantages_yoy from "../data/images/advantages_yoy.webp";
 import { themeColor, themeColorOrange, themeColorWhite,
          app_login_url } from "../config.js";
+import background from "../data/images/background_pic.webp";
 </script>
 
 <template>
-  <div class="untree_co-section advantages-section" id="why">
-    <div class="container-fluid login-container container">
+<div class="untree_co-section advantages-section" id="why"
+     :style="{ '--bg-image': `url(${background})` }">
+     <div class="container-fluid login-container container">
       <!-- Section Header -->
       <div class="text-center" data-aos="fade-up">
         <h1 class="section-title">
-          Move Manufacturing Online <span class="dot">•</span> Customers ask <span class="dot">•</span> We Automate <span class="dot">•</span> You produce
+          Your Factory checks Engineers
+          <span class="dot">•</span>
+          and
+          <span class="dot">•</span>
+          Customers
+          <span class="dot">•</span>
+          This is the Result...
         </h1>
         <p class="subtitle">
-          One of the most promising discoveries in our journey has been realizing how much companies care about how they are perceived and how hard is to get customer onboard. Hence we sat down and thought about how we can technologically enable manufacturing plants in the most outreaching way possible, giving birth to the idea of proxying our CAD technology.
+          The greatest discoveries in our journey has been realizing how much companies struggle with un-manufacturable CAD files, especially if they come from a customer. From there, we birth to the idea of providing a Model Based Definition to both customers and engineers indistincly, to tacke the issue at the root.
         </p>
       </div>
 
@@ -87,7 +95,7 @@ import { themeColor, themeColorOrange, themeColorWhite,
 
         <!-- Image Column -->
         <div class="col-lg-8 col-12" data-aos="fade-left" data-aos-delay="150">
-          <div class="shadow-lg rounded-4 overflow-hidden p-3">
+          <div class="shadow-lg bg-white rounded-4 overflow-hidden p-3">
             <img
               :src="advantages_yoy"
               alt="Automation performance metrics"
@@ -102,10 +110,38 @@ import { themeColor, themeColorOrange, themeColorWhite,
 </template>
 
 <style scoped>
+.untree_co-hero {
+    background: #f8f9fb;
+/*     background-size: 45%; */
+/*     background-position: 5% center;  */
+/*     background-repeat: no-repeat; */
+}
+
 .advantages-section {
   position: relative;
   overflow: hidden;
 }
+
+.advantages-section::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* Use the variable from Vue */
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  
+  /* The Flip */
+  transform: rotate(180deg);
+  
+  /* Move it behind the text */
+  z-index: -1; 
+}
+
 
 .section-title {
   font-size: 2rem;
@@ -144,7 +180,8 @@ import { themeColor, themeColorOrange, themeColorWhite,
   align-items: center;
   padding: 1.5rem;
   margin-bottom: 1rem;
-  background-color: v-bind(themeColorWhite);
+  background-color: white;
+  /* v-bind(themeColorWhite); */
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
@@ -183,7 +220,7 @@ import { themeColor, themeColorOrange, themeColorWhite,
 .login-container {
   padding-left: 5%;
   padding-right: 5%;
-  max-width: 1600px;
+  max-width: 1536px;
 }
 
 .visual-wrapper {

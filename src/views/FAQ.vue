@@ -1,12 +1,13 @@
 <script setup>
 import { themeColor, themeColorOrange, themeColorLille } from "../config.js";
 import { ref } from "vue";
+import background from "../data/images/background_pic.webp"
 import Header from "../components/Header.vue";
 
 const faqs = [
     {
         question: "What is Gates?",
-            answer: "It's a software for factories/individuals who produce hardware, composed of an public-facing Model-Based Definition (MBD) interface and a Manufacturing Agent ( i.e. A program that acts in the background for you constantly ). Namely, the Agent checks the manufacturability and return reports on the health status of the CAD files in your company network. While the MDB interface is provided to guide and insight both customers and employees towards the product they want, assessing what the machines can reasonably produce."
+            answer: "It's a software for who produce hardware, composed of a Manufacturing Agent ( i.e. it acts in the background for you) and a public-facing Model-Based Definition (MBD) interface. Briefly, the Agent checks the manufacturability and return reports on the health status of CAD files in your company network. While the MDB interface is provided to guide and insight both external Customers and Employees towards the product they want, assessing what the machines can reasonably produce."
     },
     {
         question: "Who is it for?",
@@ -58,14 +59,15 @@ const isOpen = (index) => openIndex.value === index;
 
 <template>
 <Header :context="'landing-page'" />
-<div class="faq-section">
+<div class="faq-section"
+     :style="{ backgroundImage: `url(${background})` }">
   <div class="row justify-content-center">
     
     <!-- Enhanced Header Section -->
-    <div class="faq-header">
-      <h2 class="faq-title">Got Questions? We've Got Answers</h2>
-      <p class="faq-subtitle">Everything you need to know about Floating Gates and how it can help your manufacturing business</p>
-    </div>
+    <!-- <div class="faq-header"> -->
+      <h2 class="faq-title text-center mb-5">Got Questions? We've Got Answers</h2>
+    <!--   <p class="faq-subtitle">Everything you need to know about Floating Gates and how it can help your manufacturing business</p> -->
+    <!-- </div> -->
     
     <div class="faq-container">
       <div
@@ -115,8 +117,11 @@ const isOpen = (index) => openIndex.value === index;
 }
 
 .faq-section {
-    padding: 6rem 0;
+    padding: 7rem 0 3rem 0;
     position: relative;
+    background-size: cover;
+    background-position: center top;   /* anchor to top if it's a tall image */
+    width: 100%;
 }
 
 .faq-section::before {
@@ -132,14 +137,13 @@ const isOpen = (index) => openIndex.value === index;
 
 .faq-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
 }
 
 .faq-title {
     color: v-bind(themeColor);
     font-weight: 700;
     font-size: 3rem;
-    margin-bottom: 1rem;
 }
 
 .faq-subtitle {
@@ -152,13 +156,20 @@ const isOpen = (index) => openIndex.value === index;
 
 .faq-item {
     background: #fff;
+    -webkit-text-fill-color: v-bind(themeColor); /* Force white when open */
     border-radius: 16px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     border: 2px solid transparent;
+    color: v-bind(themeColor);
     overflow: hidden;
     transition: all 0.3s ease;
     position: relative;
+}
+
+.faq-item.is-open {
+    color: v-bind(themeColorWhite); /* Force white when open */ 
+    -webkit-text-fill-color: v-bind(themeColorWhite); 
 }
 
 .faq-item::before {

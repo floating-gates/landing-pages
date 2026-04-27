@@ -3,10 +3,9 @@ import { contactInfo, themeColorOrange,
          partner_app_login_url } from "../config.js";
 import iconGithub from "../data/images/github-logo.svg";
 import iconSubstack from "../data/images/substack-logo.png";
-import short_logo from "../data/images/logo_short_black.webp"
+// import short_logo from "../data/images/logo_short_black.webp"
 
-const copyrightText = "Copyright 2025, All rights reserved.";
-const column1Heading = "About us";
+const copyrightText = "Copyright 2026, All rights reserved.";
 const column1Text = "We are a team based in Italy focused on building a bridge between unused production capacity and customer abundance. Our mission is to enable makers and innovators to utilise the idle machinery in the factories, through a platform that combines customised production with scalable manufacturing."
 
 const connectHeading = "Connect with us";
@@ -35,10 +34,9 @@ const socialItems = [
             <div class="col-lg-6">
               <div class="widget">
                 <div class="about-header">
-                  <img :src="short_logo"
-                       alt="Floating Gates"
+                  <img src="../data/images/logo.webp"
+                       alt="Floating Gates Logo"
                        class="footer-logo-small" />
-                  <h3>{{ column1Heading }}</h3>
                 </div>
                 <p>{{ column1Text }}</p>
               </div>
@@ -158,8 +156,8 @@ const socialItems = [
 }
 
 .footer-logo-small {
-  width: 40px;                /* Slightly larger for balance */
-  height: auto;
+  height: 30px; /* or whatever height you prefer */
+  width: auto;  /* maintains aspect ratio */
   flex-shrink: 0;             /* Prevent logo from shrinking */
 }
 

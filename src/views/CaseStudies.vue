@@ -4,6 +4,7 @@ import { themeColor, themeColorOrange, themeColorWhite } from "../config.js";
 import Header from "../components/Header.vue";
 import { articles } from "../data/articles.js";
 import { useRoute, useRouter } from "vue-router";
+import background from "../data/images/background_pic.webp";
 
 // Pagination
 const route = useRoute();
@@ -12,7 +13,7 @@ const router = useRouter();
 const selectedArticle = ref(null);
 
 const currentPage = ref(1);
-const perPage = 4;
+const perPage = 2;
 
 const totalPages = computed(() => Math.ceil(articles.length / perPage));
 
@@ -40,7 +41,9 @@ const closeArticle = () => {
 
 <template>
 <Header :context="'landing-page'" />
-<div class="case-studies-page">
+<div class="case-studies-page"
+     :style="{ backgroundImage: `url(${background})` }">
+
   <!-- Hero Section -->
   <div class="hero-section">
     <div class="hero-content">

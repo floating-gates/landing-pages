@@ -8,11 +8,13 @@ import Testimonial from "../components/Testimonial.vue";
 import About from "../components/About.vue";
 import Contact from "../components/Contact.vue";
 import CookieBanner from "../components/CookieBanner.vue";
+import ProductHero from "../components/ProductHero.vue";
 </script>
 
 <template>
     <Header />
-    <Hero />
+    <ProductHero />
+    <!-- <Hero /> -->
     <!-- <HowDoesItWork2 /> -->
     <HowDoesItWork />
     <Why />

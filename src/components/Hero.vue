@@ -1,50 +1,22 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import mainPhoto from "../data/images/hero_pic.webp";
+import background from "../data/images/background_pic.webp";
 import { themeColor, themeColorOrange, themeColorWhite,
          app_login_url, youtubeVideoUrl } from "../config.js";
 
-// const heroHeading = [
-//     "Invested in Manufacturing?",
-//     "Be sure your machines runs, as Customers connect to your CAD"
-// ];
-
-// const heroHeading = [
-//     // "Invested in Manufacturing?",
-//     "Close the Manufacturing Loop.",
-//     "While your next CAD is in the Cloud.",
-//     "Make sure your Machines are too."
-// ];
-
-// const heroHeading = [
-//     "Close the Manufacturing Loop...",
-//     "Sell Directly from Your CAD",
-//     "Sync your Machines to the Cloud"
-// ];
-
-// const heroHeading = [
-//     "Close the Manufacturing Loop",
-//     "Automate Feasibility Studies",
-//     "as a Software-Defined Factory"
-// ];
 
 const heroHeading = [
-    "Close the Production Loop",
-    "Automate Manufacturability",
+    "Automate CAD Revisions to",
+    "Avoid Manufacturing Errors",
     "as a Software-Defined factory"
 ];
-
-// const heroHeading = [
-//     "End the Design loop, Automating",
-//     "Manufacturability Analysis",
-//     "as a Software-Defined Factory"
-// ];
 
 // User input state
 const userAddress = ref("");
 const isSubmitting = ref(false);
 const progress = ref(0);
-const placeholder = ref("Choose your hub address");
+const placeholder = ref("Choose your factory address");
 
 // Suggested auto-fill text
 const suggestedText = ["Gears-Maker.com",
@@ -135,21 +107,22 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-<div class="untree_co-hero py-lg-8" id="hero">
-  <div class="container wider-container">
-    <div class="row align-items-center">
-      <div class="col-12">
+<div class="untree_co-hero py-lg-8" id="hero"
+     :style="{ backgroundImage: `url(${background})` }">
+<div class="container wider-container">
+  <div class="row align-items-center">
+    <div class="col-12 my-5 mx-2" id="header" >
         <div class="row align-items-center">
-          <div class="col-lg-5" id="header">
+          <div class="col-lg-5" style="max-width: 85%;" >
             <h1 class="heading"
-                style="line-height: 1.4; max-width: 100%;"
+                style="line-height: 1.4;"
                 data-aos="fade-up"
                 data-aos-delay="100">
               <span
                 v-for="(line, idx) in heroHeading"
                 :key="idx"
                 :style="{
-                        fontSize: idx === 1 ? '2.6rem' : '2.3rem',
+                        fontSize: idx === 1 ? '2.7rem' : '2.3rem',
                         color: idx === 1 ? themeColorOrange : themeColor
                         }"
                 class="block"
@@ -162,10 +135,11 @@ onBeforeUnmount(() => {
                  data-aos="fade-up"
                  data-aos-delay="100">
               <p>
-                Let your customers/coworkers define parts directly through 
-                a  <strong :style="{ color: themeColor }">Model-Based
-                  Definition</strong> interface. Gates automate design
-                feasibility and let you start a conversation on the drawings itself.
+                Gates will scan your network in search of CAD models that can have
+                manufacturing problems and warn you!
+                Resolve issues directly through our  <strong :style="{ color: themeColor }">Model-Based
+                Definition</strong> interface. We automate its manufacturing feasibility,
+                highlighting what could go wrong in production.
               </p>
             </div>
             
@@ -183,7 +157,7 @@ onBeforeUnmount(() => {
                 class="address-input"
                 />
               <button type="submit" class="address-submit" >
-                <span>Define your Factory</span>
+                <span>Automate your Factory</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" >
                   <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
                 </svg>
@@ -199,11 +173,10 @@ onBeforeUnmount(() => {
               </button>
             </div>
           </div>
-        <div class="col-lg-7 mt-5 ml-auto">
+        <div class="col-lg-7">
           <img :src="mainPhoto" alt="Gates CAD"
-               class="img-fluid mx-1" />
+               class="img-fluid" />
         </div>
-
         </div>
       </div>
     </div>
@@ -212,6 +185,12 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+.untree_co-hero {
+    background-size: cover;
+    background-position: center top;   /* anchor to top if it's a tall image */
+    width: 100%;
+}
+
 .heading .block {
     display: block;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
@@ -220,10 +199,6 @@ onBeforeUnmount(() => {
 .btn-hover:hover {
     color: v-bind(themeColorWhite);
     background-color: v-bind(themeColorOrange);
-}
-
-.wider-container {
-    max-width: 1420px;
 }
 
 .address-form {
@@ -285,7 +260,7 @@ onBeforeUnmount(() => {
 }
 
 .address-submit:hover svg {
-  stroke: v-bind(themeColor); /* stays white on orange bg */
+  /* stroke: v-bind(themeColor); /\* stays white on orange bg *\/ */
   transform: translateX(2px); /* slight movement forward on hover */
 }
 
@@ -306,143 +281,6 @@ onBeforeUnmount(() => {
     color: white;
     background-color: v-bind(themeColor);
     flex: 1;
-}
-
-.watch-video {
-  text-decoration: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  align-items: center;    /* Vertically centers items in the row */
-  justify-content: center;
-  gap: 15px;              /* Reduced gap for a tighter feel */
-  color: v-bind(themeColor);
-  margin-top: 2rem;
-  width: 100%;
-  transition: transform 0.2s ease;
-
-}
-
-.watch-video * {
-  pointer-events: none; /* ensures the entire area clicks the link */
-}
-
-.watch-video:hover {
-    transform: scale(1.05);
-}
-
-.watch-video p {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: -1px;   /* Reduces space between letters */
-  line-height: 1;         /* Ensures the text box doesn't have extra height */
-  white-space: nowrap;
-}
-
-.watch-video-btn {
-  margin-left: 0.5rem;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;  /* Match play-button width */
-  height: 40px; /* Match play-button height */
-}
-
-.video-pulse {
-  position: absolute; /* Moves pulse out of the layout flow */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  border: 3px solid;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-  pointer-events: none;
-}
-
-
-/* Update the keyframes to remove the manual translate if using top/left 50% */
-@keyframes pulse {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.6);
-    opacity: 0;
-  }
-}
-
-.play-button {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 2;
-    background-color: v-bind(themeColor);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-}
-
-.play-button:hover {
-    transform: scale(1.1);
-}
-
-/* Overlay */
-.video-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(6px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-/* Video container */
-.video-wrapper {
-  position: relative;
-  width: min(900px, 90vw);
-  aspect-ratio: 16 / 9;
-  background: #000;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-}
-
-/* Iframe */
-.video-wrapper iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* Close button */
-.video-close {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  border-radius: 999px;
-  width: 36px;
-  height: 36px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.video-close:hover {
-  background: rgba(0, 0, 0, 0.85);
 }
 
 </style>

@@ -1,10 +1,13 @@
 # Variables
-STAGING_IP       = mattia@192.168.1.99
-PROD_IP    	 = mattia@192.168.1.100
-PROD_IP_FALLBACK = root@159.69.159.185
-PRODUCTION_HOSTS = $(PROD_IP) $(PROD_IP_FALLBACK)
-DEST_PATH        = /shared_fs/data/landing-page
-LOCAL_PATH       = /gates-stack-structure/data/landing-page
+LOCAL_HOST       = mattia@127.0.0.1
+STAGING_HOST       = mattia@192.168.1.99
+PROD_HOST    	 = mattia@192.168.1.100
+PROD_HOST_FALLBACK = root@159.69.159.185
+DEPLOY_PATH      = stack-structure/data/landing-page
+PRODUCTION_HOSTS = $(PROD_HOST) $(PROD_HOST_FALLBACK)
+
+RSYNC_FLAG := -azP --delete --exclude '.gitkeep'
+
 
 .PHONY:  backup-prod deploy-prod ask-confirmation
 
@@ -23,14 +26,14 @@ build-prod:
 
 backup-staging:
 	@echo "Starting backup staging"
-	@ssh $(STAGING_IP) "cp -r $(DEST_PATH) $(DEST_PATH).bak";
+	@ssh $(STAGING_HOST) "cp -r $(DEPLOY_PATH) $(DEPLOY_PATH).bak";
 	@echo "Backup staging successful"
 
 backup-prod:
 	@echo "Starting backup production (italy and germany)"
 	@set -e; for host in $(PRODUCTION_HOSTS); do \
 		echo "Backing up $$host..."; \
-		ssh $$host "cp -r $(DEST_PATH) $(DEST_PATH).bak"; \
+		ssh $$host "cp -r $(DEPLOY_PATH) $(DEPLOY_PATH).bak"; \
 	done
 	@echo "Backup production successful"
 
@@ -43,11 +46,11 @@ ask-confirmation:
 	fi
 
 deploy-local: build-local
-	cp -r dist/* $(LOCAL_PATH)
+	rsync -azP --delete dist/ $(LOCAL_HOST):$(DEPLOY_PATH)	
 
 deploy-staging: build-staging backup-staging
 	@echo "Starting deployment staging"
-	rsync -azP --delete dist/ $(STAGING_IP):$(DEST_PATH)	
+	rsync $(RSYNC_FLAG) dist/ $(STAGING_HOST):$(DEPLOY_PATH)	
 	@echo "DEPLOYED STAGING"
 
 # Deploys in multiple servers
@@ -55,7 +58,7 @@ deploy-prod: build-prod ask-confirmation backup-prod
 	@echo "Starting deployment production (italy and germany)"
 	@set -e; for host in $(PRODUCTION_HOSTS); do \
 		echo "Deploying to $$host..."; \
-		rsync -azP --delete dist/ $$host:$(DEST_PATH); \
+		rsync $(RSYNC_FLAG) dist/ $$host:$(DEPLOY_PATH); \
 	done
 	@echo "Deployed In Production"
 

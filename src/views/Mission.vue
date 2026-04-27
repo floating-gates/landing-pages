@@ -2,9 +2,9 @@
 import { themeColor, themeColorOrange, themeColorWhite } from "../config.js";
 import mainPhoto from "../data/images/platform_logic_pic.webp";
 import Header from "../components/Header.vue";
+import background from "../data/images/background_pic.webp";
 
-const missionSubHeading
-      = "Scaling Automated Manufacturing with Global Outreach."
+const missionSubHeading = "Scaling Automated Manufacturing"
 
 // const missionSubHeading = "Maximizing your Manufacturing Potential";
 
@@ -32,44 +32,50 @@ const features = [
 <Header :context="'landing-page'" />
 
 <!-- Hero Mission Section -->
-<div class="container-fluid mission-container container">
-  <div class="row justify-content-between align-items-center">
-    <div class="col-lg-5">
-      <div class="mission-content">
-        <span
-          class="section-badge"
-          data-aos="fade-up"
-          :style="{ backgroundColor: themeColorOrange + '20', color: themeColorOrange }" >
-          Our Mission
-        </span>
-        
-        <h1 class="mission-title" data-aos="fade-up" data-aos-delay="100">
-          {{ missionSubHeading }}
-        </h1>
-        <div class="mission-description" data-aos="fade-up" data-aos-delay="200">
-          <p class="lead-text">
-            Every machine, whether in a household garage or a corporate lab, holds <b>untapped potential</b>. Our mission is to directly connect customers with your machines to meet customizable and scalable production needs and target the 100% usage span.
-          </p>
+
+<div class="mission-hero-wrapper"
+     :style="{ backgroundImage: `url(${background})`}">
+  <div class="container mission-container">
+    <div class="row justify-content-between align-items-center">
+      <div class="col-lg-5">
+        <div class="mission-content">
+          <span
+            class="section-badge"
+            data-aos="fade-up"
+            data-aos-delay="100" >
+            NEVER MISS AN ERROR IN YOUR CAD ANYMORE
+          </span>
+          
+          <h1 class="mission-title" data-aos="fade-up" data-aos-delay="100">
+            {{ missionSubHeading }}
+          </h1>
+          <div class="mission-description" data-aos="fade-up" data-aos-delay="200">
+            <p class="lead-text">
+              We recognize the messy world we live in and the amount of files we collect in our library thinking they are manufacturable. Our mission is to maintain and monitor every file in your network to be production-ready, permitting to untap potential of your machines, to meet customizable production needs and target 100% usage span.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-7" data-aos="fade-up" data-aos-delay="400">
+        <div class="video-container">
+          <img :src="mainPhoto" alt="Manufacturing Hub" class="hero-image" />
         </div>
       </div>
     </div>
-    
-    <div class="col-lg-7" data-aos="fade-up" data-aos-delay="400">
-      <div class="video-container">
-        <img :src="mainPhoto" alt="Manufacturing Hub" class="hero-image" />
-      </div>
-    </div>
-  </div>
+  </div>  
 </div>
 
 <!-- How to Achieve Section -->
 <section class="achievement-section bg-light">
   <div class="container">
-    <div class="section-header text-center" data-aos="fade-up" data-aos-delay="0">
-      <span class="section-badge" :style="{ backgroundColor: themeColorOrange + '20', color: themeColorOrange }">
+    <div class="section-header text-center"
+         data-aos="fade-up"
+         data-aos-delay="100">
+      <span class="section-badge">
         How we do it
       </span>
-      <h2 class="section-title">The go-to platform that transforms a feasibility checks into reality</h2>
+      <!-- <h2 class="section-title">Delivering the platform that transforms feasibility checks into reality</h2> -->
     </div>
     
     <div class="row align-items-center g-5" data-aos="fade-up" data-aos-delay="100">
@@ -106,9 +112,9 @@ const features = [
                 <circle cx="12" cy="12" r="10" />
                 <path d="M9 12l2 2 4-4" />
               </svg>
-
+              
               <svg v-else-if="index === 0"
-                xmlns="http://www.w3.org/2000/svg"  width="32" height="32" viewBox="0 0 24 24" fill="none" :stroke="themeColorOrange" stroke-linecap="round" stroke-linejoin="round">>
+                   xmlns="http://www.w3.org/2000/svg"  width="32" height="32" viewBox="0 0 24 24" fill="none" :stroke="themeColorOrange" stroke-linecap="round" stroke-linejoin="round">>
                 <path fill-rule="evenodd" d="M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm4.5 7.5a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0v-2.25a.75.75 0 0 1 .75-.75Zm3.75-1.5a.75.75 0 0 0-1.5 0v4.5a.75.75 0 0 0 1.5 0V12Zm2.25-3a.75.75 0 0 1 .75.75v6.75a.75.75 0 0 1-1.5 0V9.75A.75.75 0 0 1 13.5 9Zm3.75-1.5a.75.75 0 0 0-1.5 0v9a.75.75 0 0 0 1.5 0v-9Z" clip-rule="evenodd" />
               </svg>
               
@@ -126,29 +132,31 @@ const features = [
 </template>
 
 <style scoped>
-.mission-hero {
-    padding: 200px 0 120px;
-    position: relative;
-    overflow: hidden;
-}
-
 .mission-content {
     position: relative;
     z-index: 2;
 }
 
-.mission-container {
+.mission-hero-wrapper {
+    width: 100%;
+    /* Ensure the background image covers the whole area */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 200px 0 120px;
-    
+}
+
+.mission-container {
+    /* padding: 200px 0 120px; */
+    max-width: 1600px;
     padding-left: 5%;
     padding-right: 5%;
-    max-width: 1600px; /* Optional: cap it so it doesn’t grow too much on ultra-wide monitors */
     margin: 0 auto;
 }
 
 .mission-title {
-    font-size: 3.5rem;
-    font-weight: 650;
+    font-size: 3.3rem;
+    font-weight: 630;
     line-height: 1.2;
     margin-bottom: 30px;
     color: v-bind("themeColor");
@@ -235,13 +243,9 @@ const features = [
 }
 
 .section-badge {
-    display: inline-block;
-    padding: 10px 24px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 1.4rem;
+    font-weight: 350;
+    color: v-bind(themeColorOrange);
     margin-bottom: 16px;
 }
 
@@ -365,27 +369,24 @@ const features = [
 }
 
 @media (max-width: 768px) {
-    .mission-hero {
-        padding: 60px 0 80px;
-  }
-  
-  .mission-title {
-    font-size: 2.2rem;
-  }
-  
-  .section-title {
-    font-size: 2.2rem;
-  }
-  
-  .strategy-heading {
-    font-size: 1.8rem;
-  }
-  
-  .achievement-section {
-    padding: 80px 0;
-  }
-  
-  .play-button {
+    
+    .mission-title {
+        font-size: 2.2rem;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .strategy-heading {
+        font-size: 1.8rem;
+    }
+    
+    .achievement-section {
+        padding: 80px 0;
+    }
+    
+    .play-button {
     width: 60px;
     height: 60px;
   }

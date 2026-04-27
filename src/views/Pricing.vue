@@ -1,12 +1,12 @@
 <script setup>
 import { computed } from 'vue'; // Import computed
 import Header from '../components/Header.vue'
-import { 
-    themeColor, themeColorOrange, themeColorWhite,
-    display_price_list, app_login_url, contactInfo } from "../config.js";
+import { themeColor, themeColorOrange, themeColorWhite,
+         display_price_list, app_login_url, contactInfo } from "../config.js";
+import background from "../data/images/background_pic.webp";
 
 const heading = "Plans and Pricing";
-const subHeading = "Pricing refer to the hosting services for the online CAD and its features. You always get to choose the final price to charge your customers to manufacture its devices. We only smooth the process.";
+const subHeading = "Pricing refer to the hosting services for the online Model-Based Defintion (MBD) platform and its Factory. You always get to choose the final price to charge your customers to manufacture their devices. We only smooth the process.";
 
 // Create a unified list for the loop
 const pricingPlans = computed(() => [
@@ -14,11 +14,12 @@ const pricingPlans = computed(() => [
         name: display_price_list[0].name,
         price: display_price_list[0].price,
         suffix: "",
-        features: ["Software-Defined Factory",
-                   "Online-CAD for Factory interaction",
-                   // "Brand Customization",
-                   "Max 50MB of Project Storage",
-                   "Non private 3D models"  ],
+        features: [
+            "Online Model-Based Defintion platform",
+            "Software-Defined Factory",
+            // "Brand Customization",
+            "Max 50MB of Project Storage",
+            "Non private 3D models"  ],
         buttonText: "Get Started",
         buttonUrl: app_login_url,
         isSecondary: false
@@ -27,8 +28,8 @@ const pricingPlans = computed(() => [
         name: display_price_list[1].name,
         price: display_price_list[1].price,
         suffix: "€/Month - incl. VAT",
-        features: ["Custom CAD url",
-                   "Automated Quotations",
+        features: ["Custom platform URL",
+                   "Conversation on Project",
                    "Parametric CAD of your best product",
                    "Private Projects"],
         buttonText: "Get Started",
@@ -42,7 +43,7 @@ const pricingPlans = computed(() => [
         features: ["All 'Basic' features",
                    "Manufacturing Feasability Agent",
                    // "Manufacturing Simulations",
-                   "Conversation on Project",
+                   "Automated Quotations",
                    "Presence in Manufacturing World Map"],
         buttonText: "Get Started",
         buttonUrl: app_login_url,
@@ -69,7 +70,9 @@ const pricingPlans = computed(() => [
 <template>
 <Header :context="'landing-page'" />
 
-<div class="untree_co-section" id="pricing-section">
+<div class="untree_co-section" id="pricing-section"
+     :style="{ backgroundImage: `url(${background})` }">
+
   <div class="container">
     <div class="row pricing-title ">
       <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="0">
@@ -267,7 +270,7 @@ const pricingPlans = computed(() => [
     background: linear-gradient(
         145deg, 
         v-bind(themeColorWhite) 0%, 
-        #f5eadc 100% /* Slightly darker shade of your theme color */
+        #e3e3e340 100% /* Slightly darker shade of your theme color */
     );
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
 }

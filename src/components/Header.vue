@@ -1,22 +1,21 @@
 <script setup>
 import { ref } from "vue";
 import { themeColor, demo_url, git_book_url, survey_link, app_login_url } from "../config.js";
-import { useRouter } from "vue-router"
-const router = useRouter()
+import short_logo from "../data/images/logo_short_black.webp"
 
 const isMenuOpen = ref(false);
-const isDocsOpen = ref(false);
+const isDropdownMenuOpen = ref(false);
 </script>
 
 <template>
-<nav class="site-nav dark js-clone-nav js-site-navbar">
+<nav class="site-nav js-site-navbar">
   <div class="container">
     <div class="site-navigation">
       <div class="nav-wrapper">
         <!-- Logo -->
         <a href="/" class="logo">
-          <img src="../data/images/logo.webp"
-               alt="Floating Gates Logo"
+          <img :src="short_logo"
+               alt="Floating Gates"
                class="logo-img" />
         </a>
         
@@ -33,18 +32,20 @@ const isDocsOpen = ref(false);
           <!-- LANDING PAGE HEADER -->
             <ul class="site-menu main-menu">
               <li><a href="/" class="nav-link">Home</a></li>
-              <!-- <li><a href="/product" class="nav-link">Product</a></li> -->
-              <li><a href="/pricing" class="nav-link">Pricing</a></li>
-              <li><a href="/mission" class="nav-link">Mission</a></li>
-              <li><a href="/faq" class="nav-link">FAQ</a></li>
+              <li><a href="/product" class="pages-link">Platform</a></li>
+              <li><a href="/pricing" class="pages-link">Pricing</a></li>
+              <li><a href="/mission" class="pages-link">Mission</a></li>
+              <li><a href="/faq" class="pages-link">FAQ</a></li>
               
               <!-- DROPDOWN MENU -->
-              <li class="dropdown" @mouseenter="isDocsOpen = true" @mouseleave="isDocsOpen = false">
+              <li class="dropdown"
+                  @mouseenter="isDropdownMenuOpen = true"
+                  @mouseleave="isDropdownMenuOpen = false">
                 <a class="nav-link dropdown-toggle">
                   Resources
                 </a>
                 
-                <ul class="dropdown-menu" v-show="isDocsOpen">
+                <ul class="dropdown-menu" v-show="isDropdownMenuOpen">
                   <li><a href="/case-studies" class="nav-link">Articles</a></li>
                   <li><a :href="git_book_url" class="nav-link">Documentation</a></li>
                   <li><a :href="survey_link" class="nav-link">Survey</a></li>
@@ -57,8 +58,6 @@ const isDocsOpen = ref(false);
                   <a
                     :href="app_login_url"
                     :style="{ color: themeColor }"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     >
                     Login
                     </a>
@@ -95,6 +94,10 @@ const isDocsOpen = ref(false);
 
 .button-menu li {
     white-space: nowrap;
+}
+
+.pages-link {
+   color: v-bind(themeColor);
 }
 
 /* Mobile styles */
@@ -159,7 +162,7 @@ const isDocsOpen = ref(false);
 }
 
 .dropdown-menu li a {
-    padding: 0.5rem 1rem;
+    padding: 0rem 1rem;
     display: block;
     white-space: nowrap;
 }
@@ -180,9 +183,9 @@ const isDocsOpen = ref(false);
         flex-direction: column;
         align-items: stretch;
         padding: 1rem;
-    gap: 1rem;
-    display: none;
-    z-index: 1000;
+        gap: 1rem;
+        display: none;
+        z-index: 1000;
   }
 
   .menu-container.mobile-open {
@@ -216,18 +219,13 @@ const isDocsOpen = ref(false);
     width: 100%;
   }
 
-/* Center the main nav links */
-  .site-menu li {
-    text-align: center;
-  }
-
   /* Adjust the dropdown container for mobile */
   .dropdown-menu {
     position: static;    /* Removes the floating/absolute behavior */
     box-shadow: none;    /* Removes the shadow for a cleaner look on mobile */
     width: 100%;
     padding: 0;
-    background: transparent; /* Allows it to blend with the mobile menu background */
+    background: transparent; 
     display: flex;
     align-items: center; /* Centers items horizontally in flex column */
   }
@@ -236,10 +234,5 @@ const isDocsOpen = ref(false);
     width: 100%;
     text-align: center;
   }
-}
-
-.chevron {
-  font-size: 14px;
-  opacity: 0.7;
 }
 </style>
