@@ -72,16 +72,16 @@ const features = [
     <div class="section-header text-center"
          data-aos="fade-up"
          data-aos-delay="100">
-      <span class="section-badge">
-        How we do it
-      </span>
+      <!-- <span class="section-badge"> -->
+      <!--   How we do it -->
+      <!-- </span> -->
       <!-- <h2 class="section-title">Delivering the platform that transforms feasibility checks into reality</h2> -->
     </div>
     
     <div class="row align-items-center g-5" data-aos="fade-up" data-aos-delay="100">
       <div class="col-lg-6">
         <div class="strategy-content">
-          <h3 class="strategy-heading">Connect Your Customers at your Machines</h3>
+          <h3 class="strategy-heading">Connecting Your Customers at your Machines</h3>
           <p class="strategy-text">
             We provide a B2B2C platform for factories with manufacturing capacity, enabling them to maximize their resources while serving both new and existing customers with unprecedented efficiency.
           </p>
@@ -233,8 +233,7 @@ const features = [
 
 /* Achievement Section */
 .achievement-section {
-    padding: 120px 0;
-    background: white;
+    padding: 30px 0;
     position: relative;
 }
 

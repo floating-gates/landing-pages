@@ -230,6 +230,40 @@ function clicking_tile(tile) {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 0.9rem;
+    position: relative; /* Context for the pseudo-elements */
+}
+
+/* Base line style */
+.hw-right::before {
+    content: "";
+    position: absolute;
+
+    /* Adjust these to align with the center of your tiles */
+    top: 25%; 
+    left: 10%;
+    right: 10%;
+    height: 12px;
+    background: v-bind(themeColor);
+    opacity: 0.6;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hw-right::after {
+    content: "";
+    position: absolute;
+    bottom: 25%;
+    left: 10%;
+    right: 10%;
+    height: 12px;
+    background: v-bind(themeColor);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+/* Subtle glow for the flow */
+.hw-tile {
+    z-index: 2; /* Keep tiles above the line */
 }
 
 /* ── Responsive ──────────────────────────────────────────────── */
@@ -266,11 +300,11 @@ function clicking_tile(tile) {
     text-decoration: none;
     padding: 0.5rem 1.5rem;
     display: flex;
-    aspect-ratio: 1/0.9;
+    aspect-ratio: 1;
     flex-direction: column;
     justify-content: flex-end; /* Push text to bottom for a modern look */
     position: relative;
-    border-radius: 0.2rem; /* Smoother corners */
+    border-radius: 2rem; /* Smoother corners */
     overflow: hidden;  
     box-shadow: 
         0 10px 30px -10px rgba(0, 0, 0, 0.5),

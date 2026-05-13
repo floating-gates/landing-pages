@@ -32,9 +32,10 @@ const isDropdownMenuOpen = ref(false);
           <!-- LANDING PAGE HEADER -->
             <ul class="site-menu main-menu">
               <li><a href="/" class="nav-link">Home</a></li>
-              <li><a href="/product" class="pages-link">Platform</a></li>
+              <li><a href="/product" class="pages-link">How does it Work</a></li>
               <li><a href="/pricing" class="pages-link">Pricing</a></li>
               <li><a href="/mission" class="pages-link">Mission</a></li>
+              <!-- <li><a href="/use-case" class="pages-link">Use Cases</a></li> -->
               <li><a href="/faq" class="pages-link">FAQ</a></li>
               
               <!-- DROPDOWN MENU -->
@@ -46,7 +47,7 @@ const isDropdownMenuOpen = ref(false);
                 </a>
                 
                 <ul class="dropdown-menu" v-show="isDropdownMenuOpen">
-                  <li><a href="/case-studies" class="nav-link">Articles</a></li>
+                  <li><a href="/articles" class="nav-link">Articles</a></li>
                   <li><a :href="git_book_url" class="nav-link">Documentation</a></li>
                   <li><a :href="survey_link" class="nav-link">Survey</a></li>
                 </ul>
@@ -62,9 +63,9 @@ const isDropdownMenuOpen = ref(false);
                     Login
                     </a>
                 </li>
-                <li class="cta-primary">
-                  <a :href="demo_url">Demo</a>
-                </li>
+                <!-- <li class="cta-primary"> -->
+                <!--   <a :href="demo_url">Go to Factory UI</a> -->
+                <!-- </li> -->
               </ul>
             </div>
         </div>
@@ -90,10 +91,6 @@ const isDropdownMenuOpen = ref(false);
     display: flex;
     align-items: center;
     gap: 1rem;
-}
-
-.button-menu li {
-    white-space: nowrap;
 }
 
 .pages-link {

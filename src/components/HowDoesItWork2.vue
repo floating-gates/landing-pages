@@ -1,88 +1,150 @@
 <script setup>
-import mainPhoto from "../data/images/hero_pic_.webp";
-
 import {
-  themeColor, 
-  themeColorOrange, 
-  themeColorGold, 
-  themeColorWhite 
+  themeColor,
+  themeColorOrange,
+  themeColorGold,
+  themeColorWhite
 } from "../config.js";
+import processImg from "../data/images/path3.webp";
 </script>
 
 <template>
-  <section class="bg-light" id="how_does_it_work">
-    <div class="container text-center">
-
-      <h1 class="heading">
-        <span :style="{ color: themeColorOrange }">How?  </span>
-        <span :style="{ fontSize: '2.5rem' }">
-           Define your Factory as Software. Customers use it to interact with you.
-        </span>
-      </h1>
-
-      <p class="subtitle">
-        Gates host publicly a CAD Online to funnel orders at your preferred address, while it provides to the factory the Manufacturing Hub to control the platform and the subsequent orders. This permit to Your customers to engineer and price the devices ahead of time under your supervison.
+<section class="how-section" id="how_does_it_work">
+  <div class="container">
+    <!-- 1. Header Section (Centered) -->
+    <div class="header-content">
+      <h2 class="heading">
+        Phases of 
+        <span class="accent">Manufactruring Issues</span>
+        Discovery
+      </h2>
+      <p class="section-subheading">
+        Identifying manufacturing issues before productions start within the factory relies on three core pillars working in synergy with your CAD libraries:
       </p>
+    </div>
+    
+    <!-- 2. Hero Image (Horizontal Wide) -->
+    <div class="image-showcase">
+      <img :src="processImg" alt="Gates analysis process diagram" class="process-image" />
+    </div>
+    
+    <!-- 3. Features Grid (Three Columns) -->
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3 class="feature-title">DfM RULES CHECK</h3>
+        <p class="feature-body">
+          Executes automated checks against a centralized DfM (Design for Manufacturing) Play-book, ensuring every design adheres to specific engineering constraints, tolerances, and standardized best practices without ambiguity.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-title">AAG ANALYSIS</h3>
+        <p class="feature-body">
+          The Attribute Adjacency Graph (AAG) serves as the semantic foundation for mechanical design review. By mapping individual manufacturing features and more importantly their relationships into a graph structure, the system can algorithmically parse complex geometries that traditional CAD data alone cannot interpret.
+        </p>
+      </div>
+      <div class="feature-card">
+          <h3 class="feature-title">IN NETWORK OPERATIONS</h3>
+          <p class="feature-body">
+            The software is built in a distributed fashion to look for CAD libraries around the PC/Servers around the factory. All ingestion and parsing occur behind the local firewall. No intellectual property ever leaves the network, maintaining absolute data sovereignty.
+          </p>
+        </div>
+      </div>
 
-      <!-- IMAGE -->
-      <div class="image-wrapper" data-aos="zoom-in" data-aos-delay="100">
-          <img 
-          :src="mainPhoto" 
-          alt="How it works illustration" 
-          class="main-image"
-        />
+      <div class="footer-note">
+        <p>THE SOFTWARE IS A BACKGROUND SERVICE THAT CONTINUOUSLY SCANS CAD FILES ACROSS THE FACTORY NETWORK, FLAGS POTENTIAL MANUFACTURING DEFECTS, AND ALERTS A HUMAN OPERATOR BEFORE A FLAWED PART EVER REACHES PRODUCTION.</p>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
+.how-section {
+  padding: 80px 0;
+  background-color: #e3e3e340; 
+}
+
 .container {
-  max-width: 1400px;
-  padding: 5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
 }
 
-.heading {
-  font-size: 3rem;
-  font-weight: 600;
-  color: v-bind(themeColor);
+.header-content {
+  text-align: center;
+}
+
+.section-heading {
+  font-size: 2.5rem;
   line-height: 1.2;
-  text-align: center;
+  margin-bottom: 20px;
 }
 
-.subtitle {
-  max-width: 1000px;
-  text-align: center;
+.accent {
+  color: v-bind(themeColorOrange);
+  font-weight: bold;
 }
 
-.image-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.section-subheading {
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  opacity: 0.8;
 }
 
-.main-image {
-  width: 90%;
-  /* max-width: 1500px; */
+/* Image Styles for Horizontal Fit */
+.image-showcase {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.process-image {
+  width: 100%;
   height: auto;
-  object-fit: cover;
-  border-radius: 2rem;
-  border: 5px solid v-bind(themeColor);
-  box-shadow: 0 12px 32px rgba(0, 1, 0, 0.2);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-
-  /* The below the image to a GPU layer, and the browser re-rasterizes it at full resolution. Oterherwise is blurry once not hovered */
-  transform: scale(1);
-  will-change: transform;
-  backface-visibility: hidden;
+  display: block;
+  border-radius: 12px;
+  /* Optional shadow to make the diagram pop */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
 }
 
-.main-image:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+/* 3-Column Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+  .features-grid {
+    grid-template-columns: 1fr; /* Stack on mobile */
+  }
+}
+
+.feature-card {
+  padding: 20px;
+  border-top: 4px solid v-bind(themeColorGold);
+}
+
+.feature-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: v-bind(themeColor);
+}
+
+.feature-body {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.footer-note {
+  text-align: center;
+  font-style: italic;
+  opacity: 0.9;
+  padding-top: 1rem;
+  border-top: 2px solid #eee;
+  width: 100%;
 }
 </style>

@@ -33,14 +33,14 @@ function setTab(tab) {
             <h1 class="heading"
                 data-aos="fade-up"
                 data-aos-delay="100">
-              Unified intake for<br>
-              <em :style="{color: themeColorOrange}">Engineers, Clients,</em><br>
-              and Vendors
+              Error Free Intake for<br>
+              <em :style="{color: themeColorOrange}">Factories, Engineers</em><br>
+              and Its Customers
             </h1>
             
             <!-- Subheading -->
             <p class="subheading" data-aos="fade-up" data-aos-delay="130">
-              It catches autonomously manufacturability issues in your CAD library before production, from whatever way they are generated... from a customers or an employees. A gatekeeper for factories who deal a lot of customers or huge CAD libraries.
+              A gatekeeper for factories who deal a lot of customers or huge CAD libraries. It catches autonomously manufacturability issues in your CAD library before production, from whatever way they are generated: from customers or employees.
             </p>
             
             <!-- Feature list -->
@@ -77,13 +77,14 @@ function setTab(tab) {
             <!-- CTA row -->
             <div class="cta-row" data-aos="fade-up" data-aos-delay="190">
               <a class="btn-primary-cta" :href="app_login_url">
-                Start your Virtual Factory
+                Start for Free
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
                   <path stroke-linecap="round" stroke-linejoin="round"
                         d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
                 </svg>
               </a>
-              <a class="btn-ghost-cta" :href="demo_url">Visualize Your Workshop</a>
+              
+              <a class="btn-ghost-cta" :href="demo_url">Visualize Your Intake portal</a>
             </div>
             
             <!-- Social proof -->
@@ -99,7 +100,6 @@ function setTab(tab) {
                 <!--     <span>Trusted by <strong>300+ manufacturing teams</strong></span> -->
                 <!--   </div> -->
               <!-- </div> -->
-            
           </div>
           
           <div class="col-lg-7">
@@ -254,17 +254,6 @@ function setTab(tab) {
     width: 100%;
 }
 
-.heading {
-    line-height: 1.18;
-    letter-spacing: -0.03em;  
-    font-size: 3.5rem; 
-    font-weight: 700;
-}
-
-.heading .block {
-    display: block;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-}
 
 .btn-hover:hover {
     color: v-bind(themeColorWhite);
@@ -776,12 +765,13 @@ function setTab(tab) {
     align-items: center;
     padding: 0.75rem 1.2rem;
     background: transparent;
-    border: 0.5px solid rgba(0,0,0,0.18);
+    color: v-bind(themeColor);
+    border: 3px solid v-bind(themeColor);
     border-radius: 10px;
     font-size: 0.95rem;
-  color: inherit;
-  text-decoration: none;
-  transition: background 0.15s;
+    /* color: inherit; */
+    text-decoration: none;
+    transition: background 0.15s;
 }
 
 .btn-ghost-cta:hover { background: rgba(0,0,0,0.04); }

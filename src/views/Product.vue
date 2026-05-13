@@ -1,11 +1,11 @@
 <script setup>
 import Header from "../components/Header.vue"
-import ProductHero from "../components/ProductHero.vue";
 import Hero from "../components/Hero.vue";
-
+import HowDoesItWork2 from "../components/HowDoesItWork2.vue"
 </script>
 
 <template>
     <Header />
     <Hero />
+    <HowDoesItWork2 />
 </template>

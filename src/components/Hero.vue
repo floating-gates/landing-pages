@@ -6,11 +6,17 @@ import { themeColor, themeColorOrange, themeColorWhite,
          app_login_url, youtubeVideoUrl } from "../config.js";
 
 
-const heroHeading = [
-    "Automate CAD Revisions to",
-    "Avoid Manufacturing Errors",
-    "as a Software-Defined factory"
-];
+// const heroHeading = [
+//     "Automate CAD Revisions to",
+//     "Avoid Manufacturing Errors",
+//     "as a Software-Defined factory"
+// ];
+// const heroHeading = [
+//     "Search your Factory Network",
+//     "Checks for Issues in your CAD",
+//     "Warns if Issues are found",
+//     "Allows Customers CAD Drop"
+// ];
 
 // User input state
 const userAddress = ref("");
@@ -109,26 +115,21 @@ onBeforeUnmount(() => {
 <template>
 <div class="untree_co-hero py-lg-8" id="hero"
      :style="{ backgroundImage: `url(${background})` }">
-<div class="container wider-container">
-  <div class="row align-items-center">
-    <div class="col-12 my-5 mx-2" id="header" >
+  <div class="container wider-container">
+    <div class="row align-items-center">
+      <div class="col-12 my-5 mx-2" id="header" >
         <div class="row align-items-center">
-          <div class="col-lg-5" style="max-width: 85%;" >
+          <div class="col-lg-6" style="max-width: 90%;" >
             <h1 class="heading"
-                style="line-height: 1.4;"
                 data-aos="fade-up"
                 data-aos-delay="100">
-              <span
-                v-for="(line, idx) in heroHeading"
-                :key="idx"
-                :style="{
-                        fontSize: idx === 1 ? '2.7rem' : '2.3rem',
-                        color: idx === 1 ? themeColorOrange : themeColor
-                        }"
-                class="block"
-                >
-                {{ line }}
-              </span>
+              <div :style="{ fontSize: '2.9rem' }">
+                <em :style="{ color: themeColorOrange, fontSize: '3.3rem' }">Search </em> your Factory Network,<br>
+                <em :style="{ color: themeColorOrange, fontSize: '3.3rem' }">Checks </em> for Issues in your CAD,<br>
+                <em :style="{ color: themeColorOrange, fontSize: '3.3rem' }">Warns </em> if Issues are found,<br>
+                <em :style="{ color: themeColorOrange, fontSize: '3.3rem' }">Allows </em> Customers CAD Drop
+<br>
+              </div>
             </h1>
             
             <div class="excerpt"
@@ -136,9 +137,7 @@ onBeforeUnmount(() => {
                  data-aos-delay="100">
               <p>
                 Gates will scan your network in search of CAD models that can have
-                manufacturing problems and warn you!
-                Resolve issues directly through our  <strong :style="{ color: themeColor }">Model-Based
-                Definition</strong> interface. We automate its manufacturing feasibility,
+                manufacturing problems and warn you! We automate its manufacturing feasibility,
                 highlighting what could go wrong in production.
               </p>
             </div>
@@ -173,9 +172,8 @@ onBeforeUnmount(() => {
               </button>
             </div>
           </div>
-        <div class="col-lg-7">
-          <img :src="mainPhoto" alt="Gates CAD"
-               class="img-fluid" />
+        <div class="col-lg-6">
+          <img :src="mainPhoto" alt="good2manufacture"  class="img-fluid" />
         </div>
         </div>
       </div>
@@ -191,9 +189,8 @@ onBeforeUnmount(() => {
     width: 100%;
 }
 
-.heading .block {
-    display: block;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+img {
+    margin-top: 2rem;
 }
 
 .btn-hover:hover {
@@ -212,7 +209,7 @@ onBeforeUnmount(() => {
 
 .address-input {
     flex: 1;
-    padding: 0.9rem 1.2rem;
+    padding: 0.8rem 1.0rem;
     border: none;
     border-radius: 14px;
     background-color: v-bind(themeColorWhite);
@@ -225,8 +222,8 @@ onBeforeUnmount(() => {
 }
 
 .address-submit {
-  padding: 0.9rem 1.6rem;
-  min-width: 80px;
+  padding: 0.9rem 1.4rem;
+  /* min-width: 80px; */
   min-height: 50px;
   border: none;
   border-radius: 14px;

@@ -14,7 +14,7 @@ import Product           from '../views/Product.vue'
 const routes = [
     { path: '/', component: LandingPage },
     { path: '/mission', component: Mission },
-    // { path: '/product', component: Product },
+    { path: '/use-case', component: CaseStudies },
     { path: '/value-proposition', component: ValueProposition },
     { path: '/services', component: Services },
     { path: '/terms_and_services', component: TermsService },
@@ -23,7 +23,7 @@ const routes = [
     { path: '/faq',   component: FAQ },
     { path: '/pricing', component: Pricing },
     { path: '/product', component: Product },
-    { path: '/case-studies', component: CaseStudies }
+    { path: '/articles', component: CaseStudies }
 ]
 
 const router = createRouter({

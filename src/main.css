@@ -359,8 +359,17 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
     text-align: center; } }
 
 .heading {
-    font-weight: 650;
     color: #223843;
+    line-height: 1.18;
+    /* line-height: 1.4; */
+    letter-spacing: -0.03em;  
+    font-size: 3.5rem; 
+    font-weight: 700;
+}
+
+.heading .block {
+    display: block;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .untree_co-hero .dots:before {

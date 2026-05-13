@@ -12,11 +12,11 @@ import background from "../data/images/background_pic.webp";
       <!-- Section Header -->
       <div class="text-center" data-aos="fade-up">
         <h1 class="section-title">
-          Your Factory checks Engineers
+          Guardrail Engineers
           <span class="dot">•</span>
-          and
-          <span class="dot">•</span>
-          Customers
+          <!-- and -->
+          <!-- <span class="dot">•</span> -->
+          Allow Customers drop-in
           <span class="dot">•</span>
           This is the Result...
         </h1>
@@ -86,7 +86,7 @@ import background from "../data/images/background_pic.webp";
                   </svg>
                 </a>
                 <h3 class="item-title" :style="{ fontSize: '1.25rem', color: themeColorWhite }">
-                  Try it out. Refund Guaranteed 100%
+                  Try it. Refund Guaranteed.
                 </h3>
               </li>
             </ul>

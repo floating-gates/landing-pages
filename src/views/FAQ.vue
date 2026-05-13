@@ -39,7 +39,7 @@ const faqs = [
     },
     {
         question: "Do you offer affiliate programs?",
-        answer: "Yes. Creators and manufacturers can earn commissions by bringing new customers to the platform. By subscribing at: https://floating-gates.com/referral_login"
+        answer: "Yes. Creators and manufacturers can earn commissions by bringing new customers to the platform. By subscribing at: app.floating-gates.com/referral-login"
     },
     {
         question: "What is your refund policy?",
