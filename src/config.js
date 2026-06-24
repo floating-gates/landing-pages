@@ -9,16 +9,18 @@ const themeColorGold   = '#D8B4A0';
 const demo_url              = import.meta.env.VITE_DEMO_URL;
 const app_login_url         = import.meta.env.VITE_APP_URL
 const partner_app_login_url = import.meta.env.VITE_PARTNER_APP_URL
+const api_url = import.meta.env.VITE_API_URL
 
 const youtubeVideoUrl = 'https://www.youtube.com/embed/-og2OKAT_UE?autoplay=1'
 const git_book_url = "https://floating-gates.gitbook.io/gates-docs"
 const survey_link  = "https://forms.gle/JYHXxX2anVp14X6a6"
+const create_customer_api_endpoint = api_url + '/user/create_customer';
 
 const display_price_list = [
     {name: 'Basic'     , price: 'Free' },
     {name: 'Standard'  , price: '49.00' },
     {name: 'Pro'       , price: 'Coming Soon' },
-    {name: 'Enterprise', price: ''}
+    {name: 'Enterprise', price: 'Speak to us'}
 ];
 
 // Contact Info
@@ -35,5 +37,5 @@ export {
     themeColor, themeColorOrange, themeColorWhite, themeColorLille,
     themeColorGold, survey_link, contactInfo, display_price_list,
     git_book_url, demo_url, app_login_url, partner_app_login_url,
-    youtubeVideoUrl
+    youtubeVideoUrl, create_customer_api_endpoint
 };

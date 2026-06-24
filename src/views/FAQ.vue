@@ -7,23 +7,27 @@ import Header from "../components/Header.vue";
 const faqs = [
     {
         question: "What is Gates?",
-            answer: "It's a software for who produce hardware, composed of a Manufacturing Agent ( i.e. it acts in the background for you) and a public-facing Model-Based Definition (MBD) interface. Briefly, the Agent checks the manufacturability and return reports on the health status of CAD files in your company network. While the MDB interface is provided to guide and insight both external Customers and Employees towards the product they want, assessing what the machines can reasonably produce."
+        answer: "It is a software that lives in your company network. It perform CAD and GD&T autonomous revision revision to spot manufacturing issues. Every cad files in the network, it encounter a critical checkpoints by which is either green lit or highlighted for revision. A human in the loop is required once an issue is found."
     },
     {
         question: "Who is it for?",
-        answer: "Gates serves from big manufacturing lines (i.g. plastic injection) to small workshops/freelancers that owns just a 3D printer. Our solution is especially valuable for those with well-established production methods who struggle to fully utilize their machines due to cumbersome order inquiries."
+        answer: "It's a software for who design and produce hardware. Gates serves from big R&D deparments with multiple machines to small workshops that owns just a 3D printer. Our solution is especially valuable for those who struggle to fully utilize their machines due to cumbersome order inquiries."
+    },
+    {
+        question: "How it does it?",
+        answer: "The software is composed of a Manufacturing Agent and a public-facing Model-Based Definition (MBD) interface. The Agent checks the manufacturability and return reports on the health status of CAD files in your company network. While the MDB interface can provided a guide to both internal ed external stakeholders ( Customers or Suppliers ) towards the product they want, respecting your standards and assessing what the machines can reasonably produce."
     },
     {
         question: "What does Gates provides to Your Business?",
-        answer: "Internally to the factory, Gates automates manufacturability checks and providing real-time alerts for non-viable designs, saving significant engineering time. While externally, by hosting a public-facing online Model-based Definition interface, the platform empowers your customers to self-serve—engineering, pricing, and optimizing their own parts before an order is even placed. This results in higher-quality leads, instant quoting, and a simplified interaction model that allows manufacturers to expand their client base while focusing only on feasible, ready-to-produce projects."
+        answer: "Internally to the factory, Gates automates feasability checks and provides real-time alerts for non-viable designs. While externally, by hosting a public-facing online Model-based Definition interface, the platform empowers customers/suppliers to self-engineer, price, and correct their parts before an order is even placed. This results in higher-quality leads, instant quoting, and a simplified interaction model that allows manufacturers to expand their client base while focusing only on feasible, ready-to-produce projects."
     },
     {
         question: "What problem does it solve?",
-        answer: "Low sales and the enormous amount of time spent on preliminaries studies. Gates addresses this by distributing, and evaluating new customer requests via a Model-Based Definition (MBD) managed by your factory. It streamlines quoting and automates technical checks, enabling manufacturers to operate more efficiently and focus on what they do best: building."
+        answer: "It saves the huge amount of time spent on design revision. It streamlines quoting and automates technical checks, enabling manufacturers to operate more efficiently and focus on what they do best: building."
     },
     {
         question: "What differentiates it from competitors?",
-        answer: "Unlike standalone tools, we provide a complete pipeline that connects manufacturers directly with the customers and internal engineers without differenciating them, maximizing visibility and utilization. We do not interfere with your business decisions, instead we provide a framework around it, with the goal of improving operational efficiency."
+        answer: "Unlike standalone tools, Gates work on the network and even if a designer forget to double check its project, Gates will flag errrors if found some. Gates do not interfere with your business decisions, instead we provide a framework around it, with the goal of improving operational efficiency."
     },
     {
         question: "Can I be listed into one of the Certified Manufacturers list?",
@@ -34,7 +38,7 @@ const faqs = [
         answer: "For the Basic, Standard and Pro plans, we offer secure cloud access as well as on-premise options, with all data protected under GDPR-compliant practices. For enterprise customers, software and data governance are fully transferred to the purchaser."
     },
     {
-        question: "How does it work the custom address?",
+        question: "What is a Custom address?",
         answer: "Gates is a managed cloud service and it is going to host a server for the infrastructrure and its'services. For the Basic and Standard programme we are going to use the suffix floating-gates.com while for Enterprise customer we purchase a stand alone domain name"
     },
     {
@@ -63,12 +67,8 @@ const isOpen = (index) => openIndex.value === index;
      :style="{ backgroundImage: `url(${background})` }">
   <div class="row justify-content-center">
     
-    <!-- Enhanced Header Section -->
-    <!-- <div class="faq-header"> -->
-      <h2 class="faq-title text-center mb-5">Got Questions? We've Got Answers</h2>
-    <!--   <p class="faq-subtitle">Everything you need to know about Floating Gates and how it can help your manufacturing business</p> -->
-    <!-- </div> -->
-    
+    <h2 class="faq-header heading">Got Questions?  <em :style="{color: themeColorOrange}">We've Got Answers</em></h2>
+
     <div class="faq-container">
       <div
         v-for="(faq, index) in faqs"
@@ -113,6 +113,7 @@ const isOpen = (index) => openIndex.value === index;
 
 <style scoped>
 .faq-container {
+    margin: 0 auto 2rem;
     max-width: 60%;
 }
 
@@ -137,13 +138,8 @@ const isOpen = (index) => openIndex.value === index;
 
 .faq-header {
     text-align: center;
-    margin-bottom: 1rem;
-}
-
-.faq-title {
-    color: v-bind(themeColor);
-    font-weight: 700;
-    font-size: 3rem;
+    margin-top: 4rem;
+    margin-bottom: 5rem;
 }
 
 .faq-subtitle {

@@ -26,7 +26,6 @@ function setTab(tab) {
     <div class="row align-items-center">
       <div class="col-12 my-5" id="header">
         <div class="row align-items-center gy-5">
-          
           <div class="col-lg-5 ml-2">
             
             <!-- Heading -->
@@ -40,9 +39,9 @@ function setTab(tab) {
             
             <!-- Subheading -->
             <p class="subheading" data-aos="fade-up" data-aos-delay="130">
-              A gatekeeper for factories who deal a lot of customers or huge CAD libraries. It catches autonomously manufacturability issues in your CAD library before production, from whatever way they are generated: from customers or employees.
+              It is a software that lives in your company network. It perform CAD autonomous revision to spot manufacturing issues. Every files on the network encounter a critical checkpoints by which is either green lit or highlighted for revision.
             </p>
-            
+                          <!-- A gatekeeper for factories who deal a lot of customers or huge CAD libraries. It catches autonomously manufacturability issues in your CAD library before production, from whatever way they are generated: from customers or employees. -->
             <!-- Feature list -->
             <ul class="hero-feature-list" data-aos="fade-up" data-aos-delay="160">
               <li>
@@ -84,22 +83,22 @@ function setTab(tab) {
                 </svg>
               </a>
               
-              <a class="btn-ghost-cta" :href="demo_url">Visualize Your Intake portal</a>
+              <a class="btn-ghost-cta" :href="demo_url">Visualize Your Issue Resolution UI</a>
             </div>
             
             <!-- Social proof -->
             <!-- <div class="social-proof" data-aos="fade-up" data-aos-delay="220"> -->
-              <!--   <div class="avatars"> -->
-                <!--     <div class="avatar" style="background: v-bind(themeColor);">JM</div> -->
-                <!--     <div class="avatar" style="background: #533AB7;">AR</div> -->
-                <!--     <div class="avatar" style="background: #0F6E56;">TC</div> -->
-                <!--     <div class="avatar" style="background: #993C1D;">BL</div> -->
-                <!--   </div> -->
-              <!--   <div class="proof-text"> -->
-                <!--     <div class="stars">★★★★★</div> -->
-                <!--     <span>Trusted by <strong>300+ manufacturing teams</strong></span> -->
-                <!--   </div> -->
-              <!-- </div> -->
+            <!--   <div class="avatars"> -->
+            <!--     <div class="avatar" style="background: v-bind(themeColor);">JM</div> -->
+            <!--     <div class="avatar" style="background: #533AB7;">AR</div> -->
+            <!--     <div class="avatar" style="background: #0F6E56;">TC</div> -->
+            <!--     <div class="avatar" style="background: #993C1D;">BL</div> -->
+            <!--   </div> -->
+            <!--   <div class="proof-text"> -->
+            <!--     <div class="stars">★★★★★</div> -->
+            <!--     <span>Trusted by <strong>300+ manufacturing teams</strong></span> -->
+            <!--   </div> -->
+            <!-- </div> -->
           </div>
           
           <div class="col-lg-7">
@@ -112,7 +111,7 @@ function setTab(tab) {
                     class="seg-btn m-1"
                     :class="{ active: activeTab === 'upload' }"
                     @click="setTab('analysis')"  >
-                    Autonomous Routines</button>
+                    Autonomous Checks</button>
                   <button
                     class="seg-btn m-1"
                     :class="{ active: activeTab === 'analysis' }"
@@ -134,9 +133,9 @@ function setTab(tab) {
                     <!--     playsinline -->
                     <!--     class="hero-video" -->
                     <!--   > -->
-                      <!--     <source src="../data/video/product_video2.webm" type="video/webm"> -->
-                      <!--     Your <br />owser does not support the video tag. -->
-                      <!--   </video> -->
+                    <!--     <source src="../data/video/product_video2.webm" type="video/webm"> -->
+                    <!--     Your <br />owser does not support the video tag. -->
+                    <!--   </video> -->
                 </div>
               </div>
               
@@ -159,34 +158,86 @@ function setTab(tab) {
                         <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <rect x="6" y="8" width="28" height="26" rx="3" fill="#45B3E0" stroke="#3BA6D4" stroke-width="0.5" />
                           <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#5AC8FA" />
-                          <line x1="10" y1="20" x2="30" y2="20" stroke="white" stroke-width="1.5" stroke-linecap="round" />
-                          <line x1="10" y1="24" x2="24" y2="24" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+                          
+                          <text 
+                            x="20" 
+                            y="26" 
+                            fill="white" 
+                            font-size="8.5" 
+                            font-family="system-ui, sans-serif" 
+                            font-weight="700" 
+                            text-anchor="middle">.step</text>
                         </svg>
-                        <span class="file-label">STEP / IGES</span>
+                        <span class="file-label">CAD Library</span>
                       </div>
-                      <div class="file-item">
-                        <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <rect x="6" y="8" width="28" height="26" rx="3" fill="#5E6AD2" stroke="#4A54C1" stroke-width="0.5" />
-                          <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#7B84E3" />
-                          <polygon points="12,28 20,14 28,28" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round" />
-                        </svg>
-                        <span class="file-label">Machines Avail.</span>
-                      </div>
-                      <div class="file-item">
-                        <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <rect x="6" y="8" width="28" height="26" rx="3" fill="#45B3E0" stroke="#3BA6D4" stroke-width="0.5" />
-                          <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#5AC8FA" />
-                          <rect x="10" y="17" width="20" height="12" rx="1" fill="none" stroke="white" stroke-width="1.2" />
-                        </svg>
-                        <span class="file-label">Drawing DWG</span>
-                      </div>
+<div class="file-item">
+  <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="6" y="8" width="28" height="26" rx="3" fill="#5E6AD2" stroke="#4A54C1" stroke-width="0.5" />
+    <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#7B84E3" />
+
+    <g transform="translate(8, 11) scale(0.05)" fill="white">
+<path d="M455.5,348h-17.647l-4.727-28.364C431.229,308.258,421.481,300,409.946,300H343v-17h32.5c4.143,0,7.5-3.357,7.5-7.5V267h17
+	v16.5c0,4.143,3.357,7.5,7.5,7.5s7.5-3.357,7.5-7.5v-48c0-4.143-3.357-7.5-7.5-7.5s-7.5,3.357-7.5,7.5V252h-17v-8.5
+	c0-4.143-3.357-7.5-7.5-7.5H311v-6.396c0-13.989-9.395-26.444-22.847-30.289L263,192.129v-11.532c5.055-4.429,8-10.83,8-17.659V139
+	h8.5c4.143,0,7.5-3.357,7.5-7.5s-3.357-7.5-7.5-7.5H279v-0.5c0-23.639-17.36-43.295-40-46.902V75.5c0-4.143-3.357-7.5-7.5-7.5
+	s-7.5,3.357-7.5,7.5v1.098c-22.64,3.607-40,23.263-40,46.902v0.5h-0.5c-4.143,0-7.5,3.357-7.5,7.5s3.357,7.5,7.5,7.5h8.5v23.937
+	c0,6.829,2.946,13.229,8,17.659v11.532l-25.154,7.187C161.395,203.159,152,215.614,152,229.604V236h-18.227
+	c-3.138-9.292-11.937-16-22.273-16H94.277c-3.515-18.205-19.561-32-38.777-32c-21.78,0-39.499,17.719-39.5,39.498v0.001v0v0.001
+	c0,19.216,13.795,35.262,32,38.777v34.287c-9.228,2.011-16.515,9.405-18.127,19.072L25.147,348H7.5c-4.143,0-7.5,3.357-7.5,7.5v32
+	c0,4.143,3.357,7.5,7.5,7.5h448c4.143,0,7.5-3.357,7.5-7.5v-32C463,351.357,459.643,348,455.5,348z M328,300h-49v-17h49V300z
+	 M199,300v-33h48.5c4.143,0,7.5-3.357,7.5-7.5s-3.357-7.5-7.5-7.5H199v-8.5c0-0.275,0.225-0.5,0.5-0.5h64c0.275,0,0.5,0.225,0.5,0.5
+	V300H199z M167,300v-24.5V267h17v33H167z M135,300v-17h17v17H135z M215.312,191.054c3.872,2.582,8.38,3.946,13.034,3.946h6.313
+	c4.653,0,9.161-1.364,13.037-3.947L248,190.85v6.919c0,0.088-0.003,0.176,0,0.263v1.97c-1.425,1.289-6.962,3.997-16.5,3.997
+	s-15.075-2.708-16.5-3.997v-9.157L215.312,191.054z M207,228v-15.215c5.588,3.898,14.175,6.215,24.5,6.215s18.912-2.317,24.5-6.215
+	V228H207z M368,268h-89v-17h89V268z M296,229.604V236h-18.945c-1.411-2.541-3.514-4.644-6.055-6.055v-19.93l13.032,3.723
+	C291.079,215.751,296,222.275,296,229.604z M264,123.5v0.5h-25V91.883C253.315,95.279,264,108.161,264,123.5z M199,123.5
+	c0-15.339,10.685-28.221,25-31.617V124h-25V123.5z M256,139v23.938c0,2.849-1.415,5.492-3.784,7.072h-0.001l-12.84,8.562
+	c-1.402,0.935-3.033,1.429-4.717,1.429h-6.313c-1.684,0-3.313-0.493-4.714-1.427l-12.847-8.563c-2.37-1.58-3.785-4.225-3.785-7.073
+	V139H256z M167,229.604c0-7.328,4.921-13.853,11.967-15.866L192,210.013v19.932c-4.765,2.647-8,7.728-8,13.555v8.5h-17v-8.5V229.604
+	z M120,243.5c0,4.143,3.357,7.5,7.5,7.5H152v17h-24.5c-4.143,0-7.5,3.357-7.5,7.5V300H63v-33.723
+	c15.775-3.046,28.231-15.502,31.277-31.277H111.5C116.187,235,120,238.813,120,243.5z M63,235l15.821,0
+	c-2.413,7.486-8.335,13.408-15.821,15.821V235z M78.821,220L63,220v-15.821C70.486,206.592,76.408,212.514,78.821,220z M48,204.179
+	V220l-15.821,0C34.592,212.513,40.514,206.592,48,204.179z M32.178,234.999L48,235v15.822
+	C40.513,248.408,34.591,242.486,32.178,234.999z M44.669,322.103c0.687-4.115,4.213-7.103,8.385-7.103h356.893
+	c4.172,0,7.698,2.987,8.384,7.103L422.646,348H40.354L44.669,322.103z M448,380H15v-17h433V380z"/>
+    </g>
+  </svg>
+  <span class="file-label">Machines Avail.</span>
+</div>
+<div class="file-item">
+  <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="6" y="8" width="28" height="26" rx="3" fill="#45B3E0" stroke="#3BA6D4" stroke-width="0.5" />
+    <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#5AC8FA" />
+    
+    <g transform="translate(10, 14) scale(0.1)" 
+       stroke="white" 
+       stroke-width="6" 
+       stroke-linecap="round" 
+       stroke-linejoin="round" 
+       fill="none">
+      
+      <path d="M46.853 24.746v-4.319c0-2.762 2.611-4.789 5.304-4.116l17.054 4.26a5.31 5.31 0 0 1 4.034 5.146v28.658c0 2.763-2.611 4.789-5.304 4.116l-10.09-2.52" transform="matrix(2.5351 0 0 2.6556 -15.545 -20.844)"/>
+      <path d="M30.805 31.18v-4.154c0-2.763 2.61-4.79 5.304-4.117l17.053 4.26a5.31 5.31 0 0 1 4.034 5.146v28.658c0 2.763-2.61 4.79-5.304 4.116L41.76 62.558" transform="matrix(2.5351 0 0 2.6556 -15.545 -20.844)"/>
+      <path d="M18.79 67.427a5.31 5.31 0 0 1-4.034-5.146V33.623c0-2.763 2.61-4.789 5.304-4.116l17.054 4.26a5.31 5.31 0 0 1 4.033 5.146V67.57c0 2.762-2.61 4.789-5.304 4.116z" transform="matrix(2.5351 0 0 2.6556 -15.545 -20.844)"/>
+    
+    </g>
+  </svg>
+  <span class="file-label">Materials</span>
+</div>
                       <div class="file-item">
                         <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <rect x="6" y="8" width="28" height="26" rx="3" fill="#34C759" stroke="#28A347" stroke-width="0.5" />
                           <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#4CD870" />
-                          <path d="M13 22 L18 17 L23 22 L28 16" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                          <text 
+                            x="20" 
+                            y="26" 
+                            fill="white" 
+                            font-size="8.5" 
+                            font-family="system-ui, sans-serif" 
+                            font-weight="700" 
+                            text-anchor="middle">.pdf</text>
                         </svg>
-                        <span class="file-label">Tolerance G&T</span>
+                        <span class="file-label">GD&T library</span>
                       </div>
                     </div>
                     
@@ -209,15 +260,19 @@ function setTab(tab) {
                       </div>
                       <div class="check-row">
                         <div class="check-circle warn">!</div>
-                        <span class="check-text warn">Undercut on face #7 — review needed</span>
+                        <span class="check-text warn">Undercut on face #7</span>
                       </div>
                       <div class="check-row">
                         <div class="check-circle warn">!</div>
-                        <span class="check-text warn">Material too slim on #21 - review needed</span>
+                        <span class="check-text warn">Material too slim on #21</span>
                       </div>
                       <div class="check-row">
                         <div class="check-circle">✓</div>
                         <span class="check-text">Lead time OK</span>
+                      </div>
+                      <div class="check-row">
+                        <div class="check-circle">✓</div>
+                        <span class="check-text">Probes Access OK</span>
                       </div>
                     </div>
                   </div>
@@ -248,13 +303,6 @@ function setTab(tab) {
 </template>
 
 <style scoped>
-.untree_co-hero {
-    background-size: cover;
-    background-position: center top;
-    width: 100%;
-}
-
-
 .btn-hover:hover {
     color: v-bind(themeColorWhite);
     background-color: v-bind(themeColorOrange);
@@ -414,7 +462,9 @@ function setTab(tab) {
     padding: 2px;
     gap: 0;
     position: relative;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+    box-shadow: 1px 2px 5px rgba(0,0,0,0.40);
+    /* border: 1.5px solid v-bind(themeColor); */
+    transition: opacity 0.35s ease;
 }
 
 .seg-btn {
@@ -697,7 +747,7 @@ function setTab(tab) {
 
 
 .subheading {
-    line-height: 1.35;
+    line-height: 1.15;
     margin-top: 1.2rem;
     margin-bottom: 1.8rem;
     max-width: 460px;

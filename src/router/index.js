@@ -10,6 +10,7 @@ import Guide             from '../views/Guide.vue'
 import FAQ               from '../views/FAQ.vue'
 import CaseStudies       from '../views/CaseStudies.vue'
 import Product           from '../views/Product.vue'
+import Download          from '../views/Download.vue'
 
 const routes = [
     { path: '/', component: LandingPage },
@@ -23,7 +24,8 @@ const routes = [
     { path: '/faq',   component: FAQ },
     { path: '/pricing', component: Pricing },
     { path: '/product', component: Product },
-    { path: '/articles', component: CaseStudies }
+    { path: '/articles', component: CaseStudies },
+    { path: '/download', component: Download }
 ]
 
 const router = createRouter({

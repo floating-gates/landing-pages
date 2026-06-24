@@ -36,6 +36,7 @@ const isDropdownMenuOpen = ref(false);
               <li><a href="/pricing" class="pages-link">Pricing</a></li>
               <li><a href="/mission" class="pages-link">Mission</a></li>
               <!-- <li><a href="/use-case" class="pages-link">Use Cases</a></li> -->
+              <li><a href="/download" class="pages-link">Download</a></li>
               <li><a href="/faq" class="pages-link">FAQ</a></li>
               
               <!-- DROPDOWN MENU -->
@@ -55,12 +56,12 @@ const isDropdownMenuOpen = ref(false);
             </ul>
             <div class="button-group">
               <ul  class="site-menu button-menu">
-                <li class="cta-button-outline">
+                <li class="cta-primary">
                   <a
                     :href="app_login_url"
                     :style="{ color: themeColor }"
                     >
-                    Login
+                    LOGIN
                     </a>
                 </li>
                 <!-- <li class="cta-primary"> -->
@@ -76,25 +77,22 @@ const isDropdownMenuOpen = ref(false);
 </template>
 
 <style scoped>
-.menu-container {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.button-group {
-    margin-left: auto;
-}
-
-.button-menu {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.pages-link {
-   color: v-bind(themeColor);
+/* Desktop PC Floating and Center Settings */
+@media (min-width: 769px) {
+  .site-nav {
+    position: fixed !important;
+    top: 20px;                  /* Floats down slightly from top boundary */
+    left: 50% !important;
+    transform: translateX(-50%); /* Core logic to center fixed elements */
+    width: 90%;                 /* Width percentage of viewport */
+    max-width: 1300px;          /* Maximum expansion size constraint */
+    border-radius: 12px;        /* Soft rounded corners for floating appearance */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Gives elevation depth */
+    background-color: rgba(255, 255, 255, 0.95); /* Clean visibility fallback */
+    backdrop-filter: blur(8px); /* Trendy subtle glass effect */
+    transition: all 0.3s ease;
+    border-color: v-bind(themeColor);
+  }
 }
 
 /* Mobile styles */
@@ -130,13 +128,6 @@ const isDropdownMenuOpen = ref(false);
     position: relative;
     cursor: pointer;
 }
-
-.site-navigation,
-.nav-wrapper {
-  display: flex;
-  align-items: center;
-}
-
 
 /* Dropdown menu */
 .dropdown-menu {
@@ -193,27 +184,11 @@ const isDropdownMenuOpen = ref(false);
     display: flex;
   }
 
-  .button-group {
-    margin-left: 0;
-    width: 100%;
-  }
-
   .main-menu {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 0.75rem;
-  }
-
-  .button-menu {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 0.75rem;
-  }
-
-  .button-menu li {
-    width: 100%;
   }
 
   /* Adjust the dropdown container for mobile */

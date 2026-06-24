@@ -81,9 +81,9 @@ const features = [
     <div class="row align-items-center g-5" data-aos="fade-up" data-aos-delay="100">
       <div class="col-lg-6">
         <div class="strategy-content">
-          <h3 class="strategy-heading">Connecting Your Customers at your Machines</h3>
+          <h3 class="strategy-heading">Make all Stakeholders aware of what your Factory can do.</h3>
           <p class="strategy-text">
-            We provide a B2B2C platform for factories with manufacturing capacity, enabling them to maximize their resources while serving both new and existing customers with unprecedented efficiency.
+            We provide a B2B2C platform for factories with manufacturing capacity, enabling them to maximize their resources while serving both customers and engineers with unprecedented efficiency.
           </p>
           
           <div  class="cta-section">
@@ -156,9 +156,10 @@ const features = [
 
 .mission-title {
     font-size: 3.3rem;
-    font-weight: 630;
+    font-weight: 650;
     line-height: 1.2;
     margin-bottom: 30px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     color: v-bind("themeColor");
 }
 

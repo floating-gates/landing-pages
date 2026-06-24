@@ -41,14 +41,14 @@ const closeArticle = () => {
 
 <template>
 <Header :context="'landing-page'" />
-<div class="case-studies-page"
+<div class="untree_co-hero py-lg-8"
      :style="{ backgroundImage: `url(${background})` }">
 
   <!-- Hero Section -->
   <div class="hero-section">
     <div class="hero-content">
-      <h1 class="hero-title">Resources</h1>
-      <p class="hero-subtitle">
+      <h1 class="heading">Resources</h1>
+      <p class="text-muted subtitle">
         Discover how we've helped companies through open solutions.
       </p>
     </div>
@@ -222,11 +222,6 @@ const closeArticle = () => {
     margin: 0 auto;
 }
 
-.hero-title {
-    font-size: 3.5rem;
-    font-weight: 650;
-    line-height: 1.2;
-}
 
 .hero-subtitle {
     font-size: 1.25rem;
@@ -514,9 +509,6 @@ const closeArticle = () => {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
     .hero-subtitle {
         font-size: 1.1rem;
     }

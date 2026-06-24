@@ -37,9 +37,9 @@ import processImg from "../data/images/path3.webp";
         </p>
       </div>
       <div class="feature-card">
-        <h3 class="feature-title">AAG ANALYSIS</h3>
+        <h3 class="feature-title">CAD-AS-GRAPH ANALYSIS</h3>
         <p class="feature-body">
-          The Attribute Adjacency Graph (AAG) serves as the semantic foundation for mechanical design review. By mapping individual manufacturing features and more importantly their relationships into a graph structure, the system can algorithmically parse complex geometries that traditional CAD data alone cannot interpret.
+          Attributed Graphs serve as the semantic foundation for CAD & GD&T design review. By mapping individual manufacturing features and more importantly their relationships into a graph structure, the system can algorithmically parse complex geometries that traditional CAD tools alone cannot interpret.
         </p>
       </div>
       <div class="feature-card">
@@ -108,17 +108,17 @@ import processImg from "../data/images/path3.webp";
   box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
 }
 
-/* 3-Column Grid */
+/* Column Grid */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 @media (max-width: 900px) {
   .features-grid {
-    grid-template-columns: 1fr; /* Stack on mobile */
+    grid-template-columns: 1fr;
   }
 }
 
@@ -128,15 +128,20 @@ import processImg from "../data/images/path3.webp";
 }
 
 .feature-title {
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   margin-bottom: 10px;
   color: v-bind(themeColor);
+  line-height: 1.18;
+  letter-spacing: -0.02em;  
+  font-weight: 650;
+  text-align: center;
 }
 
 .feature-body {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  opacity: 0.8;
+  line-height: 1.6;
+  opacity: 0.9;
+  text-align: justify;
+  margin-top: 1rem;
 }
 
 .footer-note {

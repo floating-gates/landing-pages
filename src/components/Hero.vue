@@ -1,24 +1,13 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import mainPhoto from "../data/images/hero_pic.webp";
+import mainPhoto2 from "../data/images/output.png"
 import background from "../data/images/background_pic.webp";
 import { themeColor, themeColorOrange, themeColorWhite,
          app_login_url, youtubeVideoUrl } from "../config.js";
 
+import Charts from "./Charts.vue"
 
-// const heroHeading = [
-//     "Automate CAD Revisions to",
-//     "Avoid Manufacturing Errors",
-//     "as a Software-Defined factory"
-// ];
-// const heroHeading = [
-//     "Search your Factory Network",
-//     "Checks for Issues in your CAD",
-//     "Warns if Issues are found",
-//     "Allows Customers CAD Drop"
-// ];
-
-// User input state
 const userAddress = ref("");
 const isSubmitting = ref(false);
 const progress = ref(0);
@@ -113,22 +102,22 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-<div class="untree_co-hero py-lg-8" id="hero"
+<div class="untree_co-hero" id="hero"
      :style="{ backgroundImage: `url(${background})` }">
   <div class="container wider-container">
-    <div class="row align-items-center">
-      <div class="col-12 my-5 mx-2" id="header" >
+    <div class="align-items-center">
+      <div class="col-12 my-6" id="header" >
         <div class="row align-items-center">
-          <div class="col-lg-6" style="max-width: 90%;" >
+          <div class="col-lg-5" style="max-width: 85%;" >
             <h1 class="heading"
                 data-aos="fade-up"
                 data-aos-delay="100">
-              <div :style="{ fontSize: '2.9rem' }">
-                <em :style="{ color: themeColorOrange, fontSize: '3.3rem' }">Search </em> your Factory Network,<br>
-                <em :style="{ color: themeColorOrange, fontSize: '3.3rem' }">Checks </em> for Issues in your CAD,<br>
-                <em :style="{ color: themeColorOrange, fontSize: '3.3rem' }">Warns </em> if Issues are found,<br>
-                <em :style="{ color: themeColorOrange, fontSize: '3.3rem' }">Allows </em> Customers CAD Drop
-<br>
+              <div :style="{ fontSize: '2.6rem' }">
+                <em :style="{ color: themeColorOrange, fontSize: '3.1rem' }">Search </em> your Factory Network,<br>
+                <em :style="{ color: themeColorOrange, fontSize: '3.1rem' }">Checks </em> for Issues in your CAD,<br>
+                <em :style="{ color: themeColorOrange, fontSize: '3.1rem' }">Allows </em> customers CAD Drop
+                ,<br>
+                <em :style="{ color: themeColorOrange, fontSize: '3.1rem' }">Warns </em> if Issues are found<br>
               </div>
             </h1>
             
@@ -172,9 +161,10 @@ onBeforeUnmount(() => {
               </button>
             </div>
           </div>
-        <div class="col-lg-6">
-          <img :src="mainPhoto" alt="good2manufacture"  class="img-fluid" />
-        </div>
+          <div class="col-lg-7 chart-wrap">
+            <Charts />
+            <!-- <img :src="mainPhoto2" alt="good2manufacture"  class="img-fluid" /> -->
+          </div>
         </div>
       </div>
     </div>
@@ -205,6 +195,7 @@ img {
     border-radius: 14px;
     padding: 6px;
     font-size: 1.1rem;
+    max-width: 600px;
 }
 
 .address-input {
@@ -222,48 +213,47 @@ img {
 }
 
 .address-submit {
-  padding: 0.9rem 1.4rem;
-  /* min-width: 80px; */
-  min-height: 50px;
-  border: none;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
-  color: v-bind(themeColorWhite);
-  background: linear-gradient(
-    145deg, 
-    v-bind(themeColor) 0%, 
-    #1a1d23 100% /* Slightly darker shade of your theme color */
-  );
-  box-shadow:
-      0 2px 6px rgba(0, 0, 0, 0.15),
-      0 6px 20px rgba(0, 0, 0, 0.05);
+    padding: 0.9rem 1.4rem;
+    /* min-width: 80px; */
+    /* min-height: 50px; */
+    border: none;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+    color: v-bind(themeColorWhite);
+    background: linear-gradient(
+        145deg, 
+        v-bind(themeColor) 0%, 
+        #1a1d23 100% /* Slightly darker shade of your theme color */
+    );
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.15),
+        0 6px 20px rgba(0, 0, 0, 0.05);
 }
 
 .address-submit:hover {
-  transform: translateY(-1px);
-  cursor: pointer;
+    transform: translateY(-1px);
+    cursor: pointer;
 }
 
 .address-submit svg {
-  width: 20px;
-  height: 20px;
-  stroke: v-bind(themeColorWhite);
-  transition: stroke 0.3s ease, transform 0.3s ease;
+    width: 20px;
+    stroke: v-bind(themeColorWhite);
+    transition: stroke 0.3s ease, transform 0.3s ease;
 }
 
 .address-submit:hover svg {
-  /* stroke: v-bind(themeColor); /\* stays white on orange bg *\/ */
-  transform: translateX(2px); /* slight movement forward on hover */
+    transform: translateX(2px);
 }
 
 .excerpt {
     margin-bottom: 1rem;
     margin-top: 1rem;
+    max-width: 600px;
 }
 
 .progress-btn {
@@ -280,6 +270,14 @@ img {
     flex: 1;
 }
 
+.chart-wrap {
+  max-height: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-wrap > :first-child {
+  flex: 1; 
+  height: 100%;
+}
 </style>
-
-

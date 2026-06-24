@@ -61,27 +61,27 @@ const socialItems = [
             
             <!-- Right column -->
             <div class="col-lg-6">
-              <div class="widget">
-                <a href="/services" class="footer-link">
-                  <h3>
-                    Enterprise Services
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 24 24"
-                         fill="none"
-                         :stroke="themeColorOrange"
-                         stroke-width="4"
-                         stroke-linecap="round"
-                         stroke-linejoin="round"
-                         class="footer-arrow">
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                  </h3>
-                </a>
-                <p>List of additional services we work on specifically for Enterprise customer</p>
-              </div>
+              <!-- <div class="widget"> -->
+              <!--   <a href="/services" class="footer-link"> -->
+              <!--     <h3> -->
+              <!--       Enterprise Services -->
+              <!--       <svg xmlns="http://www.w3.org/2000/svg" -->
+              <!--            viewBox="0 0 24 24" -->
+              <!--            fill="none" -->
+              <!--            :stroke="themeColorOrange" -->
+              <!--            stroke-width="4" -->
+              <!--            stroke-linecap="round" -->
+              <!--            stroke-linejoin="round" -->
+              <!--            class="footer-arrow"> -->
+              <!--         <path d="M9 18l6-6-6-6" /> -->
+              <!--       </svg> -->
+              <!--     </h3> -->
+              <!--   </a> -->
+              <!--   <p>List of additional services we work on specifically for Enterprise customer</p> -->
+              <!-- </div> -->
               
               <div class="widget">
-                <a :href="partner_app_login_url" class="footer-link">
+                <a :href="partner_app_login_url">
                   <h3>
                     Become a Partner
                     <svg xmlns="http://www.w3.org/2000/svg"
