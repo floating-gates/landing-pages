@@ -41,7 +41,7 @@ const WebIcon         = makeIcon('M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.0
 const activeNav = ref('endpoints')
 const navItems = [
     { id: 'endpoints', label: 'Endpoints', icon: PlugIcon, badge: '3', badgeType: 'ok' },
-    { id: 'factory-ui', label: 'Issue Resolution UI', icon: WebIcon, badge: 'ready', badgeType: 'ok' },
+    { id: 'factory-ui', label: 'Issue UI', icon: WebIcon, badge: 'ready', badgeType: 'ok' },
     { id: 'cad', label: 'CAD files', icon: FileIcon, badge: '12', badgeType: 'ok' },
     { id: 'gdt', label: 'Design Playbook', icon: RulerIcon, badge: '1', badgeType: 'ok' },
     { id: 'machines', label: 'Machines', icon: FactoryIcon, badge: '0', badgeType: 'danger' },
@@ -202,18 +202,23 @@ onMounted(() => {
       <div class="charts-grid">
         <div class="chart-card">
           <div class="chart-info">
-            <div class="title">Issue Resolution Interface</div>
-            <div class="chart-subtitle">Currently handling · 43 customers/suppliers </div>
+            <div class="title">Issue UI</div>
+            <div class="chart-subtitle">Currently handling:</div>
+            <div class="chart-subtitle">· 43 customers/suppliers </div>
+
           </div>
           <div class="chart-visual">
-            <img class="screenshot-img" src="../data/images/screenshot.png" >
+            <div class="canvas-wrap">
+              <img class="rounded-lg" src="../data/images/screenshot.png" >
+            </div>
           </div>
         </div>
 
         <div class="chart-card">
           <div class="chart-info">
-            <div class="title">Issues by Type</div>
-            <div class="chart-subtitle">Current scan · 17 issues not tackled yet</div>
+            <div class="title">Manufacturing Problems</div>
+            <div class="chart-subtitle">Current scan</div>
+            <div class="chart-subtitle">· 17 issues not tackled yet</div>
           </div>
           <div class="chart-visual">
             <div class="canvas-wrap">
@@ -232,7 +237,7 @@ onMounted(() => {
         
         <div class="chart-card">
           <div class="chart-info">
-            <div class="title">Issues over scans</div>
+            <div class="title">Resolutions over time</div>
             <div class="chart-subtitle">Last 7 scan cycles</div>
             <div class="legend-row">
               <span class="legend-item"><span class="legend-dot" :style="{background: themeColor}"  />Issues</span>
@@ -291,14 +296,6 @@ onMounted(() => {
     border-right: 1px solid #e5e7eb;
     display: flex;
     flex-direction: column;
-}
-
-.screenshot-img {
-    max-width: 250px;   
-    height: auto;       
-    object-fit: contain;
-    border-radius: 6px; 
-    flex-shrink: 1;     
 }
 
 .sidebar-logo {
@@ -479,6 +476,7 @@ onMounted(() => {
     align-items: center;    /* Keeps everything beautifully centered vertically */
     justify-content: space-between;
     gap: 20px;
+   min-width: 0; 
 }
 
 /* Vertical layout container for the legend info side */
@@ -502,7 +500,7 @@ onMounted(() => {
 .chart-subtitle {
     font-size: 11px;
     color: #9ca3af;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
 }
 
 .legend-row {
@@ -528,8 +526,14 @@ onMounted(() => {
 
 .canvas-wrap {
     position: relative;
-    max-height: 160px; /* Limits size expansion on wide spans */
-    max-width: 420px; /* Limits size expansion on wide spans */
+    width: 100%; 
+    height: 140px;
+}
+
+.canvas-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Prevents stretching; scales down proportionally */
 }
 
 .canvas-wrap--bar {

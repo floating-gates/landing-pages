@@ -112,30 +112,6 @@ const isOpen = (index) => openIndex.value === index;
 </template>
 
 <style scoped>
-.faq-container {
-    margin: 0 auto 2rem;
-    max-width: 60%;
-}
-
-.faq-section {
-    padding: 7rem 0 3rem 0;
-    position: relative;
-    background-size: cover;
-    background-position: center top;   /* anchor to top if it's a tall image */
-    width: 100%;
-}
-
-.faq-section::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    background: radial-gradient(
-        ellipse at center top, rgba(108, 117, 125, 0.03) 0%, transparent 70%);
-    pointer-events: none;
-}
-
 .faq-header {
     text-align: center;
     margin-top: 4rem;

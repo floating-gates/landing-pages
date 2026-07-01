@@ -48,492 +48,282 @@ const tiles = [
     },
 ];
 
-
 function clicking_tile(tile) {
     if (tile.even) {
         showVideo.value = true
     } else {
         window.location.href = app_login_url;
     }
-    
 }
 </script>
 
 <template>
-<div class="untree_co-hero py-lg-5" id="hero"
-     :style="{ backgroundImage: `url(${mainPhoto})` }">
   <div v-if="showVideo" class="video-overlay">
     <div class="video-wrapper">
-      <button class="video-close"
-              @click="showVideo = false">✕</button>      
+      <button class="video-close" @click="showVideo = false">✕</button>      
       <iframe
         :src="youtubeVideoUrl"
         frameborder="0"
         allow="autoplay; encrypted-media"
         allowfullscreen
-        ></iframe>
+      ></iframe>
     </div>
   </div>
-  <h2 class="faq-title mb-4">
-    <span :style="{ color: themeColorOrange }" class="title-line-1">
-      Automate Your Factory
-    </span>
-    <!-- AN AUTOMATION PIPELINE -->
-    <span class="title-line-2">
-      for error recognition
-    </span>
-  </h2>
-  <div class="hw-inner">    
-    <!-- Left: heading + image -->
-    <div class="hw-left px-6" data-aos="fade-right" data-aos-duration="700">
-      <!-- <h2 class="hw-heading"> -->
-        <!--   Automated 3D design validation <span  :style="{ color: themeColorOrange }"> and customers intake. </span></br> -->
-        <!--   <span :style="{ color: themeColorOrange }">Customers</span> use it to interact with you. </br> -->
-        <!--   <span :style="{ color: themeColorOrange }">Collegues</span> avoid manufacturing errors. </br> -->
-        <!-- </h2> -->
-      <!-- <div class="hw-img-wrap"> -->
-        <!--   <img -->
-        <!--     :src="mainPhoto" -->
-        <!--     alt="Factory software illustration" -->
-        <!--     class="hw-img" -->
-        <!--     /> -->
-        <!-- </div> -->
-      <!-- <div -->
-      <!--   class="watch-video" -->
-      <!--   role="button" -->
-      <!--   tabindex="0" -->
-      <!--   @click="showVideo = true" > -->
-        <!--   <p class="hand-underline">SEE IT IN ACTION</p> -->
-        
-        <!--   <div class="watch-video-btn"> -->
-          <!--     <div class="play-button"> -->
-            <!--       <svg width="24" height="24" viewBox="0 0 16 16" fill="white"> -->
-              <!--         <path -->
-              <!--           d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" -->
-              <!--           /> -->
-              <!--       </svg> -->
-            <!--       <div class="video-pulse"></div> -->
-            
-            <!--     </div> -->
-          <!--   </div> -->
-        <!-- </div> -->
-    </div>
+
+  <div id="hero" class="hero-section-container min-w-fit">
+    <h2 class="heading whitespace-nowrap">
+      <em>AUTONOMOUS MISTAKES DETECTION IN MECHANICAL ENGINEER</em>
+      <span class="title-line-2">THAT WORKS ON FACTORY NETWORKS</span>
+    </h2>
     
-    <!-- Right: 6 tiles (2 rows × 3 columns) -->
-    <div class="hw-right px-4 mb-5">
-      <a
-        v-for="(tile, i) in tiles"
-        :key="tile.number"
-        class="hw-tile blue-tile"
-        :class="{ 'white-tile': tile.even }"
-        data-aos="'fade-up'"
-        data-aos-delay="i * 100"
-        @click="clicking_tile( tile )">
-        <span class="hw-tile-num">{{ tile.number }}</span>
-        <div class="hw-tile-title">
-          <span class="hw-tile-verb">{{ tile.verb }} </span>
+    <div class="hero-split-grid">
+      <div class="hero-img-pane" data-aos="fade-left" data-aos-duration="700">
+        <img :src="mainPhoto" alt="Platform Logic Graphic" class="hero-img-fluid" />
+      </div>
+
+      <div class="hero-tiles-pane" data-aos="fade-right" data-aos-duration="700">
+        <div class="hw-right">
+          <a
+            v-for="(tile, i) in tiles"
+            :key="tile.number"
+            class="hw-tile"
+            :class="tile.even ? 'white-tile' : 'blue-tile'"
+            data-aos="fade-up"
+            :data-aos-delay="i * 100"
+            @click="clicking_tile(tile)">
+            
+            <span class="hw-tile-num">{{ tile.number }}</span>
+            <div class="hw-tile-content-area">
+              <div class="hw-tile-title">
+                <span class="hw-tile-verb">{{ tile.verb }} </span>
+              </div>
+              <div class="hw-tile-title2">
+                <span class="hw-tile-subject">{{ tile.subject }}</span>
+              </div>
+            </div>
+          </a>
         </div>
-        <div class="hw-tile-title2">
-          <span class="hw-tile-subject">{{ tile.subject }}</span>
-        </div>
-        <p class="hw-tile-desc">{{ tile.description }}</p>
-      </a>
-    </div>     
+      </div>
+    </div>
   </div>
-</div>
 </template>
 
 <style scoped>
-/* ── Section shell ───────────────────────────────────────────── */
-.untree_co-hero {
-    background: #e3e3e340;
-    background-size: 50%;
-    background-position: -9% center; 
-    background-repeat: no-repeat;
+/* ── Main Layout Containment ────────────────────────────────── */
+.hero-section-container {
+    max-width: 1400px;
+    margin: 3rem auto 3rem auto;
+    padding: 2rem 1.5rem;
+    width: 100%;
 }
 
-.hw-inner {
-    max-width: 1400px;
-    margin: 0 auto;
+.hero-split-grid {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 2.4rem;
+    grid-template-columns: 1.1fr 1.4fr; /* Balanced layout split between assets */
+    gap: 2.5rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+/* ── Typography Enhancements ────────────────────────────────── */
+.title-line-2 {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    line-height: 1.7rem;
+    font-weight: 400;  
+    margin-top: 0.5rem;
+    display: block;
+    color: #223843;
+}
+
+/* ── Asset Wrapper Column Proportions ───────────────────────── */
+.hero-img-pane {
+    width: 100%;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.faq-title {
-    color: v-bind(themeColor);
-    font-weight: 650;
-    
-    /* 1. Control the size and "closeness" */
-    font-size: 2.8rem; /* Increased size slightly for impact */
-    line-height: 1;  /* Values between 0.8 and 1.0 make lines "quite close" */
-    
-    /* 2. Alignment Logic */
-    text-align: right; 
-    max-width: 1400px;
-    margin-inline: auto;
-    padding-right: 1rem;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    text-transform: uppercase; /* Optional: adds to the "pipeline" aesthetic */
-}
-
-.title-line-1, .title-line-2 {
-    display: block;
-}
-
-.title-line-2 {
-    font-size: 1.8rem; /* Making the second line slightly smaller creates a nice hierarchy */
-    font-weight: 400;  /* Lighter weight for the second line */
-    margin-top: 0.2rem; /* Fine-tune the gap here */
-}
-
-/* ── Left column ─────────────────────────────────────────────── */
-.hw-left {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-}
-
-.hw-heading {
-    font-size: clamp(1.3rem, 2.0vw, 1.5rem);
-    font-weight: 550;
-    color: v-bind(themeColor);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-}
-
-/* Image */
-.hw-img-wrap {
-    position: relative;
-    /* border-radius: 1.25rem; */
-    overflow: hidden;
-    margin-top: 0.5rem;
-}
-
-.hw-img {
+.hero-img-fluid {
     width: 100%;
+    max-width: 580px;
     height: auto;
-    display: block;
-    /* border-radius: 1.25rem; */
-    /* border: 2px solid v-bind(themeColor); */
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    transform: scale(1);
-    will-change: transform;
-    backface-visibility: hidden;
+    object-fit: contain;
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
+.hero-tiles-pane {
+    width: 100%;
+}
 
-/* ── Right column: tile grid ─────────────────────────────────── */
+.heading {
+    line-height: 1.5rem;
+    font-size: clamp(1.8rem, 2vw, 4rem); 
+}
+
+/* ── Tile System Layout Grid ─────────────────────────────────── */
 .hw-right {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 0.9rem;
-    position: relative; /* Context for the pseudo-elements */
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+    width: 100%;
+    position: relative;
 }
 
-/* Base line style */
-.hw-right::before {
+/* Background strip tracks setup with safer layering */
+.hw-right::before, .hw-right::after {
     content: "";
     position: absolute;
-
-    /* Adjust these to align with the center of your tiles */
-    top: 25%; 
-    left: 10%;
-    right: 10%;
-    height: 12px;
+    left: 5%;
+    right: 5%;
+    height: 8px;
     background: v-bind(themeColor);
-    opacity: 0.6;
+    opacity: 0.25;
     z-index: 0;
     pointer-events: none;
 }
+.hw-right::before { top: 25%; }
+.hw-right::after { bottom: 25%; }
 
-.hw-right::after {
-    content: "";
-    position: absolute;
-    bottom: 25%;
-    left: 10%;
-    right: 10%;
-    height: 12px;
-    background: v-bind(themeColor);
-    opacity: 0.6;
-    z-index: 0;
-}
-
-/* Subtle glow for the flow */
-.hw-tile {
-    z-index: 2; /* Keep tiles above the line */
-}
-
-/* ── Responsive ──────────────────────────────────────────────── */
-@media (max-width: 1024px) {
-    .hw-inner {
-        grid-template-columns: 2fr;
-    }
-    .hw-left {
-        position: static;
-    }
-    /* Keep 3-col layout on tablets too */
-    .hw-right {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 640px) {
-    .hw-right {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 420px) {
-    .hw-right {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 1fr);
-    }
-}
-
-/* ── Enhanced Realistic Tiles ─────────────────────────────────── */
-
+/* ── High-Fidelity Interactive Cards ────────────────────────── */
 .hw-tile {
     text-decoration: none;
-    padding: 0.5rem 1.5rem;
+    padding: 1.25rem;
     display: flex;
-    aspect-ratio: 1;
+    aspect-ratio: 1 / 1;
     flex-direction: column;
-    justify-content: flex-end; /* Push text to bottom for a modern look */
+    justify-content: flex-end;
     position: relative;
-    border-radius: 2rem; /* Smoother corners */
-    overflow: hidden;  
-    box-shadow: 
-        0 10px 30px -10px rgba(0, 0, 0, 0.5),
-        inset 0 1px 1px rgba(255, 255, 255, 0.2); 
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    min-width: 0; 
+    z-index: 1;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .blue-tile {
-    /* Use a gradient instead of a solid color for "material" feel */
-    background: linear-gradient(
-        145deg, 
-        v-bind(themeColor) 0%, 
-        #1a1d23 100% /* Slightly darker shade of your theme color */
-    );
+    background: linear-gradient(135deg, v-bind(themeColor) 0%, #17262e 100%);
 }
 
 .white-tile {
-    /* Use a gradient instead of a solid color for "material" feel */
-    background: linear-gradient(
-        145deg, 
-        v-bind(themeColor) 0%, 
-        #1F3B47 100% );
-}
-
-/* Subtle "Spotlight" overlay */
-.hw-tile::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05) 0%, transparent 50%);
-    pointer-events: none;
+    background: linear-gradient(135deg, #2c4957 0%, #1a2b34 100%);
 }
 
 .hw-tile:hover {
-    transform: scale(1.05) !important; 
-    z-index: 10;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.3);
+    z-index: 5;
 }
 
-/* Realistic Number Badge */
+/* Internal Dynamic Content Positioning */
+.hw-tile-content-area {
+    position: relative;
+    z-index: 2;
+    margin-top: auto;
+}
+
+/* Compact Numeric Micro-Badges */
 .hw-tile-num {
     position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 50%; /* Squircle looks more modern than a circle */
-    background: rgba(255, 255, 255, 0.05);
+    top: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(4px);
-    border: 4px solid v-bind(themeColorWhite);
+    border: 1.5px solid v-bind(themeColorWhite);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: v-bind(themeColorWhite); /* Contrast color for the number */
-    transition: transform 0.4s ease;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: v-bind(themeColorWhite);
 }
 
-.hw-tile:hover .hw-tile-num {
-    transform: rotate(5deg);
-    background: v-bind(themeColorWhite);
-    color: v-bind(themeColor);
-}
-
-/* Refined Typography */
+/* Typography Constraints */
 .hw-tile-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 500;
+    letter-spacing: 0.5px;
     color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.15rem;
 }
 
 .hw-tile-title2 {
-    font-size: 2.2rem;
-    font-weight: 800;
-    line-height: 1.1;
-    color: v-bind(themeColorWhite);
-    margin: 0;
-}
-
-.hw-tile-desc {
-    font-size: 0.85rem;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 1rem;
-    /* Add a divider line */
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* video */
-
-.watch-video {
-    text-decoration: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    align-items: center;    /* Vertically centers items in the row */
-    justify-content: center;
-    gap: 15px;              /* Reduced gap for a tighter feel */
-    color: v-bind(themeColor);
-    margin-top: 2rem;
-    width: 100%;
-    transition: transform 0.2s ease;
-    
-}
-
-.watch-video * {
-    pointer-events: none; /* ensures the entire area clicks the link */
-}
-
-.watch-video:hover {
-    transform: scale(1.05);
-}
-
-.watch-video p {
-    margin: 0;
-    font-size: 24px;
+    font-size: clamp(1rem, 2.4vw, 1.9rem);
     font-weight: 700;
-    letter-spacing: -1px;   /* Reduces space between letters */
-    line-height: 1;         /* Ensures the text box doesn't have extra height */
-    white-space: nowrap;
+    line-height: 1.2;
+    color: v-bind(themeColorWhite);
+    word-break: break-word;
 }
 
-.watch-video-btn {
-    margin-left: 0.5rem;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;  /* Match play-button width */
-    height: 40px; /* Match play-button height */
-}
-
-.video-pulse {
-    position: absolute; /* Moves pulse out of the layout flow */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    border: 3px solid;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-    pointer-events: none;
-}
-
-
-/* Update the keyframes to remove the manual translate if using top/left 50% */
-@keyframes pulse {
-    0% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
+/* ── Media Queries (Responsive Balance Fixes) ──────────────── */
+@media (max-width: 1024px) {
+    .hero-split-grid {
+        grid-template-columns: 1fr; /* Drop side-by-side strategy early for small monitors */
+        gap: 3rem;
     }
-    100% {
-        transform: translate(-50%, -50%) scale(1.6);
-        opacity: 0;
+    .hero-img-fluid {
+        max-width: 450px;
     }
 }
 
-.play-button {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 2;
-    background-color: v-bind(themeColor);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+@media (max-width: 768px) {
+    .hw-right {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .hw-right::before, .hw-right::after {
+        display: none; /* Hide baseline connectors on smaller grids */
+    }
 }
 
-.play-button:hover {
-    transform: scale(1.1);
+@media (max-width: 480px) {
+    .hw-right {
+        grid-template-columns: 1fr;
+    }
 }
 
-/* Overlay */
+/* ── Overlay System ─────────────────────────────────────────── */
 .video-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
 }
 
-/* Video container */
 .video-wrapper {
     position: relative;
-    width: min(900px, 90vw);
-  aspect-ratio: 16 / 9;
-  background: #000;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    width: min(900px, 92vw);
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
-/* Iframe */
 .video-wrapper iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
+    width: 100%;
+    height: 100%;
 }
 
-/* Close button */
 .video-close {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  border-radius: 999px;
-  width: 36px;
-  height: 36px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background 0.2s ease;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
 }
-
-.video-close:hover {
-  background: rgba(0, 0, 0, 0.85);
-}
-
 </style>

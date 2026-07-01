@@ -1,108 +1,93 @@
 <script setup>
 import advantages_yoy from "../data/images/advantages_yoy.webp";
-import { themeColor, themeColorOrange, themeColorWhite,
-         app_login_url } from "../config.js";
+import { themeColor, themeColorOrange, themeColorWhite, app_login_url } from "../config.js";
 import background from "../data/images/background_pic.webp";
 </script>
 
 <template>
-<div class="untree_co-section advantages-section" id="why"
-     :style="{ '--bg-image': `url(${background})` }">
-     <div class="container-fluid login-container container">
-      <!-- Section Header -->
+  <div class="untree" id="hero" :style="{ backgroundImage: `url(${background})` }">
+    <div class="smaller flex flex-col justify-center align-center min-h-screen gap-10">
       <div class="text-center" data-aos="fade-up">
         <h1 class="section-title">
-          Guardrail Engineers
+          Avoid Silly Mistakes
           <span class="dot">•</span>
-          <!-- and -->
-          <!-- <span class="dot">•</span> -->
           Allow Customers drop-in
           <span class="dot">•</span>
-          This is the Result...
+          Be sure Suppliers follow Standards
         </h1>
         <p class="subtitle">
-          The greatest discoveries in our journey has been realizing how much companies struggle with un-manufacturable CAD files, especially if they come from a customer. From there, we birth to the idea of providing a Model Based Definition to both customers and engineers indistincly, to tacke the issue at the root.
+          Traditional design reviews miss roughly 20% of engineering flaws. These slips are deceptively expensive, leading to over-tolerancing, material waste, manufacturing rework, and field failures. The same problem, though more subtle and yet even more problematic, can be stated as the human failure to adhere to production standards in accordance with the "good & old" design guidelines.
         </p>
       </div>
 
-      <!-- Content + Visual -->
-      <div class="space row align-items-center">
-        <!-- Advantages Column -->
-        <div class="col-lg-4 col-12" data-aos="fade-right" data-aos-delay="100">
-          <div class="pe-lg-4">
-            <ul class="advantage-list">
-              <!-- Item 1 -->
-              <li class="advantage-item">
-                <div class="item-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9.75h4.875a2.625 2.625 0 0 1 0 5.25H12M8.25 9.75 10.5 7.5M8.25 9.75 10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185Z" />
-                  </svg>
-                </div>
-                <div class="item-content">
-                  <h4 class="item-title">Automatic Quotation</h4>
-                  <p class="item-description">
-                    Accurate pricing suggestions permit talking with customers willing to pay.
-                  </p>
-                </div>
-              </li>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-12">
+        <div class="w-full md:w-1/2" data-aos="fade-right" data-aos-delay="100">
+          <ul class="advantage-list">
+            <li class="advantage-item">
+              <div class="item-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+              </div>
+              <div class="item-content">
+                <h4 class="item-title">Highlights Production Issues before Manufacturing starts</h4>
+                <p class="item-description">
+                  40% of drawings are saved into an un-manufacturable configuration, bringing with them countless hours of manual review.
+                </p>
+              </div>
+            </li>
 
-              <!-- Item 2 -->
-              <li class="advantage-item">
-                <div class="item-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                  </svg>
-                </div>
-                <div class="item-content">
-                  <h4 class="item-title">Highlights Manufacturing Issues</h4>
-                  <p class="item-description">
-                    40% of drawings are saved into a un-manufacturable configutation, briging with them countless hours of manual review.
-                  </p>
-                </div>
-              </li>
+            <li class="advantage-item">
+              <div class="item-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+                </svg>
+              </div>
+              <div class="item-content">
+                <h4 class="item-title">Shows Future Maintenance Hurdles</h4>
+                <p class="item-description">
+                  Space must be a necessity for operators to act on your device, be sure that maintenance is possible.
+                </p>
+              </div>
+            </li>
 
-              <!-- Item 3 -->
-              <li class="advantage-item">
-                <div class="item-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-                  </svg>
-                </div>
-                <div class="item-content">
-                  <h4 class="item-title">Design Correction Suggestions</h4>
-                  <p class="item-description">
-                    Intelligent shape suggestions will improve the performance of your customer device.
-                  </p>
-                </div>
-              </li>
+            <li class="advantage-item">
+              <div class="item-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9.75h4.875a2.625 2.625 0 0 1 0 5.25H12M8.25 9.75 10.5 7.5M8.25 9.75 10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185Z" />
+                </svg>
+              </div>
+              <div class="item-content">
+                <h4 class="item-title">Pricing Advices</h4>
+                <p class="item-description">
+                  Accurate pricing suggestions permit talking with customers willing to pay.
+                </p>
+              </div>
+            </li>
 
-              <!-- Item 4: Call to Action -->
-              <li class="advantage-item" :style="{ backgroundColor: themeColor }">
-                <a :href="app_login_url"
-                   class="item-icon"
-                   :style="{ backgroundColor: themeColorWhite }">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" :stroke="themeColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
-                  </svg>
-                </a>
-                <h3 class="item-title" :style="{ fontSize: '1.25rem', color: themeColorWhite }">
-                  Try it. Refund Guaranteed.
-                </h3>
-              </li>
-            </ul>
-          </div>
+
+            <li class="advantage-item" :style="{ backgroundColor: themeColor }">
+              <a :href="app_login_url"
+                 class="item-icon"
+                 :style="{ backgroundColor: themeColorWhite }">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" :stroke="themeColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                </svg>
+              </a>
+              <h3 class="item-title" :style="{ fontSize: '1.25rem', color: themeColorWhite }">
+                All Stakeholders Adheres to your Design Rules.
+              </h3>
+            </li>
+          </ul>
         </div>
 
-        <!-- Image Column -->
-        <div class="col-lg-8 col-12" data-aos="fade-left" data-aos-delay="150">
-          <div class="shadow-lg bg-white rounded-4 overflow-hidden p-3">
+        <div class="w-full md:w-1/2 flex justify-center rounded-xl"
+             data-aos="fade-left" data-aos-delay="150">
             <img
               :src="advantages_yoy"
               alt="Automation performance metrics"
-              loading="lazy"
-              class="img-fluid"
+              class="w-full h-auto rounded-xl"
             />
-          </div>
         </div>
       </div>
     </div>
@@ -110,38 +95,18 @@ import background from "../data/images/background_pic.webp";
 </template>
 
 <style scoped>
-.untree_co-hero {
-    background: #f8f9fb;
-/*     background-size: 45%; */
-/*     background-position: 5% center;  */
-/*     background-repeat: no-repeat; */
+.untree {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.advantages-section {
-  position: relative;
-  overflow: hidden;
+.smaller {
+    width: 100%;       /* Added */
+    max-width: 1700px;
+    margin: 0 auto;    /* Added - Centers the container bounds horizontally */
 }
-
-.advantages-section::before {
-  content: "";
-  position: absolute;
-  top: 0; 
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-  /* Use the variable from Vue */
-  background-image: var(--bg-image);
-  background-size: cover;
-  background-position: center;
-  
-  /* The Flip */
-  transform: rotate(180deg);
-  
-  /* Move it behind the text */
-  z-index: -1; 
-}
-
 
 .section-title {
   font-size: 2rem;

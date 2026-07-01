@@ -24,7 +24,6 @@ const pricingPlans = computed(() => [
             "Non private 3D models"  ],
         buttonText: "Get Started",
         buttonUrl: app_login_url,
-        isSecondary: false
     },
     {
         name: display_price_list[1].name,
@@ -37,7 +36,6 @@ const pricingPlans = computed(() => [
                    "Private Projects"],
         buttonText: "Get Started",
         buttonUrl: app_login_url,
-        isSecondary: false
     },
     {
         name: display_price_list[2].name,
@@ -51,7 +49,6 @@ const pricingPlans = computed(() => [
                    "Presence in Manufacturing World Map"],
         buttonText: "Get Started",
         buttonUrl: app_login_url,
-        isSecondary: true // For the white background button
     },
     {
         name: display_price_list[3].name,
@@ -69,86 +66,94 @@ const pricingPlans = computed(() => [
         ],
         buttonText: "Speak to Us",
         buttonUrl: "mailto:" + contactInfo.email,
-        isSecondary: false
     }
 ]);
 </script>
 
+
 <template>
-<Header :context="'landing-page'" />
-<div class="untree_co-hero py-lg-8" id="pricing-section" :style="{ backgroundImage: `url(${background})` }">
-  <div class="container wider-container">
-    <div class="row align-items-center justify-content-center">
-      <div class="col-lg-8 text-center">
+<div class="untree my-10"  :style="{ backgroundImage: `url(${background})` }">  
+  <div class="container m-auto p-4">
+    <div class="flex flex-col items-center justify-center text-center my-16">
+      <div class="w-full lg:w-8/12">
         <h2 class="heading">{{ heading }}</h2>
-        <p class="text-muted subtitle">{{ subHeading }}</p>
+        <p class="text-gray-500 text-lg leading-relaxed">{{ subHeading }}</p>
       </div>
     </div>
     
-    <div class="row justify-content-center g-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
       <div 
         v-for="(plan, index) in pricingPlans" 
         :key="plan.name"
-        class="col-md-6 col-lg-3"
+        class="pricing-card group transition-all duration-300 ease-in-out transform hover:scale-[1.03] rounded-2xl shadow-[0_12px_25px_rgba(0,0,0,0.35)] overflow-hidden"
         data-aos="fade-up"
         :data-aos-delay="50 * (index + 1)"
         >
-        <div class="pricing">
-          <div class="body">
-            <span class="title">{{ plan.name }}</span>
-            <div class="location-tag">{{ plan.where }}</div>
+        <div 
+          class="h-full p-6 flex flex-col justify-between"
+          :style="{ background: `linear-gradient(145deg, ${themeColorWhite} 0%, #e3e3e340 100%)` }"
+          >
+          <div>
+            <span 
+              class="flex justify-center items-center text-[2.8rem] font-semibold text-center mt-3 drop-shadow-[0_1px_2px_rgba(0,0,0,0.2)]"
+              :style="{ color: themeColor }"
+              >
+              {{ plan.name }}
+            </span>
             
-            <div class="price">
+            <div 
+              class="text-center text-base font-normal uppercase tracking-tighter mb-2"
+              :style="{ color: themeColorOrange }"
+              >
+              {{ plan.where }}
+            </div>
+            
+            <div 
+              class="text-[1.8rem] my-4 font-medium text-center"
+              :style="{ color: themeColor }"
+              >
               <span>
                 {{ plan.price }}
-                <sup v-if="plan.suffix">{{ plan.suffix }}</sup>
+                <sup v-if="plan.suffix" class="text-[0.7rem] align-super ml-0.5">{{ plan.suffix }}</sup>
               </span>
             </div>
             
-            <ul class="list-unstyled ul-check primary mb-5">
-              <li v-for="feature in plan.features" :key="feature">
+            <ul class="items-center mb-4">
+              <li 
+                v-for="feature in plan.features" 
+                :key="feature"
+                class="relative py-2 text-center before:content-['✓\a0\a0']"
+                :style="`color: ${themeColor}; --tw-before-color: ${themeColorOrange};`"
+                >
                 {{ feature }}
               </li>
             </ul>
-            
-            <p class="text-center mb-0">
-              <a
-                :href="plan.buttonUrl"
-                class="btn"
-                :style="plan.isSecondary ? [
-                        { backgroundColor: themeColorWhite },
-                        { borderColor: themeColorWhite },
-                        { color: themeColor }
-                        ] : [
-                        { backgroundColor: themeColor },
-                        { borderColor: themeColor },
-                        { color: themeColorWhite }
-                        ]"
-                >
-                {{ plan.buttonText }}
-              </a>
-            </p>
           </div>
+          
+          <div class="m-auto">
+            <a
+              :href="plan.buttonUrl"
+              class="btn block text-center transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg" >
+              {{ plan.buttonText }}
+            </a>
+          </div>
+          
         </div>
       </div>
     </div>
   </div>
 </div>
-<Refund />
 </template>
 
+
 <style scoped>
-
-.btn {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 0.7rem;
+.untree {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.btn:hover {    
-    transform: scale(1.05);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-    z-index: 2;
-}
 
 /* Added styling for the location-tag */
 .location-tag {
@@ -186,19 +191,18 @@ const pricingPlans = computed(() => [
     color: v-bind(themeColor)
 }
 
-.ul-check.primary li::before {
-    content: "✓"; /* tick symbol */
-    position: absolute;
-    left: 0;
-    top: 0;
+ul li::before {
     color: v-bind(themeColorOrange);
-    font-weight: 700;
-    font-size: 1.2rem;
 }
 
 .pricing {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 1rem; /* keep it smooth */
+    border-radius: 5rem; /* keep it smooth */
+}
+
+.pricing-card {
+    border-radius: 2rem; /* keep it smooth */
+    
 }
 
 .title {
@@ -230,4 +234,3 @@ const pricingPlans = computed(() => [
     text-align: center;
 }
 </style>
-

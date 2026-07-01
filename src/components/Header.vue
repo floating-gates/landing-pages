@@ -9,11 +9,10 @@ const isDropdownMenuOpen = ref(false);
 
 <template>
 <nav class="site-nav js-site-navbar">
-  <div class="container">
     <div class="site-navigation">
       <div class="nav-wrapper">
         <!-- Logo -->
-        <a href="/" class="logo">
+        <a href="/" class="logo mx-7">
           <img :src="short_logo"
                alt="Floating Gates"
                class="logo-img" />
@@ -54,21 +53,19 @@ const isDropdownMenuOpen = ref(false);
                 </ul>
               </li>
             </ul>
-            <div class="button-group">
+            <div class="button-group mr-2">
               <ul  class="site-menu button-menu">
                 <li class="cta-primary">
                   <a
                     :href="app_login_url"
-                    :style="{ color: themeColor }"
-                    >
-                    LOGIN
+                    :style="{ color: themeColor }" >
+                    Factory Hub
                     </a>
                 </li>
                 <!-- <li class="cta-primary"> -->
                 <!--   <a :href="demo_url">Go to Factory UI</a> -->
                 <!-- </li> -->
               </ul>
-            </div>
         </div>
       </div>
     </div>
@@ -86,7 +83,7 @@ const isDropdownMenuOpen = ref(false);
     transform: translateX(-50%); /* Core logic to center fixed elements */
     width: 90%;                 /* Width percentage of viewport */
     max-width: 1300px;          /* Maximum expansion size constraint */
-    border-radius: 12px;        /* Soft rounded corners for floating appearance */
+    border-radius: 15px;        /* Soft rounded corners for floating appearance */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Gives elevation depth */
     background-color: rgba(255, 255, 255, 0.95); /* Clean visibility fallback */
     backdrop-filter: blur(8px); /* Trendy subtle glass effect */

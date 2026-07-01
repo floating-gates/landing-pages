@@ -1,308 +1,228 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
-import background from "../data/images/background_pic.webp";
-import { themeColor, themeColorOrange, themeColorLille, themeColorWhite,
-         app_login_url, demo_url } from "../config.js";
-
-const contextSources = [
-    { name: 'Bracket v4.step', icon: 'file' },
-    { name: 'Titanium Flange.step', icon: 'file' },
-    { name: 'Material specification.csv', icon: 'text' },
-    { name: 'Process rules.pdf', icon: 'home' },
-    { name: 'DFM checklist.pdf', icon: 'info' }
-];
-
-// Tab state: 'upload' | 'analysis'
-const activeTab = ref('analysis');
-
-function setTab(tab) {
-    activeTab.value = tab;
-}
+  import { ref, onMounted, onBeforeUnmount } from "vue";
+  import background from "../data/images/background_pic.webp";
+  import { themeColor, themeColorOrange, themeColorLille, themeColorWhite,
+  app_login_url, demo_url } from "../config.js";
+  
+  const contextSources = [
+  { name: 'Bracket v4.step', icon: 'file' },
+  { name: 'Titanium Flange.step', icon: 'file' },
+  { name: 'Material specification.csv', icon: 'text' },
+  { name: 'Process rules.pdf', icon: 'home' },
+  { name: 'DFM checklist.pdf', icon: 'info' }
+  ];
+  
+  const activeTab = ref('analysis');
+  
+  function setTab(tab) {
+  activeTab.value = tab;
+  }
 </script>
 
 <template>
-<div class="untree_co-hero" id="hero" :style="{ backgroundImage: `url(${background})` }">
-  <div class="container wider-container">
-    <div class="row align-items-center">
-      <div class="col-12 my-5" id="header">
-        <div class="row align-items-center gy-5">
-          <div class="col-lg-5 ml-2">
-            
-            <!-- Heading -->
-            <h1 class="heading"
-                data-aos="fade-up"
-                data-aos-delay="100">
-              Error Free Intake for<br>
-              <em :style="{color: themeColorOrange}">Factories, Engineers</em><br>
-              and Its Customers
-            </h1>
-            
-            <!-- Subheading -->
-            <p class="subheading" data-aos="fade-up" data-aos-delay="130">
-              It is a software that lives in your company network. It perform CAD autonomous revision to spot manufacturing issues. Every files on the network encounter a critical checkpoints by which is either green lit or highlighted for revision.
-            </p>
-                          <!-- A gatekeeper for factories who deal a lot of customers or huge CAD libraries. It catches autonomously manufacturability issues in your CAD library before production, from whatever way they are generated: from customers or employees. -->
-            <!-- Feature list -->
-            <ul class="hero-feature-list" data-aos="fade-up" data-aos-delay="160">
-              <li>
-                <span class="feat-check">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M2 5.2L4.2 7.5L8 3" stroke="currentColor" stroke-width="1.8"
-                          stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                Standardize file from your customers / internal department
-              </li>
-              <li>
-                <span class="feat-check">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M2 5.2L4.2 7.5L8 3" stroke="currentColor" stroke-width="1.8"
-                          stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                Guarantee manufacturability at every stage
-              </li>
-              <li>
-                <span class="feat-check">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M2 5.2L4.2 7.5L8 3" stroke="currentColor" stroke-width="1.8"
-                          stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                Maintain the highest-quality CAD library possible
-              </li>
-            </ul>
-            
-            <!-- CTA row -->
-            <div class="cta-row" data-aos="fade-up" data-aos-delay="190">
-              <a class="btn-primary-cta" :href="app_login_url">
-                Start for Free
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                        d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
-                </svg>
-              </a>
-              
-              <a class="btn-ghost-cta" :href="demo_url">Visualize Your Issue Resolution UI</a>
+  <div class="untree" :style="{ backgroundImage: `url(${background})` }">
+      <div class="flex flex-row w-full p-12 items-center justify-center gap-14">
+        <div class="min-w-fit">
+          <h1 class="heading whitespace-nowrap" data-aos="fade-up" data-aos-delay="100">
+            Automate Design Flaw <br>
+            <em>Discovery for Engineers,</em> <br>
+            Suppliers and Customers<br>
+          </h1>
+
+        <p class="subheading w-[90%]" data-aos="fade-up" data-aos-delay="130">
+          It perform autonomous document revision (CAD and GD&T) to spot manufacturing issues. Every file in the factory encounter a critical checkpoint by which they are either green lit or highlighted for revision.
+        </p>
+        
+        <ul class="hero-feature-list" data-aos="fade-up" data-aos-delay="160">
+          <li class="whitespace-nowrap">
+            <span class="feat-check">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5.2L4.2 7.5L8 3" stroke="currentColor" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Spot errors and Standardize adherence to design playbook
+          </li>
+          <li class="whitespace-nowrap">
+            <span class="feat-check">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5.2L4.2 7.5L8 3" stroke="currentColor" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Guarantee manufacturability at every stage
+          </li>
+          <li class="whitespace-nowrap">
+            <span class="feat-check">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5.2L4.2 7.5L8 3" stroke="currentColor" stroke-width="1.8"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Allow suppliers to follow your design conventions
+          </li>
+        </ul>
+        
+        <div class="cta-row" data-aos="fade-up" data-aos-delay="190">
+          <a class="btn-primary-cta" :href="app_login_url">
+            Start Here
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
+            </svg>
+          </a>
+          <a class="btn-ghost-cta" :href="demo_url">Visualize Your Issue Resolution UI</a>
+        </div>
+        </div>
+        <div class="mfg-shell">
+          <div class="mfg-grid-bg"></div>
+          
+          <div class="mfg-top-bar mx-5">
+            <div class="seg-control">
+              <button
+                class="seg-btn m-1"
+                :class="{ active: activeTab === 'upload' }"
+                @click="setTab('analysis')">
+                Autonomous Checks</button>
+              <button
+                class="seg-btn m-1"
+                :class="{ active: activeTab === 'analysis' }"
+                @click="setTab('upload')">
+                Issues Resolution Interface
+              </button>
             </div>
-            
-            <!-- Social proof -->
-            <!-- <div class="social-proof" data-aos="fade-up" data-aos-delay="220"> -->
-            <!--   <div class="avatars"> -->
-            <!--     <div class="avatar" style="background: v-bind(themeColor);">JM</div> -->
-            <!--     <div class="avatar" style="background: #533AB7;">AR</div> -->
-            <!--     <div class="avatar" style="background: #0F6E56;">TC</div> -->
-            <!--     <div class="avatar" style="background: #993C1D;">BL</div> -->
-            <!--   </div> -->
-            <!--   <div class="proof-text"> -->
-            <!--     <div class="stars">★★★★★</div> -->
-            <!--     <span>Trusted by <strong>300+ manufacturing teams</strong></span> -->
-            <!--   </div> -->
-            <!-- </div> -->
           </div>
           
-          <div class="col-lg-7">
-            <div class="mfg-shell" >
-              <div class="mfg-grid-bg"></div>
-              
-              <div class="mfg-top-bar">
-                <div class="seg-control">
-                  <button
-                    class="seg-btn m-1"
-                    :class="{ active: activeTab === 'upload' }"
-                    @click="setTab('analysis')"  >
-                    Autonomous Checks</button>
-                  <button
-                    class="seg-btn m-1"
-                    :class="{ active: activeTab === 'analysis' }"
-                    @click="setTab('upload')" > Issues Resolution Interface
-                  </button>
-                </div>
-              </div>
-              
-              <!-- UPLOAD TAB: show video -->
-              <div v-if="activeTab === 'upload'" class="mfg-body video-body">
-                <div class="video-container">
-                  <img src="../data/images/screenshot.png" class="hero-video" >
-                    </img >
-                    
-                    <!--   <video -->
-                    <!--     autoplay -->
-                    <!--     muted -->
-                    <!--     loop -->
-                    <!--     playsinline -->
-                    <!--     class="hero-video" -->
-                    <!--   > -->
-                    <!--     <source src="../data/video/product_video2.webm" type="video/webm"> -->
-                    <!--     Your <br />owser does not support the video tag. -->
-                    <!--   </video> -->
-                </div>
-              </div>
-              
-              <!-- ANALYSIS TAB: show panels -->
-              <div v-else class="mfg-body">
-                <div class="panel-files">
-                  <div class="panel-card">
-                    <div class="panel-header">
-                      <div class="icon-blue">
-                        <svg width="12" height="12" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 3C17.3284 3 18 3.67157 18 4.5V15.5C18 16.3284 17.3284 17 16.5 17H3.5C2.67157 17 2 16.3284 2 15.5V6.5C2 5.67157 2.67157 5 3.5 5H10.793L12.3535 3.43945L12.4639 3.33984C12.7307 3.12123 13.0661 3.00003 13.4141 3H16.5Z" /></svg>
-                      </div>
-                      <div class="search-pill">
-                        <svg width="11" height="11" viewBox="0 0 20 20" fill="currentColor" style="color:v-bind(themeColor);flex-shrink:0"><path d="M8.5 2C12.0899 2 15 4.91015 15 8.5C15 10.1149 14.4094 11.5908 13.4346 12.7275L17.8535 17.1465L17.918 17.2246C18.0461 17.4187 18.0244 17.6827 17.8535 17.8535C17.6827 18.0244 17.4187 18.0461 17.2246 17.918L17.1465 17.8535L12.7275 13.4346C11.5908 14.4094 10.1149 15 8.5 15C4.91015 15 2 12.0899 2 8.5C2 4.91015 4.91015 2 8.5 2ZM8.5 3C5.46243 3 3 5.46243 3 8.5C3 11.5376 5.46243 14 8.5 14C11.5376 14 14 11.5376 14 8.5C14 5.46243 11.5376 3 8.5 3Z" /></svg>
-                        <span style="font-size:10px;">Search</span>
-                      </div>
-                    </div>
-                    
-                    <div class="file-grid">
-                      <div class="file-item">
-                        <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <rect x="6" y="8" width="28" height="26" rx="3" fill="#45B3E0" stroke="#3BA6D4" stroke-width="0.5" />
-                          <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#5AC8FA" />
-                          
-                          <text 
-                            x="20" 
-                            y="26" 
-                            fill="white" 
-                            font-size="8.5" 
-                            font-family="system-ui, sans-serif" 
-                            font-weight="700" 
-                            text-anchor="middle">.step</text>
-                        </svg>
-                        <span class="file-label">CAD Library</span>
-                      </div>
-<div class="file-item">
-  <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="6" y="8" width="28" height="26" rx="3" fill="#5E6AD2" stroke="#4A54C1" stroke-width="0.5" />
-    <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#7B84E3" />
-
-    <g transform="translate(8, 11) scale(0.05)" fill="white">
-<path d="M455.5,348h-17.647l-4.727-28.364C431.229,308.258,421.481,300,409.946,300H343v-17h32.5c4.143,0,7.5-3.357,7.5-7.5V267h17
-	v16.5c0,4.143,3.357,7.5,7.5,7.5s7.5-3.357,7.5-7.5v-48c0-4.143-3.357-7.5-7.5-7.5s-7.5,3.357-7.5,7.5V252h-17v-8.5
-	c0-4.143-3.357-7.5-7.5-7.5H311v-6.396c0-13.989-9.395-26.444-22.847-30.289L263,192.129v-11.532c5.055-4.429,8-10.83,8-17.659V139
-	h8.5c4.143,0,7.5-3.357,7.5-7.5s-3.357-7.5-7.5-7.5H279v-0.5c0-23.639-17.36-43.295-40-46.902V75.5c0-4.143-3.357-7.5-7.5-7.5
-	s-7.5,3.357-7.5,7.5v1.098c-22.64,3.607-40,23.263-40,46.902v0.5h-0.5c-4.143,0-7.5,3.357-7.5,7.5s3.357,7.5,7.5,7.5h8.5v23.937
-	c0,6.829,2.946,13.229,8,17.659v11.532l-25.154,7.187C161.395,203.159,152,215.614,152,229.604V236h-18.227
-	c-3.138-9.292-11.937-16-22.273-16H94.277c-3.515-18.205-19.561-32-38.777-32c-21.78,0-39.499,17.719-39.5,39.498v0.001v0v0.001
-	c0,19.216,13.795,35.262,32,38.777v34.287c-9.228,2.011-16.515,9.405-18.127,19.072L25.147,348H7.5c-4.143,0-7.5,3.357-7.5,7.5v32
-	c0,4.143,3.357,7.5,7.5,7.5h448c4.143,0,7.5-3.357,7.5-7.5v-32C463,351.357,459.643,348,455.5,348z M328,300h-49v-17h49V300z
-	 M199,300v-33h48.5c4.143,0,7.5-3.357,7.5-7.5s-3.357-7.5-7.5-7.5H199v-8.5c0-0.275,0.225-0.5,0.5-0.5h64c0.275,0,0.5,0.225,0.5,0.5
-	V300H199z M167,300v-24.5V267h17v33H167z M135,300v-17h17v17H135z M215.312,191.054c3.872,2.582,8.38,3.946,13.034,3.946h6.313
-	c4.653,0,9.161-1.364,13.037-3.947L248,190.85v6.919c0,0.088-0.003,0.176,0,0.263v1.97c-1.425,1.289-6.962,3.997-16.5,3.997
-	s-15.075-2.708-16.5-3.997v-9.157L215.312,191.054z M207,228v-15.215c5.588,3.898,14.175,6.215,24.5,6.215s18.912-2.317,24.5-6.215
-	V228H207z M368,268h-89v-17h89V268z M296,229.604V236h-18.945c-1.411-2.541-3.514-4.644-6.055-6.055v-19.93l13.032,3.723
-	C291.079,215.751,296,222.275,296,229.604z M264,123.5v0.5h-25V91.883C253.315,95.279,264,108.161,264,123.5z M199,123.5
-	c0-15.339,10.685-28.221,25-31.617V124h-25V123.5z M256,139v23.938c0,2.849-1.415,5.492-3.784,7.072h-0.001l-12.84,8.562
-	c-1.402,0.935-3.033,1.429-4.717,1.429h-6.313c-1.684,0-3.313-0.493-4.714-1.427l-12.847-8.563c-2.37-1.58-3.785-4.225-3.785-7.073
-	V139H256z M167,229.604c0-7.328,4.921-13.853,11.967-15.866L192,210.013v19.932c-4.765,2.647-8,7.728-8,13.555v8.5h-17v-8.5V229.604
-	z M120,243.5c0,4.143,3.357,7.5,7.5,7.5H152v17h-24.5c-4.143,0-7.5,3.357-7.5,7.5V300H63v-33.723
-	c15.775-3.046,28.231-15.502,31.277-31.277H111.5C116.187,235,120,238.813,120,243.5z M63,235l15.821,0
-	c-2.413,7.486-8.335,13.408-15.821,15.821V235z M78.821,220L63,220v-15.821C70.486,206.592,76.408,212.514,78.821,220z M48,204.179
-	V220l-15.821,0C34.592,212.513,40.514,206.592,48,204.179z M32.178,234.999L48,235v15.822
-	C40.513,248.408,34.591,242.486,32.178,234.999z M44.669,322.103c0.687-4.115,4.213-7.103,8.385-7.103h356.893
-	c4.172,0,7.698,2.987,8.384,7.103L422.646,348H40.354L44.669,322.103z M448,380H15v-17h433V380z"/>
-    </g>
-  </svg>
-  <span class="file-label">Machines Avail.</span>
-</div>
-<div class="file-item">
-  <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="6" y="8" width="28" height="26" rx="3" fill="#45B3E0" stroke="#3BA6D4" stroke-width="0.5" />
-    <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#5AC8FA" />
-    
-    <g transform="translate(10, 14) scale(0.1)" 
-       stroke="white" 
-       stroke-width="6" 
-       stroke-linecap="round" 
-       stroke-linejoin="round" 
-       fill="none">
-      
-      <path d="M46.853 24.746v-4.319c0-2.762 2.611-4.789 5.304-4.116l17.054 4.26a5.31 5.31 0 0 1 4.034 5.146v28.658c0 2.763-2.611 4.789-5.304 4.116l-10.09-2.52" transform="matrix(2.5351 0 0 2.6556 -15.545 -20.844)"/>
-      <path d="M30.805 31.18v-4.154c0-2.763 2.61-4.79 5.304-4.117l17.053 4.26a5.31 5.31 0 0 1 4.034 5.146v28.658c0 2.763-2.61 4.79-5.304 4.116L41.76 62.558" transform="matrix(2.5351 0 0 2.6556 -15.545 -20.844)"/>
-      <path d="M18.79 67.427a5.31 5.31 0 0 1-4.034-5.146V33.623c0-2.763 2.61-4.789 5.304-4.116l17.054 4.26a5.31 5.31 0 0 1 4.033 5.146V67.57c0 2.762-2.61 4.789-5.304 4.116z" transform="matrix(2.5351 0 0 2.6556 -15.545 -20.844)"/>
-    
-    </g>
-  </svg>
-  <span class="file-label">Materials</span>
-</div>
-                      <div class="file-item">
-                        <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <rect x="6" y="8" width="28" height="26" rx="3" fill="#34C759" stroke="#28A347" stroke-width="0.5" />
-                          <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#4CD870" />
-                          <text 
-                            x="20" 
-                            y="26" 
-                            fill="white" 
-                            font-size="8.5" 
-                            font-family="system-ui, sans-serif" 
-                            font-weight="700" 
-                            text-anchor="middle">.pdf</text>
-                        </svg>
-                        <span class="file-label">GD&T library</span>
-                      </div>
-                    </div>
-                    
-                    <div class="panel-footer">
-                      <button class="btn-cancel">Cancel</button>
-                      <button class="btn-open">Analyze</button>
-                    </div>
+          <!-- UPLOAD TAB -->
+          <div v-if="activeTab === 'upload'" class="mfg-body video-body">
+            <div class="video-container">
+              <img src="../data/images/screenshot.png" class="hero-video">
+            </div>
+          </div>
+          
+          <!-- ANALYSIS TAB -->
+          <div v-else class="mfg-body">
+            <div class="panel-files">
+              <div class="panel-card">
+                <div class="panel-header">
+                  <div class="icon-blue">
+                    <svg width="12" height="12" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 3C17.3284 3 18 3.67157 18 4.5V15.5C18 16.3284 17.3284 17 16.5 17H3.5C2.67157 17 2 16.3284 2 15.5V6.5C2 5.67157 2.67157 5 3.5 5H10.793L12.3535 3.43945L12.4639 3.33984C12.7307 3.12123 13.0661 3.00003 13.4141 3H16.5Z" /></svg>
+                  </div>
+                  <div class="search-pill">
+                    <svg width="11" height="11" viewBox="0 0 20 20" fill="currentColor" :style="{color: themeColor, flexShrink: 0}"><path d="M8.5 2C12.0899 2 15 4.91015 15 8.5C15 10.1149 14.4094 11.5908 13.4346 12.7275L17.8535 17.1465L17.918 17.2246C18.0461 17.4187 18.0244 17.6827 17.8535 17.8535C17.6827 18.0244 17.4187 18.0461 17.2246 17.918L17.1465 17.8535L12.7275 13.4346C11.5908 14.4094 10.1149 15 8.5 15C4.91015 15 2 12.0899 2 8.5C2 4.91015 4.91015 2 8.5 2ZM8.5 3C5.46243 3 3 5.46243 3 8.5C3 11.5376 5.46243 14 8.5 14C11.5376 14 14 11.5376 14 8.5C14 5.46243 11.5376 3 8.5 3Z" /></svg>
+                    <span style="font-size:10px;">Search</span>
                   </div>
                 </div>
                 
-                <div class="panel-progress">
-                  <div class="panel-card">
-                    <div class="progress-header mb-2">
-                      <span> Found Issues in CAD Library </span>
-                    </div>
-                    <div style="padding: 0 12px 12px;">
-                      <div class="check-row">
-                        <div class="check-circle">✓</div>
-                        <span class="check-text">Draft Angles OK</span>
-                      </div>
-                      <div class="check-row">
-                        <div class="check-circle warn">!</div>
-                        <span class="check-text warn">Undercut on face #7</span>
-                      </div>
-                      <div class="check-row">
-                        <div class="check-circle warn">!</div>
-                        <span class="check-text warn">Material too slim on #21</span>
-                      </div>
-                      <div class="check-row">
-                        <div class="check-circle">✓</div>
-                        <span class="check-text">Lead time OK</span>
-                      </div>
-                      <div class="check-row">
-                        <div class="check-circle">✓</div>
-                        <span class="check-text">Probes Access OK</span>
-                      </div>
-                    </div>
+                <div class="file-grid">
+                  <div class="file-item">
+                    <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="6" y="8" width="28" height="26" rx="3" fill="#45B3E0" stroke="#3BA6D4" stroke-width="0.5" />
+                      <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#5AC8FA" />
+                      <text x="20" y="26" fill="white" font-size="8.5" font-family="system-ui, sans-serif" font-weight="700" text-anchor="middle">.step</text>
+                    </svg>
+                    <span class="file-label">CAD Library</span>
+                  </div>
+                  <div class="file-item">
+                    <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="6" y="8" width="28" height="26" rx="3" fill="#5E6AD2" stroke="#4A54C1" stroke-width="0.5" />
+                      <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#7B84E3" />
+                      <g transform="translate(8, 11) scale(0.05)" fill="white">
+                        <path d="M455.5,348h-17.647l-4.727-28.364C431.229,308.258,421.481,300,409.946,300H343v-17h32.5c4.143,0,7.5-3.357,7.5-7.5V267h17v16.5c0,4.143,3.357,7.5,7.5,7.5s7.5-3.357,7.5-7.5v-48c0-4.143-3.357-7.5-7.5-7.5s-7.5,3.357-7.5,7.5V252h-17v-8.5c0-4.143-3.357-7.5-7.5-7.5H311v-6.396c0-13.989-9.395-26.444-22.847-30.289L263,192.129v-11.532c5.055-4.429,8-10.83,8-17.659V139h8.5c4.143,0,7.5-3.357,7.5-7.5s-3.357-7.5-7.5-7.5H279v-0.5c0-23.639-17.36-43.295-40-46.902V75.5c0-4.143-3.357-7.5-7.5-7.5s-7.5,3.357-7.5,7.5v1.098c-22.64,3.607-40,23.263-40,46.902v0.5h-0.5c-4.143,0-7.5,3.357-7.5,7.5s3.357,7.5,7.5,7.5h8.5v23.937c0,6.829,2.946,13.229,8,17.659v11.532l-25.154,7.187C161.395,203.159,152,215.614,152,229.604V236h-18.227c-3.138-9.292-11.937-16-22.273-16H94.277c-3.515-18.205-19.561-32-38.777-32c-21.78,0-39.499,17.719-39.5,39.498v0.001v0v0.001c0,19.216,13.795,35.262,32,38.777v34.287c-9.228,2.011-16.515,9.405-18.127,19.072L25.147,348H7.5c-4.143,0-7.5,3.357-7.5,7.5v32c0,4.143,3.357,7.5,7.5,7.5h448c4.143,0,7.5-3.357,7.5-7.5v-32C463,351.357,459.643,348,455.5,348z"/>
+                      </g>
+                    </svg>
+                    <span class="file-label">Machines Avail.</span>
+                  </div>
+                  <div class="file-item">
+                    <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="6" y="8" width="28" height="26" rx="3" fill="#45B3E0" stroke="#3BA6D4" stroke-width="0.5" />
+                      <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#5AC8FA" />
+                      <g transform="translate(10, 14) scale(0.1)" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                        <path d="M46.853 24.746v-4.319c0-2.762 2.611-4.789 5.304-4.116l17.054 4.26a5.31 5.31 0 0 1 4.034 5.146v28.658c0 2.763-2.611 4.789-5.304 4.116l-10.09-2.52" transform="matrix(2.5351 0 0 2.6556 -15.545 -20.844)"/>
+                        <path d="M30.805 31.18v-4.154c0-2.763 2.61-4.79 5.304-4.117l17.053 4.26a5.31 5.31 0 0 1 4.034 5.146v28.658c0 2.763-2.61 4.79-5.304 4.116L41.76 62.558" transform="matrix(2.5351 0 0 2.6556 -15.545 -20.844)"/>
+                        <path d="M18.79 67.427a5.31 5.31 0 0 1-4.034-5.146V33.623c0-2.763 2.61-4.789 5.304-4.116l17.054 4.26a5.31 5.31 0 0 1 4.033 5.146V67.57c0 2.762-2.61 4.789-5.304 4.116z" transform="matrix(2.5351 0 0 2.6556 -15.545 -20.844)"/>
+                      </g>
+                    </svg>
+                    <span class="file-label">Materials</span>
+                  </div>
+                  <div class="file-item">
+                    <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="6" y="8" width="28" height="26" rx="3" fill="#34C759" stroke="#28A347" stroke-width="0.5" />
+                      <rect x="4" y="13" width="32" height="20" rx="2.5" fill="#4CD870" />
+                      <text x="20" y="26" fill="white" font-size="8.5" font-family="system-ui, sans-serif" font-weight="700" text-anchor="middle">.pdf</text>
+                    </svg>
+                    <span class="file-label">GD&T library</span>
                   </div>
                 </div>
                 
-                <div class="panel-context">
-                  <div class="panel-card">
-                    <div class="progress-header">
-                      <span>Files around the Factory</span>
-                    </div>
-                    <div style="display:flex;
-                                flex-direction:column;
-                                padding: 8px;">
-                      <div v-for="src in contextSources" :key="src.name" class="context-item">
-                        <span class="ctx-label">{{ src.name }}</span>
-                      </div>
-                    </div>
+                <div class="panel-footer">
+                  <button class="btn-cancel">Cancel</button>
+                  <button class="btn-open">Analyze</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="panel-progress">
+              <div class="panel-card">
+                <div class="progress-header mb-2">
+                  <span>Found Issues in CAD Library</span>
+                </div>
+                <div style="padding: 0 12px 12px;">
+                  <div class="check-row">
+                    <div class="check-circle">✓</div>
+                    <span class="check-text">Draft Angles OK</span>
+                  </div>
+                  <div class="check-row">
+                    <div class="check-circle warn">!</div>
+                    <span class="check-text warn">Undercut on face #7</span>
+                  </div>
+                  <div class="check-row">
+                    <div class="check-circle warn">!</div>
+                    <span class="check-text warn">Material too slim on #21</span>
+                  </div>
+                  <div class="check-row">
+                    <div class="check-circle">✓</div>
+                    <span class="check-text">Lead time OK</span>
+                  </div>
+                  <div class="check-row">
+                    <div class="check-circle">✓</div>
+                    <span class="check-text">Probes Access OK</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="panel-context">
+              <div class="panel-card">
+                <div class="progress-header">
+                  <span>Files around the Factory</span>
+                </div>
+                <div style="display:flex; flex-direction:column; padding: 8px;">
+                  <div v-for="src in contextSources" :key="src.name" class="context-item">
+                    <span class="ctx-label">{{ src.name }}</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
-</div>
 </template>
 
 <style scoped>
+.untree {
+    width: 100%;
+    display: flex;          /* ADD */
+    align-items: stretch;   /* ADD */
+    min-height: 90vh;       /* ADD — gives the hero room to breathe */
+    margin: 3rem auto 0 auto;
+    padding: 1.5rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .btn-hover:hover {
     color: v-bind(themeColorWhite);
     background-color: v-bind(themeColorOrange);
@@ -425,8 +345,9 @@ function setTab(tab) {
 }
 
 .mfg-shell {
-    width: 100%;
-    min-height: 600px;
+    width: 80%;
+    min-height: 620px;
+    max-width: 780px;
     border-radius: 25px;
     background: v-bind(themeColorWhite);
     position: relative;
@@ -456,14 +377,12 @@ function setTab(tab) {
 .seg-control {
     display: inline-flex;
     background: white;
-    /* v-bind(themeColorLille); */
     border: 0.5px solid rgba(0,0,0,0.1);
     border-radius: 10px;
     padding: 2px;
     gap: 0;
     position: relative;
     box-shadow: 1px 2px 5px rgba(0,0,0,0.40);
-    /* border: 1.5px solid v-bind(themeColor); */
     transition: opacity 0.35s ease;
 }
 
@@ -489,6 +408,7 @@ function setTab(tab) {
 
 .mfg-body {
     position: relative;
+    margin: 1;
     flex: 1;
 }
 
@@ -827,33 +747,42 @@ function setTab(tab) {
 .btn-ghost-cta:hover { background: rgba(0,0,0,0.04); }
 
 .social-proof {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .avatars {
-  display: flex;
+    display: flex;
 }
 
 .avatar {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  border: 2px solid white;
-  margin-right: -8px;
-  font-size: 10px;
-  font-weight: 600;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-right: -8px;
+    font-size: 10px;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
 }
 
 .proof-text {
-  font-size: 12.5px;
-  color: #666;
-  line-height: 1.5;
+    font-size: 12.5px;
+    color: #666;
+    line-height: 1.5;
 }
 
 .proof-text strong { color: inherit; font-weight: 600; }
 
 .stars { color: #BA7517; font-size: 12px; letter-spacing: 1px; }
+
+.hero-feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    white-space: nowrap; /* Fallback for the tailwind utility */
+    flex-shrink: 0;      /* Prevents row squeeze */
+}
 </style>

@@ -107,10 +107,9 @@ const submitEmailAndDownload = async () => {
 </script>
 
 <template>
-<div class="untree_co-hero" :style="{ backgroundImage: `url(${background})` }">
-  <div class="container wider-container">
-    
-    <div class="row align-items-center">
+<div class="faq-section"
+     :style="{ backgroundImage: `url(${background})` }">
+  <div class="container m-auto p-4">
       <div class="dl-hero" data-aos="fade-up" data-aos-delay="80">
         <h1 class="dl-heading">
           Download 
@@ -199,7 +198,6 @@ const submitEmailAndDownload = async () => {
         </div>
       </div>
     </div>
-  </div>
 
   <Transition name="fade">
     <div v-if="showModal" class="modal-overlay" @click.self="showModal = false">

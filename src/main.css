@@ -1,4 +1,4 @@
-@import 'bootstrap/dist/css/bootstrap.css';
+@import "tailwindcss";
 
 body {
     line-height: 1.6;
@@ -33,17 +33,12 @@ a {
       color: #D77A61;
       text-decoration: none; }
 
-/* .text-primary { */
-/*     color: #D77A61 !important; } */
-
-/* a.text-primary { */
-/*     color: #D77A61 !important; */
-/* } */
-
 .btn {
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 30px;
+    color: #EFF1F3;
+    background-color: #223843;
     padding-right: 30px;
     border-radius: 30px;
     font-size: 11px;
@@ -125,14 +120,6 @@ a {
     width: 100%;
 }
 
-.wider-container {
-    max-width: 1850px;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin-top: 7rem;
-    margin-bottom: 7rem;
-}
-
 .button-group {
     display: flex;
     align-items: center; /* Vertically center anything inside the button group container */
@@ -154,10 +141,6 @@ a {
     border: 2px solid #223843;
 }
 
-   .site-nav .container {
-       max-width: 1800px;
-       padding-left: 3%;
-       }
     .site-nav .site-navigation .site-menu > li {
         display: inline-block; }
       .site-nav .site-navigation .site-menu > li > a {
@@ -370,32 +353,66 @@ a {
     .site-mobile-menu-close > span:after {
         -webkit-transform: rotate(-45deg);
         -ms-transform: rotate(-45deg);
-        transform: rotate(-45deg); }
+        transform: rotate(-45deg);
+    }
 
-
-
-/* AFTER (Fix) */
 .untree_co-hero {
-    padding: 4rem 0 2rem 0;
-    background-size: cover;
-    background-position: center top;
     width: 100%;
+    display: flex;          /* ADD */
+    align-items: stretch;   /* ADD */
+    min-height: 90vh;       /* ADD — gives the hero room to breathe */
+    max-width: 1700px;
+    margin: 3rem auto 0 auto;
+    padding: 1.5rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-
 
 .heading {
     color: #223843;
-    line-height: 1.18;
+    line-height: 1.25; /* Slightly increased for readability on multi-line text blocks */
     letter-spacing: -0.03em;  
-    font-size: 3.8rem; 
     font-weight: 700;
     margin-bottom: 1rem;
+    /* clamp(min, val, max) */
+    font-size: clamp(1.8rem, 3vw, 4rem); 
 }
 
-.heading .block {
-    display: block;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+.heading div {
+    font-size: inherit !important;
 }
+
+.heading div em, 
+.heading div {
+    white-space: normal;
+}
+
+.heading br {
+    content: "";
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.heading em {
+    font-size: 1.05em !important; 
+    color: var(--theme-color-orange);
+}
+
+h3 {
+    color: var(--theme-color);
+
+}
+
+a h3 {
+    color: var(--theme-color-orange);
+
+}
+
+/* .heading .block { */
+/*     display: block; */
+/*     text-shadow: 0 1px 2px rgba(0,0,0,0.2); */
+/* } */
 
 .untree_co-hero .dots:before {
     z-index: -1;
@@ -409,6 +426,32 @@ a {
     transform: translateX(20%); /* ⬅️ was 60%, reduce for mobile safety */
 }
 
+
+.faq-section {
+    padding: 7rem 0 3rem 0;
+    position: relative;
+    background-size: cover;
+    background-position: center top;   /* anchor to top if it's a tall image */
+    width: 100%;
+}
+
+.faq-section::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: radial-gradient(
+        ellipse at center top, rgba(108, 117, 125, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.faq-container {
+    margin: 0 auto 2rem;
+    max-width: 70%;
+}
+
+
 /* Optional: tighten further on small screens */
 @media (max-width: 768px) {
     .untree_co-hero .dots:before {
@@ -419,44 +462,11 @@ a {
     }
 }
 
-.untree_co-section {
-    padding: 100px 0;
-    position: relative; }
-  @media (max-width: 1200px) {
-      .untree_co-section {
-          padding: 50px 0; } }
-    @media (max-width: 1200px) {
-        .untree_co-section .heading {
-            font-size: 28px; } }
-  .untree_co-section .caption {
-      color: #D77A61;
-      font-size: 13px;
-      text-transform: uppercase;
-      font-weight: 700;
-      display: inline-block; }
 
 .img-shadow {
     border: 10px solid #ffffff;
     -webkit-box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
     box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1); }
-
-.untree_co-testimonial .pic {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 50px;
-    flex: 0 0 50px; }
-  .untree_co-testimonial .pic img {
-      border-radius: 50%; }
-
-.untree_co-testimonial blockquote {
-    font-style: italic;
-    color: #000000; }
-
-
-.untree_co-testimonial .author {
-    font-size: 14px; }
-  .untree_co-testimonial .author strong {
-      font-weight: 400;
-      color: #000000; }
 
 .highlight {
     display: inline;

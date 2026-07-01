@@ -481,7 +481,6 @@ function scrollTo(elementId) {
 }
 
 .table-of-contents a {
-    color: #2b6cb0;
     text-decoration: none;
     font-size: 0.9rem;
     cursor: pointer;

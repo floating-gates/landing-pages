@@ -11,7 +11,7 @@ import Charts from "./Charts.vue"
 const userAddress = ref("");
 const isSubmitting = ref(false);
 const progress = ref(0);
-const placeholder = ref("Choose your factory address");
+const placeholder = ref("Pin your factory in the web");
 
 // Suggested auto-fill text
 const suggestedText = ["Gears-Maker.com",
@@ -102,81 +102,72 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-<div class="untree_co-hero" id="hero"
+<div class="untree" id="hero"
      :style="{ backgroundImage: `url(${background})` }">
-  <div class="container wider-container">
-    <div class="align-items-center">
-      <div class="col-12 my-6" id="header" >
-        <div class="row align-items-center">
-          <div class="col-lg-5" style="max-width: 85%;" >
-            <h1 class="heading"
-                data-aos="fade-up"
-                data-aos-delay="100">
-              <div :style="{ fontSize: '2.6rem' }">
-                <em :style="{ color: themeColorOrange, fontSize: '3.1rem' }">Search </em> your Factory Network,<br>
-                <em :style="{ color: themeColorOrange, fontSize: '3.1rem' }">Checks </em> for Issues in your CAD,<br>
-                <em :style="{ color: themeColorOrange, fontSize: '3.1rem' }">Allows </em> customers CAD Drop
-                ,<br>
-                <em :style="{ color: themeColorOrange, fontSize: '3.1rem' }">Warns </em> if Issues are found<br>
-              </div>
-            </h1>
-            
-            <div class="excerpt"
-                 data-aos="fade-up"
-                 data-aos-delay="100">
-              <p>
-                Gates will scan your network in search of CAD models that can have
-                manufacturing problems and warn you! We automate its manufacturing feasibility,
-                highlighting what could go wrong in production.
-              </p>
-            </div>
-            
-            <form v-if="!isSubmitting"
-                  @submit.prevent="submitAddress"
-                  class="address-form glass mx-1"
-                  data-aos="fade-up"
-                  data-aos-delay="200">
-              <input
-                v-model="userAddress"
-                type="text"
-                :placeholder="placeholder"
-                @focus="stopTyping"
-                @input="stopTyping"
-                class="address-input"
-                />
-              <button type="submit" class="address-submit" >
-                <span>Automate your Factory</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" >
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
-                </svg>
-              </button>
-            </form>
-            <div v-else class="address-form">
-              <button type="button" class="progress-btn w-100"
-                      :style="{ 
-                              background: `linear-gradient(90deg, ${themeColorOrange} ${progress}%, ${themeColor} ${progress}%)`,
-                              borderColor: themeColorOrange 
-                              }">
-                Setting up hub... {{ Math.floor(progress) }}%
-              </button>
-            </div>
-          </div>
-          <div class="col-lg-7 chart-wrap">
-            <Charts />
-            <!-- <img :src="mainPhoto2" alt="good2manufacture"  class="img-fluid" /> -->
-          </div>
-        </div>
+
+  <div class="flex flex-row w-full p-12 items-center justify-center min-h-screen gap-12">
+ 
+    <div class="min-w-fit">
+      <h1 class="heading"
+          data-aos="fade-up"
+          data-aos-delay="100">
+          <em>Search </em> your Factory Network,<br>
+          <em>Check </em> for Issues in your CAD,<br>
+          <em>Allow </em> customers CAD Drop,<br>
+          <em>Warn </em> if Issues are found<br>
+      </h1>
+      
+      <div class="excerpt"
+           data-aos="fade-up"
+           data-aos-delay="100">
+        <p>
+          Gates will scan your network in search of CAD models & GD&T, warning you if it finds
+          manufacturing problems! We highlighting what could go wrong in production.
+        </p>
+      </div>
+      
+      <form v-if="!isSubmitting"
+            @submit.prevent="submitAddress"
+            class="address-form glass mx-1"
+            data-aos="fade-up"
+            data-aos-delay="200">
+        <input
+          v-model="userAddress"
+          type="text"
+          :placeholder="placeholder"
+          @focus="stopTyping"
+          @input="stopTyping"
+          class="address-input"
+          />
+        <button type="submit" class="address-submit">
+          <span>Automate your Factory</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
+          </svg>
+        </button>
+      </form>
+      <div v-else class="address-form">
+        <button type="button" class="progress-btn w-full"
+                :style="{ background: `linear-gradient(90deg, ${themeColorOrange} ${progress}%, ${themeColor} ${progress}%)`,
+                        borderColor: themeColorOrange }">
+          Setting up hub... {{ Math.floor(progress) }}%
+        </button>
       </div>
     </div>
+    <div class="chart-wrap">
+      <Charts />
+    </div>
+     
   </div>
 </div>
 </template>
 
 <style scoped>
-.untree_co-hero {
-    background-size: cover;
-    background-position: center top;   /* anchor to top if it's a tall image */
+.untree {
     width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 img {
@@ -271,13 +262,13 @@ img {
 }
 
 .chart-wrap {
-  max-height: 800px;
-  display: flex;
-  flex-direction: column;
+    max-height: 700px;
+    display: flex;
+    flex-direction: column;
 }
 
 .chart-wrap > :first-child {
-  flex: 1; 
-  height: 100%;
+    flex: 1; 
+    height: 100%;
 }
 </style>

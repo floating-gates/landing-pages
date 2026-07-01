@@ -60,11 +60,12 @@ const selectService = (index) => {
 <template>
   <Header :context="'landing-page'" />
 
-  <div class="untree_co-hero">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="section-header">
-          <h2 class="page-title">Enterprise Services</h2>
+<div class="faq-section"
+     :style="{ backgroundImage: `url(${background})` }">
+    <div class=" flex flex-row align-items-center">
+
+      <div class="flex flex-col section-header">
+          <h2 class="heading">Enterprise Services</h2>
           <p class="page-subtitle">
             Our enterprise services can be seamlessly integrated within Gates or developed independently according to your specific requirements.
           </p>
@@ -115,7 +116,6 @@ const selectService = (index) => {
                 <a :href="whatsAppUrl" class="whatsapp-btn">
                   <img src="../data/images/WhatsAppButtonGreenMedium.svg" alt="Contact via WhatsApp" class="whatsapp-icon" />
                 </a>
-              </div>
             </div>
           </div>
         </div>
