@@ -53,14 +53,15 @@ const customerSections = [
 </script>
 
 <template>
-  <Header :context="'login'" />
+<Header :context="'login'" />
+
+  <div class="faq-section"
   
-  <main class="page" role="main">
     <!-- Hero Section -->
-    <header class="intro" itemscope itemtype="https://schema.org/Organization">
-      <h1 itemprop="name">Smarter Manufacturing Starts Here</h1>
+    <!-- <header class="intro" itemscope itemtype="https://schema.org/Organization"> -->
+      <h1 class="heading">Smarter Manufacturing Starts Here</h1>
       <p class="hero-description" itemprop="description">{{ value_proposition_intro }}</p>
-    </header>
+    <!-- </header> -->
 
     <!-- Main Content Section -->
     <section class="content-wrapper" :style="{ '--theme-color': themeColor }" aria-label="Platform Features and Target Customers">
@@ -152,44 +153,8 @@ const customerSections = [
         </div>
       </article>
     </section>
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Gates Manufacturing Platform",
-      "description": "Smart manufacturing software platform that connects SMEs with customers through automated quoting, order tracking, and quality validation",
-      "url": "https://gates-manufacturing.com",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web-based",
-      "screenshot": "https://gates-manufacturing.com/data/images/product.png",
-      "featureList": [
-        "Automated order handling and tracking",
-        "Real-time manufacturing quotes",
-        "Secure payment processing",
-        "Manufacturing quality checks",
-        "Production capacity optimization"
-      ],
-      "offers": {
-        "@type": "Offer",
-        "description": "Manufacturing platform software subscription",
-        "price": "Contact for pricing",
-        "priceCurrency": "USD"
-      },
-      "audience": {
-        "@type": "Audience",
-        "audienceType": "Small to medium-sized manufacturing enterprises",
-        "geographicArea": "Global"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Gates Manufacturing Platform",
-        "url": "https://gates-manufacturing.com"
-      }
-    }
-    </script>
-  </main>
+    </div>
+  <!-- </main> -->
 </template>
 
 <style scoped>

@@ -24,9 +24,9 @@
       <div class="flex flex-row w-full p-12 items-center justify-center gap-14">
         <div class="min-w-fit">
           <h1 class="heading whitespace-nowrap" data-aos="fade-up" data-aos-delay="100">
-            Automate Design Flaw <br>
+            Autonomous Design Flaws <br>
             <em>Discovery for Engineers,</em> <br>
-            Suppliers and Customers<br>
+            Suppliers and Customers.<br>
           </h1>
 
         <p class="subheading w-[90%]" data-aos="fade-up" data-aos-delay="130">
@@ -346,7 +346,7 @@
 
 .mfg-shell {
     width: 80%;
-    min-height: 620px;
+    min-height: 650px;
     max-width: 780px;
     border-radius: 25px;
     background: v-bind(themeColorWhite);
@@ -377,10 +377,9 @@
 .seg-control {
     display: inline-flex;
     background: white;
-    border: 0.5px solid rgba(0,0,0,0.1);
-    border-radius: 10px;
-    padding: 2px;
-    gap: 0;
+    border: 0.5px solid rgba(0,0,0,1);
+    border-radius: 9px;
+    padding: 3px;
     position: relative;
     box-shadow: 1px 2px 5px rgba(0,0,0,0.40);
     transition: opacity 0.35s ease;
@@ -667,10 +666,10 @@
 
 
 .subheading {
-    line-height: 1.15;
-    margin-top: 1.2rem;
+    line-height: 1.2;
     margin-bottom: 1.8rem;
-    max-width: 460px;
+    margin-top: 1.2rem;
+    max-width: 480px;
 }
 
 .hero-feature-list {

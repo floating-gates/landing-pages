@@ -111,7 +111,7 @@ const submitEmailAndDownload = async () => {
      :style="{ backgroundImage: `url(${background})` }">
   <div class="container m-auto p-4">
       <div class="dl-hero" data-aos="fade-up" data-aos-delay="80">
-        <h1 class="dl-heading">
+        <h1 class="heading">
           Download 
           <em :style="{ color: themeColorOrange }">good2manufactured</em>
         </h1>
@@ -179,10 +179,10 @@ const submitEmailAndDownload = async () => {
         </div>
       </div>
       
-      <!-- <div class="dl-divider" data-aos="fade-up" data-aos-delay="180"></div> -->
+      <div class="dl-divider" data-aos="fade-up" data-aos-delay="180"></div>
       
       <div class="dl-section" data-aos="fade-up" data-aos-delay="200">
-        <!-- <h2 class="dl-section-title">Get started in three steps</h2> -->
+        <h2 class="dl-section-title">How to connect to Gates' server</h2>
         <div class="dl-steps">
           <div v-for="s in steps" :key="s.n" class="dl-step">
             <div class="dl-step__num">{{ s.n }}</div>
@@ -240,14 +240,6 @@ const submitEmailAndDownload = async () => {
 /* ── Hero ── */
 .dl-hero {
     margin-bottom: 3rem;
-}
-
-.dl-heading {
-    font-size: clamp(2.2rem, 5vw, 3.2rem);
-    font-weight: 700;
-    line-height: 1.1;
-    color: v-bind(themeColor);
-    margin-bottom: 1.2rem;
 }
 
 .dl-subheading {

@@ -8,7 +8,7 @@ const isDropdownMenuOpen = ref(false);
 </script>
 
 <template>
-<nav class="site-nav js-site-navbar">
+<header class="site-nav">
     <div class="site-navigation">
       <div class="nav-wrapper">
         <!-- Logo -->
@@ -70,7 +70,7 @@ const isDropdownMenuOpen = ref(false);
       </div>
     </div>
   </div>
-</nav>
+</header>
 </template>
 
 <style scoped>

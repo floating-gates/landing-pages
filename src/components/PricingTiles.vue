@@ -89,8 +89,7 @@ const pricingPlans = computed(() => [
         data-aos="fade-up"
         :data-aos-delay="50 * (index + 1)"
         >
-        <div 
-          class="h-full p-6 flex flex-col justify-between"
+        <div class="h-full p-6 flex flex-col justify-between py-6"
           :style="{ background: `linear-gradient(145deg, ${themeColorWhite} 0%, #e3e3e340 100%)` }"
           >
           <div>
@@ -131,13 +130,12 @@ const pricingPlans = computed(() => [
           </div>
           
           <div class="m-auto">
-            <a
-              :href="plan.buttonUrl"
-              class="btn block text-center transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg" >
+            <a :href="plan.buttonUrl"
+               class="btn block text-center transition-all duration-300 transform
+                      hover:-translate-y-0.5 hover:shadow-lg" >
               {{ plan.buttonText }}
             </a>
           </div>
-          
         </div>
       </div>
     </div>

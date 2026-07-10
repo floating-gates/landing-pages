@@ -11,6 +11,7 @@ import FAQ               from '../ui_compositor/FAQ.vue'
 import CaseStudies       from '../ui_compositor/CaseStudies.vue'
 import Product           from '../ui_compositor/Product.vue'
 import Download          from '../ui_compositor/Download.vue'
+import Docs          from '../components/Docs.vue'
 
 const routes = [
     { path: '/', component: LandingPage },
@@ -25,7 +26,8 @@ const routes = [
     { path: '/pricing', component: Pricing },
     { path: '/product', component: Product },
     { path: '/articles', component: CaseStudies },
-    { path: '/download', component: Download }
+    { path: '/download', component: Download },
+    { path: '/docs', component: Docs },
 ]
 
 const router = createRouter({

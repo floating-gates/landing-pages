@@ -113,7 +113,7 @@ onBeforeUnmount(() => {
           data-aos-delay="100">
           <em>Search </em> your Factory Network,<br>
           <em>Check </em> for Issues in your CAD,<br>
-          <em>Allow </em> customers CAD Drop,<br>
+          <em>Allow </em> Customers' files Drop,<br>
           <em>Warn </em> if Issues are found<br>
       </h1>
       
@@ -140,7 +140,7 @@ onBeforeUnmount(() => {
           class="address-input"
           />
         <button type="submit" class="address-submit">
-          <span>Automate your Factory</span>
+          <span>Install it in your Factory</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3">
             <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
           </svg>
