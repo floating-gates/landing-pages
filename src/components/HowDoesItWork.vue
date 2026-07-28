@@ -70,9 +70,9 @@ function clicking_tile(tile) {
     </div>
   </div>
 
-  <div id="hero" class="hero-section-container min-w-fit">
-    <h2 class="heading whitespace-nowrap">
-      <em>AUTONOMOUS MISTAKES DETECTION IN MECHANICAL ENGINEER</em>
+  <div id="hero" class="hero-section-container">
+    <h2 class="heading">
+      <em>AUTONOMOUS MISTAKES DETECTION IN MECHANICAL ENGINEERING</em>
       <span class="title-line-2">THAT WORKS ON FACTORY NETWORKS</span>
     </h2>
     
@@ -111,10 +111,12 @@ function clicking_tile(tile) {
 <style scoped>
 /* ── Main Layout Containment ────────────────────────────────── */
 .hero-section-container {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 3rem auto 3rem auto;
     padding: 2rem 1.5rem;
     width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden; /* safety net in case any child still overshoots */
 }
 
 .hero-split-grid {
@@ -128,7 +130,7 @@ function clicking_tile(tile) {
 /* ── Typography Enhancements ────────────────────────────────── */
 .title-line-2 {
     font-size: clamp(1.2rem, 2vw, 1.8rem);
-    line-height: 1.7rem;
+    line-height: 1.3;
     font-weight: 400;  
     margin-top: 0.5rem;
     display: block;
@@ -157,8 +159,8 @@ function clicking_tile(tile) {
 }
 
 .heading {
-    line-height: 1.5rem;
-    font-size: clamp(1.8rem, 2vw, 4rem); 
+    line-height: 1.2;
+    font-size: clamp(1.8rem, 2vw, 4rem);
 }
 
 /* ── Tile System Layout Grid ─────────────────────────────────── */
@@ -273,17 +275,41 @@ function clicking_tile(tile) {
 }
 
 @media (max-width: 768px) {
+    .hero-section-container {
+        padding: 1.5rem 1.25rem;
+        margin: 2rem auto;
+    }
     .hw-right {
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
     }
     .hw-right::before, .hw-right::after {
         display: none; /* Hide baseline connectors on smaller grids */
+    }
+    /* Squares get very tall once stacked two-per-row on a narrow
+       viewport — relax the aspect ratio so six tiles don't turn
+       into a marathon of scrolling. */
+    .hw-tile {
+        aspect-ratio: 4 / 5;
+        padding: 1rem;
+    }
+    .title-line-2 {
+        line-height: 1.35;
     }
 }
 
 @media (max-width: 480px) {
     .hw-right {
         grid-template-columns: 1fr;
+    }
+    .hw-tile {
+        aspect-ratio: 16 / 9;
+    }
+    .hero-section-container {
+        padding: 1.25rem 1rem;
+    }
+    .hero-img-fluid {
+        max-width: 100%;
     }
 }
 
@@ -297,6 +323,8 @@ function clicking_tile(tile) {
     align-items: center;
     justify-content: center;
     z-index: 9999;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .video-wrapper {
@@ -315,15 +343,16 @@ function clicking_tile(tile) {
 
 .video-close {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 8px;
+    right: 8px;
     z-index: 10;
     background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
     border-radius: 50%;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
     cursor: pointer;
 }
 </style>

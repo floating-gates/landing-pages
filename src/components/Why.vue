@@ -66,17 +66,17 @@ import background from "../data/images/background_pic.webp";
             </li>
 
 
-            <li class="advantage-item" :style="{ backgroundColor: themeColor }">
-              <a :href="app_login_url"
-                 class="item-icon"
-                 :style="{ backgroundColor: themeColorWhite }">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" :stroke="themeColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
-                </svg>
+            <li class="advantage-item advantage-item-cta" :style="{ backgroundColor: themeColor }">
+              <a :href="app_login_url" class="cta-link">
+                <span class="item-icon" :style="{ backgroundColor: themeColorWhite }">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" :stroke="themeColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                  </svg>
+                </span>
+                <h3 class="item-title" :style="{ fontSize: '1.25rem', color: themeColorWhite }">
+                  All Stakeholders Adheres to your Design Rules.
+                </h3>
               </a>
-              <h3 class="item-title" :style="{ fontSize: '1.25rem', color: themeColorWhite }">
-                All Stakeholders Adheres to your Design Rules.
-              </h3>
             </li>
           </ul>
         </div>
@@ -100,27 +100,44 @@ import background from "../data/images/background_pic.webp";
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    overflow-x: hidden; /* safety net: prevents any child overflow from creating horiz scrollbar */
 }
 
 .smaller {
-    width: 100%;       /* Added */
+    width: 100%;
     max-width: 1700px;
-    margin: 0 auto;    /* Added - Centers the container bounds horizontally */
+    margin: 0 auto;
+    box-sizing: border-box; /* ensures padding is included in width calculation */
+    min-height: 100vh; /* fallback for browsers without dvh support */
+}
+
+/* 100vh on mobile browsers includes space behind the collapsing
+   address bar, which makes content look vertically off-center /
+   causes an awkward jump on scroll. dvh tracks the actual visible
+   viewport instead. */
+@supports (min-height: 100dvh) {
+  .smaller {
+    min-height: 100dvh;
+  }
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 650;
   color: v-bind(themeColor);
   position: relative;
-  display: inline-block;
+  display: block; /* changed from inline-block to allow natural wrapping */
   margin-bottom: 1rem;
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  line-height: 1.3;
+  word-spacing: 0.1em; /* gives dots subtle breathing room on wrapping */
 }
 
 .section-title .dot {
     color: v-bind(themeColorOrange);
-    shadow: 0 1px 2px rgba(0,0,0,0.2);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .subtitle {
@@ -128,6 +145,8 @@ import background from "../data/images/background_pic.webp";
   line-height: 1.6;
   margin: 0 auto;
   text-align: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 .space {
@@ -146,7 +165,6 @@ import background from "../data/images/background_pic.webp";
   padding: 1.5rem;
   margin-bottom: 1rem;
   background-color: white;
-  /* v-bind(themeColorWhite); */
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
@@ -155,6 +173,23 @@ import background from "../data/images/background_pic.webp";
 .advantage-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* The CTA card's whole surface should be tappable, not just the
+   small icon circle — matters even more on touch screens than on
+   desktop, where a mis-tap just means trying again with a mouse. */
+.advantage-item-cta {
+  padding: 0;
+}
+
+.cta-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
 }
 
 .item-icon {
@@ -182,6 +217,12 @@ import background from "../data/images/background_pic.webp";
   margin-bottom: 0.5rem;
 }
 
+.item-description {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+}
+
 .login-container {
   padding-left: 5%;
   padding-right: 5%;
@@ -196,21 +237,38 @@ import background from "../data/images/background_pic.webp";
   transform: scale(1.02);
 }
 
-/* Mobile Responsive */
-@media (max-width: 767.98px) {
-  .section-title {
-    font-size: 1.75rem;
+/* ══════════════════════════════════════════
+   RESPONSIVE — TABLET (768px and down)
+   ══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .untree {
+    padding: 0 1.25rem;
   }
 
-  .section-subtitle {
-    max-width: 90%;
-    margin-bottom: 2rem;
+  .section-title {
+    font-size: clamp(1.3rem, 5vw, 1.75rem);
   }
-    
+
+  .subtitle {
+    max-width: 100%;
+    font-size: 0.95rem;
+    padding: 0;
+  }
+
   .advantage-item {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
+    padding: 1rem;
+  }
+
+  .advantage-item-cta {
+    padding: 0;
+  }
+
+  .cta-link {
+    flex-direction: column;
+    align-items: flex-start;
     padding: 1rem;
   }
 
@@ -222,19 +280,52 @@ import background from "../data/images/background_pic.webp";
   .item-content {
     width: 100%;
   }
+}
 
-  /* Image below advantages */
-  .row.align-items-center {
-    flex-direction: column;
+/* ══════════════════════════════════════════
+   RESPONSIVE — MOBILE (480px and down)
+   ══════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .untree {
+    padding: 0 1rem;
   }
 
-  .col-lg-4, .col-lg-8 {
-    max-width: 100%;
-    flex: 0 0 100%;
+  .section-title {
+    font-size: clamp(1.2rem, 6vw, 1.5rem);
   }
 
-  .col-lg-8 {
-    margin-top: 1.5rem;
+  .subtitle {
+    font-size: 0.9rem;
+    padding: 0;
+  }
+
+  .advantage-item,
+  .advantage-item-cta {
+    padding: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .cta-link {
+    padding: 0.85rem;
+  }
+
+  .item-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.75rem;
+  }
+
+  .item-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .item-title {
+    font-size: 1rem;
+  }
+
+  .item-description {
+    font-size: 0.9rem;
   }
 }
 </style>

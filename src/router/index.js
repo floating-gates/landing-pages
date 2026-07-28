@@ -9,9 +9,10 @@ import Services          from '../ui_compositor/Services.vue'
 import Guide             from '../ui_compositor/Guide.vue'
 import FAQ               from '../ui_compositor/FAQ.vue'
 import CaseStudies       from '../ui_compositor/CaseStudies.vue'
+import Articles          from '../ui_compositor/Articles.vue'
 import Product           from '../ui_compositor/Product.vue'
 import Download          from '../ui_compositor/Download.vue'
-import Docs          from '../components/Docs.vue'
+import Docs              from '../components/Docs.vue'
 
 const routes = [
     { path: '/', component: LandingPage },
@@ -25,7 +26,7 @@ const routes = [
     { path: '/faq',   component: FAQ },
     { path: '/pricing', component: Pricing },
     { path: '/product', component: Product },
-    { path: '/articles', component: CaseStudies },
+    { path: '/articles', component: Articles },
     { path: '/download', component: Download },
     { path: '/docs', component: Docs },
 ]

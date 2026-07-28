@@ -21,9 +21,9 @@
 
 <template>
   <div class="untree" :style="{ backgroundImage: `url(${background})` }">
-      <div class="flex flex-row w-full p-12 items-center justify-center gap-14">
-        <div class="min-w-fit">
-          <h1 class="heading whitespace-nowrap" data-aos="fade-up" data-aos-delay="100">
+      <div class="hero-row flex flex-row w-full p-12 items-center justify-center gap-14">
+        <div class="hero-copy min-w-fit">
+          <h1 class="heading" data-aos="fade-up" data-aos-delay="100">
             Autonomous Design Flaws <br>
             <em>Discovery for Engineers,</em> <br>
             Suppliers and Customers.<br>
@@ -34,7 +34,7 @@
         </p>
         
         <ul class="hero-feature-list" data-aos="fade-up" data-aos-delay="160">
-          <li class="whitespace-nowrap">
+          <li>
             <span class="feat-check">
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                 <path d="M2 5.2L4.2 7.5L8 3" stroke="currentColor" stroke-width="1.8"
@@ -43,7 +43,7 @@
             </span>
             Spot errors and Standardize adherence to design playbook
           </li>
-          <li class="whitespace-nowrap">
+          <li>
             <span class="feat-check">
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                 <path d="M2 5.2L4.2 7.5L8 3" stroke="currentColor" stroke-width="1.8"
@@ -52,7 +52,7 @@
             </span>
             Guarantee manufacturability at every stage
           </li>
-          <li class="whitespace-nowrap">
+          <li>
             <span class="feat-check">
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                 <path d="M2 5.2L4.2 7.5L8 3" stroke="currentColor" stroke-width="1.8"
@@ -213,14 +213,14 @@
 <style scoped>
 .untree {
     width: 100%;
-    display: flex;          /* ADD */
-    align-items: stretch;   /* ADD */
-    min-height: 90vh;       /* ADD — gives the hero room to breathe */
-    margin: 3rem auto 0 auto;
+    display: flex;
+    align-items: stretch;
+    min-height: 90vh;
     padding: 1.5rem;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    box-sizing: border-box;
 }
 
 .btn-hover:hover {
@@ -229,16 +229,16 @@
 }
 
 .hero-list {
-    list-style: none; /* Removes default bullets */
+    list-style: none;
     padding: 0;
     margin: 0 0 1.5rem 0;
 }
 
 .hero-list li {
-    font-size: 1.25rem; /* Standard h4 size approx */
+    font-size: 1.25rem;
     font-weight: 500;
     line-height: 1.6;
-    color: v-bind(themeColor); /* Or your preferred text color */
+    color: v-bind(themeColor);
     position: relative;
     padding-left: 0;
     margin-bottom: 0.5rem;
@@ -344,6 +344,10 @@
     50% { opacity: 0.3; }
 }
 
+.hero-copy {
+    max-width: 560px;
+}
+
 .mfg-shell {
     width: 80%;
     min-height: 650px;
@@ -354,6 +358,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 }
 
 .mfg-grid-bg {
@@ -444,15 +449,9 @@
 
 .hero-video {
     width: 100%;
-    height: auto;   /* image dictates its own height */
+    height: auto;
     display: block;
 }
-/* .hero-video { */
-/*     width: 100%; */
-/*     height: 100%; */
-/*     object-fit: cover; */
-/*     display: block; */
-/* } */
 
 /* ── PANELS (Analysis tab) ── */
 
@@ -561,7 +560,7 @@
     left: 30%;
     top: 170px;
     z-index: 4;
-    opacity: 0; /* Need to fades */
+    opacity: 0;
     animation: 400ms ease-out 900ms forwards panelSlideUp;
     width: 260px;
 }
@@ -618,7 +617,6 @@
     right: 10px;
     top: 30px;
     z-index: 2;
-    opacity: 0; /* Need to fades */
     animation: 400ms ease-out 1150ms forwards panelSlideUp;
     width: 240px;
 }
@@ -693,7 +691,6 @@
     width: 18px; height: 18px;
     border-radius: 50%;
     background: v-bind(themeColor);
-    /* border: 0.5px solid v-bind(themeColorWhite); */
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
     color: v-bind(themeColorWhite);
@@ -738,7 +735,6 @@
     border: 3px solid v-bind(themeColor);
     border-radius: 10px;
     font-size: 0.95rem;
-    /* color: inherit; */
     text-decoration: none;
     transition: background 0.15s;
 }
@@ -776,12 +772,156 @@
 
 .stars { color: #BA7517; font-size: 12px; letter-spacing: 1px; }
 
-.hero-feature-list li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.95rem;
-    white-space: nowrap; /* Fallback for the tailwind utility */
-    flex-shrink: 0;      /* Prevents row squeeze */
+/* ══════════════════════════════════════════
+   RESPONSIVE — TABLET
+   ══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .hero-row {
+        gap: 2.5rem;
+    }
+    .mfg-shell {
+        width: 55%;
+        min-height: 600px;
+    }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — MOBILE
+   Stack copy above the mock UI, and switch the
+   mock UI itself from absolute-positioned
+   overlapping panels (a desktop-only layout)
+   to a simple stacked flow of cards.
+   ══════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .untree {
+        min-height: auto;
+        margin-top: 3rem;
+        padding: 1rem;
+        background-position: top center;
+    }
+
+    .hero-row {
+        flex-direction: column;
+        padding: 1.5rem 0.5rem !important;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    .hero-copy {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        text-align: center;
+    }
+
+    .heading {
+        font-size: clamp(1.5rem, 7vw, 2rem);
+    }
+
+    .heading br {
+        display: none;
+    }
+
+    .subheading {
+        max-width: 100%;
+        font-size: 0.95rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .subheading.w-\[90\%\] {
+        width: 100% !important;
+    }
+
+    .hero-feature-list {
+        align-items: flex-start;
+        text-align: left;
+        max-width: 340px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-feature-list li {
+        white-space: normal;
+        font-size: 0.9rem;
+    }
+
+    .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn-primary-cta,
+    .btn-ghost-cta {
+        justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* ── Mock UI shell ── */
+    .mfg-shell {
+        width: 100%;
+        max-width: 100%;
+        min-height: 0;
+    }
+
+    .mfg-top-bar {
+        padding: 14px 0 0;
+    }
+
+    .seg-control {
+        flex-direction: column;
+        width: calc(100% - 2.5rem);
+    }
+
+    .seg-btn {
+        width: 100%;
+        min-width: 0;
+        padding: 8px 12px;
+    }
+
+    /* Switch the analysis view from absolute overlap to a stacked column */
+    .mfg-body {
+        min-height: 0;
+    }
+
+    .video-body {
+        padding: 14px;
+    }
+
+    .mfg-body:not(.video-body) {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px 14px 20px;
+        position: static;
+    }
+
+    .panel-files,
+    .panel-progress,
+    .panel-context {
+        position: static;
+        width: 100%;
+        left: auto;
+        right: auto;
+        top: auto;
+        opacity: 1;
+        animation: 400ms ease-out forwards fadeIn;
+    }
+
+    .file-grid {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .heading {
+        font-size: 1.35rem;
+    }
+    .btn-primary-cta,
+    .btn-ghost-cta {
+        font-size: 0.88rem;
+        padding: 0.7rem 1rem;
+    }
 }
 </style>

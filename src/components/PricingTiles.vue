@@ -1,7 +1,7 @@
 <script setup>
 import { themeColor, themeColorOrange, themeColorWhite,
          display_price_list, app_login_url, contactInfo } from "../config.js";
-import { computed } from 'vue'; // Import computed
+import { ref, computed } from 'vue'; // Import ref and computed
 import background from "../data/images/background_pic.webp";
 import Header from '../components/Header.vue'
 import Refund from '../components/Refund.vue'
@@ -9,17 +9,44 @@ import Refund from '../components/Refund.vue'
 const heading = "Plans and Pricing";
 const subHeading = "Pricing refer to the hosting services for the online Model-Based Defintion (MBD) platform and its Factory. You always get to choose the final price to charge your customers to manufacture their devices. We only smooth the process.";
 
+// Active currency state
+const currentCurrency = ref('EUR');
+const currencies = ['EUR', 'USD'];
+
+const currencySymbols = {
+  EUR: '€',
+  USD: '$',
+};
+
+// Static exchange rates
+const exchangeRates = {
+  EUR: 1,
+  USD: 1.08, 
+};
+
+const formatPrice = (basePrice, planIndex) => {
+  if (!isNaN(basePrice) && basePrice !== "") {
+    const converted = (Number(basePrice) * exchangeRates[currentCurrency.value]).toFixed(0);
+    return `${currencySymbols[currentCurrency.value]}${converted}`;
+  }
+  
+  if (typeof basePrice === 'string' && basePrice.toLowerCase().includes('free')) {
+    return basePrice; 
+  }
+
+  return String(basePrice).replace('€', currencySymbols[currentCurrency.value]);
+};
+
 // Create a unified list for the loop
 const pricingPlans = computed(() => [
     {
         name: display_price_list[0].name,
         where: "Cloud Service",
-        price: display_price_list[0].price,
+        price: formatPrice(display_price_list[0].price, 0),
         suffix: "",
         features: [
             "Online Model-Based Defintion platform",
             "Software-Defined Factory",
-            // "Brand Customization",
             "Max 50MB of Project Storage",
             "Non private 3D models"  ],
         buttonText: "Get Started",
@@ -27,9 +54,9 @@ const pricingPlans = computed(() => [
     },
     {
         name: display_price_list[1].name,
-        price: display_price_list[1].price,
+        price: formatPrice(display_price_list[1].price, 1),
         where: "Cloud Service",
-        suffix: "€/Month - incl. VAT",
+        suffix: "/Month - incl. VAT",
         features: ["Custom platform URL",
                    "Conversation on Project",
                    "Parametric CAD of your best product",
@@ -39,12 +66,11 @@ const pricingPlans = computed(() => [
     },
     {
         name: display_price_list[2].name,
-        price: display_price_list[2].price,
+        price: formatPrice(display_price_list[2].price, 2),
         where: "Cloud Service",
         suffix: "",
         features: ["All 'Basic' features",
                    "Manufacturing Feasability Agent",
-                   // "Manufacturing Simulations",
                    "Automated Quotations",
                    "Presence in Manufacturing World Map"],
         buttonText: "Get Started",
@@ -52,7 +78,7 @@ const pricingPlans = computed(() => [
     },
     {
         name: display_price_list[3].name,
-        price: display_price_list[3].price,
+        price: formatPrice(display_price_list[3].price, 3),
         where: "Deploy in Factory",
         suffix: "",
         features: [
@@ -61,8 +87,6 @@ const pricingPlans = computed(() => [
             "One time purchase",
             "Unlimited Numbers of PC covered",
             "Factory-Wide Manufacturing Agent",
-            // "Syntetization of Manufacturing Knowledge"
-            
         ],
         buttonText: "Speak to Us",
         buttonUrl: "mailto:" + contactInfo.email,
@@ -72,15 +96,38 @@ const pricingPlans = computed(() => [
 
 
 <template>
-<div class="untree my-10"  :style="{ backgroundImage: `url(${background})` }">  
-  <div class="container m-auto p-4">
-    <div class="flex flex-col items-center justify-center text-center my-16">
+<!-- Added pb-24 here to create the spacing at the bottom before the footer appears -->
+<div class="untree pt-10 pb-24" :style="{ backgroundImage: `url(${background})` }">  
+  <!-- Centered container with mx-auto -->
+  <div class="container mx-auto p-4">
+    
+    <!-- Header Block (Centered) -->
+    <div class="flex flex-col items-center justify-center text-center mt-16 mb-8">
       <div class="w-full lg:w-8/12">
         <h2 class="heading">{{ heading }}</h2>
         <p class="text-gray-500 text-lg leading-relaxed">{{ subHeading }}</p>
       </div>
     </div>
     
+    <!-- Currency Toggle Block (Aligned to the Right) -->
+    <div class="flex justify-end mb-8">
+      <div class="inline-flex bg-gray-100 p-1 rounded-xl shadow-inner border border-gray-200">
+        <button 
+          v-for="currency in currencies" 
+          :key="currency"
+          @click="currentCurrency = currency"
+          class="px-5 py-2 text-sm font-medium rounded-lg transition-all duration-200 focus:outline-none"
+          :class="currentCurrency === currency 
+            ? 'bg-white shadow-sm text-gray-900 font-bold' 
+            : 'text-gray-500 hover:text-gray-900'"
+          :style="currentCurrency === currency ? { color: themeColor } : {}"
+        >
+          {{ currency }}
+        </button>
+      </div>
+    </div>
+    
+    <!-- Pricing Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
       <div 
         v-for="(plan, index) in pricingPlans" 
@@ -152,8 +199,6 @@ const pricingPlans = computed(() => [
     background-repeat: no-repeat;
 }
 
-
-/* Added styling for the location-tag */
 .location-tag {
     text-align: center;
     font-size: 1rem;
@@ -173,17 +218,16 @@ const pricingPlans = computed(() => [
 }
 
 .price sup {
-    font-size: 0.7rem; /* smaller superscript for €/Month */
+    font-size: 0.7rem;
 }
 
 .subtitle {
     margin-bottom: 4rem;
 }
 
-
 .ul-check.primary li {
     position: relative;
-    padding-left: 1.5rem; /* space for tick */
+    padding-left: 1.5rem;
     margin-bottom: 0.75rem;
     font-weight: 500;
     color: v-bind(themeColor)
@@ -195,31 +239,30 @@ ul li::before {
 
 .pricing {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 5rem; /* keep it smooth */
+    border-radius: 5rem;
 }
 
 .pricing-card {
-    border-radius: 2rem; /* keep it smooth */
-    
+    border-radius: 2rem;
 }
 
 .title {
     display: flex;
-    justify-content: center; /* horizontally center content */
-    align-items: center;     /* vertically center if multiple lines */
+    justify-content: center;
+    align-items: center;
     font-size: 2.8rem;
     font-weight: 600;
     color: v-bind(themeColor);
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     margin-top: 0.7rem;
-    text-align: center;      /* ensures multi-line text stays centered */
+    text-align: center;
 }
 
 .body {
     background: linear-gradient(
         145deg, 
         v-bind(themeColorWhite) 0%, 
-        #e3e3e340 100% /* Slightly darker shade of your theme color */
+        #e3e3e340 100%
     );
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
 }

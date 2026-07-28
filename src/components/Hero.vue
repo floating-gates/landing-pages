@@ -108,6 +108,10 @@ onBeforeUnmount(() => {
   <div class="flex flex-row w-full p-12 items-center justify-center min-h-screen gap-12">
  
     <div class="min-w-fit">
+      <div class="context-pill" data-aos="fade-up" data-aos-delay="50">
+        <span class="pill-dot mr-3"></span>
+        <span class="pill-text">It's a Software for Spotting errors in CAD and GD&T</span>
+      </div>
       <h1 class="heading"
           data-aos="fade-up"
           data-aos-delay="100">
@@ -270,5 +274,35 @@ img {
 .chart-wrap > :first-child {
     flex: 1; 
     height: 100%;
+}
+
+/* Context Pill Styling */
+.context-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 16px;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 1.4rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.pill-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: v-bind(themeColorOrange);
+    box-shadow: 0 0 8px v-bind(themeColorOrange);
+}
+
+.pill-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    color: v-bind(themeColor);
 }
 </style>

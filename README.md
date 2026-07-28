@@ -34,16 +34,37 @@ It offers manufacturers a centralized digital hub to manage and attract clients,
 
 It is especially beneficial for companies with **well-established production methods** who struggle to fully utilize their machinery due to **manual or inefficient order handling**.
 
-## Building the Landing Page
+## Building and Deploying
 
-You can build for development or production using the following:
+You can build and deploy the landing page for development, staging, or production using the following commands:
 
-### Development Build
+### Build Environments
 
-```shell
-npm run build-test         # Reads configuration from .env.development.local
-```
+Configure your environment variables inside the appropriate `.env.[mode].local` files prior to building.
 
 ```shell
-npm run build-production       # Reads configuration from .env.production.local
+# Local/Development Build (Reads .env.development.local)
+npm run build-local
+
+# Staging Build (Reads .env.staging.local)
+npm run build-staging
+
+# Production Build (Reads .env.production.local)
+npm run build-production
 ```
+
+### Deployment
+
+Deployments utilize the configured targets inside the `Makefile` and automate file transfer via `rsync`.
+
+```shell
+# Deploy to Local test server
+npm run deploy-local
+
+# Deploy to Staging environment (includes pre-deploy remote backup)
+npm run deploy-staging
+
+# Deploy to Production environment (requires confirmation, includes backup)
+npm run deploy-production
+```
+

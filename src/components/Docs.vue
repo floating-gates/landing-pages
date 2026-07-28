@@ -1,20 +1,21 @@
 <script setup>
 import { ref } from 'vue';
-import { themeColor, contactInfo } from "../config.js";
-import Header from "./Header.vue"
+import Header from "./Header.vue";
+import DocTemplate from "./DocTemplate.vue";
 
-// 1. Import your documentation sub-components
-import Intro from "./Docs/Intro.vue"
-import Setup from "./Docs/Setup.vue" // Example second component
+import { Intro } from "../data/docs/intro.js"
 
-// 2. Map your navigation items to their imported components
+const lastUpdated = 'July 20, 2026';
+
+// Set default active tab key
 const currentTab = ref('Intro');
+
 const tabs = {
   Intro,
-  Setup
+  // Setup,
+  // QuickStart,
 };
 
-const lastUpdated = 'December 03, 2025';
 </script>
 
 <template>
@@ -22,22 +23,20 @@ const lastUpdated = 'December 03, 2025';
 <div class="terms-container">
   <div class="header-section">
     <div class="company-info">
-      <!-- You can put a dynamic title here if you want -->
       <h1 class="main-title">Documentation</h1>
     </div>
   </div>
   
   <div class="content-wrapper">
     <aside class="table-of-contents">
-      <h3>Docs</h3>
+      <h3>Chapters</h3>
       
-      <!-- 3. Navigation Links -->
+      <!-- Navigation Links -->
       <ul>
-        <li v-for="(component, name) in tabs" :key="name">
-          <a 
-            @click="currentTab = name"
-            :style="{ color: currentTab === name ? themeColor : '#333', fontWeight: currentTab === name ? '700' : '400' }"
-          >
+        <li v-for="(tab, name) in tabs" :key="name">
+          <a @click="currentTab = name"
+             :style="{ color: currentTab === name ? themeColor : '#333', fontWeight: currentTab === name ? '700' : '400' }"
+             >
             {{ name }}
           </a>
         </li>
@@ -47,8 +46,7 @@ const lastUpdated = 'December 03, 2025';
     </aside>
     
     <main class="terms-content">
-      <!-- 4. Dynamic Component Switcher -->
-      <component :is="tabs[currentTab]" />
+    <DocTemplate :is="tabs[currentTab]" />
     </main>
   </div>
 </div>

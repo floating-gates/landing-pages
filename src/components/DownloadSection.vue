@@ -23,10 +23,10 @@ const selectedPlatform = ref(null);
 const isSubmitting = ref(false);
 const errorMessage = ref("");
 
-const version = "0.1";
-const releaseDate = "May 2025";
+const version = "1.0.0";
+const releaseDate = "July 2026";
 
-const win_installer = `good2manufactured-0.1-win-x64.exe`
+const win_installer = "good2manufactured.exe";
 const platforms = [
     {
         id: "windows",

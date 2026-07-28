@@ -5,6 +5,15 @@ import short_logo from "../data/images/logo_short_black.webp"
 
 const isMenuOpen = ref(false);
 const isDropdownMenuOpen = ref(false);
+
+function toggleDropdown() {
+  isDropdownMenuOpen.value = !isDropdownMenuOpen.value;
+}
+
+function closeMenu() {
+  isMenuOpen.value = false;
+  isDropdownMenuOpen.value = false;
+}
 </script>
 
 <template>
@@ -12,44 +21,62 @@ const isDropdownMenuOpen = ref(false);
     <div class="site-navigation">
       <div class="nav-wrapper">
         <!-- Logo -->
-        <a href="/" class="logo mx-7">
+        <a href="/" class="logo mx-7" @click="closeMenu">
           <img :src="short_logo"
                alt="Floating Gates"
                class="logo-img" />
         </a>
         
         <!-- Hamburger button -->
-        <button class="hamburger" @click="isMenuOpen = !isMenuOpen">
+        <button
+          class="hamburger"
+          @click="isMenuOpen = !isMenuOpen"
+          :aria-expanded="isMenuOpen"
+          aria-label="Toggle navigation menu" >
           <span :class="{ 'open': isMenuOpen }"></span>
           <span :class="{ 'open': isMenuOpen }"></span>
           <span :class="{ 'open': isMenuOpen }"></span>
         </button>
+
+        <!-- Backdrop (mobile only, closes menu on outside tap) -->
+        <div
+          v-if="isMenuOpen"
+          class="menu-backdrop"
+          @click="closeMenu" ></div>
         
         <!-- Menus -->
         <div class="menu-container" :class="{ 'mobile-open': isMenuOpen }">
           
           <!-- LANDING PAGE HEADER -->
             <ul class="site-menu main-menu">
-              <li><a href="/" class="nav-link">Home</a></li>
-              <li><a href="/product" class="pages-link">How does it Work</a></li>
-              <li><a href="/pricing" class="pages-link">Pricing</a></li>
-              <li><a href="/mission" class="pages-link">Mission</a></li>
+              <li><a href="/" class="nav-link" @click="closeMenu">Home</a></li>
+              <li><a href="/product" class="pages-link" @click="closeMenu">How does it Work</a></li>
+              <li><a href="/pricing" class="pages-link" @click="closeMenu">Pricing</a></li>
+              <li><a href="/mission" class="pages-link" @click="closeMenu">Mission</a></li>
               <!-- <li><a href="/use-case" class="pages-link">Use Cases</a></li> -->
-              <li><a href="/download" class="pages-link">Download</a></li>
-              <li><a href="/faq" class="pages-link">FAQ</a></li>
+              <li><a href="/download" class="pages-link" @click="closeMenu">Download</a></li>
+              <li><a href="/faq" class="pages-link" @click="closeMenu">FAQ</a></li>
               
               <!-- DROPDOWN MENU -->
               <li class="dropdown"
                   @mouseenter="isDropdownMenuOpen = true"
                   @mouseleave="isDropdownMenuOpen = false">
-                <a class="nav-link dropdown-toggle">
+                <a
+                  class="nav-link dropdown-toggle"
+                  @click.prevent="toggleDropdown"
+                  :aria-expanded="isDropdownMenuOpen" >
                   Resources
+                  <svg class="dropdown-caret" :class="{ open: isDropdownMenuOpen }"
+                       width="10" height="10" viewBox="0 0 10 10" fill="none">
+                    <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
                 </a>
                 
                 <ul class="dropdown-menu" v-show="isDropdownMenuOpen">
-                  <li><a href="/articles" class="nav-link">Articles</a></li>
-                  <li><a :href="git_book_url" class="nav-link">Documentation</a></li>
-                  <li><a :href="survey_link" class="nav-link">Survey</a></li>
+                  <li><a href="/articles" class="nav-link" @click="closeMenu">Articles</a></li>
+                  <li><a :href="git_book_url" class="nav-link" @click="closeMenu">Documentation</a></li>
+                  <li><a :href="survey_link" class="nav-link" @click="closeMenu">Survey</a></li>
                 </ul>
               </li>
             </ul>
@@ -58,7 +85,8 @@ const isDropdownMenuOpen = ref(false);
                 <li class="cta-primary">
                   <a
                     :href="app_login_url"
-                    :style="{ color: themeColor }" >
+                    :style="{ color: themeColor }"
+                    @click="closeMenu" >
                     Factory Hub
                     </a>
                 </li>
@@ -89,6 +117,7 @@ const isDropdownMenuOpen = ref(false);
     backdrop-filter: blur(8px); /* Trendy subtle glass effect */
     transition: all 0.3s ease;
     border-color: v-bind(themeColor);
+    z-index: 1000;
   }
 }
 
@@ -96,10 +125,13 @@ const isDropdownMenuOpen = ref(false);
 .hamburger {
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 4px;
     background: none;
     border: none;
     cursor: pointer;
+    z-index: 1002;
 }
 
 .hamburger span {
@@ -124,6 +156,22 @@ const isDropdownMenuOpen = ref(false);
 .dropdown {
     position: relative;
     cursor: pointer;
+}
+
+.dropdown-toggle {
+    display: inline-flex !important; /* Force flex behavior to override any global 'display: block' rules */
+    align-items: center;
+    justify-content: flex-start;    /* Keeps text and caret close on desktop */
+    gap: 6px;                       /* Adds a nice clean space between the text and arrow */
+}
+
+.dropdown-caret {
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.dropdown-caret.open {
+    transform: rotate(180deg);
 }
 
 /* Dropdown menu */
@@ -156,25 +204,81 @@ const isDropdownMenuOpen = ref(false);
     background: #f5f5f5;
 }
 
+.menu-backdrop {
+    display: none;
+}
+
 
 @media (max-width: 768px) {
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+  }
+
+  .nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1rem;
+  }
+
+  .logo {
+    margin: 0 !important;
+  }
+
+  .logo-img {
+    height: 30px;
+    width: auto;
+    display: block;
+  }
+
+  .hamburger {
+    width: 44px;
+    height: 44px;
+  }
+
+  .menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 999;
+  }
+
     .menu-container {
-        position: absolute;
-        top: 70px;
+        position: fixed;
+        top: 62px;
         left: 0;
         right: 0;
         background: white;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         flex-direction: column;
         align-items: stretch;
-        padding: 1rem;
+        padding: 0 1rem;
         gap: 1rem;
-        display: none;
+        max-height: 0;
+        overflow-y: auto;
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition: max-height 0.3s ease, opacity 0.25s ease, transform 0.25s ease, padding 0.25s ease;
         z-index: 1000;
   }
 
   .menu-container.mobile-open {
     display: flex;
+    max-height: calc(100vh - 62px);
+    opacity: 1;
+    transform: translateY(0);
+    padding: 1.25rem 1rem;
+    pointer-events: auto;
   }
 
   .hamburger {
@@ -188,20 +292,49 @@ const isDropdownMenuOpen = ref(false);
     gap: 0.75rem;
   }
 
+  .main-menu li a {
+    display: block;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .button-group {
+    margin: 0 !important;
+    padding-bottom: 0.5rem;
+  }
+
+  .button-menu {
+    width: 100%;
+  }
+
+  .cta-primary a {
+    display: block;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid v-bind(themeColor);
+    border-radius: 10px;
+    font-weight: 600;
+  }
+
   /* Adjust the dropdown container for mobile */
   .dropdown-menu {
     position: static;    /* Removes the floating/absolute behavior */
     box-shadow: none;    /* Removes the shadow for a cleaner look on mobile */
     width: 100%;
-    padding: 0;
+    padding: 0 0 0 0.75rem;
     background: transparent; 
     display: flex;
-    align-items: center; /* Centers items horizontally in flex column */
+    align-items: flex-start;
   }
 
   .dropdown-menu li {
     width: 100%;
-    text-align: center;
+    text-align: left;
+  }
+
+  .dropdown-toggle {
+    justify-content: space-between;
+    width: 100%;
   }
 }
 </style>
