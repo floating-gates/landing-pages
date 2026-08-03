@@ -15,6 +15,7 @@ const youtubeVideoUrl = 'https://www.youtube.com/embed/-og2OKAT_UE?autoplay=1'
 const git_book_url = "https://floating-gates.gitbook.io/gates-docs"
 const survey_link  = "https://forms.gle/JYHXxX2anVp14X6a6"
 const create_customer_api_endpoint = api_url + '/user/create_customer';
+const good2manufactured_url = "https://floating-gates-pub.nbg1.your-objectstorage.com/FetchableSoftware/good2manufactured-win-1.0.0.exe"
 
 const display_price_list = [
     {name: 'Basic'     , price: 'Free' },
@@ -37,5 +38,5 @@ export {
     themeColor, themeColorOrange, themeColorWhite, themeColorLille,
     themeColorGold, survey_link, contactInfo, display_price_list,
     git_book_url, demo_url, app_login_url, partner_app_login_url,
-    youtubeVideoUrl, create_customer_api_endpoint
+    youtubeVideoUrl, create_customer_api_endpoint, good2manufactured_url
 };

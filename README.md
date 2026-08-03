@@ -53,6 +53,15 @@ npm run build-staging
 npm run build-production
 ```
 
+An example of ```.env.development.local```
+
+``` shell
+VITE_DEMO_URL=http://demo.localhost
+VITE_APP_URL=http://app.localhost/login
+VITE_PARTNER_APP_URL=http://app.localhost/referral-login
+VITE_API_URL=http://app.localhost/api
+```
+
 ### Deployment
 
 Deployments utilize the configured targets inside the `Makefile` and automate file transfer via `rsync`.

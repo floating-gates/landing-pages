@@ -4,6 +4,7 @@ import background from "../data/images/background_pic.webp";
 import add_lib from "../data/images/add_lib.png";
 import output_image from "../data/images/output.png";
 import short_logo from "../data/images/logo_short_black.webp"
+import { good2manufactured_url } from "../config.js"
 
 // Added create_customer_api_endpoint import
 import { 
@@ -23,7 +24,7 @@ const selectedPlatform = ref(null);
 const isSubmitting = ref(false);
 const errorMessage = ref("");
 
-const version = "1.0.0";
+const manual_version = "1.0.0";
 const releaseDate = "July 2026";
 
 const win_installer = "good2manufactured.exe";
@@ -33,10 +34,15 @@ const platforms = [
         label: "Windows",
         subtitle: "x64",
         filename: win_installer,
-        downloadUrl: `/releases/${win_installer}`,
+        downloadUrl: good2manufactured_url,
         icon: "windows",
     },
 ];
+
+const dynamicVersion = computed(() => {
+  const match = good2manufactured_url.match(/-(\d+\.\d+\.\d+)\.exe$/);
+  return match ? match[1] : manual_version; // Fallback to default if match fails
+});
 
 const steps = [
     { n: "01", label: "Download the Agent", desc: "Pick your platform and run the installer. To make available your computer as endpoint", img: null },
@@ -110,43 +116,43 @@ const submitEmailAndDownload = async () => {
 <div class="faq-section"
      :style="{ backgroundImage: `url(${background})` }">
   <div class="container m-auto p-4">
-      <div class="dl-hero" data-aos="fade-up" data-aos-delay="80">
-        <h1 class="heading">
-          Download 
-          <em :style="{ color: themeColorOrange }">good2manufactured</em>
-        </h1>
-        
-        <p class="dl-subheading">
-          The agent that connects your computer with your Gates server. It runs silently on your machine,
-          watches your file system, and routes every STEP file through the DFM pipeline before it reaches production.
-        </p>
-      </div>
+    <div class="dl-hero" data-aos="fade-up" data-aos-delay="80">
+      <h1 class="heading">
+        Download 
+        <em :style="{ color: themeColorOrange }">good2manufactured</em>
+      </h1>
       
-      <div class="dl-cards" data-aos="fade-up" data-aos-delay="140">
-        <div
-          v-for="p in platforms"
-          :key="p.id"
-          class="dl-card"
-          :class="{ 'dl-card--hovered': hoveredPlatform === p.id }"
-          @click="handleDownloadClick(p)"
-          @mouseenter="hoveredPlatform = p.id"
-          @mouseleave="hoveredPlatform = null"  >
-          <div class="dl-card__icon-wrap">
-            <svg v-if="p.icon === 'windows'" class="dl-card__os-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.799"/>
-            </svg>
-            <svg v-else class="dl-card__os-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.54 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/>
-            </svg>
-          </div>
-          
-          <div class="dl-card__info">
-            <span class="dl-card__label">{{ p.label }}</span>
-            <span class="dl-card__subtitle">{{ p.subtitle }}</span>
-            <span class="dl-card__filename">{{ p.filename }}</span>
-          </div>
-          
-          <div class="dl-card__right">
+      <p class="dl-subheading">
+        The agent that connects your computer with your Gates server. It runs silently on your machine,
+        watches your file system, and routes every STEP file through the DFM pipeline before it reaches production.
+      </p>
+    </div>
+    
+    <div class="dl-cards" data-aos="fade-up" data-aos-delay="140">
+      <div
+        v-for="p in platforms"
+        :key="p.id"
+        class="dl-card"
+        :class="{ 'dl-card--hovered': hoveredPlatform === p.id }"
+        @click="handleDownloadClick(p)"
+        @mouseenter="hoveredPlatform = p.id"
+        @mouseleave="hoveredPlatform = null"  >
+        <div class="dl-card__icon-wrap">
+          <svg v-if="p.icon === 'windows'" class="dl-card__os-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.799"/>
+          </svg>
+          <svg v-else class="dl-card__os-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.54 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/>
+          </svg>
+        </div>
+        
+        <div class="dl-card__info">
+          <span class="dl-card__label">{{ p.label }}</span>
+          <span class="dl-card__subtitle">{{ p.subtitle }} - v{{ dynamicVersion }}</span>
+          <span class="dl-card__filename">{{ p.filename }}</span>
+        </div>
+        
+        <div class="dl-card__right">
             <div class="dl-card__btn">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.2" width="16" height="16">
                 <path stroke-linecap="round" stroke-linejoin="round"

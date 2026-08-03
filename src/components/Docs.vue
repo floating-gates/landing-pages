@@ -1,42 +1,67 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import Header from "./Header.vue";
 import DocTemplate from "./DocTemplate.vue";
 
-import { Intro } from "../data/docs/intro.js"
+import { Intro } from "../data/docs/intro.js";
+import { SetUp } from "../data/docs/setup.js";
 
 const lastUpdated = 'July 20, 2026';
 
-// Set default active tab key
-const currentTab = ref('Intro');
-
+// Add here new objects to add Chapters into the documentation
 const tabs = {
   Intro,
-  // Setup,
-  // QuickStart,
+  SetUp,
 };
 
+const currentTab = ref('Intro');
+
+// Sanitize and load tab from URL Hash
+const getTabFromHash = () => {
+  const hash = window.location.hash.replace('#', '');
+  // Case-insensitive matching to find the matching key in `tabs`
+  const matchedKey = Object.keys(tabs).find(
+    (key) => key.toLowerCase() === hash.toLowerCase()
+  );
+  if (matchedKey) {
+    currentTab.value = matchedKey;
+  }
+};
+
+// Change active tab and update the URL hash
+const selectTab = (name) => {
+  currentTab.value = name;
+  window.location.hash = name.toLowerCase();
+};
+
+// Handle back/forward browser navigation
+const handlePopState = () => {
+  getTabFromHash();
+};
+
+onMounted(() => {
+  getTabFromHash();
+  window.addEventListener('popstate', handlePopState);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('popstate', handlePopState);
+});
 </script>
 
 <template>
 <Header :context="'landing-page'" />
-<div class="terms-container">
-  <div class="header-section">
-    <div class="company-info">
-      <h1 class="main-title">Documentation</h1>
-    </div>
-  </div>
-  
-  <div class="content-wrapper">
+<div class="terms-container"> 
+  <div class="content-wrapper mt-4">
     <aside class="table-of-contents">
       <h3>Chapters</h3>
       
       <!-- Navigation Links -->
       <ul>
         <li v-for="(tab, name) in tabs" :key="name">
-          <a @click="currentTab = name"
-             :style="{ color: currentTab === name ? themeColor : '#333', fontWeight: currentTab === name ? '700' : '400' }"
-             >
+          <a :href="`#${name.toLowerCase()}`"
+             @click.prevent="selectTab(name)"
+             :style="{ color: currentTab === name ? themeColor : '#333', fontWeight: currentTab === name ? '700' : '400' }">
             {{ name }}
           </a>
         </li>
@@ -46,7 +71,7 @@ const tabs = {
     </aside>
     
     <main class="terms-content">
-    <DocTemplate :is="tabs[currentTab]" />
+      <DocTemplate :is="tabs[currentTab]" />
     </main>
   </div>
 </div>
