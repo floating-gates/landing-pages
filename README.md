@@ -34,6 +34,17 @@ It offers manufacturers a centralized digital hub to manage and attract clients,
 
 It is especially beneficial for companies with **well-established production methods** who struggle to fully utilize their machinery due to **manual or inefficient order handling**.
 
+## Documentation
+
+Product documentation is served at `/docs`. Content lives in
+[`src/data/docs/`](src/data/docs/), one file per chapter, with
+[`src/data/docs/index.js`](src/data/docs/index.js) declaring the order and
+nesting. See [`src/data/docs/README.md`](src/data/docs/README.md) for the block
+types and how to add a chapter.
+
+Screenshots are not in the repo yet. Run `npm run docs:images` once to pull them
+from the GitBook space into `public/docs-images/`.
+
 ## Building and Deploying
 
 You can build and deploy the landing page for development, staging, or production using the following commands:

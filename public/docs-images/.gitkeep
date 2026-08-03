@@ -1,0 +1,2 @@
+Screenshots for the /docs pages land here. Run `npm run docs:images` to
+populate this folder from the GitBook space, then commit the results.
