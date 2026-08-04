@@ -1,32 +1,31 @@
-import { docsContents } from "../data/docs/index.js";
+import { docsContents } from '../data/docs/index.js';
 
-/**
- * Renders the documentation blocks declared in `src/data/docs/*.js`.
- *
- * Chapter content is structured data, not prose strings: each block names its
- * own type, so the data files stay readable and the markup stays consistent.
- * Only the *inline* level of a text block is Markdown-flavoured, covering the
- * formatting that actually shows up mid-sentence.
- *
- * Block types:
- *   { type: 'heading',  level: 2|3|4, text }
- *   { type: 'text',     text }
- *   { type: 'list',     ordered?, items: [ string | { text, items, ordered? } ] }
- *   { type: 'code',     code, language? }
- *   { type: 'figure',   img, caption? }
- *   { type: 'quote',    text }
- *   { type: 'table',    headers: [], rows: [[]], align?: [] }
- *   { type: 'divider' }
- *
- * Inline formatting inside `text`, list items, quotes, captions and table
- * cells: **bold**, *italic*, `code`, [links](url), ![images](src), ~~strike~~.
- *
- * Everything is HTML-escaped and `javascript:` URLs are dropped, so the output
- * is safe to hand to `v-html`.
- */
+const ESCAPE_MAP = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+};
 
 function escapeHtml(value) {
-    return String(value)
+  return String(value).replace(/[&<>"']/g, (char) => ESCAPE_MAP[char]);
+}
+
+const UNESCAPE_MAP = {
+  '&lt;': '<',
+  '&gt;': '>',
+  '&quot;': '"',
+  '&#39;': "'",
+  '&amp;': '&',
+};
+
+// Reverses escapeHtml. Ampersand last so a real "&amp;" is not mis-decoded.
+function unescapeHtml(value) {
+  return String(value).replace(
+    /&lt;|&gt;|&quot;|&#39;|&amp;/g,
+    (entity) => UNESCAPE_MAP[entity],
+  );
 }
 
 export function slugify(text) {
@@ -37,33 +36,16 @@ export function slugify(text) {
     .replace(/\s+/g, '-');
 }
 
-/**
- * Build a URL resolver. `assets` maps bundler paths to final URLs, e.g. the
- * result of `import.meta.glob('../data/images/*', { query: '?url', ... })`, so
- * a chapter can reference `add_lib.png` and still get a hashed, cache-busted
- * URL in the production build. Absolute paths are passed through untouched.
- */
-function makeResolver(assets) {
-  const entries = Object.entries(assets || {});
-  return (url) => {
-    const raw = String(url).trim();
-    if (/^javascript:/i.test(raw)) return '#';
-    if (/^(https?:|mailto:|tel:|data:image\/|\/|#)/i.test(raw)) return raw;
-
-    const key = raw.replace(/^\.?\//, '');
-    for (const [path, resolved] of entries) {
-      if (path === key || path.endsWith(`/${key}`)) return resolved;
-    }
-    return raw;
-  };
+export function resolveUrl(url) {
+  const raw = String(url ?? '').trim();
+  return /^javascript:/i.test(raw) ? '#' : raw;
 }
 
-/** Render the Markdown-flavoured formatting allowed inside a single line. */
-export function renderInline(text, resolveUrl = makeResolver()) {
+export function renderInline(text) {
   const codeSpans = [];
+  let out = escapeHtml(text ?? '');
 
-  // Stash inline code so its contents are not treated as markup.
-  let out = text.replace(/`([^`\n]+)`/g, (_, code) => {
+  out = out.replace(/`([^`\n]+)`/g, (_, code) => {
     codeSpans.push(code);
     return ` CODE${codeSpans.length - 1} `;
   });
@@ -75,8 +57,7 @@ export function renderInline(text, resolveUrl = makeResolver()) {
 
   out = out.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => {
     const url = resolveUrl(href);
-    const external = /^https?:/i.test(url);
-    const attrs = external ? ' target="_blank" rel="noopener noreferrer"' : '';
+    const attrs = /^https?:/i.test(url) ? ' target="_blank" rel="noopener noreferrer"' : '';
     return `<a href="${url}"${attrs}>${label}</a>`;
   });
 
@@ -86,36 +67,34 @@ export function renderInline(text, resolveUrl = makeResolver()) {
   out = out.replace(/(^|[^\w_])_([^_\n]+)_(?![\w_])/g, '$1<em>$2</em>');
   out = out.replace(/~~([^~]+)~~/g, '<del>$1</del>');
 
-  out = out.replace(/ CODE(\d+) /g, (_, index) => `<code>${codeSpans[index]}</code>`);
-  return out;
+  return out.replace(/ CODE(\d+) /g, (_, index) => `<code>${codeSpans[index]}</code>`);
 }
 
-function renderList(block, resolveUrl) {
+function renderList(block) {
   const tag = block.ordered ? 'ol' : 'ul';
   const items = (block.items || []).map((item) => {
-    // A plain string is a leaf; an object may carry a nested list.
-    if (typeof item === 'string') return `<li>${renderInline(item, resolveUrl)}</li>`;
+    if (typeof item === 'string') return `<li>${renderInline(item)}</li>`;
     const nested = item.items?.length
-      ? renderList({ ordered: item.ordered, items: item.items }, resolveUrl)
+      ? renderList({ ordered: item.ordered, items: item.items })
       : '';
-    return `<li>${renderInline(item.text, resolveUrl)}${nested}</li>`;
+    return `<li>${renderInline(item.text)}${nested}</li>`;
   });
   return `<${tag}>${items.join('')}</${tag}>`;
 }
 
-function renderTable(block, resolveUrl) {
+function renderTable(block) {
   const align = block.align || [];
   const styleFor = (index) => (align[index] ? ` style="text-align:${align[index]}"` : '');
 
   const head = (block.headers || [])
-    .map((cell, index) => `<th${styleFor(index)}>${renderInline(cell, resolveUrl)}</th>`)
+    .map((cell, index) => `<th${styleFor(index)}>${renderInline(cell)}</th>`)
     .join('');
 
   const body = (block.rows || [])
     .map(
       (row) =>
         `<tr>${row
-          .map((cell, index) => `<td${styleFor(index)}>${renderInline(cell, resolveUrl)}</td>`)
+          .map((cell, index) => `<td${styleFor(index)}>${renderInline(cell)}</td>`)
           .join('')}</tr>`,
     )
     .join('');
@@ -123,19 +102,19 @@ function renderTable(block, resolveUrl) {
   return `<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>`;
 }
 
-function renderBlock(block, resolveUrl) {
+function renderBlock(block) {
   switch (block?.type) {
     case 'heading': {
       const level = Math.min(Math.max(Number(block.level) || 2, 2), 6);
       const text = String(block.text ?? '');
-      return `<h${level} id="${slugify(text)}">${renderInline(text, resolveUrl)}</h${level}>`;
+      return `<h${level} id="${slugify(text)}">${renderInline(text)}</h${level}>`;
     }
 
     case 'text':
-      return `<p>${renderInline(block.text, resolveUrl)}</p>`;
+      return `<p>${renderInline(block.text)}</p>`;
 
     case 'list':
-      return renderList(block, resolveUrl);
+      return renderList(block);
 
     case 'code': {
       const language = block.language ? ` class="language-${block.language}"` : '';
@@ -145,16 +124,16 @@ function renderBlock(block, resolveUrl) {
     case 'figure': {
       const img = `<img src="${resolveUrl(block.img)}" alt="${escapeHtml(block.caption ?? '')}" loading="lazy" />`;
       const caption = block.caption
-        ? `<figcaption>${renderInline(block.caption, resolveUrl)}</figcaption>`
+        ? `<figcaption>${renderInline(block.caption)}</figcaption>`
         : '';
       return `<figure>${img}${caption}</figure>`;
     }
 
     case 'quote':
-      return `<blockquote><p>${renderInline(block.text, resolveUrl)}</p></blockquote>`;
+      return `<blockquote><p>${renderInline(block.text)}</p></blockquote>`;
 
     case 'table':
-      return renderTable(block, resolveUrl);
+      return renderTable(block);
 
     case 'divider':
       return '<hr />';
@@ -164,55 +143,39 @@ function renderBlock(block, resolveUrl) {
   }
 }
 
-/**
- * Render a chapter's blocks to an HTML string.
- *
- * @param {Array} blocks
- * @param {{ assets?: Record<string, string> }} [options]
- */
-export function renderBlocks(blocks, options = {}) {
-  const resolveUrl = makeResolver(options.assets);
+export function renderBlocks(blocks) {
   return (blocks || [])
-    .map((block) => renderBlock(block, resolveUrl))
+    .map(renderBlock)
     .filter(Boolean)
     .join('\n');
 }
 
-/**
- * Pull the h2/h3 headings out of rendered HTML for the "On this page" rail.
- * Reading them back off the HTML keeps one source of truth for the ids.
- */
 export function extractHeadings(html) {
   const headings = [];
   const pattern = /<h([23]) id="([^"]*)">([\s\S]*?)<\/h\1>/g;
   let match = pattern.exec(html);
+
   while (match) {
     headings.push({
       level: Number(match[1]),
       id: match[2],
-      text: match[3].replace(/<[^>]+>/g, '').trim(),
+      // Strip inline markup, then decode the entities escapeHtml added, so the
+      // TOC label is plain text Vue can render without showing raw "&#39;".
+      text: unescapeHtml(match[3].replace(/<[^>]+>/g, '')).trim(),
     });
     match = pattern.exec(html);
   }
+
   return headings;
 }
 
-/**
- * Walk the table of contents from `src/data/docs/index.js` and produce:
- *   - `chapters`: flat, in reading order, so previous/next comes for free
- *   - `tree`:     nested, for the sidebar
- *
- * Slugs are composed from each chapter's `id` and its position in the tree,
- * e.g. `quick-start/set-the-factory`, so a chapter never has to repeat where
- * it sits in the hierarchy.
- */
-function buildDocs(contents, options = {}) {
+export function buildDocs(contents) {
   const chapters = [];
 
   const visit = (entries, parentSlug) =>
     (entries || []).map((entry) => {
       const slug = parentSlug ? `${parentSlug}/${entry.id}` : entry.id;
-      const html = renderBlocks(entry.blocks, options);
+      const html = renderBlocks(entry.blocks);
 
       const chapter = {
         id: entry.id,
@@ -226,8 +189,6 @@ function buildDocs(contents, options = {}) {
       };
 
       chapters.push(chapter);
-      // Children are visited after the parent, so the flat list stays in
-      // reading order rather than breadth-first.
       return { ...chapter, children: visit(entry.children, slug) };
     });
 
@@ -235,15 +196,6 @@ function buildDocs(contents, options = {}) {
   return { chapters, tree };
 }
 
-
-// Images referenced by bare filename resolve against src/data/images, so Vite
-// fingerprints them. Absolute paths like /docs-images/... are passed through.
-const assets = import.meta.glob('../data/images/*', {
-  query: '?url',
-  import: 'default',
-  eager: true,
-});
-
 // Chapter content and ordering live in src/data/docs. `chapters` is the flat
 // reading order (used for previous/next), `tree` is the nested sidebar.
-export const { chapters, tree } = buildDocs(docsContents, { assets });
+export const { chapters, tree } = buildDocs(docsContents);

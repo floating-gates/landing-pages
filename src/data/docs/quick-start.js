@@ -1,3 +1,7 @@
+import quickStart1Img from '../images/docs-images/quick-start-1.png';
+import quickStart2Img from '../images/docs-images/quick-start-2.png';
+import quickStart3Img from '../images/docs-images/quick-start-3.png';
+
 export const QuickStart = {
   id: 'quick-start',
   title: 'Quick Start',
@@ -12,7 +16,7 @@ export const QuickStart = {
         'Click on **Log In** from the homepage and register.',
       ],
     },
-    { type: 'figure', img: '/docs-images/quick-start-1.png', caption: 'Logging in' },
+    { type: 'figure', img: quickStart1Img, caption: 'Logging in' },
     {
       type: 'list',
       ordered: false,
@@ -25,12 +29,12 @@ export const QuickStart = {
       type: 'text',
       text: 'Once logged in you will reach the dashboard, which asks you what kind of subscription plan you want and at what address you plan to host your client App:',
     },
-    { type: 'figure', img: '/docs-images/quick-start-2.png', caption: 'Choosing a hub address' },
+    { type: 'figure', img: quickStart2Img, caption: 'Choosing a hub address' },
     {
       type: 'text',
       text: 'Select the name of the hub and the plan you want based on the features you would like to use. The payment is held by GoCardless:',
     },
-    { type: 'figure', img: '/docs-images/quick-start-3.png', caption: 'GoCardless' },
+    { type: 'figure', img: quickStart3Img, caption: 'GoCardless' },
     { type: 'heading', level: 2, text: 'What you can do as a Factory and as a Consumer' },
     {
       type: 'text',

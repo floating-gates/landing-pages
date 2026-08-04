@@ -1,3 +1,7 @@
+import productionMachines1Img from '../images/docs-images/production-machines-1.png';
+import productionMachines2Img from '../images/docs-images/production-machines-2.png';
+import productionMachines3Img from '../images/docs-images/production-machines-3.png';
+
 export const ProductionMachines = {
   id: 'production-machines',
   title: 'Production Machines',
@@ -9,19 +13,19 @@ export const ProductionMachines = {
     },
     {
       type: 'figure',
-      img: '/docs-images/production-machines-1.png',
+      img: productionMachines1Img,
       caption: 'Machine cost factors',
     },
     { type: 'text', text: 'Custom machines can be generated via:' },
     {
       type: 'figure',
-      img: '/docs-images/production-machines-2.png',
+      img: productionMachines2Img,
       caption: 'Creating a custom machine',
     },
     { type: 'text', text: 'Which results in:' },
     {
       type: 'figure',
-      img: '/docs-images/production-machines-3.png',
+      img: productionMachines3Img,
       caption: 'Custom machine result',
     },
   ],

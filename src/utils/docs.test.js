@@ -114,17 +114,10 @@ describe('renderBlocks', () => {
     );
   });
 
-  it('resolves bare image filenames against the asset map', () => {
-    const assets = { '../data/images/add_lib.png': '/assets/add_lib.abc123.png' };
-    expect(renderBlocks([{ type: 'figure', img: 'add_lib.png' }], { assets })).toContain(
-      'src="/assets/add_lib.abc123.png"',
-    );
-  });
-
-  it('passes absolute image paths through', () => {
-    expect(renderBlocks([{ type: 'figure', img: '/docs-images/a.png' }])).toContain(
-      'src="/docs-images/a.png"',
-    );
+  it('uses the imported asset url as given', () => {
+    // What Vite hands back from `import img from '../images/docs-images/a.png'`
+    const imported = '/assets/feedback-1.a1b2c3.png';
+    expect(renderBlocks([{ type: 'figure', img: imported }])).toContain(`src="${imported}"`);
   });
 });
 
@@ -140,6 +133,13 @@ describe('extractHeadings', () => {
       { level: 2, id: 'one', text: 'One' },
       { level: 3, id: 'one-a', text: 'One A' },
       { level: 2, id: 'two', text: 'Two' },
+    ]);
+  });
+
+  it('decodes entities so the TOC label is plain text, not "&#39;"', () => {
+    const html = renderBlocks([{ type: 'heading', level: 2, text: "What's the scope" }]);
+    expect(extractHeadings(html)).toEqual([
+      { level: 2, id: 'whats-the-scope', text: "What's the scope" },
     ]);
   });
 });
@@ -216,14 +216,25 @@ describe('the real table of contents', () => {
     expect(empty.map((chapter) => chapter.slug)).toEqual([]);
   });
 
-  it('keeps every screenshot under /docs-images/', () => {
-    const stray = [];
-    for (const chapter of chapters) {
-      for (const match of chapter.html.matchAll(/<img src="([^"]+)"/g)) {
-        if (!match[1].startsWith('/docs-images/')) stray.push(`${chapter.slug}: ${match[1]}`);
-      }
-    }
-    expect(stray).toEqual([]);
+  const figureSources = chapters.flatMap((chapter) =>
+    [...chapter.html.matchAll(/<img src="([^"]*)"/g)].map((match) => ({
+      slug: chapter.slug,
+      src: match[1],
+    })),
+  );
+
+  it('shows every screenshot', () => {
+    expect(figureSources).toHaveLength(52);
+  });
+
+  it('builds every screenshot from an import, not a public path', () => {
+    // Vite resolves an import to /src/... in dev and /assets/... in a build.
+    // A bare /docs-images/... means someone went back to a public/ string path,
+    // which fails silently instead of at build time.
+    const stray = figureSources.filter(
+      ({ src }) => !src || src.startsWith('/docs-images/'),
+    );
+    expect(stray.map(({ slug, src }) => `${slug}: ${src || '(empty)'}`)).toEqual([]);
   });
 
   it('has no broken internal chapter links', () => {

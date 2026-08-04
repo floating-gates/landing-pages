@@ -1,3 +1,5 @@
+import manageWhatYourCadCanDo1Img from '../images/docs-images/manage-what-your-cad-can-do-1.png';
+
 export const ManageWhatYourCadCanDo = {
   id: 'manage-what-your-cad-can-do',
   title: 'Manage what your CAD can do',
@@ -9,7 +11,7 @@ export const ManageWhatYourCadCanDo = {
     },
     {
       type: 'figure',
-      img: '/docs-images/manage-what-your-cad-can-do-1.png',
+      img: manageWhatYourCadCanDo1Img,
       caption: 'CAD feature toggles',
     },
   ],

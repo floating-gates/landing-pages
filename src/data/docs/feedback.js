@@ -1,3 +1,5 @@
+import feedback1Img from '../images/docs-images/feedback-1.png';
+
 export const Feedback = {
   id: 'feedback',
   title: 'Feedback',
@@ -16,7 +18,7 @@ export const Feedback = {
     { type: 'text', text: 'To reach those easily we set up the **admin** page as follows:' },
     {
       type: 'figure',
-      img: '/docs-images/feedback-1.png',
+      img: feedback1Img,
       caption: 'Feedback options on the admin page',
     },
     { type: 'text', text: 'You can use whichever is most convenient.' },
