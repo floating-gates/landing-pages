@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { themeColor, demo_url, git_book_url, survey_link, app_login_url } from "../config.js";
+import { themeColor, demo_url, survey_link, app_login_url } from "../config.js";
 import short_logo from "../data/images/logo_short_black.webp"
 
 const isMenuOpen = ref(false);
@@ -75,7 +75,7 @@ function closeMenu() {
                 
                 <ul class="dropdown-menu" v-show="isDropdownMenuOpen">
                   <li><a href="/articles" class="nav-link" @click="closeMenu">Articles</a></li>
-                  <li><a :href="git_book_url" class="nav-link" @click="closeMenu">Documentation</a></li>
+                  <li><a href="/docs" class="nav-link" @click="closeMenu">Documentation</a></li>
                   <li><a :href="survey_link" class="nav-link" @click="closeMenu">Survey</a></li>
                 </ul>
               </li>

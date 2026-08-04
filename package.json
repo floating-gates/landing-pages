@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "confirm": "read -p 'Are you sure you want to deploy to PRODUCTION? (y/N) ' ans && [ \"$ans\" = y ]",
+    "dev": "vite --mode development",
+    "preview": "vite preview",
     "test": "vitest run",
+    "docs:images": "node scripts/fetch-doc-images.mjs",
     "build-local": "vite build  --mode development",
     "build-staging": "vite build  --mode staging",
     "build-production": "vite build  --mode production",
