@@ -36,7 +36,7 @@ import { SuspendTheSubscription } from './suspend-the-subscription.js';
 import { Feedback } from './feedback.js';
 
 /** Attach children to a chapter without mutating the imported object. */
-const section = (chapter, children) => ({ ...chapter, children });
+function section(chapter, children) { return { ...chapter, children }} ;
 
 export const docsContents = [
   WhatIsGates,

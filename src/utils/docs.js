@@ -1,3 +1,5 @@
+import { docsContents } from "../data/docs/index.js";
+
 /**
  * Renders the documentation blocks declared in `src/data/docs/*.js`.
  *
@@ -23,16 +25,8 @@
  * is safe to hand to `v-html`.
  */
 
-const ESCAPE_MAP = {
-  '&': '&amp;',
-  '<': '&lt;',
-  '>': '&gt;',
-  '"': '&quot;',
-  "'": '&#39;',
-};
-
 function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, (char) => ESCAPE_MAP[char]);
+    return String(value)
 }
 
 export function slugify(text) {
@@ -67,10 +61,9 @@ function makeResolver(assets) {
 /** Render the Markdown-flavoured formatting allowed inside a single line. */
 export function renderInline(text, resolveUrl = makeResolver()) {
   const codeSpans = [];
-  let out = escapeHtml(text ?? '');
 
   // Stash inline code so its contents are not treated as markup.
-  out = out.replace(/`([^`\n]+)`/g, (_, code) => {
+  let out = text.replace(/`([^`\n]+)`/g, (_, code) => {
     codeSpans.push(code);
     return ` CODE${codeSpans.length - 1} `;
   });
@@ -213,7 +206,7 @@ export function extractHeadings(html) {
  * e.g. `quick-start/set-the-factory`, so a chapter never has to repeat where
  * it sits in the hierarchy.
  */
-export function buildDocs(contents, options = {}) {
+function buildDocs(contents, options = {}) {
   const chapters = [];
 
   const visit = (entries, parentSlug) =>
@@ -241,3 +234,16 @@ export function buildDocs(contents, options = {}) {
   const tree = visit(contents, '');
   return { chapters, tree };
 }
+
+
+// Images referenced by bare filename resolve against src/data/images, so Vite
+// fingerprints them. Absolute paths like /docs-images/... are passed through.
+const assets = import.meta.glob('../data/images/*', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+});
+
+// Chapter content and ordering live in src/data/docs. `chapters` is the flat
+// reading order (used for previous/next), `tree` is the nested sidebar.
+export const { chapters, tree } = buildDocs(docsContents, { assets });

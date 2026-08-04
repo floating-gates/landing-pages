@@ -3,21 +3,7 @@ import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue';
 import Header from "./Header.vue";
 import DocTemplate from "./DocTemplate.vue";
 import DocsNavItem from "./DocsNavItem.vue";
-import { themeColor, themeColorOrange } from "../config.js";
-import { buildDocs } from "../utils/docs.js";
-import { docsContents } from "../data/docs/index.js";
-
-// Images referenced by bare filename resolve against src/data/images, so Vite
-// fingerprints them. Absolute paths like /docs-images/... are passed through.
-const assets = import.meta.glob('../data/images/*', {
-  query: '?url',
-  import: 'default',
-  eager: true,
-});
-
-// Chapter content and ordering live in src/data/docs. `chapters` is the flat
-// reading order (used for previous/next), `tree` is the nested sidebar.
-const { chapters, tree } = buildDocs(docsContents, { assets });
+import { chapters, tree } from "../utils/docs.js";
 
 const currentSlug = ref(chapters.length ? chapters[0].slug : '');
 const activeHeading = ref('');
@@ -33,7 +19,7 @@ const nextChapter = computed(() => chapters[currentIndex.value + 1] || null);
 const headings = computed(() => currentChapter.value?.headings || []);
 
 // Sanitize and load the chapter from the URL hash
-const getChapterFromHash = () => {
+function getChapterFromHash () {
   const hash = decodeURIComponent(window.location.hash.replace('#', ''));
   const matched = chapters.find(
     (chapter) => chapter.slug.toLowerCase() === hash.toLowerCase()
@@ -41,7 +27,7 @@ const getChapterFromHash = () => {
   if (matched) currentSlug.value = matched.slug;
 };
 
-const selectChapter = (slug) => {
+function selectChapter (slug) {
   currentSlug.value = slug;
   menuOpen.value = false;
   window.location.hash = slug;
@@ -50,7 +36,7 @@ const selectChapter = (slug) => {
 
 // The hash is already spoken for by the chapter, so headings scroll without
 // touching it.
-const scrollToHeading = (id) => {
+function scrollToHeading(id) {
   const target = document.getElementById(id);
   if (!target) return;
   activeHeading.value = id;
@@ -58,7 +44,7 @@ const scrollToHeading = (id) => {
 };
 
 // Highlight whichever heading is nearest the top of the viewport.
-const syncActiveHeading = () => {
+function syncActiveHeading() {
   let current = '';
   for (const heading of headings.value) {
     const element = document.getElementById(heading.id);
@@ -68,8 +54,6 @@ const syncActiveHeading = () => {
   else if (headings.value.length) activeHeading.value = headings.value[0].id;
 };
 
-const handlePopState = () => getChapterFromHash();
-
 watch(currentSlug, () => {
   activeHeading.value = headings.value.length ? headings.value[0].id : '';
   nextTick(syncActiveHeading);
@@ -78,12 +62,12 @@ watch(currentSlug, () => {
 onMounted(() => {
   getChapterFromHash();
   nextTick(syncActiveHeading);
-  window.addEventListener('popstate', handlePopState);
+  window.addEventListener('popstate', getChapterFromHash);
   window.addEventListener('scroll', syncActiveHeading, { passive: true });
 });
 
 onUnmounted(() => {
-  window.removeEventListener('popstate', handlePopState);
+  window.removeEventListener('popstate', getChapterFromHash);
   window.removeEventListener('scroll', syncActiveHeading);
 });
 </script>
@@ -91,14 +75,14 @@ onUnmounted(() => {
 <template>
 <Header :context="'landing-page'" />
 
-<div class="docs-shell">
+<div class="docs-shell mt-3">
   <button class="docs-menu-toggle" type="button" @click="menuOpen = !menuOpen">
     {{ menuOpen ? 'Hide' : 'Browse' }} contents
   </button>
 
   <!-- Left: nested chapter navigation -->
   <aside class="docs-nav" :class="{ 'is-open': menuOpen }">
-    <p class="docs-nav-title">Documentation</p>
+    <h4 class="mb-3"> Documentation</h4>
     <nav>
       <ul class="docs-nav-list">
         <DocsNavItem
@@ -150,12 +134,11 @@ onUnmounted(() => {
   <!-- Right: on this page -->
   <aside class="docs-toc">
     <template v-if="headings.length">
-      <p class="docs-toc-title">On this page</p>
+      <h4 class="mb-4">On this page</h4>
       <ul>
         <li
           v-for="heading in headings"
           :key="heading.id"
-          :class="{ 'is-nested': heading.level === 3 }"
         >
           <a
             :href="`#${heading.id}`"
@@ -172,34 +155,27 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 .docs-shell {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 100px 24px 60px;
+  padding: 140px 24px 50px;
   display: grid;
   grid-template-columns: 260px minmax(0, 1fr) 220px;
   gap: 48px;
   align-items: start;
-  color: #333;
 }
 
 /* Left navigation */
 .docs-nav {
   position: sticky;
-  top: 90px;
-  max-height: calc(100vh - 120px);
+  /* Top offset keeps sticky elements below the floating Header */
+  top: 110px;
+  max-height: calc(100vh - 140px);
   overflow-y: auto;
   padding-right: 12px;
   border-right: 1px solid #e9ecef;
-}
-
-.docs-nav-title {
-  margin: 0 0 14px 0;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #8a8f98;
 }
 
 .docs-nav-list {
@@ -219,7 +195,7 @@ onUnmounted(() => {
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.2;
-  color: v-bind(themeColor);
+  color: var(--theme-color);
 }
 
 .docs-description {
@@ -259,7 +235,7 @@ onUnmounted(() => {
 }
 
 .docs-pager-link:hover {
-  border-color: v-bind(themeColorOrange);
+  border-color: var(--theme-color-orange);
 }
 
 .docs-pager-link.is-next {
@@ -276,25 +252,15 @@ onUnmounted(() => {
 
 .docs-pager-title {
   font-weight: 600;
-  color: v-bind(themeColor);
+  color: var(--theme-color);
 }
 
 /* Right rail */
 .docs-toc {
   position: sticky;
-  top: 90px;
-  max-height: calc(100vh - 120px);
+  top: 110px;
+  max-height: calc(100vh - 140px);
   overflow-y: auto;
-  font-size: 0.85rem;
-}
-
-.docs-toc-title {
-  margin: 0 0 12px 0;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #8a8f98;
 }
 
 .docs-toc ul {
@@ -308,10 +274,6 @@ onUnmounted(() => {
   padding-left: 14px;
 }
 
-.docs-toc li.is-nested {
-  padding-left: 28px;
-}
-
 .docs-toc a {
   display: block;
   padding: 5px 0;
@@ -322,11 +284,11 @@ onUnmounted(() => {
 }
 
 .docs-toc a:hover {
-  color: v-bind(themeColor);
+  color: var(--theme-color);
 }
 
 .docs-toc a.is-active {
-  color: v-bind(themeColorOrange);
+  color: var(--theme-color-orange);
   font-weight: 600;
 }
 
@@ -349,7 +311,7 @@ onUnmounted(() => {
 @media (max-width: 900px) {
   .docs-shell {
     grid-template-columns: 1fr;
-    padding: 90px 18px 50px;
+    padding: 85px 18px 50px;
     gap: 20px;
   }
 
@@ -362,7 +324,7 @@ onUnmounted(() => {
     border-radius: 8px;
     font-size: 0.9rem;
     font-weight: 600;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     cursor: pointer;
   }
 
