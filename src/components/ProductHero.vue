@@ -24,9 +24,13 @@
       <div class="hero-row flex flex-row w-full p-12 items-center justify-center gap-14">
         <div class="hero-copy min-w-fit">
           <h1 class="heading" data-aos="fade-up" data-aos-delay="100">
-            Autonomous Design Flaws <br>
-            <em>Discovery for Engineers,</em> <br>
-            Suppliers and Customers.<br>
+            <!-- Autonomous Design Flaws <br> -->
+            <!-- <em>Discovery for Engineers,</em> <br> -->
+            <!-- Suppliers and Customers.<br> -->
+            Autonomous Detection  <br>
+            of <em>Design Errors in CAD </em> <br>
+            for Manufacturing
+            <!-- and Future Maintenance <br> -->
           </h1>
 
         <p class="subheading w-[90%]" data-aos="fade-up" data-aos-delay="130">
