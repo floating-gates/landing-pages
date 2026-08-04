@@ -9,7 +9,7 @@ export const CustomerFactoryCommunication = {
     },
     {
       type: 'figure',
-      img: '/docs-images/customer-factory-communication-1.png',
+      img: '/docs-images/customer-factory-communication-1.svg',
       caption: 'Communication schema',
     },
     { type: 'heading', level: 2, text: 'In short' },
