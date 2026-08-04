@@ -1,3 +1,9 @@
+import createYourFirstProject1Img from '../images/docs-images/create-your-first-project-1.png';
+import createYourFirstProject2Img from '../images/docs-images/create-your-first-project-2.png';
+import createYourFirstProject3Img from '../images/docs-images/create-your-first-project-3.png';
+import createYourFirstProject4Img from '../images/docs-images/create-your-first-project-4.png';
+import createYourFirstProject5Img from '../images/docs-images/create-your-first-project-5.png';
+
 export const CreateYourFirstProject = {
   id: 'create-your-first-project',
   title: 'Create your first project',
@@ -8,13 +14,13 @@ export const CreateYourFirstProject = {
     },
     {
       type: 'figure',
-      img: '/docs-images/create-your-first-project-1.png',
+      img: createYourFirstProject1Img,
       caption: 'Place an order yourself',
     },
     { type: 'text', text: 'You will then be redirected to your CAD interface:' },
     {
       type: 'figure',
-      img: '/docs-images/create-your-first-project-2.png',
+      img: createYourFirstProject2Img,
       caption: 'CAD interface',
     },
     {
@@ -23,7 +29,7 @@ export const CreateYourFirstProject = {
     },
     {
       type: 'figure',
-      img: '/docs-images/create-your-first-project-3.png',
+      img: createYourFirstProject3Img,
       caption: 'Device loaders',
     },
     {
@@ -32,7 +38,7 @@ export const CreateYourFirstProject = {
     },
     {
       type: 'figure',
-      img: '/docs-images/create-your-first-project-4.png',
+      img: createYourFirstProject4Img,
       caption: 'Launching a quote',
     },
     {
@@ -41,7 +47,7 @@ export const CreateYourFirstProject = {
     },
     {
       type: 'figure',
-      img: '/docs-images/create-your-first-project-5.png',
+      img: createYourFirstProject5Img,
       caption: 'Quote selections',
     },
     {

@@ -12,6 +12,8 @@ Create the file:
 
 ```js
 // src/data/docs/quoting.js
+import quoting1Img from '../images/docs-images/quoting-1.png';
+
 export const Quoting = {
   id: 'quoting',                      // becomes the URL: /docs#quoting
   title: 'Quoting',                   // sidebar label and page heading
@@ -19,7 +21,7 @@ export const Quoting = {
   blocks: [
     { type: 'text', text: 'Quotes are produced from geometry and material.' },
     { type: 'heading', level: 2, text: 'Automatic quotes' },
-    { type: 'figure', img: '/docs-images/quoting-1.png', caption: 'The quote panel' },
+    { type: 'figure', img: quoting1Img, caption: 'The quote panel' },
   ],
 };
 ```
@@ -67,27 +69,33 @@ sidebar. Nothing to maintain by hand.
 
 ## Images
 
-Screenshots live in `public/docs-images/` and are referenced by absolute path:
+Screenshots live in `src/data/images/docs-images/` and are imported, not
+referenced by string path:
 
 ```js
-{ type: 'figure', img: '/docs-images/set-the-factory-3.png', caption: 'Selecting materials' }
+import setTheFactory3Img from '../images/docs-images/set-the-factory-3.png';
+
+{ type: 'figure', img: setTheFactory3Img, caption: 'Selecting materials' }
 ```
 
-Product images already in `src/data/images/` can be referenced by bare filename
-(`img: 'add_lib.png'`), which lets Vite fingerprint them for production.
+Importing rather than pointing at `public/` means the path is relative and
+clickable in an editor, and a typo fails the build instead of silently
+rendering a broken image. Vite fingerprints the file for production.
 
-The screenshots were not committed as part of the migration. Pull them from the
-GitBook space once with:
+Note that not every screenshot is a `.png`: `customer-factory-communication-1`
+is an `.svg` and `what-is-gates-1` is a `.jpg`. Match the real extension.
+
+To re-pull the screenshots from the GitBook space:
 
 ```sh
 npm run docs:images
 ```
 
-The script warns about any page where the number of images it finds does not
-match what the chapter expects, which is the signal that
+It warns about any page where the number of images it finds does not match what
+the chapter expects, which means
 [`scripts/fetch-doc-images.mjs`](../../../scripts/fetch-doc-images.mjs) needs
-its `PAGES` map updated. Once the images are committed, both the script and the
-GitBook space can be retired.
+its `PAGES` map updated. Once the GitBook space is retired, that script can go
+with it.
 
 ## Checking your work
 

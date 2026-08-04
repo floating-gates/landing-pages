@@ -1,3 +1,11 @@
+import customerFactoryCommunication1Img from '../images/docs-images/customer-factory-communication-1.svg';
+import customerFactoryCommunication2Img from '../images/docs-images/customer-factory-communication-2.png';
+import customerFactoryCommunication3Img from '../images/docs-images/customer-factory-communication-3.png';
+import customerFactoryCommunication4Img from '../images/docs-images/customer-factory-communication-4.png';
+import customerFactoryCommunication5Img from '../images/docs-images/customer-factory-communication-5.png';
+import customerFactoryCommunication6Img from '../images/docs-images/customer-factory-communication-6.png';
+import customerFactoryCommunication7Img from '../images/docs-images/customer-factory-communication-7.png';
+
 export const CustomerFactoryCommunication = {
   id: 'customer-factory-communication',
   title: 'Customer-Factory Communication',
@@ -9,7 +17,7 @@ export const CustomerFactoryCommunication = {
     },
     {
       type: 'figure',
-      img: '/docs-images/customer-factory-communication-1.png',
+      img: customerFactoryCommunication1Img,
       caption: 'Communication schema',
     },
     { type: 'heading', level: 2, text: 'In short' },
@@ -30,7 +38,7 @@ export const CustomerFactoryCommunication = {
     },
     {
       type: 'figure',
-      img: '/docs-images/customer-factory-communication-2.png',
+      img: customerFactoryCommunication2Img,
       caption: 'CAD-Side',
     },
     { type: 'heading', level: 3, text: 'Customer asks for a quotation' },
@@ -40,7 +48,7 @@ export const CustomerFactoryCommunication = {
     },
     {
       type: 'figure',
-      img: '/docs-images/customer-factory-communication-3.png',
+      img: customerFactoryCommunication3Img,
       caption: 'Requesting a quotation',
     },
     { type: 'heading', level: 3, text: 'Factory proposes a price' },
@@ -50,7 +58,7 @@ export const CustomerFactoryCommunication = {
     },
     {
       type: 'figure',
-      img: '/docs-images/customer-factory-communication-4.png',
+      img: customerFactoryCommunication4Img,
       caption: 'Factory-Side',
     },
     { type: 'heading', level: 3, text: 'Customer decides to accept or refuse' },
@@ -60,7 +68,7 @@ export const CustomerFactoryCommunication = {
     },
     {
       type: 'figure',
-      img: '/docs-images/customer-factory-communication-5.png',
+      img: customerFactoryCommunication5Img,
       caption: 'CAD-side',
     },
     { type: 'text', text: 'If the customer refuses, the project simply stops there.' },
@@ -71,14 +79,14 @@ export const CustomerFactoryCommunication = {
     },
     {
       type: 'figure',
-      img: '/docs-images/customer-factory-communication-6.png',
+      img: customerFactoryCommunication6Img,
       caption: 'Payment details',
     },
     { type: 'heading', level: 3, text: 'Shipment' },
     { type: 'text', text: 'The address is recorded inside the project description:' },
     {
       type: 'figure',
-      img: '/docs-images/customer-factory-communication-7.png',
+      img: customerFactoryCommunication7Img,
       caption: 'Shipment address',
     },
   ],

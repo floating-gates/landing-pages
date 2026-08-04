@@ -1,3 +1,8 @@
+import publishYourCadOnline1Img from '../images/docs-images/publish-your-cad-online-1.png';
+import publishYourCadOnline2Img from '../images/docs-images/publish-your-cad-online-2.png';
+import publishYourCadOnline3Img from '../images/docs-images/publish-your-cad-online-3.png';
+import publishYourCadOnline4Img from '../images/docs-images/publish-your-cad-online-4.png';
+
 export const PublishYourCadOnline = {
   id: 'publish-your-cad-online',
   title: 'Publish your CAD On-line',
@@ -10,13 +15,13 @@ export const PublishYourCadOnline = {
     },
     {
       type: 'figure',
-      img: '/docs-images/publish-your-cad-online-1.png',
+      img: publishYourCadOnline1Img,
       caption: 'Exiting demo mode',
     },
     { type: 'heading', level: 2, text: 'Select your URL' },
     {
       type: 'figure',
-      img: '/docs-images/publish-your-cad-online-2.png',
+      img: publishYourCadOnline2Img,
       caption: 'Selecting your URL',
     },
     {
@@ -30,13 +35,13 @@ export const PublishYourCadOnline = {
     },
     {
       type: 'figure',
-      img: '/docs-images/publish-your-cad-online-3.png',
+      img: publishYourCadOnline3Img,
       caption: 'GoCardless mandate',
     },
     { type: 'text', text: 'Then you are asked to input the IBAN and account holder name.' },
     {
       type: 'figure',
-      img: '/docs-images/publish-your-cad-online-4.png',
+      img: publishYourCadOnline4Img,
       caption: 'Entering bank details',
     },
     {

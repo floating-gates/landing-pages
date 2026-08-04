@@ -2,8 +2,6 @@
 import { ref, computed, watch } from 'vue';
 import { themeColor, themeColorOrange } from "../config.js";
 
-// One row in the docs sidebar. Recurses into itself for sub-chapters, which is
-// how the folder structure under /docs turns into nested navigation.
 const props = defineProps({
   node: { type: Object, required: true },
   currentSlug: { type: String, default: '' },
@@ -15,7 +13,6 @@ const hasChildren = computed(() => props.node.children?.length > 0);
 
 const isActive = computed(() => props.currentSlug === props.node.slug);
 
-// A section counts as containing the current page if the slug sits below it.
 const containsCurrent = computed(
   () => props.currentSlug === props.node.slug || props.currentSlug.startsWith(`${props.node.slug}/`)
 );

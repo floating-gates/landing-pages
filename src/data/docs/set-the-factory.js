@@ -1,3 +1,7 @@
+import setTheFactory1Img from '../images/docs-images/set-the-factory-1.png';
+import setTheFactory2Img from '../images/docs-images/set-the-factory-2.png';
+import setTheFactory3Img from '../images/docs-images/set-the-factory-3.png';
+
 export const SetTheFactory = {
   id: 'set-the-factory',
   title: 'Set the Factory',
@@ -9,7 +13,7 @@ export const SetTheFactory = {
     },
     {
       type: 'figure',
-      img: '/docs-images/set-the-factory-1.png',
+      img: setTheFactory1Img,
       caption: 'Set up your factory',
     },
     { type: 'heading', level: 2, text: 'Select your machines' },
@@ -17,12 +21,12 @@ export const SetTheFactory = {
       type: 'text',
       text: 'Select one of your predefined machines if it is ready to go. Click on the tile and set the cost parameters for the system:',
     },
-    { type: 'figure', img: '/docs-images/set-the-factory-2.png', caption: 'Selecting machines' },
+    { type: 'figure', img: setTheFactory2Img, caption: 'Selecting machines' },
     { type: 'heading', level: 2, text: 'Select your materials' },
     { type: 'text', text: 'Select which predefined materials you can handle:' },
     {
       type: 'figure',
-      img: '/docs-images/set-the-factory-3.png',
+      img: setTheFactory3Img,
       caption: 'Selecting materials',
     },
     { type: 'text', text: 'Now check the summary to confirm everything is correct.' },

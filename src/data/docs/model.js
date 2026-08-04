@@ -1,3 +1,5 @@
+import model1Img from '../images/docs-images/model-1.png';
+
 export const Model = {
   id: 'model',
   title: 'Model',
@@ -7,7 +9,7 @@ export const Model = {
       type: 'text',
       text: 'Gates provides a script-based 3D modelling system, which means that every geometric object in your design is described through code. Unlike interactive CAD tools where the user manipulates shapes directly in a graphical interface, the language we follow is already present in industry and is used by OpenSCAD, where models are defined declaratively: you describe the geometry, and the system generates the model. This approach makes OpenSCAD ideal for parametric, reproducible, and programmatically generated designs. The model handler looks like this:',
     },
-    { type: 'figure', img: '/docs-images/model-1.png', caption: 'Model handler' },
+    { type: 'figure', img: model1Img, caption: 'Model handler' },
     {
       type: 'text',
       text: 'This chapter introduces the core concepts, commands, and patterns involved in defining a model from scratch.',

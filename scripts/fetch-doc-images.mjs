@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 /**
  * One-time migration helper: pull the screenshots out of the GitBook space and
- * into `public/docs-images/`, under the filenames the chapters in
- * `src/data/docs/` already reference.
+ * into `src/data/images/docs-images/`, under the filenames the chapters in
+ * `src/data/docs/` import.
+ *
+ * They go under `src/`, not `public/`, so the chapter files can `import` them:
+ * the path is then relative and clickable in an editor, and Vite fingerprints
+ * and fails loudly on a typo instead of silently serving a 404.
  *
  * GitBook serves images through a signed proxy, so the URLs cannot be
  * hard-coded. Instead this scrapes each published page, takes the content
@@ -20,12 +24,15 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUT_DIR = path.join(ROOT, 'public', 'docs-images');
+const OUT_DIR = path.join(ROOT, 'src', 'data', 'images', 'docs-images');
 const BASE = 'https://floating-gates.gitbook.io/gates-docs';
 
 /**
- * GitBook page path -> the image basenames used by src/data/docs/*.js, in the
- * order they appear on the page. Keep this in sync if you re-order figures.
+ * GitBook page path -> the image basenames imported by src/data/docs/*.js, in
+ * the order they appear on the page. Keep this in sync if you re-order figures.
+ *
+ * Basenames only: not every image comes back as a .png, so the extension is
+ * whatever the server actually sends. Two already differ (see below).
  */
 const PAGES = {
   'what-is-gates': ['what-is-gates-1'],
@@ -53,8 +60,6 @@ const PAGES = {
   ],
   'quick-start/interact-with-your-first-order': [
     'interact-with-your-first-order-1',
-    // The GitBook page has a small inline icon in a heading that we dropped,
-    // so this page is remapped explicitly below.
     'interact-with-your-first-order-2',
     'interact-with-your-first-order-3',
     'interact-with-your-first-order-4',
@@ -111,7 +116,7 @@ const EXT_BY_TYPE = {
 
 const force = process.argv.includes('--force');
 
-/** Pull the <main> block, so we skip the site logo and nav thumbnails. */
+// <main> only, to skip the site logo and nav thumbnails.
 function mainSection(html) {
   const start = html.indexOf('<main');
   if (start === -1) return html;
@@ -119,7 +124,6 @@ function mainSection(html) {
   return end === -1 ? html.slice(start) : html.slice(start, end);
 }
 
-/** Content image URLs, in document order, de-duplicated. */
 function imageUrls(html) {
   const found = [];
   const seen = new Set();
@@ -201,7 +205,8 @@ async function main() {
           downloaded += 1;
           if (result.ext !== '.png') {
             problems.push(
-              `${name}: saved as ${result.ext}. Update the reference in docs/ to match.`,
+              `${name}: saved as ${result.ext}. Update the import in src/data/docs/ to match, ` +
+                `otherwise the build fails on a missing module.`,
             );
           }
         }

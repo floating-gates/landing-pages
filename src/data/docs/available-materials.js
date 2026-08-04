@@ -1,3 +1,7 @@
+import availableMaterials1Img from '../images/docs-images/available-materials-1.png';
+import availableMaterials2Img from '../images/docs-images/available-materials-2.png';
+import availableMaterials3Img from '../images/docs-images/available-materials-3.png';
+
 export const AvailableMaterials = {
   id: 'available-materials',
   title: 'Available Materials',
@@ -8,7 +12,7 @@ export const AvailableMaterials = {
     },
     {
       type: 'figure',
-      img: '/docs-images/available-materials-1.png',
+      img: availableMaterials1Img,
       caption: 'Coupling materials with machines',
     },
     { type: 'text', text: 'This is equivalent to saying:' },
@@ -24,12 +28,12 @@ export const AvailableMaterials = {
     { type: 'text', text: 'Insert a new material:' },
     {
       type: 'figure',
-      img: '/docs-images/available-materials-2.png',
+      img: availableMaterials2Img,
       caption: 'Inserting a new material',
     },
     {
       type: 'figure',
-      img: '/docs-images/available-materials-3.png',
+      img: availableMaterials3Img,
       caption: 'New material form',
     },
   ],

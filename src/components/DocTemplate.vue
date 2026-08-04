@@ -1,87 +1,17 @@
 <script setup>
-import { computed } from 'vue';
-
-const props = defineProps({
-  // Accepts rendered Markdown (String), an Array of section data,
-  // or a Vue Component
-  is: {
-    type: [Array, Object, Function, String],
-    default: () => []
-  }
+defineProps({
+  html: { type: String, default: '' },
 });
-
-// Rendered Markdown arrives as an HTML string. It is produced at build time
-// from files we control in /docs, and the renderer escapes everything, so
-// v-html is safe here.
-const isHtml = computed(() => typeof props.is === 'string');
-
-// Helper to determine if prop passed is a raw data structure array
-const isArrayData = computed(() => Array.isArray(props.is));
 </script>
 
 <template>
-  <div class="doc-template">
-    <!-- 1. Render Markdown chapters from /docs -->
-    <div v-if="isHtml" class="markdown-body" v-html="props.is"></div>
-
-    <!-- 2. Render Structured Data Arrays (legacy chapter format) -->
-    <template v-else-if="isArrayData">
-      <section 
-        v-for="(section, index) in props.is" 
-        :key="index" 
-        class="term-section"
-      >
-        <h2 v-if="section.header">{{ section.header }}</h2>
-        <p v-if="section.context">{{ section.context }}</p>
-        <div v-if="section.img" class="section-image">
-          <img :src="section.img" :alt="section.header || 'Doc image'" />
-        </div>
-      </section>
-    </template>
-
-    <!-- 3. Render Dynamic Vue Components (e.g., Setup, QuickStart) -->
-    <component v-else-if="props.is" :is="props.is" />
-
-    <!-- Fallback if no chapter is selected -->
-    <div v-else class="empty-state">
-      <p>Select a topic from the navigation menu to view documentation.</p>
-    </div>
+  <div v-if="html" class="doc-content" v-html="html"></div>
+  <div v-else class="empty-state">
+    <p>Select a topic from the navigation menu to view documentation.</p>
   </div>
 </template>
 
 <style scoped>
-.doc-template {
-  width: 100%;
-}
-
-.term-section {
-  margin-bottom: 35px;
-  scroll-margin-top: 20px;
-}
-
-.term-section h2 {
-  font-size: 1.4rem;
-  margin: 0 0 15px 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.term-section p {
-  margin-bottom: 15px;
-  line-height: 1.6;
-}
-
-.section-image {
-  margin: 20px 0;
-}
-
-.section-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-  border: 1px solid #e0e0e0;
-}
-
 .empty-state {
   padding: 40px;
   text-align: center;
@@ -89,16 +19,13 @@ const isArrayData = computed(() => Array.isArray(props.is));
   font-style: italic;
 }
 
-/*
- * Markdown output. Rendered with v-html, so scoped styles do not reach it
- * without :deep().
- */
-.markdown-body {
+/* v-html output, so scoped styles need :deep(). */
+.doc-content {
   line-height: 1.7;
   color: #333;
 }
 
-.markdown-body :deep(h1) {
+.doc-content :deep(h1) {
   font-size: 2rem;
   font-weight: 700;
   margin: 0 0 20px 0;
@@ -106,86 +33,84 @@ const isArrayData = computed(() => Array.isArray(props.is));
   border-bottom: 2px solid #e0e0e0;
 }
 
-.markdown-body :deep(h2) {
+.doc-content :deep(h2) {
   font-size: 1.4rem;
   margin: 40px 0 15px 0;
   padding-bottom: 8px;
   border-bottom: 1px solid #e0e0e0;
 }
 
-.markdown-body :deep(h3) {
+.doc-content :deep(h3) {
   font-size: 1.15rem;
   margin: 28px 0 12px 0;
 }
 
-/* Leave room for the fixed site header when jumping to an anchor. */
-.markdown-body :deep(h1),
-.markdown-body :deep(h2),
-.markdown-body :deep(h3),
-.markdown-body :deep(h4) {
+.doc-content :deep(h1),
+.doc-content :deep(h2),
+.doc-content :deep(h3),
+.doc-content :deep(h4) {
   scroll-margin-top: 100px;
 }
 
-.markdown-body :deep(h4),
-.markdown-body :deep(h5),
-.markdown-body :deep(h6) {
+.doc-content :deep(h4),
+.doc-content :deep(h5),
+.doc-content :deep(h6) {
   font-size: 1rem;
   margin: 24px 0 10px 0;
 }
 
-.markdown-body :deep(p) {
+.doc-content :deep(p) {
   margin: 0 0 15px 0;
 }
 
-.markdown-body :deep(ul),
-.markdown-body :deep(ol) {
+.doc-content :deep(ul),
+.doc-content :deep(ol) {
   margin: 15px 0;
   padding-left: 25px;
 }
 
-.markdown-body :deep(li) {
+.doc-content :deep(li) {
   margin-bottom: 8px;
 }
 
-.markdown-body :deep(li > ul),
-.markdown-body :deep(li > ol) {
+.doc-content :deep(li > ul),
+.doc-content :deep(li > ol) {
   margin: 8px 0;
 }
 
-.markdown-body :deep(a) {
+.doc-content :deep(a) {
   color: #D77A61;
   text-decoration: none;
 }
 
-.markdown-body :deep(a:hover) {
+.doc-content :deep(a:hover) {
   text-decoration: underline;
 }
 
-.markdown-body :deep(img) {
+.doc-content :deep(img) {
   max-width: 100%;
   height: auto;
   border-radius: 6px;
   border: 1px solid #e0e0e0;
 }
 
-/* Screenshots: centred, capped, with the alt text as a caption underneath. */
-.markdown-body :deep(figure) {
+.doc-content :deep(figure) {
   margin: 28px 0;
   text-align: center;
 }
 
-.markdown-body :deep(figure img) {
+.doc-content :deep(figure img) {
   max-height: 640px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
-.markdown-body :deep(figcaption) {
+.doc-content :deep(figcaption) {
   margin-top: 10px;
   font-size: 0.85rem;
   color: #8a8f98;
 }
 
-.markdown-body :deep(code) {
+.doc-content :deep(code) {
   background: #f1f3f5;
   border-radius: 4px;
   padding: 2px 6px;
@@ -193,7 +118,7 @@ const isArrayData = computed(() => Array.isArray(props.is));
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-.markdown-body :deep(pre) {
+.doc-content :deep(pre) {
   background: #f8f9fa;
   border: 1px solid #e9ecef;
   border-radius: 6px;
@@ -202,14 +127,14 @@ const isArrayData = computed(() => Array.isArray(props.is));
   margin: 20px 0;
 }
 
-.markdown-body :deep(pre code) {
+.doc-content :deep(pre code) {
   background: none;
   padding: 0;
   font-size: 0.85rem;
   line-height: 1.5;
 }
 
-.markdown-body :deep(blockquote) {
+.doc-content :deep(blockquote) {
   margin: 20px 0;
   padding: 2px 20px;
   border-left: 4px solid #D77A61;
@@ -217,45 +142,45 @@ const isArrayData = computed(() => Array.isArray(props.is));
   color: #555;
 }
 
-.markdown-body :deep(blockquote p:last-child) {
+.doc-content :deep(blockquote p:last-child) {
   margin-bottom: 0;
 }
 
-.markdown-body :deep(hr) {
+.doc-content :deep(hr) {
   border: none;
   border-top: 1px solid #e0e0e0;
   margin: 35px 0;
 }
 
-.markdown-body :deep(table) {
+.doc-content :deep(table) {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
   font-size: 0.95rem;
 }
 
-.markdown-body :deep(th),
-.markdown-body :deep(td) {
+.doc-content :deep(th),
+.doc-content :deep(td) {
   border: 1px solid #e0e0e0;
   padding: 10px 12px;
   text-align: left;
 }
 
-.markdown-body :deep(th) {
+.doc-content :deep(th) {
   background: #f8f9fa;
   font-weight: 700;
 }
 
 @media (max-width: 768px) {
-  .markdown-body :deep(h1) {
+  .doc-content :deep(h1) {
     font-size: 1.6rem;
   }
 
-  .markdown-body :deep(h2) {
+  .doc-content :deep(h2) {
     font-size: 1.2rem;
   }
 
-  .markdown-body :deep(table) {
+  .doc-content :deep(table) {
     display: block;
     overflow-x: auto;
   }

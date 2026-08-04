@@ -1,3 +1,5 @@
+import whatIsGates1Img from '../images/docs-images/what-is-gates-1.jpg';
+
 export const WhatIsGates = {
   id: 'what-is-gates',
   title: 'What is Gates',
@@ -21,7 +23,7 @@ export const WhatIsGates = {
       type: 'text',
       text: 'Below is designed the funnelling of the platform and where data can come from:',
     },
-    { type: 'figure', img: '/docs-images/what-is-gates-1.png', caption: 'Platform funnelling' },
+    { type: 'figure', img: whatIsGates1Img, caption: 'Platform funnelling' },
     { type: 'heading', level: 2, text: 'Who This Guide Is For' },
     { type: 'text', text: '**Manufacturers with idle production capacity:**' },
     {

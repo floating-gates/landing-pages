@@ -1,3 +1,5 @@
+import suspendTheSubscription1Img from '../images/docs-images/suspend-the-subscription-1.png';
+
 export const SuspendTheSubscription = {
   id: 'suspend-the-subscription',
   title: 'Suspend the subscription',
@@ -8,7 +10,7 @@ export const SuspendTheSubscription = {
     },
     {
       type: 'figure',
-      img: '/docs-images/suspend-the-subscription-1.png',
+      img: suspendTheSubscription1Img,
       caption: 'Suspending the subscription',
     },
   ],

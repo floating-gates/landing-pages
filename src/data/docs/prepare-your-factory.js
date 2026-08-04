@@ -1,3 +1,8 @@
+import prepareYourFactory1Img from '../images/docs-images/prepare-your-factory-1.png';
+import prepareYourFactory2Img from '../images/docs-images/prepare-your-factory-2.png';
+import prepareYourFactory3Img from '../images/docs-images/prepare-your-factory-3.png';
+import prepareYourFactory4Img from '../images/docs-images/prepare-your-factory-4.png';
+
 export const PrepareYourFactory = {
   id: 'prepare-your-factory',
   title: 'Prepare your Factory',
@@ -14,7 +19,7 @@ export const PrepareYourFactory = {
     },
     {
       type: 'figure',
-      img: '/docs-images/prepare-your-factory-1.png',
+      img: prepareYourFactory1Img,
       caption: 'Dashboard warnings',
     },
     {
@@ -24,13 +29,13 @@ export const PrepareYourFactory = {
     { type: 'heading', level: 3, text: 'Quick set up of machines' },
     {
       type: 'figure',
-      img: '/docs-images/prepare-your-factory-2.png',
+      img: prepareYourFactory2Img,
       caption: 'Quick machine set-up',
     },
     { type: 'heading', level: 3, text: 'Quick set up of materials' },
     {
       type: 'figure',
-      img: '/docs-images/prepare-your-factory-3.png',
+      img: prepareYourFactory3Img,
       caption: 'Quick material set-up',
     },
     {
@@ -39,7 +44,7 @@ export const PrepareYourFactory = {
     },
     {
       type: 'figure',
-      img: '/docs-images/prepare-your-factory-4.png',
+      img: prepareYourFactory4Img,
       caption: 'Choices in the CAD',
     },
   ],

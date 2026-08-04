@@ -7,17 +7,7 @@ import { themeColor, themeColorOrange } from "../config.js";
 import { buildDocs } from "../utils/docs.js";
 import { docsContents } from "../data/docs/index.js";
 
-// Images referenced by bare filename resolve against src/data/images, so Vite
-// fingerprints them. Absolute paths like /docs-images/... are passed through.
-const assets = import.meta.glob('../data/images/*', {
-  query: '?url',
-  import: 'default',
-  eager: true,
-});
-
-// Chapter content and ordering live in src/data/docs. `chapters` is the flat
-// reading order (used for previous/next), `tree` is the nested sidebar.
-const { chapters, tree } = buildDocs(docsContents, { assets });
+const { chapters, tree } = buildDocs(docsContents);
 
 const currentSlug = ref(chapters.length ? chapters[0].slug : '');
 const activeHeading = ref('');
@@ -32,7 +22,6 @@ const previousChapter = computed(() => chapters[currentIndex.value - 1] || null)
 const nextChapter = computed(() => chapters[currentIndex.value + 1] || null);
 const headings = computed(() => currentChapter.value?.headings || []);
 
-// Sanitize and load the chapter from the URL hash
 const getChapterFromHash = () => {
   const hash = decodeURIComponent(window.location.hash.replace('#', ''));
   const matched = chapters.find(
@@ -48,8 +37,7 @@ const selectChapter = (slug) => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-// The hash is already spoken for by the chapter, so headings scroll without
-// touching it.
+// The hash holds the chapter, so headings scroll without touching it.
 const scrollToHeading = (id) => {
   const target = document.getElementById(id);
   if (!target) return;
@@ -57,7 +45,6 @@ const scrollToHeading = (id) => {
   window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
 };
 
-// Highlight whichever heading is nearest the top of the viewport.
 const syncActiveHeading = () => {
   let current = '';
   for (const heading of headings.value) {
@@ -96,7 +83,6 @@ onUnmounted(() => {
     {{ menuOpen ? 'Hide' : 'Browse' }} contents
   </button>
 
-  <!-- Left: nested chapter navigation -->
   <aside class="docs-nav" :class="{ 'is-open': menuOpen }">
     <p class="docs-nav-title">Documentation</p>
     <nav>
@@ -112,14 +98,13 @@ onUnmounted(() => {
     </nav>
   </aside>
 
-  <!-- Middle: the chapter itself -->
   <main class="docs-main">
     <h1 class="docs-title">{{ currentChapter?.title }}</h1>
     <p v-if="currentChapter?.description" class="docs-description">
       {{ currentChapter.description }}
     </p>
 
-    <DocTemplate :is="currentChapter?.html" />
+    <DocTemplate :html="currentChapter?.html" />
 
     <nav v-if="previousChapter || nextChapter" class="docs-pager">
       <a
@@ -147,7 +132,6 @@ onUnmounted(() => {
     </p>
   </main>
 
-  <!-- Right: on this page -->
   <aside class="docs-toc">
     <template v-if="headings.length">
       <p class="docs-toc-title">On this page</p>
@@ -183,7 +167,6 @@ onUnmounted(() => {
   color: #333;
 }
 
-/* Left navigation */
 .docs-nav {
   position: sticky;
   top: 90px;
@@ -208,7 +191,6 @@ onUnmounted(() => {
   padding: 0;
 }
 
-/* Middle column */
 .docs-main {
   min-width: 0;
   padding-bottom: 20px;
@@ -237,7 +219,6 @@ onUnmounted(() => {
   font-style: italic;
 }
 
-/* Previous / next */
 .docs-pager {
   display: flex;
   gap: 16px;
@@ -279,7 +260,6 @@ onUnmounted(() => {
   color: v-bind(themeColor);
 }
 
-/* Right rail */
 .docs-toc {
   position: sticky;
   top: 90px;
@@ -330,7 +310,6 @@ onUnmounted(() => {
   font-weight: 600;
 }
 
-/* Mobile menu button, hidden on desktop */
 .docs-menu-toggle {
   display: none;
 }

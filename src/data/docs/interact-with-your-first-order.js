@@ -1,3 +1,10 @@
+import interactWithYourFirstOrder1Img from '../images/docs-images/interact-with-your-first-order-1.png';
+import interactWithYourFirstOrder2Img from '../images/docs-images/interact-with-your-first-order-2.png';
+import interactWithYourFirstOrder3Img from '../images/docs-images/interact-with-your-first-order-3.png';
+import interactWithYourFirstOrder4Img from '../images/docs-images/interact-with-your-first-order-4.png';
+import interactWithYourFirstOrder5Img from '../images/docs-images/interact-with-your-first-order-5.png';
+import interactWithYourFirstOrder6Img from '../images/docs-images/interact-with-your-first-order-6.png';
+
 export const InteractWithYourFirstOrder = {
   id: 'interact-with-your-first-order',
   title: 'Interact with your First Order',
@@ -6,7 +13,7 @@ export const InteractWithYourFirstOrder = {
     { type: 'text', text: 'You will see that an order appears:' },
     {
       type: 'figure',
-      img: '/docs-images/interact-with-your-first-order-1.png',
+      img: interactWithYourFirstOrder1Img,
       caption: 'Order on the dashboard',
     },
     { type: 'heading', level: 2, text: 'Inspect the order' },
@@ -16,14 +23,14 @@ export const InteractWithYourFirstOrder = {
     },
     {
       type: 'figure',
-      img: '/docs-images/interact-with-your-first-order-2.png',
+      img: interactWithYourFirstOrder2Img,
       caption: 'Inspecting the order',
     },
     { type: 'heading', level: 2, text: 'Set the price' },
     { type: 'text', text: 'Use the price input below and send the quote:' },
     {
       type: 'figure',
-      img: '/docs-images/interact-with-your-first-order-3.png',
+      img: interactWithYourFirstOrder3Img,
       caption: 'Setting the price',
     },
     {
@@ -32,13 +39,13 @@ export const InteractWithYourFirstOrder = {
     },
     {
       type: 'figure',
-      img: '/docs-images/interact-with-your-first-order-4.png',
+      img: interactWithYourFirstOrder4Img,
       caption: 'Customer accepting the offer',
     },
     { type: 'text', text: 'Once accepted:' },
     {
       type: 'figure',
-      img: '/docs-images/interact-with-your-first-order-5.png',
+      img: interactWithYourFirstOrder5Img,
       caption: 'Order accepted',
     },
     {
@@ -47,7 +54,7 @@ export const InteractWithYourFirstOrder = {
     },
     {
       type: 'figure',
-      img: '/docs-images/interact-with-your-first-order-6.png',
+      img: interactWithYourFirstOrder6Img,
       caption: 'Declaring shipment',
     },
     { type: 'text', text: 'Done, you have sold a propeller.' },

@@ -1,3 +1,6 @@
+import parametricDesign1Img from '../images/docs-images/parametric-design-1.png';
+import parametricDesign2Img from '../images/docs-images/parametric-design-2.png';
+
 export const ParametricDesign = {
   id: 'parametric-design',
   title: 'Parametric Design',
@@ -17,7 +20,7 @@ export const ParametricDesign = {
     { type: 'text', text: 'Be sure the feature is set to ON.' },
     {
       type: 'figure',
-      img: '/docs-images/parametric-design-1.png',
+      img: parametricDesign1Img,
       caption: 'Parametric design toggle',
     },
     { type: 'heading', level: 2, text: 'Verify your catalogue online' },
@@ -25,7 +28,7 @@ export const ParametricDesign = {
       type: 'text',
       text: 'The final stage of the procedure is verifying the presence of devices once you interact with your CAD online:',
     },
-    { type: 'figure', img: '/docs-images/parametric-design-2.png', caption: 'Catalogue online' },
+    { type: 'figure', img: parametricDesign2Img, caption: 'Catalogue online' },
     {
       type: 'text',
       text: 'You should see the device and the parameters you allow to be changed.',
