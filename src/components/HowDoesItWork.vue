@@ -12,40 +12,40 @@ const tiles = [
         verb: "Define",
         even: false,
         url: app_login_url,
-        subject: "Machines",
+        subject: "Works where your CAD lives",
     },
     {
         number: "02",
         verb: "Define",
         even: true,  
-        subject: "Materials",
+        subject: "You describe your factory once",
     },
     {
         number: "03",
         verb: "Define",
         even: false,  
         url: app_login_url,
-        subject: "Products",
+        subject: "Every file gets a verdict",
     },
-    {
-        number: "04",
-        verb: "Let 3D Files",
-        even: true,  
-        subject: "Error-Free",
-    },
-    {
-        number: "05",
-        verb: "Let Coworkers",
-        even: false,  
-        url: app_login_url,
-        subject: "Verify",
-    },
-    {
-        number: "06",
-        verb: "Let Customers",
-        even: true,  
-        subject: "Purchase",
-    },
+    // {
+    //     number: "04",
+    //     verb: "Let 3D Files",
+    //     even: true,  
+    //     subject: "Error-Free",
+    // },
+    // {
+    //     number: "05",
+    //     verb: "Let Coworkers",
+    //     even: false,  
+    //     url: app_login_url,
+    //     subject: "Verify",
+    // },
+    // {
+    //     number: "06",
+    //     verb: "Let Customers",
+    //     even: true,  
+    //     subject: "Purchase",
+    // },
 ];
 
 function clicking_tile(tile) {
@@ -121,9 +121,9 @@ function clicking_tile(tile) {
 
 .hero-split-grid {
     display: grid;
-    grid-template-columns: 1.1fr 1.4fr; /* Balanced layout split between assets */
+    grid-template-columns: 1.1fr 1.4fr;
     gap: 2.5rem;
-    align-items: center;
+    align-items: stretch; /* <-- Changed from center to stretch */
     margin-top: 2rem;
 }
 
@@ -154,8 +154,11 @@ function clicking_tile(tile) {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
+
+/* Ensure the wrapper pane stretches fully */
 .hero-tiles-pane {
     width: 100%;
+    display: flex;
 }
 
 .heading {
@@ -167,14 +170,17 @@ function clicking_tile(tile) {
 .hw-right {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    /* Stretch grid items vertically across the row */
+    grid-auto-rows: 1fr; 
+    align-items: stretch;
     gap: clamp(0.75rem, 1.5vw, 1.25rem);
     width: 100%;
     position: relative;
 }
 
+
 /* Background strip tracks setup with safer layering */
-.hw-right::before, .hw-right::after {
+.hw-right::before {
     content: "";
     position: absolute;
     left: 5%;
@@ -185,15 +191,15 @@ function clicking_tile(tile) {
     z-index: 0;
     pointer-events: none;
 }
-.hw-right::before { top: 25%; }
-.hw-right::after { bottom: 25%; }
+.hw-right::before { top: 50%; }
 
 /* ── High-Fidelity Interactive Cards ────────────────────────── */
 .hw-tile {
     text-decoration: none;
     padding: 1.25rem;
     display: flex;
-    aspect-ratio: 1 / 1;
+    /* aspect-ratio: 1 / 1; */
+    height: 100%;
     flex-direction: column;
     justify-content: flex-end;
     position: relative;
