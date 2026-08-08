@@ -191,7 +191,7 @@ onUnmounted(() => {
 }
 
 .docs-title {
-  margin: 0 0 12px 0;
+  margin: 0 0 8px 0;
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.2;
