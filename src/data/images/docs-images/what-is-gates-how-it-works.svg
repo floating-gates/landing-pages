@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 640" width="1180" height="640" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#9AA6AF"/>
+    </marker>
+    <marker id="arwA" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#E0785A"/>
+    </marker>
+  </defs>
+
+  <rect width="1180" height="640" fill="#FFFFFF"/>
+
+  <!-- title -->
+  <text x="40" y="46" font-size="23" font-weight="700" fill="#23323D">How Gates checks your factory</text>
+  <text x="40" y="72" font-size="14.5" fill="#79868F">Every CAD file meets the same checkpoint before it reaches a machine.</text>
+
+  <!-- ============ LEFT : SOURCES ============ -->
+  <text x="40" y="126" font-size="11.5" font-weight="700" letter-spacing="1.3" fill="#9AA6AF">WHERE YOUR CAD LIVES</text>
+
+  <g>
+    <rect x="40" y="142" width="252" height="50" rx="9" fill="#F4F5F6" stroke="#DFE4E7"/>
+    <text x="60" y="165" font-size="14" font-weight="600" fill="#23323D">Engineering workstations</text>
+    <text x="60" y="182" font-size="12" fill="#79868F">local project folders</text>
+  </g>
+  <g>
+    <rect x="40" y="202" width="252" height="50" rx="9" fill="#F4F5F6" stroke="#DFE4E7"/>
+    <text x="60" y="225" font-size="14" font-weight="600" fill="#23323D">Shared drives &amp; servers</text>
+    <text x="60" y="242" font-size="12" fill="#79868F">department CAD libraries</text>
+  </g>
+  <g>
+    <rect x="40" y="262" width="252" height="50" rx="9" fill="#F4F5F6" stroke="#DFE4E7"/>
+    <text x="60" y="285" font-size="14" font-weight="600" fill="#23323D">Supplier submissions</text>
+    <text x="60" y="302" font-size="12" fill="#79868F">files you did not draw</text>
+  </g>
+  <g>
+    <rect x="40" y="322" width="252" height="50" rx="9" fill="#FDF1EC" stroke="#F0C4B2"/>
+    <text x="60" y="345" font-size="14" font-weight="600" fill="#23323D">Customer uploads</text>
+    <text x="60" y="362" font-size="12" fill="#C4674A">through your online CAD</text>
+  </g>
+
+  <!-- collector bus into engine -->
+  <path d="M296 167 H 324 Q 334 167 334 177" stroke="#9AA6AF" stroke-width="1.6" fill="none"/>
+  <path d="M296 227 H 334" stroke="#9AA6AF" stroke-width="1.6" fill="none"/>
+  <path d="M296 287 H 334" stroke="#9AA6AF" stroke-width="1.6" fill="none"/>
+  <path d="M296 347 H 324 Q 334 347 334 337" stroke="#E0785A" stroke-width="1.6" fill="none"/>
+  <line x1="334" y1="177" x2="334" y2="337" stroke="#9AA6AF" stroke-width="1.6"/>
+  <path d="M334 250 H 366" stroke="#9AA6AF" stroke-width="1.8" fill="none" marker-end="url(#arw)"/>
+  <circle cx="334" cy="250" r="3.2" fill="#9AA6AF"/>
+
+  <!-- ============ CENTER : GATES ============ -->
+  <rect x="380" y="96" width="420" height="392" rx="14" fill="#FFFFFF" stroke="#23323D" stroke-width="1.8"/>
+  <rect x="380" y="96" width="420" height="52" rx="14" fill="#23323D"/>
+  <rect x="380" y="134" width="420" height="14" fill="#23323D"/>
+  <text x="404" y="129" font-size="17" font-weight="700" fill="#FFFFFF">GATES</text>
+  <text x="776" y="129" font-size="11.5" font-weight="600" letter-spacing="0.6" fill="#E0785A" text-anchor="end">ON YOUR NETWORK</text>
+
+  <text x="404" y="180" font-size="11.5" font-weight="700" letter-spacing="1.2" fill="#9AA6AF">YOU DESCRIBE YOUR FACTORY ONCE</text>
+
+  <g>
+    <rect x="404" y="194" width="118" height="58" rx="9" fill="#F4F5F6" stroke="#DFE4E7"/>
+    <text x="463" y="219" font-size="13.5" font-weight="600" fill="#23323D" text-anchor="middle">Machines</text>
+    <text x="463" y="237" font-size="11" fill="#79868F" text-anchor="middle">what you can run</text>
+  </g>
+  <g>
+    <rect x="535" y="194" width="118" height="58" rx="9" fill="#F4F5F6" stroke="#DFE4E7"/>
+    <text x="594" y="219" font-size="13.5" font-weight="600" fill="#23323D" text-anchor="middle">Materials</text>
+    <text x="594" y="237" font-size="11" fill="#79868F" text-anchor="middle">and their limits</text>
+  </g>
+  <g>
+    <rect x="666" y="194" width="118" height="58" rx="9" fill="#FDF1EC" stroke="#F0C4B2"/>
+    <text x="725" y="219" font-size="13.5" font-weight="600" fill="#23323D" text-anchor="middle">Design Playbook</text>
+    <text x="725" y="237" font-size="11" fill="#C4674A" text-anchor="middle">your DFM rules</text>
+  </g>
+
+  <path d="M594 258 L594 286" stroke="#9AA6AF" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <rect x="404" y="294" width="380" height="106" rx="10" fill="#23323D"/>
+  <text x="594" y="325" font-size="15.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">CAD-as-graph analysis</text>
+  <text x="594" y="348" font-size="12" fill="#B9C4CB" text-anchor="middle">Features and the relationships between them are mapped</text>
+  <text x="594" y="366" font-size="12" fill="#B9C4CB" text-anchor="middle">into a graph, then measured against your description.</text>
+  <text x="594" y="388" font-size="11" font-weight="600" letter-spacing="0.5" fill="#E0785A" text-anchor="middle">TOLERANCE · GEOMETRY · MATERIAL · FIXTURE</text>
+
+  <text x="594" y="432" font-size="12.5" fill="#79868F" text-anchor="middle">Runs continuously as a background service,</text>
+  <text x="594" y="452" font-size="12.5" fill="#79868F" text-anchor="middle">on a scan cycle you set.</text>
+
+  <!-- ============ RIGHT : OUTCOMES ============ -->
+  <text x="880" y="126" font-size="11.5" font-weight="700" letter-spacing="1.3" fill="#9AA6AF">EVERY FILE GETS A VERDICT</text>
+
+  <path d="M806 250 C 842 250, 842 200, 874 200" stroke="#9AA6AF" stroke-width="1.6" fill="none" marker-end="url(#arw)"/>
+  <path d="M806 250 C 842 250, 842 330, 874 330" stroke="#9AA6AF" stroke-width="1.6" fill="none" marker-end="url(#arw)"/>
+
+  <g>
+    <rect x="880" y="150" width="260" height="100" rx="10" fill="#F1F7F3" stroke="#BFDCC9"/>
+    <circle cx="906" cy="180" r="11" fill="#4C9A6A"/>
+    <path d="M901 180 l4 4 l7 -8" stroke="#FFFFFF" stroke-width="2.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="926" y="185" font-size="14.5" font-weight="700" fill="#23323D">Green lit</text>
+    <text x="900" y="212" font-size="12.5" fill="#5C6A73">The part can be made on the</text>
+    <text x="900" y="230" font-size="12.5" fill="#5C6A73">machines you own. It moves on.</text>
+  </g>
+
+  <g>
+    <rect x="880" y="280" width="260" height="118" rx="10" fill="#FDF1EC" stroke="#F0C4B2"/>
+    <circle cx="906" cy="310" r="11" fill="#E0785A"/>
+    <path d="M906 304 l0 7" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+    <circle cx="906" cy="316" r="1.4" fill="#FFFFFF"/>
+    <text x="926" y="315" font-size="14.5" font-weight="700" fill="#23323D">Flagged for revision</text>
+    <text x="900" y="342" font-size="12.5" fill="#5C6A73">The issue is described on the</text>
+    <text x="900" y="360" font-size="12.5" fill="#5C6A73">geometry itself, and a person</text>
+    <text x="900" y="378" font-size="12.5" fill="#5C6A73">decides what to do about it.</text>
+  </g>
+
+  <text x="880" y="432" font-size="12" font-style="italic" fill="#9AA6AF">A human stays in the loop.</text>
+  <text x="880" y="450" font-size="12" font-style="italic" fill="#9AA6AF">Gates flags; it never edits.</text>
+
+  <!-- ============ FOOTER BAND ============ -->
+  <rect x="40" y="530" width="1100" height="74" rx="11" fill="#F4F5F6" stroke="#DFE4E7"/>
+  <rect x="40" y="530" width="5" height="74" rx="2.5" fill="#E0785A"/>
+  <text x="70" y="560" font-size="14" font-weight="700" fill="#23323D">Nothing leaves your network.</text>
+  <text x="70" y="583" font-size="13" fill="#5C6A73">Ingestion and parsing happen behind your firewall. Gates reads the geometry; your intellectual property stays where it already is.</text>
+</svg>

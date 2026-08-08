@@ -224,7 +224,7 @@ describe('the real table of contents', () => {
   );
 
   it('shows every screenshot', () => {
-    expect(figureSources).toHaveLength(52);
+    expect(figureSources).toHaveLength(55);
   });
 
   it('builds every screenshot from an import, not a public path', () => {
