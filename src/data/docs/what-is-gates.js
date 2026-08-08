@@ -39,36 +39,10 @@ export const WhatIsGates = {
       type: 'table',
       headers: ['Module', 'Description'],
       rows: [
-        ['**Machines**', 'Your fleet, from presets (FDM, SLS, SLA, CNC 3-axis, CNC 5-axis, injection moulding) or defined from scratch. Each carries a running cost per hour, a throughput in cm³ per hour, and a setup cost per project.'],
         ['**Materials**', 'Cost per cm³ plus the physical properties Gates reasons with: density, Young\'s modulus, Poisson ratio, yield strength, ultimate tensile strength, thermal conductivity. Each material is tied to the machines that can run it.'],
         ['**Design Playbook**', 'Your DfM rule profiles. A playbook is attached to a machine, and that pairing is what an analysis is run against.'],
-        ['**Economics**', 'The quoting model: minimum payment, business overhead, quantity discount bands, tolerance surcharges, surface finish costs, and urgency surcharges.'],
-        ['**Network**', 'The remote CAD libraries the agent watches. Each endpoint is an address, a library root path, a compatible machine, and an email to warn when it goes unreachable.'],
-        ['**Brand**', 'Your logo, applied to the online CAD your customers see.'],
-      ],
-    },
-
-    // --- Prerequisites ---
-    { type: 'divider' },
-    { type: 'heading', level: 2, text: 'Prerequisites' },
-    {
-      type: 'text',
-      text: 'Before accessing Floating Gates, ensure that your system meets the following minimum requirements for smooth performance:',
-    },
-    {
-      type: 'table',
-      headers: ['Category', 'Minimum Requirement'],
-      rows: [
-        ['Browser', 'Google Chrome (recommended), Microsoft Edge, Firefox, Safari.'],
-        ['Memory (RAM)', '8 GB **minimum** (16 GB recommended).'],
-        ['Graphics', 'Integrated GPU or NVIDIA GTX series and above.'],
-        ['Internet Connection', 'Stable broadband (5 Mbps or faster).'],
-        ['Agent Host', 'Windows 10 or 11 (64-bit), 4 GB RAM, Enterprise plan.'],
-      ],
-    },
-    {
-      type: 'quote',
-      text: '**Tip:** Use Gates on a desktop browser for the best 3D visualization and parameter editing experience.',
-    },
+        ['**Economics Forecasts**', 'The quoting model: minimum payment, business overhead, quantity discount bands, tolerance surcharges, surface finish costs, and urgency surcharges.'],
+        ['**Autonomous Operations in Network**', 'The remote CAD libraries the agent watches. Each endpoint is an address, a library root path, a compatible machine, and an email to warn when it goes unreachable.'],
+    ]},
   ],
 };
