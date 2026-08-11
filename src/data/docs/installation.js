@@ -1,12 +1,21 @@
+import download_bundle_img from '../images/docs-images/download_bundle.png';
+
 export const InstallEnterprise = {
     id: 'install',
     title: 'Install Software in Enterprise Bundle',
     description: 'What Gates does, how it works, and what you need to run it',
     blocks: [
+        { type: 'heading', level: 2, text: 'Download Software bundle' },
+        {
+            type: 'text',
+            text: 'Once your server meets the requirements above. Log into your account and download the Enterprise stack and grab your licence keys via the [Admin Panel](https://app.floating-gates.com/dashboard?menu=Admin), and to be used during first start.',
+        },
+        { type: 'figure', img: download_bundle_img, caption: 'Bundle download procedures' },
         {
             type: 'text',
             text: 'Before installing Gates, ensure both your have a compatible Linux server or Virtual Machine. To start successfully this stack you need to have a valid Enterprise Subscription.'
         },
+
         { type: 'heading', level: 1, text: 'Server Requirements' },
         {
             type: 'table',
@@ -33,16 +42,6 @@ export const InstallEnterprise = {
 
         // --- Installation ---
         { type: 'divider' },
-        { type: 'heading', level: 2, text: 'Download and Key insertion' },
-        {
-            type: 'text',
-            text: 'Once your server meets the requirements above. Log into your Floating Gates account and download the Enterprise stack, retrieve your licence keys and insert it in the configuration to start.',
-        },
-        {
-            type: 'code',
-            language: 'bash',
-            code: 'tar -xzf floating-gates-enterprise-<version>.tar.gz\ncd stack-structure',
-        },
         { type: 'heading', level: 2, text: 'Configure the Server' },
         {
             type: 'text',
@@ -50,8 +49,13 @@ export const InstallEnterprise = {
         },
         {
             type: 'code',
+            language: 'sh',
+            code: 'tar -xzf floating-gates-enterprise-<version>.tar.gz\ncd stack-structure',
+        },
+        {
+            type: 'code',
             language: 'toml',
-            code: '[default]\nport = 8000\nsecret_key = "<generate-a-unique-base64-secret>"\nproject_root_path = "/projects"\nproject_host_root = "/home/<user>/stack-structure/data/projects"\ndomain_name = "localhost"\nserver_subdomain = "app"\nhost_addr_good2manufactured = "169.254.1.2:9997"\ngood2manufacture_bin_path = "/home/<user>/stack-structure/execute/good2manufacture/Good2Manufacture"\nlicence_server_url = "169.254.1.2:9000"\nlicence_key = "<your-licence-key>"\ndb_url = "/databases/fg-database.sqlite3"',
+            code: '[default]\nport = 8000\nsecret_key = "<generate-a-unique-base64-secret>"\nproject_root_path = "/projects"\nproject_host_root = "/home/<user>/stack-structure/data/projects"\ndomain_name = "localhost"\nserver_subdomain = "app"\nhost_addr_good2manufactured = "169.254.1.2:9997"\ngood2manufacture_bin_path = "/home/<user>/stack-structure/execute/good2manufacture/Good2Manufacture"\nlicence_server_url="195.231.121.110:3000"\nlicence_key = "<your-licence-key>"\ndb_url = "/databases/fg-database.sqlite3"',
         },
         { type: 'heading', level: 2, text: 'Start the Stack' },
         {
