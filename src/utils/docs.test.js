@@ -203,7 +203,7 @@ describe('the real table of contents', () => {
   const { chapters, tree } = buildDocs(docsContents);
 
   it('has every chapter from the GitBook space', () => {
-    expect(chapters).toHaveLength(19);
+    expect(chapters).toHaveLength(23);
   });
 
   it('gives every chapter a unique slug', () => {
@@ -224,7 +224,7 @@ describe('the real table of contents', () => {
   );
 
   it('shows every screenshot', () => {
-    expect(figureSources).toHaveLength(55);
+    expect(figureSources).toHaveLength(56);
   });
 
   it('builds every screenshot from an import, not a public path', () => {

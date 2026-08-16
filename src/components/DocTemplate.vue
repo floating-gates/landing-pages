@@ -179,6 +179,11 @@ const isArrayData = computed(() => Array.isArray(props.is));
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
+.markdown-body :deep(figure.full img) {
+  max-height: none;
+  width: 100%;
+}
+
 .markdown-body :deep(figcaption) {
   margin-top: 10px;
   font-size: 0.85rem;

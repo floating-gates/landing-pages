@@ -13,6 +13,7 @@
 import { WhatIsGates } from './what-is-gates.js';
 import { Introduction } from './introduction.js';
 import { HowItWorks } from './how-it-works.js';
+import { ProcessOfGates } from './process-of-gates.js';
 import { InstallEnterprise } from './installation.js';
 
 import { CustomerFactoryCommunication } from './customer-factory-communication.js';
@@ -43,7 +44,7 @@ import { Feedback } from './feedback.js';
 function section(chapter, children) { return { ...chapter, children }} ;
 
 export const docsContents = [
-  section(WhatIsGates, [Introduction, HowItWorks, InstallEnterprise]),
+  section(WhatIsGates, [Introduction, HowItWorks, ProcessOfGates, InstallEnterprise]),
   CustomerFactoryCommunication,
   section(QuickStart, [
     SetTheFactory,
