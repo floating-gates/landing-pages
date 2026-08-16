@@ -1,4 +1,4 @@
-import howItWorksImg from '../images/docs-images/what-is-gates-how-it-works.svg';
+import howItWorksImg from '../images/docs-images/what-is-gates-how-it-works.webp';
 
 export const WhatIsGates = {
   id: 'what-is-gates',
@@ -17,7 +17,7 @@ export const WhatIsGates = {
       type: 'text',
       text: 'The same checking engine can be used through an online CAD at your own address, so the parts that arrive from your own customers and suppliers can be ensured to have been checked through the same mechanism.',
     },
-    { type: 'figure', img: howItWorksImg, caption: 'How Gates works' },
+    { type: 'figure', img: howItWorksImg, caption: 'How Gates checks your factory' },
     { type: 'heading', level: 2, text: 'Why Gates is worth using' },
     {
       type: 'text',

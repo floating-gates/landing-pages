@@ -122,11 +122,12 @@ function renderBlock(block) {
     }
 
     case 'figure': {
+      const cls = block.full ? ' class="full"' : '';
       const img = `<img src="${resolveUrl(block.img)}" alt="${escapeHtml(block.caption ?? '')}" loading="lazy" />`;
       const caption = block.caption
         ? `<figcaption>${renderInline(block.caption)}</figcaption>`
         : '';
-      return `<figure>${img}${caption}</figure>`;
+      return `<figure${cls}>${img}${caption}</figure>`;
     }
 
     case 'quote':
