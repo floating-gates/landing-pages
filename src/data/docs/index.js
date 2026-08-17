@@ -16,8 +16,6 @@ import { HowItWorks } from './how-it-works.js';
 import { ProcessOfGates } from './process-of-gates.js';
 import { InstallEnterprise } from './installation.js';
 
-import { CustomerFactoryCommunication } from './customer-factory-communication.js';
-
 import { QuickStart } from './quick-start.js';
 import { SetTheFactory } from './set-the-factory.js';
 import { CreateYourFirstProject } from './create-your-first-project.js';
@@ -45,7 +43,6 @@ function section(chapter, children) { return { ...chapter, children }} ;
 
 export const docsContents = [
   section(WhatIsGates, [Introduction, HowItWorks, ProcessOfGates, InstallEnterprise]),
-  CustomerFactoryCommunication,
   section(QuickStart, [
     SetTheFactory,
     CreateYourFirstProject,

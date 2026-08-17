@@ -4,82 +4,24 @@ import { computed } from 'vue';
 const props = defineProps({
   // Accepts rendered Markdown (String), an Array of section data,
   // or a Vue Component
-  is: {
+  html_content: {
     type: [Array, Object, Function, String],
     default: () => []
   }
 });
 
-// Rendered Markdown arrives as an HTML string. It is produced at build time
-// from files we control in /docs, and the renderer escapes everything, so
-// v-html is safe here.
-const isHtml = computed(() => typeof props.is === 'string');
-
-// Helper to determine if prop passed is a raw data structure array
-const isArrayData = computed(() => Array.isArray(props.is));
+const isHtml = computed(() => typeof props.html_content === 'string');
 </script>
 
 <template>
-  <div class="doc-template">
-    <!-- 1. Render Markdown chapters from /docs -->
-    <div v-if="isHtml" class="markdown-body" v-html="props.is"></div>
-
-    <!-- 2. Render Structured Data Arrays (legacy chapter format) -->
-    <template v-else-if="isArrayData">
-      <section 
-        v-for="(section, index) in props.is" 
-        :key="index" 
-        class="term-section"
-      >
-        <h2 v-if="section.header">{{ section.header }}</h2>
-        <p v-if="section.context">{{ section.context }}</p>
-        <div v-if="section.img" class="section-image">
-          <img :src="section.img" :alt="section.header || 'Doc image'" />
-        </div>
-      </section>
-    </template>
-
-    <!-- 3. Render Dynamic Vue Components (e.g., Setup, QuickStart) -->
-    <component v-else-if="props.is" :is="props.is" />
-
-    <!-- Fallback if no chapter is selected -->
-    <div v-else class="empty-state">
-      <p>Select a topic from the navigation menu to view documentation.</p>
-    </div>
-  </div>
+<div class="doc-template">
+  <div class="markdown-body" v-html="props.html_content"></div>
+</div>
 </template>
 
 <style scoped>
 .doc-template {
   width: 100%;
-}
-
-.term-section {
-  margin-bottom: 35px;
-  scroll-margin-top: 20px;
-}
-
-.term-section h2 {
-  font-size: 1.4rem;
-  margin: 0 0 15px 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.term-section p {
-  margin-bottom: 15px;
-  line-height: 1.6;
-}
-
-.section-image {
-  margin: 20px 0;
-}
-
-.section-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-  border: 1px solid #e0e0e0;
 }
 
 .empty-state {
@@ -162,7 +104,9 @@ const isArrayData = computed(() => Array.isArray(props.is));
 }
 
 .markdown-body :deep(img) {
-  max-width: 100%;
+  display: block;
+  margin: 20px auto;
+  max-width: clamp(60%, 70%, 1100px);
   height: auto;
   border-radius: 6px;
   border: 1px solid #e0e0e0;

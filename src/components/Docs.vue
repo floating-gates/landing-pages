@@ -97,21 +97,20 @@ onUnmounted(() => {
   </aside>
 
   <!-- Middle: the chapter itself -->
-  <main class="docs-main">
+  <main >
     <h1 class="docs-title">{{ currentChapter?.title }}</h1>
     <p v-if="currentChapter?.description" class="docs-description">
       {{ currentChapter.description }}
     </p>
 
-    <DocTemplate :is="currentChapter?.html" />
+    <DocTemplate :html_content="currentChapter?.html" />
 
     <nav v-if="previousChapter || nextChapter" class="docs-pager">
       <a
         v-if="previousChapter"
         class="docs-pager-link is-previous"
         :href="`#${previousChapter.slug}`"
-        @click.prevent="selectChapter(previousChapter.slug)"
-      >
+        @click.prevent="selectChapter(previousChapter.slug)"  >
         <span class="docs-pager-label">Previous</span>
         <span class="docs-pager-title">{{ previousChapter.title }}</span>
       </a>
@@ -119,8 +118,7 @@ onUnmounted(() => {
         v-if="nextChapter"
         class="docs-pager-link is-next"
         :href="`#${nextChapter.slug}`"
-        @click.prevent="selectChapter(nextChapter.slug)"
-      >
+        @click.prevent="selectChapter(nextChapter.slug)" >
         <span class="docs-pager-label">Next</span>
         <span class="docs-pager-title">{{ nextChapter.title }}</span>
       </a>
@@ -158,7 +156,7 @@ onUnmounted(() => {
 @reference "../main.css";
 
 .docs-shell {
-  max-width: 1500px;
+  /* max-width: 1500px; */
   margin: 0 auto;
   padding: 140px 24px 50px;
   display: grid;
@@ -174,7 +172,7 @@ onUnmounted(() => {
   top: 110px;
   max-height: calc(100vh - 140px);
   overflow-y: auto;
-  padding-right: 12px;
+  padding-right: 14px;
   border-right: 1px solid #e9ecef;
 }
 
@@ -182,12 +180,6 @@ onUnmounted(() => {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-/* Middle column */
-.docs-main {
-  min-width: 0;
-  padding-bottom: 20px;
 }
 
 .docs-title {
@@ -199,10 +191,9 @@ onUnmounted(() => {
 }
 
 .docs-description {
-  margin: 0 0 28px 0;
+  margin: 0 0 18px 0;
   padding-bottom: 20px;
   border-bottom: 1px solid #e9ecef;
-  font-size: 1.05rem;
   color: #6b7280;
 }
 
