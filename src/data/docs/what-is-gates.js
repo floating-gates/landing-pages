@@ -39,10 +39,9 @@ export const WhatIsGates = {
       type: 'table',
       headers: ['Module', 'Description'],
       rows: [
-        ['**Materials**', 'Cost per cm³ plus the physical properties Gates reasons with: density, Young\'s modulus, Poisson ratio, yield strength, ultimate tensile strength, thermal conductivity. Each material is tied to the machines that can run it.'],
-        ['**Design Playbook**', 'Your DfM rule profiles. A playbook is attached to a machine, and that pairing is what an analysis is run against.'],
-        ['**Economics Forecasts**', 'The quoting model: minimum payment, business overhead, quantity discount bands, tolerance surcharges, surface finish costs, and urgency surcharges.'],
-        ['**Autonomous Operations in Network**', 'The remote CAD libraries the agent watches. Each endpoint is an address, a library root path, a compatible machine, and an email to warn when it goes unreachable.'],
+        ['**Early Manufacturing Issues discovery**', 'Provided your Design for Manufacturing rules profile. A playbook is attached to a machine, and that pairing is what a manufacturing analysis is run against.'],
+        ['**Economics Forecasts**', 'Given the CAD details the quoting model communicate with no human intervention the minimum payment, business overhead, quantity discount bands, tolerance surcharges, surface finish costs, and urgency surcharges.'],
+        ['**Autonomous Operations**', 'The software can run autonomously in the network to discover issues ahead of time in every PC on the factory floor. Each endpoint is constatnly under analysis, and it emails you when it finds an unreachable design.'],
     ]},
   ],
 };
