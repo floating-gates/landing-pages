@@ -115,7 +115,7 @@ const submitEmailAndDownload = async () => {
 <template>
 <div class="faq-section"
      :style="{ backgroundImage: `url(${background})` }">
-  <div class="container m-auto p-4">
+  <div class="container mt-7 mx-auto p-4">
     <div class="dl-hero" data-aos="fade-up" data-aos-delay="80">
       <h1 class="heading">
         Download 

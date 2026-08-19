@@ -18,7 +18,18 @@ export const WhatIsGates = {
       text: 'The same checking engine can be used through an online CAD at your own address, so the parts that arrive from your own customers and suppliers can be ensured to have been checked through the same mechanism.',
     },
     { type: 'figure', img: howItWorksImg, caption: 'How Gates checks your factory' },
-    { type: 'heading', level: 2, text: 'Why Gates is worth using' },
+    { type: 'heading', level: 2, text: 'What this software will not do' },
+      { type: 'text', text: 'Gates platform has not been tought to do the following: ' },
+    {
+      type: 'list',
+      items: [
+        '**It does not modify your CAD.** Gates reports; you revise.',
+        '**It does not take payment.** When a customer accepts a price, you send payment details by whichever method you already use, an invoice or a direct transfer. Gates stays out of the transaction.',
+        '**It does not set your prices.** It drafts a quote from your own cost inputs and leaves the final number to you.',
+        '**It does not replace a design review.** It removes the mechanical part of one so that your reviewers can spend their attention on judgement calls.',
+      ],
+    },
+    { type: 'heading', level: 2, text: 'Why using it?' },
     {
       type: 'text',
       text: 'About 20% of engineering issues can be missed during a traditional design review. Around 40% of drawings are saved in a configuration that cannot be manufactured as required. Catch these issues in CAD and it\'s cheap to revert and change. Catch them later, during production, and you can run into issues like over-tolerancing, wasted stock, rework, and field failures.',

@@ -6,7 +6,7 @@ import createYourFirstProject5Img from '../images/docs-images/create-your-first-
 
 export const CreateYourFirstProject = {
   id: 'create-your-first-project',
-  title: 'Create your first project',
+  title: 'Using the Web Platform',
   blocks: [
     {
       type: 'text',

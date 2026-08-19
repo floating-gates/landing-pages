@@ -7,7 +7,7 @@ import interactWithYourFirstOrder6Img from '../images/docs-images/interact-with-
 
 export const InteractWithYourFirstOrder = {
   id: 'interact-with-your-first-order',
-  title: 'Interact with your First Order',
+  title: 'Manufacturing Commitments',
   blocks: [
     { type: 'heading', level: 2, text: 'Check the Dashboard' },
     { type: 'text', text: 'You will see that an order appears:' },

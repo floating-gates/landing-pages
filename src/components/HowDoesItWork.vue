@@ -8,24 +8,24 @@ const showVideo = ref(false)
 
 const tiles = [
     {
-        number: "01",
-        verb: "Define",
+        // number: "01",
+        verb: "FIND EVERY FILES",
         even: false,
         url: app_login_url,
         subject: "Works where your CAD lives",
     },
     {
-        number: "02",
-        verb: "Define",
+        // number: "02",
+        verb: "CHECKS ON YOU",
         even: true,  
-        subject: "You describe your factory once",
+        subject: "Catch your Own Mistakes",
     },
     {
-        number: "03",
-        verb: "Define",
+        // number: "03",
+        verb: "AN ADDED SERVICE",
         even: false,  
         url: app_login_url,
-        subject: "Every file gets a verdict",
+        subject: "Customers Arrive Pre-checked",
     },
     // {
     //     number: "04",
@@ -70,29 +70,32 @@ function clicking_tile(tile) {
     </div>
   </div>
 
-  <div id="hero" class="hero-section-container">
-    <h2 class="heading">
+  <!-- <div id="hero" class="hero-section-container"> -->
+  <div class="hero-row flex flex-col w-full p-12 items-center justify-center gap-14">
+      
+    <h2 class="heading mb-3">
       <em>AUTONOMOUS MISTAKES DETECTION IN MECHANICAL ENGINEERING</em>
       <span class="title-line-2">THAT WORKS ON FACTORY NETWORKS</span>
     </h2>
     
-    <div class="hero-split-grid">
+    <!-- <div class="hero-split-grid"> -->
+    <div class="mb-12">
       <div class="hero-img-pane" data-aos="fade-left" data-aos-duration="700">
         <img :src="mainPhoto" alt="Platform Logic Graphic" class="hero-img-fluid" />
       </div>
 
       <div class="hero-tiles-pane" data-aos="fade-right" data-aos-duration="700">
         <div class="hw-right">
+            <!-- :key="tile.number" -->
           <a
             v-for="(tile, i) in tiles"
-            :key="tile.number"
-            class="hw-tile"
+            class="hw-tile mt-8"
             :class="tile.even ? 'white-tile' : 'blue-tile'"
             data-aos="fade-up"
             :data-aos-delay="i * 100"
             @click="clicking_tile(tile)">
             
-            <span class="hw-tile-num">{{ tile.number }}</span>
+            <!-- <span class="hw-tile-num">{{ tile.number }}</span> -->
             <div class="hw-tile-content-area">
               <div class="hw-tile-title">
                 <span class="hw-tile-verb">{{ tile.verb }} </span>
@@ -109,24 +112,6 @@ function clicking_tile(tile) {
 </template>
 
 <style scoped>
-/* ── Main Layout Containment ────────────────────────────────── */
-.hero-section-container {
-    max-width: 1600px;
-    margin: 3rem auto 3rem auto;
-    padding: 2rem 1.5rem;
-    width: 100%;
-    box-sizing: border-box;
-    overflow-x: hidden; /* safety net in case any child still overshoots */
-}
-
-.hero-split-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 1.4fr;
-    gap: 2.5rem;
-    align-items: stretch; /* <-- Changed from center to stretch */
-    margin-top: 2rem;
-}
-
 /* ── Typography Enhancements ────────────────────────────────── */
 .title-line-2 {
     font-size: clamp(1.2rem, 2vw, 1.8rem);
@@ -177,21 +162,6 @@ function clicking_tile(tile) {
     width: 100%;
     position: relative;
 }
-
-
-/* Background strip tracks setup with safer layering */
-.hw-right::before {
-    content: "";
-    position: absolute;
-    left: 5%;
-    right: 5%;
-    height: 8px;
-    background: v-bind(themeColor);
-    opacity: 0.25;
-    z-index: 0;
-    pointer-events: none;
-}
-.hw-right::before { top: 50%; }
 
 /* ── High-Fidelity Interactive Cards ────────────────────────── */
 .hw-tile {

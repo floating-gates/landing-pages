@@ -11,16 +11,14 @@
  */
 
 import { WhatIsGates } from './what-is-gates.js';
-import { Introduction } from './introduction.js';
-import { HowItWorks } from './how-it-works.js';
+import { CoreComponents } from './core-components.js';
 import { ProcessOfGates } from './process-of-gates.js';
 import { InstallEnterprise } from './installation.js';
 
 import { QuickStart } from './quick-start.js';
-import { SetTheFactory } from './set-the-factory.js';
 import { CreateYourFirstProject } from './create-your-first-project.js';
 import { InteractWithYourFirstOrder } from './interact-with-your-first-order.js';
-
+import { ViaAutonomousRoutine } from './via-autnomous-routine.js';
 import { PublishYourCadOnline } from './publish-your-cad-online.js';
 
 import { PrepareYourFactory } from './prepare-your-factory.js';
@@ -28,7 +26,7 @@ import { ProductionMachines } from './production-machines.js';
 import { AvailableMaterials } from './available-materials.js';
 import { Branding } from './branding.js';
 
-import { ManageWhatYourCadCanDo } from './manage-what-your-cad-can-do.js';
+import { FactoryFeatures } from './manage-what-your-cad-can-do.js';
 import { AutomaticQuotations } from './automatic-quotations.js';
 import { ParametricDesign } from './parametric-design.js';
 import { Model } from './model.js';
@@ -36,25 +34,25 @@ import { Variables } from './variables.js';
 import { HowItShouldLook } from './how-it-should-look.js';
 
 import { SuspendTheSubscription } from './suspend-the-subscription.js';
-import { Feedback } from './feedback.js';
 
 /** Attach children to a chapter without mutating the imported object. */
 function section(chapter, children) { return { ...chapter, children }} ;
 
 export const docsContents = [
-  section(WhatIsGates, [Introduction, HowItWorks, ProcessOfGates, InstallEnterprise]),
-  section(QuickStart, [
-    SetTheFactory,
-    CreateYourFirstProject,
-    InteractWithYourFirstOrder,
-  ]),
-  PublishYourCadOnline,
+    section(WhatIsGates, [
+        CoreComponents,
+        InstallEnterprise,
+        QuickStart]),
   section(PrepareYourFactory, [
-    ProductionMachines,
-    AvailableMaterials,
-    Branding,
+      ProductionMachines,
+      AvailableMaterials,
+      Branding,
   ]),
-  section(ManageWhatYourCadCanDo, [
+  section(ProcessOfGates,
+      [CreateYourFirstProject,
+       ViaAutonomousRoutine],
+    ),
+  section(FactoryFeatures, [
     AutomaticQuotations,
     section(ParametricDesign, [
       Model,
@@ -62,8 +60,10 @@ export const docsContents = [
       HowItShouldLook,
     ]),
   ]),
+  InteractWithYourFirstOrder,
+    section(PublishYourCadOnline, [
   SuspendTheSubscription,
-  Feedback,
+    ])
 ];
 
 export default docsContents;

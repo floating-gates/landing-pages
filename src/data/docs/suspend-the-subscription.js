@@ -6,7 +6,7 @@ export const SuspendTheSubscription = {
   blocks: [
     {
       type: 'text',
-      text: 'To suspend the subscription or change the name of the hub, go to [floating-gates.com/profile](https://floating-gates.com/profile) and use the suspend column.',
+      text: 'To suspend the subscription or change the name of the hub, go to [Admin dashboard](https://app.floating-gates.com/?menu=Admin) and use the suspend column.',
     },
     {
       type: 'figure',

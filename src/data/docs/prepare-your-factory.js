@@ -5,7 +5,7 @@ import prepareYourFactory4Img from '../images/docs-images/prepare-your-factory-4
 
 export const PrepareYourFactory = {
   id: 'prepare-your-factory',
-  title: 'Prepare your Factory',
+  title: 'Configure Factory to be Used',
   description: 'Prepare your factory so your customers know what you can do',
   blocks: [
     {
