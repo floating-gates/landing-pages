@@ -1,18 +1,16 @@
 import twoSurfacesImg from '../images/docs-images/how-gates-work-two-surfaces.webp';
 import funnelImg from '../images/docs-images/how-gates-work-funnel.webp';
 
-export const HowItWorks = {
+export const CoreComponents = {
   id: 'how-it-works',
-  title: 'How it works',
+  title: 'Core Components',
   description: 'What Gates does, how it works, and what you need to run it',
     blocks: [
-
-    { type: 'heading', level: 2, text: 'How Gates fetches files and Flag mistakes' },
     {
       type: 'text',
-      text: 'Gates work on three important mechanisms. They are processed together to ensure that the flaws are identified earlier during checks.',
+      text: 'Gates work using the same baseline two distinct category of clients. They find flaws before your turn on the machines.',
     },
-    { type: 'figure', img: twoSurfacesImg, caption: 'The two surfaces of the platform', full: true },
+    { type: 'figure', img: twoSurfacesImg, caption: 'Who interact with the machine', full: true },
     { type: 'heading', level: 3, text: '1. DfM Rules Check' },
     {
       type: 'text',

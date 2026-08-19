@@ -4,9 +4,9 @@ import createYourFirstProject3Img from '../images/docs-images/create-your-first-
 import createYourFirstProject4Img from '../images/docs-images/create-your-first-project-4.png';
 import createYourFirstProject5Img from '../images/docs-images/create-your-first-project-5.png';
 
-export const CreateYourFirstProject = {
-  id: 'create-your-first-project',
-  title: 'Using the Web Platform',
+export const ViaAutonomousRoutine = {
+  id: 'via-autonomous-routine',
+  title: 'Using the Autonomous Agent',
   blocks: [
     {
       type: 'text',

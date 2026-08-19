@@ -2,13 +2,12 @@ import pipelineImg from '../images/docs-images/process-of-gates-pipeline.webp';
 
 export const ProcessOfGates = {
   id: 'process-of-gates',
-  title: 'Process of Gates',
+  title: 'Interact with Factory',
   description: 'The customer pipeline, step by step',
   blocks: [
-    { type: 'heading', level: 2, text: "Customer's pipeline" },
     {
       type: 'text',
-      text: 'The online CAD offered by Gates is a streamlined pipeline and not a form. Each step unlocks the next gradually, so a part cannot be ordered before it has been checked against your rules and priced against your costs.',
+        text: 'The online platform is a streamlined pipeline, where each step unlocks the next gradually, so a part cannot be ordered before it has been checked against your rules and priced against your costs.',
     },
     { type: 'figure', img: pipelineImg, caption: 'The customer pipeline' },
     { type: 'heading', level: 3, text: '1. Upload' },

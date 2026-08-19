@@ -22,17 +22,5 @@ export const Introduction = {
       type: 'text',
       text: "This documentation is intended for the customers of the 'Floating Gates' platform, and the technical teams responsible for deploying and maintaining the system. The main intended audience for this guide are **manufacturers with idle production capacity.**",
     },
-    { type: 'heading', level: 2, text: 'Non-goals' },
-    { type: 'text', text: 'Gates platform will not certainly do the following:' },
-    {
-      type: 'list',
-      ordered: false,
-      items: [
-        '**It does not modify your CAD.** Gates reports; you revise.',
-        '**It does not take payment.** When a customer accepts a price, you send payment details by whichever method you already use, an invoice or a direct transfer. Gates stays out of the transaction.',
-        '**It does not set your prices.** It drafts a quote from your own cost inputs and leaves the final number to you.',
-        '**It does not replace a design review.** It removes the mechanical part of one so that your reviewers can spend their attention on judgement calls.',
-      ],
-    },
   ],
 };

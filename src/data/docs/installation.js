@@ -2,65 +2,75 @@ import download_bundle_img from '../images/docs-images/download_bundle.png';
 
 export const InstallEnterprise = {
     id: 'install',
-    title: 'Install Software in Enterprise Bundle',
-    description: 'What Gates does, how it works, and what you need to run it',
+    title: 'Install Gates Enterprise Bundle',
+    description: 'System requirements, configuration, and setup steps for the Gates Enterprise stack.',
     blocks: [
-        { type: 'heading', level: 2, text: 'Download Software bundle' },
+        // --- Requirements ---
+        { type: 'heading', level: 2, text: 'System Requirements' },
         {
             type: 'text',
-            text: 'Once your server meets the requirements above. Log into your account and download the Enterprise stack and grab your licence keys via the [Admin Panel](https://app.floating-gates.com/dashboard?menu=Admin), and to be used during first start.',
+            text: 'Before installing Gates, ensure your infrastructure meets the hardware and software prerequisites listed below. A valid Enterprise Subscription is required to run this stack.',
         },
-        { type: 'figure', img: download_bundle_img, caption: 'Bundle download procedures' },
-        {
-            type: 'text',
-            text: 'Before installing Gates, ensure both your have a compatible Linux server or Virtual Machine. To start successfully this stack you need to have a valid Enterprise Subscription.'
-        },
-
-        { type: 'heading', level: 1, text: 'Server Requirements' },
+        { type: 'heading', level: 3, text: 'Server Requirements' },
         {
             type: 'table',
-            headers: ['Component', 'Minimum Requirement'],
+            headers: ['Component', 'Specification'],
             rows: [
-                ['Software needed:', 'good2manufacture-server-pkg'],
+                ['Required Package', 'good2manufacture-server-pkg'],
                 ['Operating System', 'RHEL 8 or newer (64-bit)'],
-                ['CPU', '4 CPU-cores **minimum**'],
-                ['Memory (RAM)', '8 GB **minimum** (32 GB recommended)'],
+                ['CPU', '4 CPU cores minimum'],
+                ['Memory (RAM)', '8 GB minimum (32 GB recommended)'],
                 ['Storage', '50 GB SSD available storage'],
                 ['Network', 'Stable broadband / internal high-speed network'],
             ],
         },
-        { type: 'heading', level: 1, text: 'Client Requirements' },
+        { type: 'heading', level: 3, text: 'Client Requirements' },
         {
             type: 'table',
-            headers: ['Component', 'Minimum Requirement'],
+            headers: ['Component', 'Specification'],
             rows: [
-                ['Software needed:', 'good2manufactured'],
+                ['Required Package', 'good2manufactured'],
                 ['Operating System', 'Windows 10 or 11 (64-bit)'],
-                ['Network Connection', 'Stable broadband (5 Mbps or faster)'],
+                ['Network Connection', 'Stable broadband (5 Mbps minimum)'],
             ],
         },
 
-        // --- Installation ---
         { type: 'divider' },
-        { type: 'heading', level: 2, text: 'Configure the Server' },
+
+        // --- Download ---
+        { type: 'heading', level: 2, text: '1. Download the Software Bundle' },
         {
             type: 'text',
-            text: 'Before starting the stack, create execute/webserver/Rocket.toml from the provided template and fill in your environment-specific values. At minimum, set a unique secret_key, your db_url and project paths, and the correct host_addr_good2manufactured / licence_server_url for your deployment.',
+            text: 'Log into the [Admin Panel](https://app.floating-gates.com/dashboard?menu=Admin) to download the Enterprise stack archive and retrieve your license keys, which will be needed during initial setup.',
+        },
+        { type: 'figure', img: download_bundle_img, caption: 'Downloading the Enterprise bundle and license keys from the Admin Panel' },
+
+        // --- Extract & Configure ---
+        { type: 'heading', level: 2, text: '2. Extract and Configure' },
+        {
+            type: 'text',
+            text: 'Extract the downloaded archive and navigate into the stack directory:',
         },
         {
             type: 'code',
-            language: 'sh',
+            language: 'bash',
             code: 'tar -xzf floating-gates-enterprise-<version>.tar.gz\ncd stack-structure',
         },
         {
-            type: 'code',
-            language: 'toml',
-            code: '[default]\nport = 8000\nsecret_key = "<generate-a-unique-base64-secret>"\nproject_root_path = "/projects"\nproject_host_root = "/home/<user>/stack-structure/data/projects"\ndomain_name = "localhost"\nserver_subdomain = "app"\nhost_addr_good2manufactured = "169.254.1.2:9997"\ngood2manufacture_bin_path = "/home/<user>/stack-structure/execute/good2manufacture/Good2Manufacture"\nlicence_server_url="195.231.121.110:3000"\nlicence_key = "<your-licence-key>"\ndb_url = "/databases/fg-database.sqlite3"',
+            type: 'text',
+            text: 'Next, create a `.env` file in the root directory to store runtime variables and license information:',
         },
-        { type: 'heading', level: 2, text: 'Start the Stack' },
+        {
+            type: 'code',
+            language: 'env',
+            code: 'LICENCE_KEY=your-licence-key\nACCOUNT_EMAIL=your-email-account\nPASSWD_EMAIL=email-account-password\nSMTP_EMAIL_SERVER=your-mail-server\nENABLE_EMAIL=true\n\n# Optional Stack Configuration\nSTACK_PORT=8000\nDOMAIN_NAME=your-domain-name\nSERVER_SUBDOMAIN=app\nHOST_ADDR_GOOD2MANUFACTURED=169.254.1.2:9997\nDEMO_URL=http://demo.your-domain/',
+        },
+
+        // --- Startup ---
+        { type: 'heading', level: 2, text: '3. Start the Stack' },
         {
             type: 'text',
-            text: 'Run the start script from the root of stack-structure. It configures and brings up the nginx reverse proxy, the webserver pod, and the floating-gates application pod, then waits for services to settle before reporting status.',
+            text: 'Run `start_gates.sh`. This script configures and launches the NGINX reverse proxy, webserver pod, and floating-gates application pod, then waits for all services to settle before confirming status.',
         },
         {
             type: 'code',
@@ -68,13 +78,29 @@ export const InstallEnterprise = {
             code: './start_gates.sh',
         },
         {
+            type: 'text',
+            text: 'Example startup output:',
+        },
+        {
             type: 'code',
             language: 'text',
-            code: 'Configuring nginx-pod...\nConfiguring webserver...\nConfiguring floating-gates.pod...\nWaiting for services to settle...\nVerifying service status...\nOK: floating-gates-pod is active.\nOK: nginx-pod is active.',
+            code: 'Configuring nginx-pod...\nConfiguring webserver...\nConfiguring floating-gates.pod...\nConfiguring config for good2manufactured...\nWaiting for services to settle...\nVerifying service status...\nOK: floating-gates-pod is active.\nOK: nginx-pod is active.\nOK: webserver is active.\nOK: good2manufactured is active.\nConfiguring backup script...\nConfiguring bundling script...\n----------------------------------------------------\nDeployment successful! The following ports are active:\n - Webserver: http://localhost:8000\n - HTTP Proxy: http://localhost:8080\n----------------------------------------------------\nYou can check user systemd services at: ~/.config/systemd/user\nDone!',
+        },
+
+        // --- Verification & Troubleshooting ---
+        { type: 'heading', level: 2, text: '4. Post-Installation Verification' },
+        {
+            type: 'text',
+            text: 'Ensure all service status lines report `OK` before accessing the application. If services fail to reach an active status, check the logs via `journalctl --user -u floating-gates-pod` or your container runtime before attempting a restart.',
         },
         {
             type: 'text',
-            text: 'Both OK lines must appear before the stack is considered up. If either pod fails to reach active status, check the pod logs (e.g. via journalctl or your container runtime\'s logs command) before retrying.',
+            text: 'To manually restart the stack service if needed, run:',
         },
-    ]
-}
+        {
+            type: 'code',
+            language: 'bash',
+            code: 'systemctl --user restart floating-gates-pod',
+        },
+    ],
+};

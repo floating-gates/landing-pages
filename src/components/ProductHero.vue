@@ -29,7 +29,7 @@
             <!-- Suppliers and Customers.<br> -->
             Autonomous Detection  <br>
             of <em>Design Errors in CAD </em> <br>
-            for Manufacturing
+            and Technical Drawings
             <!-- and Future Maintenance <br> -->
           </h1>
 
@@ -169,7 +169,7 @@
             <div class="panel-progress">
               <div class="panel-card">
                 <div class="progress-header mb-2">
-                  <span>Found Issues in CAD Library</span>
+                  <span>Issues around your Files</span>
                 </div>
                 <div style="padding: 0 12px 12px;">
                   <div class="check-row">
@@ -199,7 +199,7 @@
             <div class="panel-context">
               <div class="panel-card">
                 <div class="progress-header">
-                  <span>Files around the Factory</span>
+                  <span>Autonomous File Fetch</span>
                 </div>
                 <div style="display:flex; flex-direction:column; padding: 8px;">
                   <div v-for="src in contextSources" :key="src.name" class="context-item">
@@ -354,7 +354,7 @@
 
 .mfg-shell {
     width: 80%;
-    min-height: 650px;
+    min-height: 600px;
     max-width: 780px;
     border-radius: 25px;
     background: v-bind(themeColorWhite);
@@ -572,12 +572,12 @@
 .progress-header {
     display: flex;
     align-items: center;
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 750;
     color: v-bind(themeColor);
     justify-content: space-between;
     border-bottom: 0.5px solid v-bind(themeColorLille);
-    padding: 12px 14px 10px;
+    padding: 12px 24px 10px;
 }
 
 .check-row {

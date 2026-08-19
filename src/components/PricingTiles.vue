@@ -21,7 +21,7 @@ const currencySymbols = {
 // Static exchange rates
 const exchangeRates = {
   EUR: 1,
-  USD: 1.08, 
+  USD: 1.1, 
 };
 
 const formatPrice = (basePrice, planIndex) => {
@@ -97,38 +97,42 @@ const pricingPlans = computed(() => [
 
 <template>
 <!-- Added pb-24 here to create the spacing at the bottom before the footer appears -->
-<div class="untree pt-10 pb-24" :style="{ backgroundImage: `url(${background})` }">  
+<div class="untree" :style="{ backgroundImage: `url(${background})` }">  
   <!-- Centered container with mx-auto -->
-  <div class="container mx-auto p-4">
-    
-    <!-- Header Block (Centered) -->
-    <div class="flex flex-col items-center justify-center text-center mt-16 mb-8">
-      <div class="w-full lg:w-8/12">
+  <div class="flex flex-col w-full p-12 items-center justify-center min-h-screen gap-12">
+
+    <!-- Header Section with Centered Text and Right-Aligned Toggle -->
+    <div class="flex flex-col md:flex-row items-center justify-between relative gap-6">
+      <!-- Invisible spacer to keep the center block perfectly balanced on desktop -->
+      <div class="hidden md:block w-32"></div>
+
+      <!-- Centered Header -->
+      <div class="text-center max-w-2xl mx-auto">
         <h2 class="heading">{{ heading }}</h2>
         <p class="text-gray-500 text-lg leading-relaxed">{{ subHeading }}</p>
       </div>
-    </div>
-    
-    <!-- Currency Toggle Block (Aligned to the Right) -->
-    <div class="flex justify-end mb-8">
-      <div class="inline-flex bg-gray-100 p-1 rounded-xl shadow-inner border border-gray-200">
-        <button 
-          v-for="currency in currencies" 
-          :key="currency"
-          @click="currentCurrency = currency"
-          class="px-5 py-2 text-sm font-medium rounded-lg transition-all duration-200 focus:outline-none"
-          :class="currentCurrency === currency 
-            ? 'bg-white shadow-sm text-gray-900 font-bold' 
-            : 'text-gray-500 hover:text-gray-900'"
-          :style="currentCurrency === currency ? { color: themeColor } : {}"
-        >
-          {{ currency }}
-        </button>
+      
+      <!-- Currency Toggle Block (Right Aligned) -->
+      <div class="ml-15 flex shrink-0">
+        <div class="bg-gray-100 p-1 rounded-xl shadow-inner border border-gray-200">
+          <button 
+            v-for="currency in currencies" 
+            :key="currency"
+            @click="currentCurrency = currency"
+            class="px-5 py-2 text-sm font-medium rounded-lg transition-all duration-200 focus:outline-none"
+            :class="currentCurrency === currency 
+              ? 'bg-white shadow-sm text-gray-900 font-bold' 
+              : 'text-gray-500 hover:text-gray-900'"
+            :style="currentCurrency === currency ? { color: themeColor } : {}"
+          >
+            {{ currency }}
+          </button>
+        </div>
       </div>
     </div>
     
     <!-- Pricing Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 justify-center">
       <div 
         v-for="(plan, index) in pricingPlans" 
         :key="plan.name"
@@ -164,7 +168,7 @@ const pricingPlans = computed(() => [
               </span>
             </div>
             
-            <ul class="items-center mb-4">
+            <ul class="items-center mb-4 mx-2">
               <li 
                 v-for="feature in plan.features" 
                 :key="feature"
@@ -189,7 +193,6 @@ const pricingPlans = computed(() => [
   </div>
 </div>
 </template>
-
 
 <style scoped>
 .untree {

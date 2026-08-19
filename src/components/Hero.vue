@@ -3,7 +3,7 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 import mainPhoto from "../data/images/hero_pic.webp";
 import mainPhoto2 from "../data/images/output.png"
 import background from "../data/images/background_pic.webp";
-import { themeColor, themeColorOrange, themeColorWhite,
+import { themeColor, themeColorOrange, themeColorWhite, themeColorLille,
          app_login_url, youtubeVideoUrl } from "../config.js";
 
 import Charts from "./Charts.vue"
@@ -104,11 +104,10 @@ onBeforeUnmount(() => {
 <template>
 <div class="untree" id="hero"
      :style="{ backgroundImage: `url(${background})` }">
-
   <div class="flex flex-row w-full p-12 items-center justify-center min-h-screen gap-12">
  
     <div class="min-w-fit">
-      <div class="context-pill" data-aos="fade-up" data-aos-delay="50">
+      <div class="context-pill mb-5" data-aos="fade-up" data-aos-delay="50">
         <span class="pill-dot mr-3"></span>
         <span class="pill-text">It's a Software for Spotting errors in CAD and GD&T</span>
       </div>
@@ -266,13 +265,14 @@ img {
 }
 
 .chart-wrap {
-    max-height: 700px;
+    max-height: 800px;
     display: flex;
     flex-direction: column;
 }
 
 .chart-wrap > :first-child {
     flex: 1; 
+    width: 100%;
     height: 100%;
 }
 
@@ -281,12 +281,12 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 9px;
-    padding: 7px 16px;
-    border-radius: 50px;
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    margin-bottom: 1.4rem;
+    padding: 8px 16px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
@@ -294,13 +294,13 @@ img {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: v-bind(themeColorOrange);
-    box-shadow: 0 0 8px v-bind(themeColorOrange);
+    background-color: v-bind(themeColorLille);
+    box-shadow: 0 0 8px v-bind(themeColorLille);
 }
 
 .pill-text {
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.025em;
     text-transform: uppercase;
     color: v-bind(themeColor);

@@ -5,7 +5,7 @@ import publishYourCadOnline4Img from '../images/docs-images/publish-your-cad-onl
 
 export const PublishYourCadOnline = {
   id: 'publish-your-cad-online',
-  title: 'Publish your CAD On-line',
+  title: 'Subscription to Gates in Cloud',
   description: 'Follow these instructions to make the CAD visible online',
   blocks: [
     { type: 'heading', level: 2, text: 'Exit Demo mode and set up your Hub' },
