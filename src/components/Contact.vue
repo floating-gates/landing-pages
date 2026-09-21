@@ -67,7 +67,7 @@ const labels = {
         </div>
         <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
           <h3 class="h5 mb-4">{{ contactInfoHeading }}</h3>
-          <address class="text-black d-flex">
+          <address class="d-flex">
             <span class="mt-1 icon-room mr-2"></span
             ><span>{{ contactInfo.address }}</span>
           </address>

@@ -5,7 +5,7 @@ import {
   themeColorGold,
   themeColorWhite
 } from "../config.js";
-import processImg from "../data/images/path3.webp";
+import processImg from "../data/images/path.webp";
 </script>
 
 <template>

@@ -4,6 +4,7 @@ import { themeColor, themeColorOrange, themeColorWhite } from "../config.js";
 import Header from "../components/Header.vue";
 import { useRoute, useRouter } from "vue-router";
 import background from "../data/images/background_pic.webp";
+import { ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon, CloseIcon } from "../helper/icons_generator.js";
 
 // 1. Define and capture props
 const props = defineProps({
@@ -19,7 +20,7 @@ const route = useRoute();
 const router = useRouter();
 const selectedArticle = ref(null);
 const currentPage = ref(1);
-const perPage = 2;
+const perPage = 4;
 
 // 2. Use props.articles instead of articles
 const totalPages = computed(() => {
@@ -90,9 +91,7 @@ const closeArticle = () => {
               @click="openArticle(article)"
             >
               <span>Read Case Study</span>
-              <svg class="w-5 h-5 transition-transform duration-200 group-hover/btn:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-              </svg>
+              <ArrowRightIcon class="w-5 h-5 transition-transform duration-200 group-hover/btn:translate-x-0.5" stroke-width="2" />
             </button>
           </div>
         </div>
@@ -111,9 +110,7 @@ const closeArticle = () => {
           }"
           @click="currentPage--"
         >
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-4 h-4">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
+          <ChevronLeftIcon class="w-4 h-4" stroke-width="2" />
           Previous
         </button>
         
@@ -134,9 +131,7 @@ const closeArticle = () => {
           @click="currentPage++"
         >
           Next
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-4 h-4">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
+          <ChevronRightIcon class="w-4 h-4" stroke-width="2" />
         </button>
       </div>
     </div>
@@ -159,9 +154,7 @@ const closeArticle = () => {
             :style="{ backgroundColor: themeColorOrange, color: themeColorWhite }"
             @click="closeArticle"
           >
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
+            <CloseIcon class="w-5 h-5" stroke-width="2" />
           </button>
         </div>
         
@@ -199,9 +192,7 @@ const closeArticle = () => {
             :style="{ backgroundColor: themeColorOrange, color: themeColor }"
           >
             {{ selectedArticle.callToActionText }}
-            <svg class="w-5 h-5 transition-transform duration-250 group-hover/cta:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
+            <ChevronRightIcon class="w-5 h-5 transition-transform duration-250 group-hover/cta:translate-x-1" stroke-width="2" />
           </a>
         </div>
       </div>

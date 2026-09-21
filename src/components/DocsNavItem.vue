@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
 import { themeColor, themeColorOrange } from "../config.js";
+import { ChevronRightIcon } from "../helper/icons_generator.js";
 
 // One row in the docs sidebar. Recurses into itself for sub-chapters, which is
 // how the folder structure under /docs turns into nested navigation.
@@ -48,10 +49,7 @@ watch(containsCurrent, (inside) => {
         :aria-label="`${expanded ? 'Collapse' : 'Expand'} ${node.title}`"
         @click="expanded = !expanded"
       >
-        <svg viewBox="0 0 24 24" width="14" height="14" :class="{ 'is-open': expanded }">
-          <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
+        <ChevronRightIcon width="14" height="14" :class="{ 'is-open': expanded }" stroke-width="2" />
       </button>
     </div>
 

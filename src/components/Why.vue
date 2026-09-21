@@ -2,18 +2,17 @@
 import advantages_yoy from "../data/images/advantages_yoy.webp";
 import { themeColor, themeColorOrange, themeColorWhite, app_login_url } from "../config.js";
 import background from "../data/images/background_pic.webp";
+import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from "../helper/icons_generator.js";
 </script>
 
 <template>
-  <div class="untree" id="hero" :style="{ backgroundImage: `url(${background})` }">
+  <div class="untree py-3" id="hero" :style="{ backgroundImage: `url(${background})` }">
     <div class="smaller flex flex-col justify-center align-center min-h-screen gap-10">
       <div class="text-center" data-aos="fade-up">
         <h1 class="section-title">
-          Avoid Silly Mistakes
+          Avoid your Own Mistakes
           <span class="dot">•</span>
-          Allow Customers drop-in
-          <span class="dot">•</span>
-          Be sure Suppliers follow Standards
+          Suppliers & Customers follow Standards
         </h1>
         <p class="subtitle">
           Traditional design reviews miss roughly 20% of engineering flaws. These slips are deceptively expensive, leading to over-tolerancing, material waste, manufacturing rework, and field failures. The same problem, though more subtle and yet even more problematic, can be stated as the human failure to adhere to production standards in accordance with the "good & old" design guidelines.
@@ -25,12 +24,10 @@ import background from "../data/images/background_pic.webp";
           <ul class="advantage-list">
             <li class="advantage-item">
               <div class="item-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                </svg>
+                <CheckInCircle stroke-width="1.5" />
               </div>
               <div class="item-content">
-                <h4 class="item-title">Highlights Production Issues before Manufacturing starts</h4>
+                <h4 class="item-title">Highlights Production Issues</h4>
                 <p class="item-description">
                   40% of drawings are saved into an un-manufacturable configuration, bringing with them countless hours of manual review.
                 </p>
@@ -39,9 +36,7 @@ import background from "../data/images/background_pic.webp";
 
             <li class="advantage-item">
               <div class="item-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-                </svg>
+                <BarChartIcon stroke-width="1.5" />
               </div>
               <div class="item-content">
                 <h4 class="item-title">Shows Future Maintenance Hurdles</h4>
@@ -53,9 +48,7 @@ import background from "../data/images/background_pic.webp";
 
             <li class="advantage-item">
               <div class="item-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9.75h4.875a2.625 2.625 0 0 1 0 5.25H12M8.25 9.75 10.5 7.5M8.25 9.75 10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185Z" />
-                </svg>
+                <ReceiptTaxIcon stroke-width="1.5" />
               </div>
               <div class="item-content">
                 <h4 class="item-title">Pricing Advices</h4>
@@ -69,9 +62,7 @@ import background from "../data/images/background_pic.webp";
             <li class="advantage-item advantage-item-cta" :style="{ backgroundColor: themeColor }">
               <a :href="app_login_url" class="cta-link">
                 <span class="item-icon" :style="{ backgroundColor: themeColorWhite }">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" :stroke="themeColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
-                  </svg>
+                  <ChevronDoubleRight stroke-width="1.5" :stroke="themeColor" />
                 </span>
                 <h3 class="item-title" :style="{ fontSize: '1.25rem', color: themeColorWhite }">
                   All Stakeholders Adheres to your Design Rules.
@@ -81,12 +72,12 @@ import background from "../data/images/background_pic.webp";
           </ul>
         </div>
 
-        <div class="w-full md:w-1/2 flex justify-center rounded-xl"
+        <div class="w-full flex justify-center"
              data-aos="fade-left" data-aos-delay="150">
             <img
               :src="advantages_yoy"
               alt="Automation performance metrics"
-              class="w-full h-auto rounded-xl"
+              class="hero-img-fluid w-full"
             />
         </div>
       </div>
@@ -95,16 +86,6 @@ import background from "../data/images/background_pic.webp";
 </template>
 
 <style scoped>
-.untree {
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 0 1.5rem;
-    box-sizing: border-box;
-    overflow-x: hidden; /* safety net: prevents any child overflow from creating horiz scrollbar */
-}
-
 .smaller {
     width: 100%;
     max-width: 1700px;
@@ -124,8 +105,8 @@ import background from "../data/images/background_pic.webp";
 }
 
 .section-title {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 650;
+  font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+  font-weight: 700;
   color: v-bind(themeColor);
   position: relative;
   display: block; /* changed from inline-block to allow natural wrapping */
