@@ -1,11 +1,15 @@
 <script setup>
 import Header from "../components/Header.vue"
-import Hero from "../components/Hero.vue";
-import HowDoesItWork2 from "../components/HowDoesItWork2.vue"
+import Product from "../components/Product.vue";
+import PhaseOfManufacturingDiscovery from "../components/PhaseOfManufacturingDiscovery.vue"
+import DualUse from "../components/DualUse.vue";
+
 </script>
 
 <template>
     <Header />
-    <Hero />
-    <HowDoesItWork2 />
+    <Product />
+    <PhaseOfManufacturingDiscovery />
+    <!-- <DualUse /> -->
+
 </template>

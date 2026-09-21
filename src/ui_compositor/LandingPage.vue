@@ -5,12 +5,12 @@ import Why from "../components/Why.vue";
 import Testimonial from "../components/Testimonial.vue";
 import Contact from "../components/Contact.vue";
 import CookieBanner from "../components/CookieBanner.vue";
-import ProductHero from "../components/ProductHero.vue";
+import Hero from "../components/Hero.vue";
 </script>
 
 <template>
     <Header />
-    <ProductHero />
+    <Hero />
     <HowDoesItWork />
     <Why />
     <CookieBanner />

@@ -1,4 +1,4 @@
-import twoSurfacesImg from '../images/docs-images/how-gates-work-two-surfaces.webp';
+import twoSurfacesImg from '../images/dual_use.webp';
 import funnelImg from '../images/docs-images/how-gates-work-funnel.webp';
 
 export const CoreComponents = {

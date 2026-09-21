@@ -1,18 +1,20 @@
 <script setup>
-import advantages_yoy from "../data/images/advantages_yoy.webp";
+import advantages_yoy from "../data/images/dual_use.webp";
 import { themeColor, themeColorOrange, themeColorWhite, app_login_url } from "../config.js";
 import background from "../data/images/background_pic.webp";
 import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from "../helper/icons_generator.js";
 </script>
 
 <template>
-  <div class="untree py-3" id="hero" :style="{ backgroundImage: `url(${background})` }">
+  <div class="untree" id="hero" :style="{ backgroundImage: `url(${background})` }">
     <div class="smaller flex flex-col justify-center align-center min-h-screen gap-10">
       <div class="text-center" data-aos="fade-up">
         <h1 class="section-title">
-          Avoid your Own Mistakes
+          Avoid Silly Mistakes
           <span class="dot">•</span>
-          Suppliers & Customers follow Standards
+          Allow Customers drop-in
+          <span class="dot">•</span>
+          Be sure Suppliers follow Standards
         </h1>
         <p class="subtitle">
           Traditional design reviews miss roughly 20% of engineering flaws. These slips are deceptively expensive, leading to over-tolerancing, material waste, manufacturing rework, and field failures. The same problem, though more subtle and yet even more problematic, can be stated as the human failure to adhere to production standards in accordance with the "good & old" design guidelines.
@@ -86,6 +88,16 @@ import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from 
 </template>
 
 <style scoped>
+.untree {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    overflow-x: hidden; /* safety net: prevents any child overflow from creating horiz scrollbar */
+}
+
 .smaller {
     width: 100%;
     max-width: 1700px;
@@ -105,7 +117,7 @@ import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from 
 }
 
 .section-title {
-  font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
   color: v-bind(themeColor);
   position: relative;

@@ -14,6 +14,7 @@ import { WhatIsGates } from './what-is-gates.js';
 import { CoreComponents } from './core-components.js';
 import { ProcessOfGates } from './process-of-gates.js';
 import { InstallEnterprise } from './installation.js';
+import { InstallClient } from './installation-client.js';
 
 import { QuickStart } from './quick-start.js';
 import { CreateYourFirstProject } from './create-your-first-project.js';
@@ -42,6 +43,7 @@ export const docsContents = [
     section(WhatIsGates, [
         CoreComponents,
         InstallEnterprise,
+        InstallClient,
         QuickStart]),
   section(PrepareYourFactory, [
       ProductionMachines,

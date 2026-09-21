@@ -1,5 +1,5 @@
 <script setup>
-import mainPhoto from "../data/images/platform_logic_pic.webp";
+import mainPhoto from "../data/images/resume_platform.webp";
 import { themeColor, themeColorOrange, themeColorGold, themeColorWhite,
          youtubeVideoUrl, app_login_url } from "../config.js";
 import { ref } from 'vue'
@@ -58,57 +58,53 @@ function clicking_tile(tile) {
 </script>
 
 <template>
-  <div v-if="showVideo" class="video-overlay">
-    <div class="video-wrapper">
-      <button class="video-close" @click="showVideo = false">✕</button>      
-      <iframe
-        :src="youtubeVideoUrl"
-        frameborder="0"
-        allow="autoplay; encrypted-media"
-        allowfullscreen
+<div v-if="showVideo" class="video-overlay">
+  <div class="video-wrapper">
+    <button class="video-close" @click="showVideo = false">✕</button>      
+    <iframe
+      :src="youtubeVideoUrl"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
       ></iframe>
-    </div>
   </div>
+</div>
 
-  <!-- <div id="hero" class="hero-section-container"> -->
-  <div class="hero-row flex flex-col w-full p-12 items-center justify-center gap-14">
-      
-    <h2 class="heading mb-3">
-      <em>AUTONOMOUS MISTAKES DETECTION IN MECHANICAL ENGINEERING</em>
-      <span class="title-line-2">THAT WORKS ON FACTORY NETWORKS</span>
-    </h2>
-    
-    <!-- <div class="hero-split-grid"> -->
-    <div class="mb-12">
-      <div class="hero-img-pane" data-aos="fade-left" data-aos-duration="700">
-        <img :src="mainPhoto" alt="Platform Logic Graphic" class="hero-img-fluid" />
-      </div>
-
-      <div class="hero-tiles-pane" data-aos="fade-right" data-aos-duration="700">
-        <div class="hw-right">
-            <!-- :key="tile.number" -->
-          <a
-            v-for="(tile, i) in tiles"
-            class="hw-tile mt-8"
-            :class="tile.even ? 'white-tile' : 'blue-tile'"
-            data-aos="fade-up"
-            :data-aos-delay="i * 100"
-            @click="clicking_tile(tile)">
-            
-            <!-- <span class="hw-tile-num">{{ tile.number }}</span> -->
-            <div class="hw-tile-content-area">
-              <div class="hw-tile-title">
-                <span class="hw-tile-verb">{{ tile.verb }} </span>
-              </div>
-              <div class="hw-tile-title2">
-                <span class="hw-tile-subject">{{ tile.subject }}</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
+<!-- <div id="hero" class="hero-section-container"> -->
+<div class="hero-row flex flex-col p-12 items-center justify-center gap-14">
+  
+  <h2 class="heading mb-3">
+    <em>AUTONOMOUS MISTAKES DETECTION IN MECHANICAL ENGINEERING</em>
+    <span class="title-line-2">THAT WORKS ON FACTORY NETWORKS</span>
+  </h2>
+  
+  <div class="hero-img-pane" data-aos="fade-left" data-aos-duration="700">
+    <img :src="mainPhoto" alt="Platform Logic Graphic" class="hero-img-fluid" />
   </div>
+  
+  <!-- <div data-aos="fade-right mb-3" data-aos-duration="700"> -->
+  <!--   <div class="hw-right"> -->
+  <!--     <a -->
+  <!--       v-for="(tile, i) in tiles" -->
+  <!--       class="hw-tile mt-8" -->
+  <!--       :class="tile.even ? 'white-tile' : 'blue-tile'" -->
+  <!--       data-aos="fade-up" -->
+  <!--       :data-aos-delay="i * 100" -->
+  <!--       @click="clicking_tile(tile)"> -->
+        
+  <!--       <\!-- <span class="hw-tile-num">{{ tile.number }}</span> -\-> -->
+  <!--       <div class="hw-tile-content-area"> -->
+  <!--         <div class="hw-tile-title"> -->
+  <!--           <span class="hw-tile-verb">{{ tile.verb }} </span> -->
+  <!--         </div> -->
+  <!--         <div class="hw-tile-title2"> -->
+  <!--           <span class="hw-tile-subject">{{ tile.subject }}</span> -->
+  <!--         </div> -->
+  <!--       </div> -->
+  <!--     </a> -->
+  <!--   </div> -->
+  <!-- </div> -->
+</div>
 </template>
 
 <style scoped>
@@ -128,22 +124,6 @@ function clicking_tile(tile) {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.hero-img-fluid {
-    width: 100%;
-    max-width: 580px;
-    height: auto;
-    object-fit: contain;
-    border-radius: 1rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-}
-
-
-/* Ensure the wrapper pane stretches fully */
-.hero-tiles-pane {
-    width: 100%;
-    display: flex;
 }
 
 .heading {

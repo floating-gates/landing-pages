@@ -3,6 +3,7 @@ import { themeColor, themeColorOrange, themeColorLille } from "../config.js";
 import { ref } from "vue";
 import background from "../data/images/background_pic.webp"
 import Header from "../components/Header.vue";
+import { ChevronDownIcon } from "../helper/icons_generator.js";
 
 const faqs = [
     {
@@ -84,19 +85,12 @@ const isOpen = (index) => openIndex.value === index;
             <span class="question-text">{{ faq.question }}</span>
           </div>
           <span class="faq-icon">
-            <svg
+            <ChevronDownIcon
               :class="{ 'rotated': isOpen(index) }"
               width="24"
               height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
               stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              >
-              <polyline points="6,9 12,15 18,9"></polyline>
-            </svg>
+            />
           </span>
         </button>
         

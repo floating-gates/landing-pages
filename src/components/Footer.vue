@@ -1,5 +1,6 @@
 <script setup>
 import { contactInfo, themeColorOrange, partner_app_login_url } from "../config.js";
+import { ChevronRightIcon } from "../helper/icons_generator.js";
 import iconGithub from "../data/images/github-logo.svg";
 import iconSubstack from "../data/images/substack-logo.png";
 
@@ -43,16 +44,11 @@ const socialItems = [
                 <a :href="partner_app_login_url" class="inline-flex items-center">
                   <h3 class="text-base font-semibold mb-3 inline-flex items-center ">
                     Become a Partner
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 24 24"
-                         fill="none"
-                         :stroke="themeColorOrange"
-                         stroke-width="4"
-                         stroke-linecap="round"
-                         stroke-linejoin="round"
-                         class="h-[1em] w-auto shrink-0">
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
+                    <ChevronRightIcon
+                      :stroke="themeColorOrange"
+                      stroke-width="4"
+                      class="h-[1em] w-auto shrink-0"
+                    />
                   </h3>
                 </a>
                 <p class="leading-relaxed">Get your hands dirty and come join us, it is going to be a rollercoaster.</p>

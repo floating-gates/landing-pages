@@ -7,14 +7,13 @@ const themeColorGold   = '#D8B4A0';
 
 // URLs
 const demo_url              = import.meta.env.VITE_DEMO_URL;
-const app_login_url         = import.meta.env.VITE_APP_URL
-const partner_app_login_url = import.meta.env.VITE_PARTNER_APP_URL
-const api_url               = import.meta.env.VITE_API_URL
-
+const app_login_url         = import.meta.env.VITE_APP_URL;
+const partner_app_login_url = import.meta.env.VITE_PARTNER_APP_URL;
+const install_docs_url      = import.meta.env.VITE_DOCS_URL + "#what-is-gates/install";
+const install_client_docs_url      = import.meta.env.VITE_DOCS_URL + "#what-is-gates/install-client";
+const download_center_url   = import.meta.env.VITE_DOWNLOAD_URL;
 const youtubeVideoUrl = 'https://www.youtube.com/embed/-og2OKAT_UE?autoplay=1'
 const survey_link  = "https://forms.gle/JYHXxX2anVp14X6a6"
-const create_customer_api_endpoint = api_url + '/user/create_customer';
-const good2manufactured_url = "https://floating-gates-pub.nbg1.your-objectstorage.com/FetchableSoftware/good2manufactured-win-1.0.0.exe"
 
 const display_price_list = [
     {name: 'Basic'     , price: 'Free' },
@@ -34,8 +33,8 @@ const contactInfo = {
 
 // Exporting all
 export {
-    themeColor, themeColorOrange, themeColorWhite, themeColorLille,
-    themeColorGold, survey_link, contactInfo, display_price_list,
-    demo_url, app_login_url, partner_app_login_url,
-    youtubeVideoUrl, create_customer_api_endpoint, good2manufactured_url
+    themeColor, themeColorOrange, themeColorWhite, themeColorLille, install_client_docs_url,
+    themeColorGold, survey_link, contactInfo, display_price_list, install_docs_url, 
+    demo_url, app_login_url, partner_app_login_url, download_center_url,
+    youtubeVideoUrl,
 };
