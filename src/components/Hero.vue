@@ -70,10 +70,13 @@
         
         <div class="cta-row" data-aos="fade-up" data-aos-delay="190">
           <a class="btn-primary-cta" :href="app_login_url">
-            Start Here
+            Get Autonomous Checks
             <ChevronDoubleRight stroke-width="2.5" />
           </a>
-          <a class="btn-ghost-cta" :href="demo_url">Visualize Your Issue Resolution UI</a>
+          <a class="btn-ghost-cta font-bold" :href="demo_url">
+            VIEW THE HUCKSTER INTERFACE
+            <ChevronDoubleRight stroke-width="2.5" :stroke="themeColor" width="13" height="13" />
+          </a>
         </div>
         </div>
         <div class="mfg-shell">
@@ -90,7 +93,7 @@
                 class="seg-btn m-1"
                 :class="{ active: activeTab === 'analysis' }"
                 @click="setTab('upload')">
-                Issues Resolution Interface
+                Huckster Interface
               </button>
             </div>
           </div>
@@ -353,7 +356,7 @@
     background: white;
     border: 0.5px solid rgba(0,0,0,1);
     border-radius: 9px;
-    padding: 3px;
+    padding: 2px;
     position: relative;
     box-shadow: 1px 2px 5px rgba(0,0,0,0.40);
     transition: opacity 0.35s ease;
@@ -677,17 +680,20 @@
 .btn-ghost-cta {
     display: inline-flex;
     align-items: center;
-    padding: 0.75rem 1.2rem;
+    gap: 8px;
+    padding: 0.75rem 1.4rem;
     background: transparent;
     color: v-bind(themeColor);
-    border: 3px solid v-bind(themeColor);
-    border-radius: 10px;
-    font-size: 0.95rem;
+    border: 2px solid v-bind(themeColor); /* Reduced border width */
+    border-radius: 10px; /* Slightly smaller radius */
+    font-weight: 600;
     text-decoration: none;
     transition: background 0.15s;
 }
 
-.btn-ghost-cta:hover { background: rgba(0,0,0,0.04); }
+.btn-ghost-cta:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
 
 .social-proof {
     display: flex;

@@ -7,16 +7,16 @@ import { ChevronDownIcon } from "../helper/icons_generator.js";
 
 const faqs = [
     {
-        question: "What is Gates?",
-        answer: "It is a software that lives in your company network. It perform CAD and GD&T autonomous revision revision to spot manufacturing issues. Every cad files in the network, it encounter a critical checkpoints by which is either green lit or highlighted for revision. A human in the loop is required once an issue is found."
+        question: "What is Good2Manufacture?",
+        answer: "It is a software layer for companies of all sizes. It perform CAD and GD&T autonomous revision revision to spot manufacturing issues. Every cad files in the network, it encounter a critical checkpoints by which is either green lit or highlighted for revision. A human in the loop is required once an issue is found."
     },
     {
         question: "Who is it for?",
-        answer: "It's a software for who design and produce hardware. Gates serves from big R&D deparments with multiple machines to small workshops that owns just a 3D printer. Our solution is especially valuable for those who struggle to fully utilize their machines due to cumbersome order inquiries."
+        answer: "It's a software for who design and produce hardware. Floating Gates serves from big R&D deparments with multiple machines to small workshops that owns just a 3D printer. Our solution is especially valuable for those who struggle to fully utilize their machines due to cumbersome order inquiries."
     },
     {
         question: "How it does it?",
-        answer: "The software is composed of a Manufacturing Agent and a public-facing Model-Based Definition (MBD) interface. The Agent checks the manufacturability and return reports on the health status of CAD files in your company network. While the MDB interface can provided a guide to both internal ed external stakeholders ( Customers or Suppliers ) towards the product they want, respecting your standards and assessing what the machines can reasonably produce."
+        answer: "The software is composed of a Manufacturing Agent and a public-facing Model-Based Definition (MBD) interface, called Huckster. The Agent checks the manufacturability and return reports on the health status of CAD files in your company network. While the MDB interface can provided a guide to both internal ed external stakeholders ( Customers or Suppliers ) towards the product they want, respecting your standards and assessing what the machines can reasonably produce."
     },
     {
         question: "What does Gates provides to Your Business?",
