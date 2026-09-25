@@ -82,7 +82,7 @@ onUnmounted(() => {
 
   <!-- Left: nested chapter navigation -->
   <aside class="docs-nav" :class="{ 'is-open': menuOpen }">
-    <h4 class="mb-3"> Documentation</h4>
+    <h4 class="mb-3 font-bold text-brand-dark"> Documentation</h4>
     <nav>
       <ul class="docs-nav-list">
         <DocsNavItem
