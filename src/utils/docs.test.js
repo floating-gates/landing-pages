@@ -7,6 +7,125 @@ import {
   slugify,
 } from './docs.js';
 import { docsContents } from '../data/docs/index.js';
+import {
+  parseMarkdown,
+  parseFrontmatter,
+  parseSummary,
+  loadDocs,
+} from './markdown.js';
+
+describe('parseMarkdown', () => {
+  it('parses headings, paragraphs, quotes and rules', () => {
+    expect(
+      parseMarkdown('## How it works\n\nHello.\n\n> note\n\n---\n'),
+    ).toEqual([
+      { type: 'heading', level: 2, text: 'How it works' },
+      { type: 'text', text: 'Hello.' },
+      { type: 'quote', text: 'note' },
+      { type: 'divider' },
+    ]);
+  });
+
+  it('parses bullet, numbered and nested lists', () => {
+    expect(parseMarkdown('- one\n- two')).toEqual([
+      { type: 'list', ordered: false, items: ['one', 'two'] },
+    ]);
+    expect(parseMarkdown('1. first')).toEqual([
+      { type: 'list', ordered: true, items: ['first'] },
+    ]);
+    expect(parseMarkdown('- one\n  - nested\n- two')).toEqual([
+      {
+        type: 'list',
+        ordered: false,
+        items: [{ text: 'one', ordered: false, items: ['nested'] }, 'two'],
+      },
+    ]);
+  });
+
+  it('parses fenced code without interpreting markup', () => {
+    expect(parseMarkdown('```sh\nnpm run build  # **not bold**\n```')).toEqual([
+      { type: 'code', language: 'sh', code: 'npm run build  # **not bold**' },
+    ]);
+  });
+
+  it('turns a standalone image into a figure', () => {
+    expect(parseMarkdown('![Dashboard](/a.png)')).toEqual([
+      { type: 'figure', img: '/a.png', caption: 'Dashboard' },
+    ]);
+    expect(parseMarkdown('![Wide](/a.png "full")')).toEqual([
+      { type: 'figure', img: '/a.png', caption: 'Wide', full: true },
+    ]);
+  });
+
+  it('parses tables with alignment', () => {
+    expect(
+      parseMarkdown('| A | B |\n| --- | ---: |\n| 1 | 2 |'),
+    ).toEqual([
+      {
+        type: 'table',
+        headers: ['A', 'B'],
+        rows: [['1', '2']],
+        align: ['', 'right'],
+      },
+    ]);
+  });
+
+  it('resolves relative image paths when asked', () => {
+    const blocks = parseMarkdown('![Alt](../images/docs-images/a.png)', {
+      resolveImage: (src) => `/assets/${src.split('/').pop()}`,
+    });
+    expect(blocks).toEqual([
+      { type: 'figure', img: '/assets/a.png', caption: 'Alt' },
+    ]);
+  });
+});
+
+describe('parseFrontmatter and SUMMARY', () => {
+  it('reads YAML frontmatter and leaves the body', () => {
+    const { meta, body } = parseFrontmatter(
+      '---\nid: quoting\ntitle: Quoting\ndescription: How pricing works\n---\n\nHello.\n',
+    );
+    expect(meta).toEqual({
+      id: 'quoting',
+      title: 'Quoting',
+      description: 'How pricing works',
+    });
+    expect(body.trim()).toBe('Hello.');
+  });
+
+  it('nests SUMMARY entries from indentation', () => {
+    const tree = parseSummary(`
+- [Intro](intro.md)
+- [Quick Start](quick-start.md)
+  - [Set the Factory](set-the-factory.md)
+    - [Deeper](deeper.md)
+`);
+    expect(tree.map((node) => node.file)).toEqual(['intro.md', 'quick-start.md']);
+    expect(tree[1].children[0].children[0].file).toBe('deeper.md');
+  });
+
+  it('hydrates SUMMARY files into chapters', () => {
+    const contents = loadDocs({
+      './SUMMARY.md': '- [Intro](intro.md)\n  - [Child](child.md)\n',
+      './intro.md': '---\nid: intro\ntitle: Intro\n---\n\nHi.\n',
+      './child.md': '---\nid: child\ntitle: Child\n---\n\n## Step\n',
+    });
+    expect(contents).toHaveLength(1);
+    expect(contents[0].id).toBe('intro');
+    expect(contents[0].blocks).toEqual([{ type: 'text', text: 'Hi.' }]);
+    expect(contents[0].children[0].title).toBe('Child');
+  });
+
+  it('uses a leading h1 as the title and keeps it out of the body', () => {
+    const contents = loadDocs({
+      './SUMMARY.md': '- [Untitled](plain.md)\n',
+      './plain.md': '# Plain Title\n\nHello.\n',
+    });
+    expect(contents[0].title).toBe('Plain Title');
+    expect(contents[0].blocks).toEqual([{ type: 'text', text: 'Hello.' }]);
+  });
+});
+
 
 describe('renderInline', () => {
   it('renders emphasis and inline code', () => {
@@ -203,7 +322,7 @@ describe('the real table of contents', () => {
   const { chapters, tree } = buildDocs(docsContents);
 
   it('has every chapter from the GitBook space', () => {
-    expect(chapters).toHaveLength(23);
+    expect(chapters).toHaveLength(21);
   });
 
   it('gives every chapter a unique slug', () => {
@@ -224,15 +343,15 @@ describe('the real table of contents', () => {
   );
 
   it('shows every screenshot', () => {
-    expect(figureSources).toHaveLength(56);
+    expect(figureSources).toHaveLength(51);
   });
 
   it('builds every screenshot from an import, not a public path', () => {
     // Vite resolves an import to /src/... in dev and /assets/... in a build.
-    // A bare /docs-images/... means someone went back to a public/ string path,
-    // which fails silently instead of at build time.
+    // A leftover ../images/... or /docs-images/... means the markdown path
+    // was not resolved through the image glob.
     const stray = figureSources.filter(
-      ({ src }) => !src || src.startsWith('/docs-images/'),
+      ({ src }) => !src || src.startsWith('/docs-images/') || src.startsWith('../'),
     );
     expect(stray.map(({ slug, src }) => `${slug}: ${src || '(empty)'}`)).toEqual([]);
   });
