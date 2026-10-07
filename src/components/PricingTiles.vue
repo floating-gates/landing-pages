@@ -10,7 +10,7 @@ import { ChevronDoubleRight } from "../helper/icons_generator.js";
 
 
 const heading = "Plans and Pricing";
-const subHeading = "Pricing refer to the hosting services for the online Model-Based Defintion (MBD) platform and its Factory. You always get to choose the final price to charge your customers to manufacture their devices. We only smooth the process.";
+const subHeading = "Recurring plans cover hosting of the Huckster Interface for you. Enterprise solutions are tailored instead, we begin with a conversation so we can understand your real challenges before proposing anything.";
 
 // Active currency state
 const currentCurrency = ref('EUR');
@@ -60,10 +60,11 @@ const pricingPlans = computed(() => [
         price: formatPrice(display_price_list[1].price, 1),
         where: "Cloud Service",
         suffix: "/Month - incl. VAT",
-        features: ["Custom Huckster interface URL",
-                   "Conversation on Project",
-                   "Parametric CAD of your best product",
-                   "Projects 100% Private"],
+        features: [
+            "Manufacturing Features Recognition",
+            "Custom Huckster interface URL",
+            "Conversation on Project",
+            "Projects 100% Private"],
         buttonText: "Get Started",
         buttonUrl: app_login_url,
     },
@@ -85,8 +86,8 @@ const pricingPlans = computed(() => [
         where: "Deploy in Factory",
         suffix: "",
         features: [
-            "Factory-Wide Manufacturing Agent",
-            "All 'Basic' features",
+            "Find Issues in GD&T and CAD",
+            "All Previous features",
             "Local Installation",
             "One time purchase",
             "Unlimited Numbers of PC covered",

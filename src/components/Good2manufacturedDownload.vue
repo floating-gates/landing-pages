@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import background from "../data/images/background_pic.webp";
-import { Logo, WindowsIcon, DownloadIcon, SmallCheckIcon } from "../helper/icons_generator.js";
+import { Logo, WindowsIcon, LinuxIcon, DownloadIcon, SmallCheckIcon } from "../helper/icons_generator.js";
 import { themeColorOrange, install_client_docs_url } from "../config.js";
 
 import IconGoodTwoManufactured from "../data/images/Icon-good2manufactured.svg";
@@ -13,12 +13,22 @@ import { handleDownloadClick } from "../helper/download.js";
 const manual_version = "1.1.0";
 const releaseDate = "21 September 2026";
 
-const platform = {
-    id: "windows",
-    label: "Windows - x64",
-    filename: "good2manufactured.exe",
-    icon: "windows",
-};
+const platforms = [
+    {
+        id: "windows",
+        label: "Windows - x64",
+        filename: "good2manufactured.exe",
+        icon: WindowsIcon,
+    },
+    {
+        id: "linux",
+        label: "Linux - x64",
+        filename: "good2manufactured",
+        icon: LinuxIcon,
+    },
+];
+
+const selectedPlatform = ref(platforms[0]);
 
 const requirements = [
     {
@@ -26,7 +36,11 @@ const requirements = [
         items: ["Windows 10 or 11 (64-bit)", "4 GB RAM minimum"],
     },
     {
-        platform: "Server Instance",
+        platform: "Linux",
+        items: ["Fedora 44+", "4 GB RAM minimum"],
+    },
+    {
+        platform: "Server Instance Needed",
         items: ["Gates (Enterprise Version Required)"],
     },
 ];
@@ -58,21 +72,47 @@ const requirements = [
         </p>
       </div>
       
-      <!-- Download Card -->
-      <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 mb-12">
-        <div class="flex items-center">
-          <img :src="IconGoodTwoManufactured" alt="Good2Manufactured" class="w-17 h-17" />
-          <span class="text-2xl font-bold mr-3">×</span>
-          <WindowsIcon class="w-12 h-12" />
-          <div class="flex-grow ml-5">
-            <h3 class="text-xl font-semibold">
-              {{ platform.label }}
-            </h3>
-            <p class="text-gray-600">{{ platform.filename }}</p>
-          </div>
+      <!-- Download Section -->
+      <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-4 sm:p-6 mb-12">
+        <!-- Platform Switcher Tabs -->
+        <div class="flex border-b border-gray-200 mb-6 overflow-x-auto">
           <button
-            @click="handleDownloadClick"
-            class="bg-brand-dark text-white px-6 py-2 rounded-lg flex items-center space-x-2 transition hover:opacity-90 cursor-pointer"
+            v-for="item in platforms"
+            :key="item.id"
+            @click="selectedPlatform = item"
+            :class="[
+                    'flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 transition-colors cursor-pointer whitespace-nowrap',
+                    selectedPlatform.id === item.id
+                    ? 'border-[var(--theme-color-orange,#f97316)] text-gray-900 font-semibold'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    ]"
+            >
+            <component :is="item.icon" class="w-5 h-5 flex-shrink-0" />
+            <span>{{ item.label }}</span>
+          </button>
+        </div>
+        
+        <!-- Selected Platform Download Card -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <!-- Icon Grouping -->
+          <div class="flex items-center space-x-2 flex-shrink-0">
+            <img :src="IconGoodTwoManufactured" alt="Good2Manufactured" class="w-12 h-12 sm:w-17 sm:h-17" />
+            <span class="text-2xl font-bold">×</span>
+            <component :is="selectedPlatform.icon" class="w-10 h-10 sm:w-12 sm:h-12" />
+          </div>
+          
+          <!-- Text Info -->
+          <div class="flex-grow min-w-0 w-full sm:w-auto">
+            <h3 class="text-xl font-semibold truncate">
+              {{ selectedPlatform.label }}
+            </h3>
+            <p class="text-gray-600 truncate">{{ selectedPlatform.filename }}</p>
+          </div>
+          
+          <!-- Download Button -->
+          <button
+            @click="handleDownloadClick(selectedPlatform)"
+            class="btn-primary-cta flex items-center justify-center gap-2 px-4 py-2 w-full sm:w-auto flex-shrink-0"
             >
             <DownloadIcon width="16" height="16" stroke-width="2.2" />
             <span>Download</span>
@@ -92,7 +132,7 @@ const requirements = [
           <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             
             <!-- Platforms & Items List (8 Cols) -->
-            <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div 
                 v-for="r in requirements" 
                 :key="r.platform" 
@@ -125,12 +165,12 @@ const requirements = [
                 :src="serverLogo" 
                 alt="Server Logo" 
                 class="w-full max-w-[160px] max-h-36 object-contain opacity-90" 
-              />
+                />
             </div>
           </div>
         </div>
       </div>
-
+      
       <!-- How to Connect Steps -->
       <div class="max-w-4xl mx-auto">
         <h2 class="text-2xl font-semibold text-gray-800 mb-6">How to connect to Gates' server</h2>
@@ -143,7 +183,7 @@ const requirements = [
             :href="install_client_docs_url" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="mt-4 sm:mt-0 inline-flex items-center justify-center bg-brand-dark px-5 py-2.5 rounded-lg transition hover:opacity-90 font-bold whitespace-nowrap"
+            class="btn-primary-cta"
           >
             View Documentation &rarr;
           </a>
