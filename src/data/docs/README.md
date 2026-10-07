@@ -1,61 +1,68 @@
 # Documentation content
 
-Everything shown at `/docs` lives here. One file per chapter, plus
-[`index.js`](./index.js), which declares the order and the nesting.
+Everything shown at `/docs` lives here as **Markdown**. One `.md` file per
+chapter, plus [`SUMMARY.md`](./SUMMARY.md), which declares the order and the
+nesting.
 
 The content was migrated from <https://floating-gates.gitbook.io/gates-docs>,
 and the chapter order mirrors it.
 
 ## Adding a chapter
 
-Create the file:
+Create a Markdown file:
 
-```js
-// src/data/docs/quoting.js
-import quoting1Img from '../images/docs-images/quoting-1.png';
+```md
+---
+id: quoting
+title: Quoting
+description: How pricing works
+---
 
-export const Quoting = {
-  id: 'quoting',                      // becomes the URL: /docs#quoting
-  title: 'Quoting',                   // sidebar label and page heading
-  description: 'How pricing works',   // optional subtitle
-  blocks: [
-    { type: 'text', text: 'Quotes are produced from geometry and material.' },
-    { type: 'heading', level: 2, text: 'Automatic quotes' },
-    { type: 'figure', img: quoting1Img, caption: 'The quote panel' },
-  ],
-};
+Quotes are produced from geometry and material.
+
+## Automatic quotes
+
+![The quote panel](../images/docs-images/quoting-1.png)
+
+Use `**bold**`, `*italic*`, lists, tables, and fenced code as usual.
 ```
 
-Then register it in `index.js`, in the position it should appear:
+Then add it to [`SUMMARY.md`](./SUMMARY.md) in the right place:
 
-```js
-import { Quoting } from './quoting.js';
-
-export const docsContents = [
-  // ...
-  section(QuickStart, [SetTheFactory, Quoting]),
-];
+```md
+- [Quick Start](quick-start.md)
+  - [Quoting](quoting.md)
 ```
 
-`section(parent, children)` is what creates sidebar nesting. A chapter with no
-children is listed on its own. Slugs are composed from the tree, so `Quoting`
-nested under `QuickStart` is served at `/docs#quick-start/quoting` without
-having to write that path anywhere.
+`SUMMARY.md` is what creates sidebar nesting. A chapter with no indent is
+listed on its own. Slugs are composed from the tree, so `quoting.md` nested
+under `quick-start.md` is served at `/docs#quick-start/quoting` without having
+to write that path anywhere.
 
-## Block types
+`id` becomes the URL segment. If you omit it, the filename is used. `title` is
+the sidebar label and page heading. `description` is the optional subtitle.
 
-| Type | Fields | Notes |
-| --- | --- | --- |
-| `heading` | `level` (2-6), `text` | Levels 2 and 3 appear in the "On this page" rail. The page title is the `h1`, so chapters start at level 2. |
-| `text` | `text` | A paragraph. |
-| `list` | `items`, `ordered` | Items are strings, or `{ text, items }` to nest a sub-list. |
-| `code` | `code`, `language` | Rendered verbatim. Use a template literal for multi-line code. |
-| `figure` | `img`, `caption` | Centred screenshot with the caption underneath. |
-| `quote` | `text` | Callout / aside. |
-| `table` | `headers`, `rows`, `align` | `align` is per column: `'left'`, `'center'`, `'right'`, or `''`. |
-| `divider` | none | Horizontal rule. |
+You can also skip frontmatter and start the file with `# Title`. That heading
+becomes the page title and is not repeated in the body.
 
-Inside `text`, list items, quotes, captions and table cells you can use
+## What you can write
+
+Standard Markdown. The page title is already rendered from the frontmatter, so
+chapter headings start at `##`.
+
+| Markdown | Result |
+| --- | --- |
+| `## Heading` / `### Heading` | Headings. `##` and `###` appear in the "On this page" rail. |
+| paragraphs | Regular text. |
+| `-` / `1.` lists | Bullet and numbered lists. Indent to nest. |
+| ` ```lang ` | Fenced code, rendered verbatim. |
+| `![caption](path)` | Centred screenshot with the caption underneath. |
+| `![caption](path "full")` | Full-width figure. |
+| `> note` | Callout / aside. |
+| tables | GitHub-style tables, including `:---:` alignment. |
+| `---` | Horizontal rule. |
+
+Inside paragraphs, list items, quotes, captions and table cells you can use
 `**bold**`, `*italic*`, `` `code` ``, `[links](url)`, `![images](src)`, and
 `~~strikethrough~~`. Everything is escaped, so raw HTML is shown as text rather
 than injected.
@@ -69,25 +76,25 @@ sidebar. Nothing to maintain by hand.
 
 ## Images
 
-Screenshots live in [`src/data/images/docs-images/`](../images/docs-images/) and
-are referenced through a Vite `import`, so the bundler fingerprints them and a
-typo fails the build instead of silently serving a 404:
+Screenshots live in [`src/data/images/docs-images/`](../images/docs-images/)
+and are referenced with a path relative to the chapter file:
 
-```js
-import setTheFactory3Img from '../images/docs-images/set-the-factory-3.png';
-
-{ type: 'figure', img: setTheFactory3Img, caption: 'Selecting materials' }
+```md
+![Selecting materials](../images/docs-images/set-the-factory-3.png)
 ```
 
-Because the path is relative to the chapter file, the image is also resolvable
-from the editor — hover the import to preview it, or click through to the file.
+Vite fingerprints the file at build time, so a typo fails the build instead of
+silently serving a 404. Because the path is relative to the chapter file, the
+image is also resolvable from the editor — hover the path to preview it, or
+click through to the file.
 
 ## Checking your work
 
 ```sh
-npm test                # renderer and table-of-contents tests
+npm test                # renderer, parser, and table-of-contents tests
 npm run build-local     # fails loudly if a chapter breaks the build
 ```
 
-The renderer is [`src/utils/docs.js`](../../utils/docs.js); the component that
-lays the page out is [`src/components/Docs.vue`](../../components/Docs.vue).
+The parser is [`src/utils/markdown.js`](../../utils/markdown.js); the renderer
+is [`src/utils/docs.js`](../../utils/docs.js); the component that lays the page
+out is [`src/components/Docs.vue`](../../components/Docs.vue).

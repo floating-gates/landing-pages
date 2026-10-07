@@ -1,4 +1,17 @@
-import { docsContents } from '../data/docs/index.js';
+import { loadDocs } from './markdown.js';
+
+const markdownFiles = import.meta.glob('../data/docs/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+
+const docImages = import.meta.glob('../data/images/**/*.{png,jpg,jpeg,webp,svg}', {
+  eager: true,
+  import: 'default',
+});
+
+export const docsContents = loadDocs(markdownFiles, { images: docImages });
 
 const ESCAPE_MAP = {
   '&': '&amp;',
@@ -197,6 +210,7 @@ export function buildDocs(contents) {
   return { chapters, tree };
 }
 
-// Chapter content and ordering live in src/data/docs. `chapters` is the flat
+// Chapter content lives in src/data/docs as Markdown. `chapters` is the flat
 // reading order (used for previous/next), `tree` is the nested sidebar.
 export const { chapters, tree } = buildDocs(docsContents);
+

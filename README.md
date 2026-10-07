@@ -1,49 +1,49 @@
-# Gates 
+# Floating Gates 
  
-Rethinking digital manufacturing. The applicative to understand if you can produce the device you are thinking out... price and physics-wise.
+Gates provide software layer for factories to pick up design errors in engineering docs before they get produced or discussed.
 
 <div align="center">
-  <img src="src/data/images/hero_pic_.webp" alt="Gates Manufacturing Hub" width="100%" />
+  <img src="src/data/images/path.webp" alt="Gates Manufacturing Hub" width="100%" />
 </div>
 
-**Gates** provides a **Manufacturing Hub** that connects customers and manufacturers through an split online platform.  
-It combines a **a privately owned online CAD**, **instant quoting**, and **feasibility analysis** to streamline the entire production process — from design to delivery.
+### What is the problem is solving?
 
-## Overview
+Traditional design reviews fail to identify approximately 20% of engineering defects. These oversights come at a high cost, as they result in excessive tolerances, material waste, rework during production, and field failures. The same problem, though more subtle yet even more serious, can be defined as the human inability to adhere to manufacturing standards in accordance with the “good old” design guidelines.
 
-It offers manufacturers a centralized digital hub to manage and attract clients, while empowering customers to design and price products in real time in the CAD front end.
+## Products:
 
-### For Manufacturers
+#### Good2Manufacture
 
-- Gain visibility and reach new customers.
-- Manage and track existing clients efficiently.
-- Avoid uncertain prospects with automated feasibility checks.
-- Streamline interactions with a transparent, automated quoting process.
+As automated network software that serves as a standalone quality control system for mechanical design projects. It functions as a digital error-checking system, operating 24 hours a day, 7 days a week, to ensure internal compliance with Design for Manufacturing (DFM) standards enforceable on all stakeholders.
 
-### For Manufacturers' Consumers
+It perform CAD and GD&T autonomous revision revision to spot manufacturing issues ahead. Every cad files in the network, encounter a checkpoints by which is either green lit or highlighted for revision.
 
-- Design devices directly in the **Online CAD** environment.
-- Get **instant quotes**, **feasibility checks**, and **design optimizations** before submitting an order.
-- Issue orders directly to the most suitable manufacturing partner.
+A human in the loop is required once an issue is found.
 
-## Who It’s For
+### Components
 
-**Gates** serves a wide range of production environments:
-- Large manufacturing lines (e.g. **plastic injection** facilities).
-- Small workshops and independent makers with a single **3D printer**.
+Good2Manufacture is a software composed of two layers:
 
-It is especially beneficial for companies with **well-established production methods** who struggle to fully utilize their machinery due to **manual or inefficient order handling**.
+- a Manufacturing Agent ( i.e. it acts in the background for you)  
+- a public-facing Huckster interface. 
+
+Briefly, the Agent checks the manufacturability and return reports on the health status of the CAD library in your company network. While the MDB interface is provided to guide and insight both external Customers and Employees towards the product they want, assessing what the machines can reasonably produce.
+
+## For who is made
+
+**Gates** serves mainly the following production environments:
+
+- Large manufacturing lines (e.g. plastic injection facilities, CNC shops).
+- Small workshops and independent makers with a single 3D printer.
+
+It is especially beneficial for companies who interact a lot with third party actors to communicate manufacturing documents.
 
 ## Documentation
 
-Product documentation is served at `/docs`. Content lives in
-[`src/data/docs/`](src/data/docs/), one file per chapter, with
-[`src/data/docs/index.js`](src/data/docs/index.js) declaring the order and
-nesting. See [`src/data/docs/README.md`](src/data/docs/README.md) for the block
-types and how to add a chapter.
+Content is written as Markdown in [`src/data/docs/`](src/data/docs/), one file per chapter, with
+[`src/data/docs/SUMMARY.md`](src/data/docs/SUMMARY.md) declaring the order and nesting. 
 
-Screenshots are not in the repo yet. Run `npm run docs:images` once to pull them
-from the GitBook space into `public/docs-images/`.
+See [`src/data/docs/README.md`](src/data/docs/README.md) for how to add a chapter.
 
 ## Building and Deploying
 
