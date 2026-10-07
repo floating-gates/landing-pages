@@ -9,7 +9,9 @@ import {
   ClientIcon,
   ArticlesIcon,
   BookIcon,
-  SurveyIcon
+  SurveyIcon,
+  Good2ManufacturedIcon,
+  Good2ManufactureIcon  
 } from "../helper/icons_generator.js";
 
 // Menu States
@@ -72,7 +74,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="site-nav">
+  <header class="site-nav mb-5">
     <div class="site-navigation">
       <div class="nav-wrapper">
         <!-- Logo -->
@@ -112,7 +114,7 @@ onUnmounted(() => {
                 class="nav-link dropdown-toggle"
                 @click="toggleProduct"
               >
-                <span>Download</span>
+                <span>Product</span>
                 <DropdownCaret
                   class="dropdown-caret"
                   :class="{ open: isProductMenuOpen }"
@@ -127,7 +129,7 @@ onUnmounted(() => {
                     <a href="/good2manufacture"
                        class="dropdown-item" @click="closeMenu">
                       <div class="item-icon">
-                        <ServerIcon width="18" height="18" />
+                        <Good2ManufactureIcon width="22" height="22" />
                       </div>
                       <div class="item-text">
                         <span class="item-title">Good2Manufacture Server</span>
@@ -137,7 +139,7 @@ onUnmounted(() => {
 
                     <a href="/good2manufactured" class="dropdown-item" @click="closeMenu">
                       <div class="item-icon">
-                        <ClientIcon width="18" height="18" />
+                        <Good2ManufacturedIcon width="22" height="22" />
                       </div>
                       <div class="item-text">
                         <span class="item-title">Good2Manufactured Client</span>

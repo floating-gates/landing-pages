@@ -54,20 +54,27 @@ const requirements = [
       </div>
       
       <!-- Download Card -->
-      <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 mb-12">
-        <div class="flex items-center space-x-4">
-          <img :src="IconGoodTwoManufacture" alt="Good2Manufacture" class="w-17 h-17 mr-1" />
-          <span class="text-2xl font-bold mx-1">×</span>
-          <LinuxIcon class="w-12 h-12" />
-          <div class="flex-grow ml-3">
-            <h3 class="text-xl font-semibold">
+      <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-4 sm:p-6 mb-12">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <!-- Icon Grouping -->
+          <div class="flex items-center space-x-2 flex-shrink-0">
+            <img :src="IconGoodTwoManufacture" alt="Good2Manufacture" class="w-12 h-12 sm:w-17 sm:h-17" />
+            <span class="text-2xl font-bold">×</span>
+            <LinuxIcon class="w-10 h-10 sm:w-12 sm:h-12" />
+          </div>
+          
+          <!-- Text Info (min-w-0 allows truncate to work in flex container) -->
+          <div class="flex-grow min-w-0 w-full sm:w-auto">
+            <h3 class="text-xl font-semibold truncate">
               {{ platform.label }}
             </h3>
-            <p class="text-gray-600">{{ platform.filename }}</p>
+            <p class="text-gray-600 truncate">{{ platform.filename }}</p>
           </div>
+          
+          <!-- Download Button -->
           <button
             @click="handleDownloadClick"
-            class="bg-brand-dark text-white px-6 py-2 rounded-lg flex items-center space-x-2 transition transition hover:opacity-90"
+            class="btn-primary-cta w-full sm:w-auto flex-shrink-0 justify-center"
             >
             <DownloadIcon width="16" height="16" stroke-width="2.2" />
             <span>Download</span>
@@ -118,13 +125,13 @@ const requirements = [
             <div class="md:col-span-4 flex items-center justify-center h-full min-h-[120px]">
               <img 
                 :src="serverLogo" 
-          alt="Server Logo" 
-          class="w-full max-w-[160px] max-h-36 object-contain opacity-90" 
-        />
+                alt="Server Logo" 
+                class="w-full max-w-[160px] max-h-36 object-contain opacity-90" 
+                />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
       <div class="max-w-4xl mx-auto">
         <h2 class="text-2xl font-semibold text-gray-800 mb-6">How to connect to Gates' server</h2>
         <div class="bg-white rounded-lg shadow p-6 text-center sm:text-left sm:flex sm:items-center sm:justify-between">
@@ -136,13 +143,14 @@ const requirements = [
             :href="install_docs_url" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="mt-4 sm:mt-0 inline-flex items-center justify-center bg-brand-dark px-5 py-2.5 rounded-lg transition hover:opacity-90 font-bold whitespace-nowrap"
-          >
+            class="btn-primary-cta"
+            
+            >
             View Documentation &rarr;
           </a>
         </div>
       </div>
-
+      
     </div>
   </div>
 </div>

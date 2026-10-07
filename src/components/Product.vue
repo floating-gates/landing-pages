@@ -103,11 +103,10 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-<div class="untree" id="hero"
+<div class="faq-section flex flex-row w-full items-center justify-center min-h-screen"
      :style="{ backgroundImage: `url(${background})` }">
-  <div class="flex flex-row w-full p-12 items-center justify-center min-h-screen gap-12">
  
-    <div class="min-w-fit">
+    <div class="mr-7">
       <div class="context-pill mb-5" data-aos="fade-up" data-aos-delay="50">
         <span class="pill-dot mr-3"></span>
         <span class="pill-text">It's a Software for Spotting errors in CAD and GD&T</span>
@@ -159,8 +158,6 @@ onBeforeUnmount(() => {
     <div class="chart-wrap">
       <Charts />
     </div>
-     
-  </div>
 </div>
 </template>
 

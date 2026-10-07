@@ -1,9 +1,9 @@
 <script setup>
-  import { ref, onMounted, onBeforeUnmount } from "vue";
-  import background from "../data/images/background_pic.webp";
-  import { themeColor, themeColorOrange, themeColorLille, themeColorWhite,
-  app_login_url, demo_url } from "../config.js";
-  import {
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import background from "../data/images/background_pic.webp";
+import { themeColor, themeColorOrange, themeColorLille, themeColorWhite,
+         app_login_url, demo_url } from "../config.js";
+import {
     SmallCheckIcon,
     ChevronDoubleRight,
     FolderIcon,
@@ -12,185 +12,185 @@
     MachinesFileIcon,
     MaterialsFileIcon,
     PdfFileIcon
-  } from "../helper/icons_generator.js";
-  
-  const contextSources = [
-  { name: 'Bracket v4.step', icon: 'file' },
-  { name: 'Titanium Flange.step', icon: 'file' },
-  { name: 'Material specification.csv', icon: 'text' },
-  { name: 'Process rules.pdf', icon: 'home' },
-  { name: 'DFM checklist.pdf', icon: 'info' }
-  ];
-  
-  const activeTab = ref('analysis');
-  
-  function setTab(tab) {
-  activeTab.value = tab;
-  }
+} from "../helper/icons_generator.js";
+
+const contextSources = [
+    { name: 'Bracket v4.step', icon: 'file' },
+    { name: 'Titanium Flange.step', icon: 'file' },
+    { name: 'Material specification.csv', icon: 'text' },
+    { name: 'Process rules.pdf', icon: 'home' },
+    { name: 'DFM checklist.pdf', icon: 'info' }
+];
+
+const activeTab = ref('analysis');
+
+function setTab(tab) {
+    activeTab.value = tab;
+}
 </script>
 
 <template>
-  <div class="untree" :style="{ backgroundImage: `url(${background})` }">
-      <div class="hero-row flex flex-row w-full p-12 items-center justify-center gap-14">
-        <div class="hero-copy min-w-fit">
-          <h1 class="heading" data-aos="fade-up" data-aos-delay="100">
-            <!-- Autonomous Design Flaws <br> -->
-            <!-- <em>Discovery for Engineers,</em> <br> -->
-            <!-- Suppliers and Customers.<br> -->
-            Autonomous Detection  <br>
-            of <em>Design Errors in CAD </em> <br>
-            and Technical Drawings
-            <!-- and Future Maintenance <br> -->
-          </h1>
-
-        <p class="subheading w-[90%]" data-aos="fade-up" data-aos-delay="130">
-          It perform autonomous document revision (CAD and GD&T) to spot manufacturing issues. Every file in the factory encounter a critical checkpoint by which they are either green lit or highlighted for revision.
-        </p>
-        
-        <ul class="hero-feature-list" data-aos="fade-up" data-aos-delay="160">
-          <li>
-            <span class="feat-check">
-              <SmallCheckIcon width="10" height="10" />
-            </span>
-            Spot errors and Standardize adherence to design playbook
-          </li>
-          <li>
-            <span class="feat-check">
-              <SmallCheckIcon width="10" height="10" />
-            </span>
-            Guarantee manufacturability at every stage
-          </li>
-          <li>
-            <span class="feat-check">
-              <SmallCheckIcon width="10" height="10" />
-            </span>
-            Allow suppliers to follow your design conventions
-          </li>
-        </ul>
-        
-        <div class="cta-row" data-aos="fade-up" data-aos-delay="190">
-          <a class="btn-primary-cta" :href="app_login_url">
-            Get Autonomous Checks
-            <ChevronDoubleRight stroke-width="2.5" />
-          </a>
-          <a class="btn-ghost-cta font-bold" :href="demo_url">
-            VIEW THE HUCKSTER INTERFACE
-            <ChevronDoubleRight stroke-width="2.5" :stroke="themeColor" width="13" height="13" />
-          </a>
+<div class="untree" :style="{ backgroundImage: `url(${background})` }">
+  <div class="hero-row flex flex-row w-full p-12 items-center justify-center gap-14">
+    <div class="hero-copy min-w-fit">
+      <h1 class="heading" data-aos="fade-up" data-aos-delay="100">
+        <!-- Autonomous Design Flaws <br> -->
+        <!-- <em>Discovery for Engineers,</em> <br> -->
+        <!-- Suppliers and Customers.<br> -->
+        Autonomous Detection  <br>
+        of <em>Discrepancies</em> in CAD  <br>
+        and Technical Drawings
+        <!-- and Future Maintenance <br> -->
+      </h1>
+      
+      <p class="subheading" data-aos="fade-up" data-aos-delay="130">
+        It's a sofware that performs autonomous document revision (CAD and GD&T) to spot manufacturing issues. Every file in the design deparments encounter a critical checkpoint by which they are either green lit or highlighted for revision.
+      </p>
+      
+      <ul class="hero-feature-list" data-aos="fade-up" data-aos-delay="160">
+        <li>
+          <span class="feat-check">
+            <SmallCheckIcon width="10" height="10" />
+          </span>
+          Spot errors and Standardize adherence to design playbook
+        </li>
+        <li>
+          <span class="feat-check">
+            <SmallCheckIcon width="10" height="10" />
+          </span>
+          Guarantee manufacturability at every stage
+        </li>
+        <li>
+          <span class="feat-check">
+            <SmallCheckIcon width="10" height="10" />
+          </span>
+          Allow suppliers to follow your design conventions
+        </li>
+      </ul>
+      
+      <div class="cta-row" data-aos="fade-up" data-aos-delay="190">
+        <a class="btn-primary-cta" :href="app_login_url">
+          Get Autonomous Checks
+          <ChevronDoubleRight stroke-width="2.5" />
+        </a>
+        <a class="btn-ghost-cta font-bold" :href="demo_url">
+          VIEW THE HUCKSTER INTERFACE
+          <ChevronDoubleRight stroke-width="2.5" :stroke="themeColor" width="13" height="13" />
+        </a>
+      </div>
+    </div>
+    <div class="mfg-shell">
+      <div class="mfg-grid-bg"></div>
+      
+      <div class="mfg-top-bar mx-5">
+        <div class="seg-control">
+          <button
+            class="seg-btn m-1"
+            :class="{ active: activeTab === 'upload' }"
+            @click="setTab('analysis')">
+            Autonomous Checks</button>
+          <button
+            class="seg-btn m-1"
+            :class="{ active: activeTab === 'analysis' }"
+            @click="setTab('upload')">
+            Huckster Interface
+          </button>
         </div>
+      </div>
+      
+      <!-- UPLOAD TAB -->
+      <div v-if="activeTab === 'upload'" class="mfg-body video-body">
+        <div class="video-container">
+          <img src="../data/images/screenshot.png" class="hero-video">
         </div>
-        <div class="mfg-shell">
-          <div class="mfg-grid-bg"></div>
-          
-          <div class="mfg-top-bar mx-5">
-            <div class="seg-control">
-              <button
-                class="seg-btn m-1"
-                :class="{ active: activeTab === 'upload' }"
-                @click="setTab('analysis')">
-                Autonomous Checks</button>
-              <button
-                class="seg-btn m-1"
-                :class="{ active: activeTab === 'analysis' }"
-                @click="setTab('upload')">
-                Huckster Interface
-              </button>
-            </div>
-          </div>
-          
-          <!-- UPLOAD TAB -->
-          <div v-if="activeTab === 'upload'" class="mfg-body video-body">
-            <div class="video-container">
-              <img src="../data/images/screenshot.png" class="hero-video">
-            </div>
-          </div>
-          
-          <!-- ANALYSIS TAB -->
-          <div v-else class="mfg-body">
-            <div class="panel-files">
-              <div class="panel-card">
-                <div class="panel-header">
-                  <div class="icon-blue">
-                    <FolderIcon width="12" height="12" fill="white" />
-                  </div>
-                  <div class="search-pill">
-                    <SearchIcon width="11" height="11" fill="currentColor" :style="{color: themeColor, flexShrink: 0}" />
-                    <span style="font-size:10px;">Search</span>
-                  </div>
-                </div>
-                
-                <div class="file-grid">
-                  <div class="file-item">
-                    <StepFileIcon width="36" height="36" />
-                    <span class="file-label">CAD Library</span>
-                  </div>
-                  <div class="file-item">
-                    <MachinesFileIcon width="36" height="36" />
-                    <span class="file-label">Machines Avail.</span>
-                  </div>
-                  <div class="file-item">
-                    <MaterialsFileIcon width="36" height="36" />
-                    <span class="file-label">Materials</span>
-                  </div>
-                  <div class="file-item">
-                    <PdfFileIcon width="36" height="36" />
-                    <span class="file-label">GD&T library</span>
-                  </div>
-                </div>
-                
-                <div class="panel-footer">
-                  <button class="btn-cancel">Cancel</button>
-                  <button class="btn-open">Analyze</button>
-                </div>
+      </div>
+      
+      <!-- ANALYSIS TAB -->
+      <div v-else class="mfg-body">
+        <div class="panel-files">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="icon-blue">
+                <FolderIcon width="12" height="12" fill="white" />
+              </div>
+              <div class="search-pill">
+                <SearchIcon width="11" height="11" fill="currentColor" :style="{color: themeColor, flexShrink: 0}" />
+                <span style="font-size:10px;">Search</span>
               </div>
             </div>
             
-            <div class="panel-progress">
-              <div class="panel-card">
-                <div class="progress-header mb-2">
-                  <span>Issues around your Files</span>
-                </div>
-                <div style="padding: 0 12px 12px;">
-                  <div class="check-row">
-                    <div class="check-circle">✓</div>
-                    <span class="check-text">Draft Angles OK</span>
-                  </div>
-                  <div class="check-row">
-                    <div class="check-circle warn">!</div>
-                    <span class="check-text warn">Undercut on face #7</span>
-                  </div>
-                  <div class="check-row">
-                    <div class="check-circle warn">!</div>
-                    <span class="check-text warn">Material too slim on #21</span>
-                  </div>
-                  <div class="check-row">
-                    <div class="check-circle">✓</div>
-                    <span class="check-text">Lead time OK</span>
-                  </div>
-                  <div class="check-row">
-                    <div class="check-circle">✓</div>
-                    <span class="check-text">Probes Access OK</span>
-                  </div>
-                </div>
+            <div class="file-grid">
+              <div class="file-item">
+                <StepFileIcon width="36" height="36" />
+                <span class="file-label">CAD Library</span>
+              </div>
+              <div class="file-item">
+                <MachinesFileIcon width="36" height="36" />
+                <span class="file-label">Machines Avail.</span>
+              </div>
+              <div class="file-item">
+                <MaterialsFileIcon width="36" height="36" />
+                <span class="file-label">Materials</span>
+              </div>
+              <div class="file-item">
+                <PdfFileIcon width="36" height="36" />
+                <span class="file-label">GD&T library</span>
               </div>
             </div>
             
-            <div class="panel-context">
-              <div class="panel-card">
-                <div class="progress-header">
-                  <span>Autonomous File Fetch</span>
-                </div>
-                <div style="display:flex; flex-direction:column; padding: 8px;">
-                  <div v-for="src in contextSources" :key="src.name" class="context-item">
-                    <span class="ctx-label">{{ src.name }}</span>
-                  </div>
-                </div>
+            <div class="panel-footer">
+              <button class="btn-cancel">Cancel</button>
+              <button class="btn-open">Analyze</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel-progress">
+          <div class="panel-card">
+            <div class="progress-header mb-2">
+              <span>Issues around your Files</span>
+            </div>
+            <div style="padding: 0 12px 12px;">
+              <div class="check-row">
+                <div class="check-circle">✓</div>
+                <span class="check-text">Draft Angles OK</span>
+              </div>
+              <div class="check-row">
+                <div class="check-circle warn">!</div>
+                <span class="check-text warn">Undercut on face #7</span>
+              </div>
+              <div class="check-row">
+                <div class="check-circle warn">!</div>
+                <span class="check-text warn">Material too slim on #21</span>
+              </div>
+              <div class="check-row">
+                <div class="check-circle">✓</div>
+                <span class="check-text">Lead time OK</span>
+              </div>
+              <div class="check-row">
+                <div class="check-circle">✓</div>
+                <span class="check-text">Probes Access OK</span>
               </div>
             </div>
           </div>
         </div>
+        
+        <div class="panel-context">
+          <div class="panel-card">
+            <div class="progress-header">
+              <span>Autonomous File Fetch</span>
+            </div>
+            <div style="display:flex; flex-direction:column; padding: 8px;">
+              <div v-for="src in contextSources" :key="src.name" class="context-item">
+                <span class="ctx-label">{{ src.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 </template>
 
 <style scoped>
@@ -753,29 +753,29 @@
         padding: 1rem;
         background-position: top center;
     }
-
+    
     .hero-row {
         flex-direction: column;
         padding: 1.5rem 0.5rem !important;
         gap: 2rem;
         width: 100%;
     }
-
+    
     .hero-copy {
         width: 100%;
         max-width: 100%;
         min-width: 0;
         text-align: center;
     }
-
+    
     .heading {
         font-size: clamp(1.5rem, 7vw, 2rem);
     }
-
+    
     .heading br {
         display: none;
     }
-
+    
     .subheading {
         max-width: 100%;
         font-size: 0.95rem;
@@ -785,7 +785,7 @@
     .subheading.w-\[90\%\] {
         width: 100% !important;
     }
-
+    
     .hero-feature-list {
         align-items: flex-start;
         text-align: left;
@@ -793,56 +793,56 @@
         margin-left: auto;
         margin-right: auto;
     }
-
+    
     .hero-feature-list li {
         white-space: normal;
         font-size: 0.9rem;
     }
-
+    
     .cta-row {
         flex-direction: column;
         align-items: stretch;
         margin-bottom: 1.5rem;
     }
-
+    
     .btn-primary-cta,
     .btn-ghost-cta {
         justify-content: center;
         width: 100%;
         box-sizing: border-box;
     }
-
+    
     /* ── Mock UI shell ── */
     .mfg-shell {
         width: 100%;
         max-width: 100%;
         min-height: 0;
     }
-
+    
     .mfg-top-bar {
         padding: 14px 0 0;
     }
-
+    
     .seg-control {
         flex-direction: column;
         width: calc(100% - 2.5rem);
     }
-
+    
     .seg-btn {
         width: 100%;
         min-width: 0;
         padding: 8px 12px;
     }
-
+    
     /* Switch the analysis view from absolute overlap to a stacked column */
     .mfg-body {
         min-height: 0;
     }
-
+    
     .video-body {
         padding: 14px;
     }
-
+    
     .mfg-body:not(.video-body) {
         display: flex;
         flex-direction: column;
@@ -850,7 +850,7 @@
         padding: 16px 14px 20px;
         position: static;
     }
-
+    
     .panel-files,
     .panel-progress,
     .panel-context {
@@ -863,7 +863,7 @@
         opacity: 1;
         animation: 400ms ease-out forwards fadeIn;
     }
-
+    
     .file-grid {
         width: 100%;
     }
