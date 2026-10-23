@@ -4,9 +4,6 @@ Everything shown at `/docs` lives here as **Markdown**. One `.md` file per
 chapter, plus [`SUMMARY.md`](./SUMMARY.md), which declares the order and the
 nesting.
 
-The content was migrated from <https://floating-gates.gitbook.io/gates-docs>,
-and the chapter order mirrors it.
-
 ## Adding a chapter
 
 Create a Markdown file:
@@ -22,7 +19,7 @@ Quotes are produced from geometry and material.
 
 ## Automatic quotes
 
-![The quote panel](../images/docs-images/quoting-1.png)
+![The quote panel](../data/images/docs-images/quoting-1.png)
 
 Use `**bold**`, `*italic*`, lists, tables, and fenced code as usual.
 ```
@@ -76,11 +73,11 @@ sidebar. Nothing to maintain by hand.
 
 ## Images
 
-Screenshots live in [`src/data/images/docs-images/`](../images/docs-images/)
+Screenshots live in [`src/data/images/docs-images/`](../data/images/docs-images/)
 and are referenced with a path relative to the chapter file:
 
 ```md
-![Selecting materials](../images/docs-images/set-the-factory-3.png)
+![Selecting materials](../data/images/docs-images/set-the-factory-3.png)
 ```
 
 Vite fingerprints the file at build time, so a typo fails the build instead of

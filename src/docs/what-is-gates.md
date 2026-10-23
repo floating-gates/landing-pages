@@ -10,7 +10,7 @@ A person **always** decides what to do about a flag. Gates **never** touches you
 
 The same checking engine can be used through an online CAD at your own address, so the parts that arrive from your own customers and suppliers can be ensured to have been checked through the same mechanism.
 
-![How Gates checks your factory](../images/docs-images/what-is-gates-how-it-works.webp)
+![How Gates checks your factory](../data/images/docs-images/what-is-gates-how-it-works.webp)
 
 ## What this software will not do
 

@@ -10,4 +10,4 @@ Gates provides granular feature controls to streamline collaboration between man
 
 To access and adjust these settings, navigate to the [Factory Features Panel](https://app.floating-gates.com/?menu=Factory+Features) in the Manufacturing Hub.
 
-![Factory Features management interface and CAD capability toggles](../images/docs-images/factory-features.png)
+![Factory Features management interface and CAD capability toggles](../data/images/docs-images/factory-features.png)

@@ -43,7 +43,7 @@ It is especially beneficial for companies who interact a lot with third party ac
 Content is written as Markdown in [`src/data/docs/`](src/data/docs/), one file per chapter, with
 [`src/data/docs/SUMMARY.md`](src/data/docs/SUMMARY.md) declaring the order and nesting. 
 
-See [`src/data/docs/README.md`](src/data/docs/README.md) for how to add a chapter.
+See [`src/docs/README.md`](src/docs/README.md) for how to add a chapter.
 
 ## Building and Deploying
 

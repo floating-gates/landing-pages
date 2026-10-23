@@ -5,7 +5,7 @@ title: Available Materials
 
 Materials need to be coupled with machines. Once a machine is selected as available it can be coupled with more than one material.
 
-![Coupling materials with machines](../images/docs-images/available-materials-1.png)
+![Coupling materials with machines](../data/images/docs-images/available-materials-1.png)
 
 This is equivalent to saying:
 
@@ -15,6 +15,6 @@ This is equivalent to saying:
 
 Insert a new material:
 
-![Inserting a new material](../images/docs-images/available-materials-2.png)
+![Inserting a new material](../data/images/docs-images/available-materials-2.png)
 
-![New material form](../images/docs-images/available-materials-3.png)
+![New material form](../data/images/docs-images/available-materials-3.png)

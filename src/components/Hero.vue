@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, watch, nextTick, onMounted, onBeforeUnmount } from "vue";
 import background from "../data/images/background_pic.webp";
 import { themeColor, themeColorOrange, themeColorLille, themeColorWhite,
          app_login_url, demo_url } from "../config.js";
@@ -8,25 +8,57 @@ import {
     ChevronDoubleRight,
     FolderIcon,
     SearchIcon,
-    StepFileIcon,
-    MachinesFileIcon,
-    MaterialsFileIcon,
-    PdfFileIcon
 } from "../helper/icons_generator.js";
+import { startBushmanCad } from "../helper/rocket_wireframe.js";
 
-const contextSources = [
-    { name: 'Bracket v4.step', icon: 'file' },
-    { name: 'Titanium Flange.step', icon: 'file' },
-    { name: 'Material specification.csv', icon: 'text' },
-    { name: 'Process rules.pdf', icon: 'home' },
-    { name: 'DFM checklist.pdf', icon: 'info' }
+const gdntPdfs = [
+    { name: 'Bracket_v4.pdf', kind: 'bracket', number: 'DRW-1042' },
+    { name: 'Cover_RevC.pdf', kind: 'flange', number: 'DRW-1188' },
+    { name: 'Flange_Titanium.pdf', kind: 'cover', number: 'DRW-2304' },
+    { name: 'Housing_A12.pdf', kind: 'housing', number: 'DRW-2210' },
+    { name: 'Shaft_D12.pdf', kind: 'shaft', number: 'DRW-2031' }
 ];
 
 const activeTab = ref('analysis');
+const cadCanvas = ref(null);
+let stopCad = null;
 
 function setTab(tab) {
     activeTab.value = tab;
 }
+
+function startCadViewport() {
+    stopCad?.();
+    stopCad = null;
+    if (!cadCanvas.value) return;
+    stopCad = startBushmanCad(cadCanvas.value, {
+        ink: themeColor,
+        accent: themeColorOrange,
+        grid: "rgba(34, 56, 67, 0.12)",
+    });
+}
+
+watch(activeTab, async (tab) => {
+    if (tab === "analysis") {
+        await nextTick();
+        startCadViewport();
+        return;
+    }
+    stopCad?.();
+    stopCad = null;
+});
+
+onMounted(async () => {
+    if (activeTab.value === "analysis") {
+        await nextTick();
+        startCadViewport();
+    }
+});
+
+onBeforeUnmount(() => {
+    stopCad?.();
+    stopCad = null;
+});
 </script>
 
 <template>
@@ -119,28 +151,119 @@ function setTab(tab) {
               </div>
             </div>
             
-            <div class="file-grid">
-              <div class="file-item">
-                <StepFileIcon width="36" height="36" />
-                <span class="file-label">CAD Library</span>
-              </div>
-              <div class="file-item">
-                <MachinesFileIcon width="36" height="36" />
-                <span class="file-label">Machines Avail.</span>
-              </div>
-              <div class="file-item">
-                <MaterialsFileIcon width="36" height="36" />
-                <span class="file-label">Materials</span>
-              </div>
-              <div class="file-item">
-                <PdfFileIcon width="36" height="36" />
-                <span class="file-label">GD&T library</span>
+            <div class="file-grid mt-2">
+              <div
+                v-for="(pdf, i) in gdntPdfs"
+                :key="pdf.name"
+                class="pdf-sheet"
+                :style="{ '--i': String(i), zIndex: 4 - Math.abs(i - 2) }"
+              >
+                <span class="pdf-fold" aria-hidden="true"></span>
+                <span class="pdf-badge">PDF</span>
+
+                <svg v-if="pdf.kind === 'bracket'" class="pdf-drawing" viewBox="0 0 82 72" fill="none" aria-hidden="true">
+                  <rect x="6" y="4" width="70" height="54" stroke="#223843" stroke-width="0.6"/>
+                  <path d="M18 14 H50 V32 H38 V50 H18 Z" fill="#EFF1F3" stroke="#223843" stroke-width="0.85"/>
+                  <circle cx="29" cy="23" r="3.4" stroke="#223843" stroke-width="0.75"/>
+                  <path d="M29 19.2 V26.8 M25.2 23 H32.8" stroke="#223843" stroke-width="0.35"/>
+                  <path d="M18 54 H38" stroke="#D77A61" stroke-width="0.55"/>
+                  <path d="M18 52.6 V55.4 M38 52.6 V55.4" stroke="#D77A61" stroke-width="0.55"/>
+                  <text x="28" y="60" fill="#D77A61" font-size="5" text-anchor="middle" font-family="system-ui,sans-serif">24</text>
+                  <g transform="translate(42,36)">
+                    <rect width="30" height="8.2" fill="#fff" stroke="#223843" stroke-width="0.5"/>
+                    <path d="M8 0 V8.2 M21.2 0 V8.2" stroke="#223843" stroke-width="0.4"/>
+                    <circle cx="4" cy="4.1" r="2" stroke="#223843" stroke-width="0.55"/>
+                    <path d="M4 2 V6.2 M2 4.1 H6" stroke="#223843" stroke-width="0.4"/>
+                    <text x="14.6" y="5.8" fill="#223843" font-size="4.2" text-anchor="middle" font-family="system-ui,sans-serif">Ø0.05</text>
+                    <text x="25.6" y="5.8" fill="#223843" font-size="4.2" text-anchor="middle" font-family="system-ui,sans-serif">A</text>
+                  </g>
+                  <rect x="48" y="47" width="28" height="11" fill="#fff" stroke="#223843" stroke-width="0.5"/>
+                  <text x="62" y="53.2" fill="#223843" font-size="4" text-anchor="middle" font-family="system-ui,sans-serif">BRACKET</text>
+                  <text x="62" y="57.4" fill="#D77A61" font-size="3.4" text-anchor="middle" font-family="system-ui,sans-serif">{{ pdf.number }}</text>
+                </svg>
+
+                <svg v-else-if="pdf.kind === 'flange'" class="pdf-drawing" viewBox="0 0 82 72" fill="none" aria-hidden="true">
+                  <rect x="6" y="4" width="70" height="54" stroke="#223843" stroke-width="0.6"/>
+                  <circle cx="36" cy="30" r="16" fill="#EFF1F3" stroke="#223843" stroke-width="0.85"/>
+                  <circle cx="36" cy="30" r="6" stroke="#223843" stroke-width="0.75"/>
+                  <circle cx="36" cy="16.5" r="1.7" stroke="#223843" stroke-width="0.6"/>
+                  <circle cx="49.5" cy="30" r="1.7" stroke="#223843" stroke-width="0.6"/>
+                  <circle cx="36" cy="43.5" r="1.7" stroke="#223843" stroke-width="0.6"/>
+                  <circle cx="22.5" cy="30" r="1.7" stroke="#223843" stroke-width="0.6"/>
+                  <path d="M36 30 L54 16" stroke="#D77A61" stroke-width="0.45"/>
+                  <text x="56" y="15" fill="#D77A61" font-size="5" font-family="system-ui,sans-serif">Ø48</text>
+                  <g transform="translate(44,46)">
+                    <rect width="28" height="8.2" fill="#fff" stroke="#223843" stroke-width="0.5"/>
+                    <path d="M8 0 V8.2 M19.6 0 V8.2" stroke="#223843" stroke-width="0.4"/>
+                    <circle cx="4" cy="4.1" r="2.1" stroke="#223843" stroke-width="0.5"/>
+                    <circle cx="4" cy="4.1" r="1" stroke="#223843" stroke-width="0.5"/>
+                    <text x="13.8" y="5.8" fill="#223843" font-size="4.1" text-anchor="middle" font-family="system-ui,sans-serif">0.02</text>
+                    <text x="23.8" y="5.8" fill="#223843" font-size="4.1" text-anchor="middle" font-family="system-ui,sans-serif">A</text>
+                  </g>
+                </svg>
+
+                <svg v-else-if="pdf.kind === 'cover'" class="pdf-drawing" viewBox="0 0 82 72" fill="none" aria-hidden="true">
+                  <rect x="6" y="4" width="70" height="54" stroke="#223843" stroke-width="0.6"/>
+                  <rect x="18" y="14" width="40" height="28" fill="#EFF1F3" stroke="#223843" stroke-width="0.85"/>
+                  <rect x="28" y="24" width="20" height="8" rx="4" stroke="#223843" stroke-width="0.6"/>
+                  <circle cx="22.5" cy="18.5" r="1.5" stroke="#223843" stroke-width="0.6"/>
+                  <circle cx="53.5" cy="18.5" r="1.5" stroke="#223843" stroke-width="0.6"/>
+                  <circle cx="22.5" cy="37.5" r="1.5" stroke="#223843" stroke-width="0.6"/>
+                  <circle cx="53.5" cy="37.5" r="1.5" stroke="#223843" stroke-width="0.6"/>
+                  <g transform="translate(10,48)">
+                    <rect width="32" height="8" fill="#fff" stroke="#223843" stroke-width="0.5"/>
+                    <path d="M9 0 V8 M22.4 0 V8" stroke="#223843" stroke-width="0.4"/>
+                    <path d="M2.2 5.6 H6.8 L6.1 3.4 H2.9 Z" stroke="#223843" stroke-width="0.5" fill="none"/>
+                    <text x="15.7" y="5.6" fill="#223843" font-size="4.1" text-anchor="middle" font-family="system-ui,sans-serif">0.02</text>
+                    <text x="27.2" y="5.6" fill="#223843" font-size="4.1" text-anchor="middle" font-family="system-ui,sans-serif">A</text>
+                  </g>
+                  <rect x="50" y="47" width="22" height="9" fill="#fff" stroke="#223843" stroke-width="0.5"/>
+                  <text x="61" y="52.8" fill="#223843" font-size="3.6" text-anchor="middle" font-family="system-ui,sans-serif">COVER</text>
+                </svg>
+
+                <svg v-else-if="pdf.kind === 'housing'" class="pdf-drawing" viewBox="0 0 82 72" fill="none" aria-hidden="true">
+                  <rect x="6" y="4" width="70" height="54" stroke="#223843" stroke-width="0.6"/>
+                  <rect x="18" y="13" width="36" height="32" fill="#EFF1F3" stroke="#223843" stroke-width="0.85"/>
+                  <rect x="25" y="20" width="22" height="14" stroke="#223843" stroke-width="0.7"/>
+                  <circle cx="22.5" cy="40" r="1.6" stroke="#223843" stroke-width="0.6"/>
+                  <circle cx="49.5" cy="40" r="1.6" stroke="#223843" stroke-width="0.6"/>
+                  <path d="M56 13 V45" stroke="#D77A61" stroke-width="0.5"/>
+                  <path d="M54.6 13 H57.4 M54.6 45 H57.4" stroke="#D77A61" stroke-width="0.5"/>
+                  <text x="62" y="31" fill="#D77A61" font-size="5" font-family="system-ui,sans-serif">32</text>
+                  <g transform="translate(20,48)">
+                    <rect width="30" height="8.2" fill="#fff" stroke="#223843" stroke-width="0.5"/>
+                    <path d="M8 0 V8.2 M20.8 0 V8.2" stroke="#223843" stroke-width="0.4"/>
+                    <path d="M2.1 6.4 H6.1 M4.1 6.4 V2.2 H6.2" stroke="#223843" stroke-width="0.6"/>
+                    <text x="14.4" y="5.8" fill="#223843" font-size="4.1" text-anchor="middle" font-family="system-ui,sans-serif">0.03</text>
+                    <text x="25.4" y="5.8" fill="#223843" font-size="4.1" text-anchor="middle" font-family="system-ui,sans-serif">A</text>
+                  </g>
+                </svg>
+
+                <svg v-else class="pdf-drawing" viewBox="0 0 82 72" fill="none" aria-hidden="true">
+                  <rect x="6" y="4" width="70" height="54" stroke="#223843" stroke-width="0.6"/>
+                  <rect x="28" y="12" width="14" height="36" rx="7" fill="#EFF1F3" stroke="#223843" stroke-width="0.85"/>
+                  <path d="M35 12 V48" stroke="#223843" stroke-width="0.35" stroke-dasharray="1.4 1.1"/>
+                  <path d="M22 18 H28 M22 42 H28" stroke="#D77A61" stroke-width="0.5"/>
+                  <path d="M22 18 V42" stroke="#D77A61" stroke-width="0.5"/>
+                  <text x="16" y="32" fill="#D77A61" font-size="5" text-anchor="middle" font-family="system-ui,sans-serif">Ø12</text>
+                  <g transform="translate(44,40)">
+                    <rect width="28" height="8.2" fill="#fff" stroke="#223843" stroke-width="0.5"/>
+                    <path d="M8 0 V8.2 M19.8 0 V8.2" stroke="#223843" stroke-width="0.4"/>
+                    <path d="M1.8 5.8 L6.4 2.4 M5.3 2.6 L6.4 2.4 L5.8 3.6" stroke="#223843" stroke-width="0.55"/>
+                    <text x="13.9" y="5.8" fill="#223843" font-size="4.1" text-anchor="middle" font-family="system-ui,sans-serif">0.01</text>
+                    <text x="23.9" y="5.8" fill="#223843" font-size="4.1" text-anchor="middle" font-family="system-ui,sans-serif">A</text>
+                  </g>
+                  <rect x="48" y="12" width="24" height="11" fill="#fff" stroke="#223843" stroke-width="0.5"/>
+                  <text x="60" y="18.2" fill="#223843" font-size="4" text-anchor="middle" font-family="system-ui,sans-serif">SHAFT</text>
+                  <text x="60" y="22.4" fill="#D77A61" font-size="3.4" text-anchor="middle" font-family="system-ui,sans-serif">{{ pdf.number }}</text>
+                </svg>
+                <span class="pdf-name">{{ pdf.name }}</span>
               </div>
             </div>
             
-            <div class="panel-footer">
+            <div class="panel-footer mt-4">
               <button class="btn-cancel">Cancel</button>
-              <button class="btn-open">Analyze</button>
+              <button class="btn-open">Spot Errors</button>
             </div>
           </div>
         </div>
@@ -176,14 +299,17 @@ function setTab(tab) {
         </div>
         
         <div class="panel-context">
-          <div class="panel-card">
-            <div class="progress-header">
-              <span>Autonomous File Fetch</span>
-            </div>
-            <div style="display:flex; flex-direction:column; padding: 8px;">
-              <div v-for="src in contextSources" :key="src.name" class="context-item">
-                <span class="ctx-label">{{ src.name }}</span>
+          <div class="panel-card cad-card">
+            <div class="cad-viewport">
+              <canvas
+                ref="cadCanvas"
+                class="cad-canvas"
+                aria-label="Wireframe CAD of a Bushman"
+              ></canvas>
+              <div class="cad-overlay">
+                <span class="cad-badge">STEP</span>
               </div>
+              <span class="cad-mode">Structural-Ring-2.step</span>
             </div>
           </div>
         </div>
@@ -471,31 +597,117 @@ function setTab(tab) {
 }
 
 .file-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    padding: 10px;
-    width: 200px;
+    --spread: 15deg;
+    position: relative;
+    width: 228px;
+    height: 158px;
+    padding: 16px 10px 22px;
 }
 
-.file-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    padding: 8px 6px;
-    border-radius: 8px;
+.pdf-sheet {
+    --mid: 2;
+    --angle: calc((var(--i) - var(--mid)) * var(--spread));
+    position: absolute;
+    left: 50%;
+    bottom: 28px;
+    width: 82px;
+    height: 108px;
+    margin-left: -41px;
+    background: linear-gradient(180deg, #fffefb 0%, #f6f3ef 100%);
+    border: 0.5px solid v-bind(themeColor);
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow:
+        0 1px 0 rgba(255,255,255,0.75) inset,
+        0 8px 18px rgba(34, 56, 67, 0.16);
+    transform-origin: 50% 128%;
+    transform: rotate(var(--angle));
     cursor: pointer;
-    transition: background 150ms;
+    animation: fanOut 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(780ms + var(--i) * 55ms);
+    transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.file-item:hover { background: v-bind(themeColorLille); }
+.pdf-sheet:hover {
+    z-index: 10;
+    transform: rotate(var(--angle)) translateY(-10px) scale(1.05);
+    box-shadow:
+        0 1px 0 rgba(255,255,255,0.8) inset,
+        0 16px 26px rgba(34, 56, 67, 0.22);
+}
 
-.file-label {
-    font-size: 10px;
+.pdf-sheet:nth-child(3) {
+    box-shadow:
+        0 0 0 1px v-bind(themeColorOrange),
+        0 1px 0 rgba(255,255,255,0.75) inset,
+        0 10px 20px rgba(34, 56, 67, 0.2);
+}
+
+.pdf-drawing {
+    display: block;
+    width: 100%;
+    height: 86px;
+    padding: 8px 4px 0;
+}
+
+.pdf-name {
+    display: block;
+    font-size: 7px;
+    line-height: 1.1;
     text-align: center;
     color: v-bind(themeColor);
-    line-height: 1.3;
+    padding: 2px 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+}
+
+.pdf-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: v-bind(themeColorOrange);
+    color: #fff;
+    font-size: 6px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 2px 5px 1px;
+    border-bottom-right-radius: 3px;
+    z-index: 2;
+}
+
+.pdf-fold {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0 11px 11px 0;
+    border-color: transparent v-bind(themeColorLille) #f3eee8 transparent;
+    filter: drop-shadow(-0.5px 0.5px 0 rgba(34,56,67,0.18));
+    z-index: 2;
+}
+
+.file-grid-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 6px;
+    text-align: center;
+    font-size: 10px;
+    color: v-bind(themeColor);
+    font-weight: 600;
+}
+
+@keyframes fanOut {
+    from {
+        opacity: 0;
+        transform: rotate(0deg) translateY(10px) scale(0.94);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(var(--angle));
+    }
 }
 
 .panel-footer {
@@ -583,46 +795,74 @@ function setTab(tab) {
     text-decoration: none;
 }
 
-/* Right panel: context */
+/* Right panel: CAD viewport */
 .panel-context {
     position: absolute;
     right: 10px;
     top: 30px;
     z-index: 2;
     animation: 400ms ease-out 1150ms forwards panelSlideUp;
-    width: 240px;
+    width: 250px;
 }
 
-.context-item {
+.cad-card {
+    overflow: hidden;
+}
+
+.cad-viewport {
+    position: relative;
+    height: 248px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(239,241,243,0.2) 100%);
+}
+
+.cad-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    touch-action: none;
+}
+
+.cad-canvas:active {
+    cursor: grabbing;
+}
+
+.cad-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin: 0 2px 8px;
-    padding: 8px 9px 8px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 150ms;
-    text-decoration: none;
+    gap: 6px;
+    pointer-events: none;
 }
 
-.context-item:hover { background: v-bind(themeColorLille); }
-
-.ctx-icon {
-    width: 26px; height: 26px;
-    border-radius: 6px;
-    background: v-bind(themeColorLille);
-    border: 0.5px solid v-bind(themeColor);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    overflow: hidden;
+.cad-badge {
+    background: v-bind(themeColorOrange);
+    color: #fff;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 2px 5px 1px;
+    border-radius: 3px;
 }
 
-.ctx-label {
-    font-size: 12px;
+.cad-filename {
+    font-size: 11px;
+    font-weight: 700;
     color: v-bind(themeColor);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+}
+
+.cad-mode {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: v-bind(themeColor);
+    pointer-events: none;
 }
 
 .live-dot {
@@ -866,6 +1106,11 @@ function setTab(tab) {
     
     .file-grid {
         width: 100%;
+        height: 170px;
+    }
+
+    .cad-viewport {
+        height: 280px;
     }
 }
 

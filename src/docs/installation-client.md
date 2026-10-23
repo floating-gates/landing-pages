@@ -1,23 +1,8 @@
 ---
-id: install
-title: Install Gates Enterprise Bundle
+id: install-client
+title: Install Good2Manufactured Client
 description: System requirements, configuration, and setup steps for the Gates Enterprise stack.
 ---
-
-## System Requirements
-
-Before installing Gates, ensure your infrastructure meets the hardware and software prerequisites listed below. A valid Enterprise Subscription is required to run this stack.
-
-### Server Requirements
-
-| Component | Specification |
-| --- | --- |
-| Required Package | good2manufacture-server-pkg |
-| Operating System | RHEL 8 or newer (64-bit) |
-| CPU | 4 CPU cores minimum |
-| Memory (RAM) | 8 GB minimum (32 GB recommended) |
-| Storage | 50 GB SSD available storage |
-| Network | Stable broadband / internal high-speed network |
 
 ### Client Requirements
 
@@ -33,7 +18,7 @@ Before installing Gates, ensure your infrastructure meets the hardware and softw
 
 Log into the [Admin Panel](https://app.floating-gates.com/dashboard?menu=Admin) to download the Enterprise stack archive and retrieve your license keys, which will be needed during initial setup.
 
-![Downloading the Enterprise bundle and license keys from the Admin Panel](../images/docs-images/download_bundle.png)
+![Downloading the Enterprise bundle and license keys from the Admin Panel](../data/images/docs-images/download_bundle.png)
 
 ## 2. Extract and Configure
 
