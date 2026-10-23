@@ -1,6 +1,6 @@
 import { loadDocs } from './markdown.js';
 
-const markdownFiles = import.meta.glob('../data/docs/*.md', {
+const markdownFiles = import.meta.glob('../docs/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,

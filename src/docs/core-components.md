@@ -8,7 +8,7 @@ description: How Gates detects manufacturing flaws, secures IP, and automates ac
 
 Gates uses automated feasibility checks and rule-based evaluation to identify manufacturing flaws before production begins on the shop floor.
 
-![Overview of user surfaces and machine interactions](../images/dual_use.webp "full")
+![Overview of user surfaces and machine interactions](../data/images/dual_use.webp "full")
 
 ### DfM Rules Check
 
@@ -36,7 +36,7 @@ You configure your factory parameters once. Because quoting and DfM validation p
 
 These surfaces sit at the center of the request funnel, routing incoming CAD data to the appropriate processing pipelines.
 
-![Ingested request flow and production machine routing](../images/docs-images/how-gates-work-funnel.webp)
+![Ingested request flow and production machine routing](../data/images/docs-images/how-gates-work-funnel.webp)
 
 Requests originate from internal teams, leads, existing clients, or inventory requirements. Online CAD and the Manufacturing Hub coordinate to validate and price each submission, then route the job to the appropriate manufacturing process (subtractive, forming, forging, or additive).
 

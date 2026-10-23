@@ -6,7 +6,7 @@ description: The customer pipeline, step by step
 
 The online platform is a streamlined pipeline, where each step unlocks the next gradually, so a part cannot be ordered before it has been checked against your rules and priced against your costs.
 
-![The customer pipeline](../images/docs-images/process-of-gates-pipeline.webp)
+![The customer pipeline](../data/images/docs-images/process-of-gates-pipeline.webp)
 
 ### 1. Upload
 
