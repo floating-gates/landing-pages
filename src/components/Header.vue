@@ -232,7 +232,7 @@ onUnmounted(() => {
                   :href="app_login_url"
                   :style="{ color: themeColor }"
                   @click="closeMenu" >
-                  Log In
+                  Login
                 </a>
               </li>
             </ul>

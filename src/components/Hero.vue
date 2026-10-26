@@ -102,11 +102,11 @@ onBeforeUnmount(() => {
       
       <div class="cta-row" data-aos="fade-up" data-aos-delay="190">
         <a class="btn-primary-cta" :href="app_login_url">
-          Get Autonomous Checks
+          Start for Free
           <ChevronDoubleRight stroke-width="2.5" />
         </a>
         <a class="btn-ghost-cta font-bold" :href="demo_url">
-          VIEW THE HUCKSTER INTERFACE
+          Demo using Huckster Interface
           <ChevronDoubleRight stroke-width="2.5" :stroke="themeColor" width="13" height="13" />
         </a>
       </div>
@@ -271,7 +271,7 @@ onBeforeUnmount(() => {
         <div class="panel-progress">
           <div class="panel-card">
             <div class="progress-header mb-2">
-              <span>Issues around your Files</span>
+              <span>Spotted Problems:</span>
             </div>
             <div style="padding: 0 12px 12px;">
               <div class="check-row">
@@ -288,11 +288,11 @@ onBeforeUnmount(() => {
               </div>
               <div class="check-row">
                 <div class="check-circle">✓</div>
-                <span class="check-text">Lead time OK</span>
+                <span class="check-text">GD&T Tolerances OK</span>
               </div>
               <div class="check-row">
                 <div class="check-circle">✓</div>
-                <span class="check-text">Probes Access OK</span>
+                <span class="check-text">Measurement Probes Access OK</span>
               </div>
             </div>
           </div>
