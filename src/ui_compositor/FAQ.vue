@@ -11,6 +11,10 @@ const faqs = [
         answer: "It is a software layer for companies of all sizes. It perform CAD and GD&T autonomous revision revision to spot manufacturing issues. Every cad files in the network, it encounter a critical checkpoints by which is either green lit or highlighted for revision. A human in the loop is required once an issue is found."
     },
     {
+        "question": "What is the Huckster Interface?",
+        "answer": "The Huckster Interface is a public-facing web portal that gives stakeholders ( external suppliers, customers, and internal employees ) a single, standardized channel for submitting design files. Uploaded CAD and GD&T documentation it is possible to check for manufacturing feasibility, providing instant insight on whether the design can actually be produced before it moves further down the pipeline."
+    },
+    {
         question: "Who is it for?",
         answer: "It's a software for who design and produce hardware. Floating Gates serves from big R&D deparments with multiple machines to small workshops that owns just a 3D printer. Our solution is especially valuable for those who struggle to fully utilize their machines due to cumbersome order inquiries."
     },
@@ -108,7 +112,7 @@ const isOpen = (index) => openIndex.value === index;
 <style scoped>
 .faq-header {
     text-align: center;
-    margin-top: 4rem;
+    margin-top: 0;
     margin-bottom: 5rem;
 }
 
@@ -254,7 +258,7 @@ const isOpen = (index) => openIndex.value === index;
 /* ===== Mobile Responsive ===== */
 @media (max-width: 768px) {
     .faq-section {
-        padding: 4rem 1.5rem;
+        padding: var(--header-stack) 1.5rem 3rem;
     }
 
     .faq-container {

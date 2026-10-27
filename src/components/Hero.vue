@@ -62,8 +62,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-<div class="untree" :style="{ backgroundImage: `url(${background})` }">
-  <div class="hero-row flex flex-row w-full p-12 items-center justify-center gap-14">
+<div class="untree below-header" :style="{ backgroundImage: `url(${background})` }">
+  <div class="hero-row flex flex-row w-full px-12 pb-12 items-center justify-center gap-14">
     <div class="hero-copy min-w-fit">
       <h1 class="heading" data-aos="fade-up" data-aos-delay="100">
         <!-- Autonomous Design Flaws <br> -->
@@ -989,8 +989,8 @@ onBeforeUnmount(() => {
 @media (max-width: 768px) {
     .untree {
         min-height: auto;
-        margin-top: 3rem;
-        padding: 1rem;
+        margin-top: 0;
+        padding: var(--header-stack) 1rem 1rem;
         background-position: top center;
     }
     

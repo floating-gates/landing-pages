@@ -124,7 +124,7 @@ const features = [
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 200px 0 120px;
+    padding: var(--header-stack) 0 120px;
 }
 
 .mission-container {

@@ -4,7 +4,7 @@ import { Chart, registerables } from 'chart.js'
 import short_logo from "../data/images/logo_short_black.webp"
 import { themeColor, themeColorLille, themeColorOrange, themeColorGold, themeColorWhite } from '../config.js'
 Chart.register(...registerables)
-import { PlugIcon, FileIcon, RulerIcon, FactoryIcon, AtomIcon, AlertIcon, SlidersIcon, CheckIcon,  WebIcon } from '../helper/icons_generator.js'
+import { PlugIcon, FileIcon, RulerIcon, FactoryIcon, AtomIcon, AlertIcon, SlidersIcon, CheckIcon,  HucksterIcon } from '../helper/icons_generator.js'
 
 // ── Inline icon components (no external dep) ────────────────────────────────
 function makeIcon(paths) {
@@ -32,7 +32,7 @@ function makeIcon(paths) {
 const activeNav = ref('endpoints')
 const navItems = [
     { id: 'endpoints', label: 'Endpoints', icon: PlugIcon, badge: '3', badgeType: 'ok' },
-    { id: 'factory-ui', label: 'Huckster Interface', icon: WebIcon, badge: 'ready', badgeType: 'ok' },
+    { id: 'factory-ui', label: 'Huckster Interface', icon: HucksterIcon, badge: 'ready', badgeType: 'ok' },
     { id: 'cad', label: 'CAD files', icon: FileIcon, badge: '12', badgeType: 'ok' },
     { id: 'gdt', label: 'Design Playbook', icon: RulerIcon, badge: '1', badgeType: 'ok' },
     { id: 'machines', label: 'Machines', icon: FactoryIcon, badge: '0', badgeType: 'danger' },

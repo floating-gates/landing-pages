@@ -107,16 +107,12 @@ onBeforeUnmount(() => {
      :style="{ backgroundImage: `url(${background})` }">
  
     <div class="mr-7">
-      <div class="context-pill mb-5" data-aos="fade-up" data-aos-delay="50">
-        <span class="pill-dot mr-3"></span>
-        <span class="pill-text">It's a Software for Spotting errors in CAD and GD&T</span>
-      </div>
       <h1 class="heading"
           data-aos="fade-up"
           data-aos-delay="100">
-          <em>Search </em> your Factory Network,<br>
-          <em>Check </em> for Issues in your CAD,<br>
-          <em>Allow </em> Customers' files Drop,<br>
+          <em>Search </em> your Factory Network<br>
+          <em>Check </em> your CAD and GD&T<br>
+          <em>Allow </em> Customers' files Drop<br>
           <em>Warn </em> if Issues are found<br>
       </h1>
       
@@ -143,7 +139,7 @@ onBeforeUnmount(() => {
           class="address-input"
           />
         <button type="submit" class="address-submit">
-          <span>Use it in your Factory</span>
+          <span>Start Here</span>
           <ChevronDoubleRight stroke-width="3" />
         </button>
       </form>
@@ -270,35 +266,5 @@ img {
     flex: 1; 
     width: 100%;
     height: 100%;
-}
-
-/* Context Pill Styling */
-.context-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    padding: 8px 16px;
-    border-radius: 12px;
-    background-color: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(3px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-}
-
-.pill-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: var(--color-brand-gold);
-    box-shadow: 0 0 8px var(--color-brand-gold);
-}
-
-.pill-text {
-    font-size: 0.8rem;
-    font-weight: 550;
-    letter-spacing: 0.025em;
-    text-transform: uppercase;
-    color: v-bind(themeColor);
 }
 </style>

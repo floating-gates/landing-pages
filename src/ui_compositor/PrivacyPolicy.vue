@@ -201,7 +201,7 @@ function scrollTo(elementId) {
 .terms-container {
   max-width: 1800px;
   margin: 0 auto;
-  padding: 100px 20px 20px;
+  padding: var(--header-stack) 20px 20px;
   line-height: 1.6;
   color: #333;
 }
@@ -337,7 +337,7 @@ function scrollTo(elementId) {
 }
 
 @media (max-width: 768px) {
-    .terms-container { padding: 15px; }
+    .terms-container { padding: var(--header-stack) 15px 15px; }
     .main-title { font-size: 2rem; }
     .table-of-contents { padding: 15px; }
     .term-section h2 { font-size: 1.2rem; }
