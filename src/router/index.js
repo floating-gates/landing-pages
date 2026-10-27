@@ -12,6 +12,7 @@ import Articles                       from '../ui_compositor/Articles.vue'
 import Product                        from '../ui_compositor/Product.vue'
 import Good2manufacturedDownload      from '../components/Good2manufacturedDownload.vue'
 import Good2manufactureServerDownload from '../components/Good2manufactureServerDownload.vue'
+import HucksterInterface              from '../components/HucksterInterface.vue'
 import Docs                           from '../components/Docs.vue'
 import FoundationalModel              from '../components/FoundationalModel.vue'
 
@@ -29,6 +30,7 @@ const routes = [
     { path: '/articles', component: Articles },
     { path: '/good2manufacture', component: Good2manufactureServerDownload },
     { path: '/good2manufactured', component: Good2manufacturedDownload },
+    { path: '/huckster-interface', component: HucksterInterface },
     { path: '/ai-model', component: FoundationalModel },
     { path: '/docs', component: Docs },
 ]

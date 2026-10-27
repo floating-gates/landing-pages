@@ -50,7 +50,7 @@ const requirements = [
 <div class="flex flex-col min-h-screen">
   <Header />
   <div
-    class="flex-grow flex flex-col items-center justify-center bg-cover bg-center px-4 py-12"
+    class="below-header flex-grow flex flex-col items-center justify-center bg-cover bg-center px-4 pb-12 min-h-screen"
     :style="{ backgroundImage: `url(${background})` }"
     >
     <div class="w-full max-w-6xl">

@@ -11,7 +11,8 @@ import {
   BookIcon,
   SurveyIcon,
   Good2ManufacturedIcon,
-  Good2ManufactureIcon  
+  Good2ManufactureIcon,
+  HucksterIcon
 } from "../helper/icons_generator.js";
 
 // Menu States
@@ -64,17 +65,33 @@ function handleClickOutside(event) {
   }
 }
 
+const navRef = ref(null);
+let resizeObserver = null;
+
+function syncHeaderOffset() {
+  if (!navRef.value) return;
+  const offset = Math.round(navRef.value.getBoundingClientRect().bottom);
+  document.documentElement.style.setProperty("--header-offset", `${offset}px`);
+  document.documentElement.style.setProperty("--header-stack", `calc(${offset}px + 1.25rem)`);
+}
+
 onMounted(() => {
   document.addEventListener("click", handleClickOutside);
+  syncHeaderOffset();
+  resizeObserver = new ResizeObserver(syncHeaderOffset);
+  if (navRef.value) resizeObserver.observe(navRef.value);
+  window.addEventListener("resize", syncHeaderOffset);
 });
 
 onUnmounted(() => {
   document.removeEventListener("click", handleClickOutside);
+  window.removeEventListener("resize", syncHeaderOffset);
+  resizeObserver?.disconnect();
 });
 </script>
 
 <template>
-  <header class="site-nav mb-5">
+  <header ref="navRef" class="site-nav">
     <div class="site-navigation">
       <div class="nav-wrapper">
         <!-- Logo -->
@@ -144,6 +161,16 @@ onUnmounted(() => {
                       <div class="item-text">
                         <span class="item-title">Good2Manufactured Client</span>
                         <span class="item-desc">Daemon to connect an Endpoint to Good2Manufacture Server</span>
+                      </div>
+                    </a>
+
+                    <a href="/huckster-interface" class="dropdown-item" @click="closeMenu">
+                      <div class="item-icon">
+                        <HucksterIcon width="22" height="22" />
+                      </div>
+                      <div class="item-text">
+                        <span class="item-title">Huckster Interface</span>
+                        <span class="item-desc">Public portal to submit CAD and check manufacturability</span>
                       </div>
                     </a>
 

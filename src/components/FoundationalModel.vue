@@ -95,7 +95,7 @@ const handleDownloadClick = (platform) => {
 <template>
 <Header />
   <div class="faq-section" :style="{ backgroundImage: `url(${background})` }">
-  <div class="container mt-7 mx-auto p-4">
+  <div class="container mx-auto p-4">
     
     <!-- Hero Header -->
     <div class="dl-hero" data-aos="fade-up" data-aos-delay="80">

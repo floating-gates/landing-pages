@@ -81,7 +81,7 @@ const selectService = (index) => {
     <div class="max-w-7xl mx-auto flex flex-col items-center">
       
       <!-- Section Header -->
-      <div class="my-6 text-center max-w-3xl">
+      <div class="mb-6 text-center max-w-3xl">
         <h2 class="heading" >
           Enterprise Services
         </h2>

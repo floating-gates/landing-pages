@@ -75,7 +75,7 @@ onUnmounted(() => {
 <template>
 <Header :context="'landing-page'" />
 
-<div class="docs-shell mt-3">
+<div class="docs-shell">
   <button class="docs-menu-toggle" type="button" @click="menuOpen = !menuOpen">
     {{ menuOpen ? 'Hide' : 'Browse' }} contents
   </button>
@@ -158,7 +158,7 @@ onUnmounted(() => {
 .docs-shell {
   /* max-width: 1500px; */
   margin: 0 auto;
-  padding: 140px 24px 50px;
+  padding: var(--header-stack) 24px 50px;
   display: grid;
   grid-template-columns: 260px minmax(0, 1fr) 220px;
   gap: 48px;
@@ -302,7 +302,7 @@ onUnmounted(() => {
 @media (max-width: 900px) {
   .docs-shell {
     grid-template-columns: 1fr;
-    padding: 85px 18px 50px;
+    padding: var(--header-stack) 18px 50px;
     gap: 20px;
   }
 

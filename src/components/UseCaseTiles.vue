@@ -53,10 +53,10 @@ const closeArticle = () => {
 
 <template>
   <div 
-    class="py-8 lg:py-16 bg-cover bg-center"
+    class="below-header pb-8 lg:pb-16 bg-cover bg-center min-h-screen"
     :style="{ backgroundImage: `url(${background})` }"
   >
-    <div class="max-w-[1200px] mx-auto px-8 pt-32 pb-12 text-center">
+    <div class="max-w-[1200px] mx-auto px-8 pb-12 text-center">
       <h1 class="heading">Resources</h1>
       <p class="text-xl leading-relaxed font-normal opacity-80">
         Discover how we've helped companies through open solutions.

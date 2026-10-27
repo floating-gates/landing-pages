@@ -102,9 +102,9 @@ const pricingPlans = computed(() => [
 
 <template>
 <!-- Added pb-24 here to create the spacing at the bottom before the footer appears -->
-<div class="untree" :style="{ backgroundImage: `url(${background})` }">  
+<div class="untree below-header" :style="{ backgroundImage: `url(${background})` }">  
   <!-- Centered container with mx-auto -->
-  <div class="flex flex-col w-full p-12 items-center justify-center min-h-screen gap-12">
+  <div class="flex flex-col w-full px-12 pb-12 items-center justify-center flex-1 gap-12">
     
     <!-- Header Section with Centered Text and Right-Aligned Toggle -->
     <div class="flex flex-col md:flex-row items-center justify-between relative gap-6">
