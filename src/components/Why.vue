@@ -130,10 +130,6 @@ import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from 
   box-sizing: border-box;
 }
 
-.space {
-  margin-top: 3rem;
-}
-
 .advantage-list {
   list-style: none;
   padding: 0;
@@ -202,20 +198,6 @@ import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from 
   font-size: 0.95rem;
   color: #666;
   line-height: 1.5;
-}
-
-.login-container {
-  padding-left: 5%;
-  padding-right: 5%;
-  max-width: 1536px;
-}
-
-.visual-wrapper {
-  transition: all 0.3s ease;
-}
-
-.visual-wrapper:hover {
-  transform: scale(1.02);
 }
 
 /* ══════════════════════════════════════════

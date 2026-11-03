@@ -158,20 +158,8 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.untree {
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
 img {
     margin-top: 2rem;
-}
-
-.btn-hover:hover {
-    color: v-bind(themeColorWhite);
-    background-color: v-bind(themeColorOrange);
 }
 
 .address-form {

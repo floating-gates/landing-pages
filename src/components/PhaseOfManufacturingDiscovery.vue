@@ -76,12 +76,6 @@ import processImg from "../data/images/path.webp";
   text-align: center;
 }
 
-.section-heading {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  margin-bottom: 20px;
-}
-
 .accent {
   color: v-bind(themeColorOrange);
   font-weight: bold;

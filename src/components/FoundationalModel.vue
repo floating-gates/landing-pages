@@ -309,6 +309,4 @@ const handleDownloadClick = (platform) => {
     opacity: 0.8;
     line-height: 1.5;
 }
-
-
 </style>

@@ -33,7 +33,7 @@ const socialItems = [
                 <div class="flex items-center gap-3 mb-3">
                   <img src="../data/images/logo.webp"
                        alt="Floating Gates Logo"
-                       class="h-[30px] mb-2 w-auto shrink-0" />
+                       class="h-[30px] mb-5" />
                 </div>
                 <p class="mr-3">{{ column1Text }}</p>
               </div>

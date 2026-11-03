@@ -441,7 +441,6 @@ function scrollTo(elementId) {
     font-weight: 700;
 }
 
-
 .last-updated {
     color: #666;
     font-style: italic;
@@ -534,30 +533,16 @@ function scrollTo(elementId) {
     margin: 5px 0;
 }
 
-.terms-footer {
-    margin-top: 50px;
-    padding: 30px 0;
-    border-top: 2px solid #e0e0e0;
-    text-align: center;
-    color: #666;
-}
-
-.terms-footer p {
-    margin: 5px 0;
-}
-
 /* Mobile Responsiveness */
 @media (max-width: 1024px) {
     .content-wrapper {
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
     .table-of-contents {
         position: static;
         order: 2;
     }
-    
     .terms-content {
         order: 1;
     }
@@ -567,19 +552,13 @@ function scrollTo(elementId) {
     .terms-container {
         padding: var(--header-stack) 15px 15px;
     }
-    
     .main-title {
         font-size: 2rem;
-    }
-    
-    .company-name {
-        font-size: 1.4rem;
     }
     
     .table-of-contents {
         padding: 15px;
     }
-    
     .term-section h2 {
         font-size: 1.2rem;
     }
@@ -588,18 +567,6 @@ function scrollTo(elementId) {
 @media (max-width: 480px) {
     .main-title {
         font-size: 1.8rem;
-    }
-    
-    .company-name {
-        font-size: 1.2rem;
-    }
-    
-    .definitions-grid {
-        gap: 10px;
-    }
-    
-    .definition-item {
-        padding: 10px;
     }
 }
 </style>

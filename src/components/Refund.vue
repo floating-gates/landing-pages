@@ -90,16 +90,6 @@ import { ReceiptTaxIcon } from '../helper/icons_generator.js'
     margin: 0 auto;
 }
 
-.refund-card {
-    background: white;
-    border-radius: 1rem;
-    padding: 2rem;
-    height: 100%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
 .refund-timeline {
     background: white;
     border-radius: 1rem;
@@ -182,20 +172,13 @@ import { ReceiptTaxIcon } from '../helper/icons_generator.js'
     .refund-heading {
         font-size: 2rem;
   }
-  
   .timeline-steps {
     flex-direction: column;
     align-items: center;
   }
-  
   .step-arrow {
     transform: rotate(90deg);
     margin: 1rem 0;
   }
-  
-  .refund-card {
-    margin-bottom: 1rem;
-  }
 }
-
 </style>

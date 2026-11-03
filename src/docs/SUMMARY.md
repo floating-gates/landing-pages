@@ -11,9 +11,12 @@ The sidebar follows this list. Indent a chapter to nest it.
   - [Production Machines](production-machines.md)
   - [Available Materials](available-materials.md)
   - [Branding](branding.md)
-- [Interact with Factory](process-of-gates.md)
+- [Set up the Factory](process-of-gates.md)
   - [Using the Web Platform](create-your-first-project.md)
   - [Using the Autonomous Agent](via-autnomous-routine.md)
+- [MCP server](mcp.md)
+  - [Connect to your LLM](connect-mcp-to-llm.md)
+
 - [Factory Features](manage-what-your-cad-can-do.md)
   - [Automatic Quotations](automatic-quotations.md)
 - [Manufacturing Commitments](interact-with-your-first-order.md)

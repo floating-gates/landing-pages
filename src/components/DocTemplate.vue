@@ -24,13 +24,6 @@ const isHtml = computed(() => typeof props.html_content === 'string');
   width: 100%;
 }
 
-.empty-state {
-  padding: 40px;
-  text-align: center;
-  color: #666;
-  font-style: italic;
-}
-
 /*
  * Markdown output. Rendered with v-html, so scoped styles do not reach it
  * without :deep().
@@ -123,11 +116,6 @@ const isHtml = computed(() => typeof props.html_content === 'string');
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
-.markdown-body :deep(figure.full img) {
-  max-height: none;
-  width: 100%;
-}
-
 .markdown-body :deep(figcaption) {
   margin-top: 10px;
   font-size: 0.85rem;
@@ -199,11 +187,9 @@ const isHtml = computed(() => typeof props.html_content === 'string');
   .markdown-body :deep(h1) {
     font-size: 1.6rem;
   }
-
   .markdown-body :deep(h2) {
     font-size: 1.2rem;
   }
-
   .markdown-body :deep(table) {
     display: block;
     overflow-x: auto;

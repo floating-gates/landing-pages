@@ -116,14 +116,6 @@ const isOpen = (index) => openIndex.value === index;
     margin-bottom: 5rem;
 }
 
-.faq-subtitle {
-    font-size: 1.2rem;
-    color: #6c757d;
-    margin: 0 auto 2rem;
-    max-width: 80%;
-    line-height: 1.5;
-}
-
 .faq-item {
     background: #fff;
     -webkit-text-fill-color: v-bind(themeColor); /* Force white when open */
@@ -253,48 +245,32 @@ const isOpen = (index) => openIndex.value === index;
     padding: 2rem;
 }
 
-
-
 /* ===== Mobile Responsive ===== */
 @media (max-width: 768px) {
     .faq-section {
         padding: var(--header-stack) 1.5rem 3rem;
     }
-
     .faq-container {
      max-width: 95%;
-    }
-
-    .faq-title {
-        font-size: 2.2rem;
-    }
-    
-    .faq-subtitle {
-        font-size: 1.1rem;
     }
     
     .faq-question {
         padding: 1.5rem 1rem;
     }
-    
     .question-left {
         gap: 1rem;
     }
-    
     .question-number {
         font-size: 1.6rem;
     }
-    
     .question-text {
         font-size: 1.3rem;
         font-weight: 500;
     }
-    
     .faq-icon {
         width: 40px;
         height: 40px;
     }
-    
     .answer-text {
     font-size: 1rem;
     padding: 1rem 1rem 1.5rem 1.5rem;
