@@ -9,7 +9,3 @@ import Refund from '../components/Refund.vue'
 <PricingTiles />
 <!-- <Refund /> -->
 </template>
-
-<style scoped>
-</style>
-

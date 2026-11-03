@@ -2,6 +2,8 @@
 import mainPhoto from "../data/images/resume_platform.webp";
 import { themeColor, themeColorOrange, themeColorGold, themeColorWhite,
          youtubeVideoUrl, app_login_url } from "../config.js";
+import screenshot from "../data/images/screenshot.png";
+
 import { ref } from 'vue'
 
 const showVideo = ref(false)
@@ -71,17 +73,20 @@ function clicking_tile(tile) {
 </div>
 
 <!-- <div id="hero" class="hero-section-container"> -->
-<div class="hero-row flex flex-col p-12 items-center justify-center gap-14">
-  
+<div class="flex flex-col p-12 items-center justify-center gap-14 w-full">  
   <h2 class="heading mb-3">
     <em>AUTONOMOUS MISTAKES DETECTION IN MECHANICAL ENGINEERING</em>
     <span class="title-line-2">THAT WORKS ON FACTORY NETWORKS</span>
   </h2>
-  
-  <div class="hero-img-pane" data-aos="fade-left" data-aos-duration="700">
-    <img :src="mainPhoto" alt="Platform Logic Graphic" class="hero-img-fluid" />
+    
+  <div class="screenshot-wrap mb-16 w-4/5" data-aos="fade-up" data-aos-delay="80">
+    <img
+      :src="screenshot"
+      alt="Huckster Interface portal showing a CAD upload and manufacturability check"
+      class="screenshot"
+      />
   </div>
-  
+
   <!-- <div data-aos="fade-right mb-3" data-aos-duration="700"> -->
   <!--   <div class="hw-right"> -->
   <!--     <a -->
@@ -118,154 +123,14 @@ function clicking_tile(tile) {
     color: #223843;
 }
 
-/* ── Asset Wrapper Column Proportions ───────────────────────── */
-.hero-img-pane {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .heading {
     line-height: 1.2;
     font-size: clamp(1.8rem, 2vw, 4rem);
 }
 
-/* ── Tile System Layout Grid ─────────────────────────────────── */
-.hw-right {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* Stretch grid items vertically across the row */
-    grid-auto-rows: 1fr; 
-    align-items: stretch;
-    gap: clamp(0.75rem, 1.5vw, 1.25rem);
-    width: 100%;
-    position: relative;
-}
-
-/* ── High-Fidelity Interactive Cards ────────────────────────── */
-.hw-tile {
-    text-decoration: none;
-    padding: 1.25rem;
-    display: flex;
-    /* aspect-ratio: 1 / 1; */
-    height: 100%;
-    flex-direction: column;
-    justify-content: flex-end;
-    position: relative;
-    border-radius: 1.25rem;
-    overflow: hidden;
-    min-width: 0; 
-    z-index: 1;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
-    cursor: pointer;
-}
-
-.blue-tile {
-    background: linear-gradient(135deg, v-bind(themeColor) 0%, #17262e 100%);
-}
-
-.white-tile {
-    background: linear-gradient(135deg, #2c4957 0%, #1a2b34 100%);
-}
-
-.hw-tile:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.3);
-    z-index: 5;
-}
-
-/* Internal Dynamic Content Positioning */
-.hw-tile-content-area {
-    position: relative;
-    z-index: 2;
-    margin-top: auto;
-}
-
-/* Compact Numeric Micro-Badges */
-.hw-tile-num {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
-    border: 1.5px solid v-bind(themeColorWhite);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: v-bind(themeColorWhite);
-}
-
-/* Typography Constraints */
-.hw-tile-title {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 0.15rem;
-}
-
-.hw-tile-title2 {
-    font-size: clamp(1rem, 2.4vw, 1.9rem);
-    font-weight: 700;
-    line-height: 1.2;
-    color: v-bind(themeColorWhite);
-    word-break: break-word;
-}
-
-/* ── Media Queries (Responsive Balance Fixes) ──────────────── */
-@media (max-width: 1024px) {
-    .hero-split-grid {
-        grid-template-columns: 1fr; /* Drop side-by-side strategy early for small monitors */
-        gap: 3rem;
-    }
-    .hero-img-fluid {
-        max-width: 450px;
-    }
-}
-
 @media (max-width: 768px) {
-    .hero-section-container {
-        padding: 1.5rem 1.25rem;
-        margin: 2rem auto;
-    }
-    .hw-right {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
-    }
-    .hw-right::before, .hw-right::after {
-        display: none; /* Hide baseline connectors on smaller grids */
-    }
-    /* Squares get very tall once stacked two-per-row on a narrow
-       viewport — relax the aspect ratio so six tiles don't turn
-       into a marathon of scrolling. */
-    .hw-tile {
-        aspect-ratio: 4 / 5;
-        padding: 1rem;
-    }
     .title-line-2 {
         line-height: 1.35;
-    }
-}
-
-@media (max-width: 480px) {
-    .hw-right {
-        grid-template-columns: 1fr;
-    }
-    .hw-tile {
-        aspect-ratio: 16 / 9;
-    }
-    .hero-section-container {
-        padding: 1.25rem 1rem;
-    }
-    .hero-img-fluid {
-        max-width: 100%;
     }
 }
 

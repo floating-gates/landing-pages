@@ -320,109 +320,6 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-
-.btn-hover:hover {
-    color: v-bind(themeColorWhite);
-    background-color: v-bind(themeColorOrange);
-}
-
-.hero-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1.5rem 0;
-}
-
-.hero-list li {
-    font-size: 1.25rem;
-    font-weight: 500;
-    line-height: 1.6;
-    color: v-bind(themeColor);
-    position: relative;
-    padding-left: 0;
-    margin-bottom: 0.5rem;
-}
-
-.address-form {
-    display: flex;
-    gap: 10px;
-    margin-top: 2rem;
-    border-radius: 14px;
-    padding: 6px;
-    font-size: 1.1rem;
-}
-
-.address-input {
-    flex: 1;
-    padding: 0.9rem 1.2rem;
-    border: none;
-    border-radius: 14px;
-    background-color: v-bind(themeColorWhite);
-    transition: background-color 0.3s ease;
-}
-
-.address-input:focus {
-    background-color: #fff;
-    box-shadow: inset 0 0 0 2px v-bind(themeColor);
-}
-
-.address-submit {
-    padding: 0.9rem 1.6rem;
-    min-width: 80px;
-    min-height: 50px;
-    border: none;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
-    color: v-bind(themeColorWhite);
-    background: linear-gradient(
-        145deg, 
-        v-bind(themeColor) 0%, 
-        #1a1d23 100%
-    );
-    box-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.15),
-        0 6px 20px rgba(0, 0, 0, 0.05);
-}
-
-.address-submit:hover {
-    transform: translateY(-1px);
-    cursor: pointer;
-}
-
-.address-submit svg {
-    width: 20px;
-    height: 20px;
-    stroke: v-bind(themeColorWhite);
-    transition: stroke 0.3s ease, transform 0.3s ease;
-}
-
-.address-submit:hover svg {
-    transform: translateX(2px);
-}
-
-.excerpt {
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-}
-
-.progress-btn {
-    padding: 0.9rem 1.2rem;
-    min-height: 56px;   
-    border: none;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    color: white;
-    background-color: v-bind(themeColor);
-    flex: 1;
-}
-
 /* ── Shell ── */
 
 @keyframes gridReveal {
@@ -437,10 +334,6 @@ onBeforeUnmount(() => {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-@keyframes pulse-dot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-}
 
 .hero-copy {
     max-width: 560px;
@@ -450,6 +343,7 @@ onBeforeUnmount(() => {
     width: 80%;
     min-height: 600px;
     max-width: 780px;
+    height: auto; /* Let content determine height */
     border-radius: 25px;
     background: v-bind(themeColorWhite);
     position: relative;
@@ -688,17 +582,6 @@ onBeforeUnmount(() => {
     z-index: 2;
 }
 
-.file-grid-caption {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 6px;
-    text-align: center;
-    font-size: 10px;
-    color: v-bind(themeColor);
-    font-weight: 600;
-}
-
 @keyframes fanOut {
     from {
         opacity: 0;
@@ -848,12 +731,6 @@ onBeforeUnmount(() => {
     border-radius: 3px;
 }
 
-.cad-filename {
-    font-size: 11px;
-    font-weight: 700;
-    color: v-bind(themeColor);
-}
-
 .cad-mode {
     position: absolute;
     right: 10px;
@@ -864,16 +741,6 @@ onBeforeUnmount(() => {
     color: v-bind(themeColor);
     pointer-events: none;
 }
-
-.live-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #34C759;
-    animation: pulse-dot 1.8s infinite;
-    flex-shrink: 0;
-    margin-left: auto;
-}
-
 
 .subheading {
     line-height: 1.2;
@@ -916,7 +783,6 @@ onBeforeUnmount(() => {
     margin-bottom: 2.2rem;
 }
 
-
 .btn-ghost-cta {
     display: inline-flex;
     align-items: center;
@@ -934,37 +800,6 @@ onBeforeUnmount(() => {
 .btn-ghost-cta:hover {
     background: rgba(0, 0, 0, 0.04);
 }
-
-.social-proof {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.avatars {
-    display: flex;
-}
-
-.avatar {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    border: 2px solid white;
-    margin-right: -8px;
-    font-size: 10px;
-    font-weight: 600;
-    display: flex; align-items: center; justify-content: center;
-    color: #fff;
-}
-
-.proof-text {
-    font-size: 12.5px;
-    color: #666;
-    line-height: 1.5;
-}
-
-.proof-text strong { color: inherit; font-weight: 600; }
-
-.stars { color: #BA7517; font-size: 12px; letter-spacing: 1px; }
 
 /* ══════════════════════════════════════════
    RESPONSIVE — TABLET
@@ -1022,10 +857,7 @@ onBeforeUnmount(() => {
         margin-left: auto;
         margin-right: auto;
     }
-    .subheading.w-\[90\%\] {
-        width: 100% !important;
-    }
-    
+
     .hero-feature-list {
         align-items: flex-start;
         text-align: left;

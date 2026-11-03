@@ -48,10 +48,12 @@ const pricingPlans = computed(() => [
         price: formatPrice(display_price_list[0].price, 0),
         suffix: "",
         features: [
-            "Public Facing Factory (Huckster Interface)",
+            '<a href="/huckster-interface" class="underline hover:opacity-80">Huckster Interface</a>',
+            '<a href="/mcp" class="underline hover:opacity-80">MCP server for Agent</a>',
             "Software Defined Factory",
             "Max 50MB of Project Storage",
-            "Projects will be used in AI training"  ],
+            "Projects available to AI training"
+        ],
         buttonText: "Get Started",
         buttonUrl: app_login_url,
     },
@@ -61,10 +63,11 @@ const pricingPlans = computed(() => [
         where: "Cloud Service",
         suffix: "/Month - incl. VAT",
         features: [
-            "Manufacturing Features Recognition",
-            "Custom Huckster interface URL",
-            "Conversation on Project",
-            "Projects 100% Private"],
+            'Custom <a href="/huckster-interface" class="underline hover:opacity-80">Huckster Interface</a> URL',
+            'Manufacturing Feature Recognition',
+            "Manual Issue resolution",
+            "Projects 100% Private",
+            "All 'Basic' features"],
         buttonText: "Get Started",
         buttonUrl: app_login_url,
     },
@@ -86,11 +89,11 @@ const pricingPlans = computed(() => [
         where: "Deploy in Factory",
         suffix: "",
         features: [
+            '<a href="/good2manufacture" class="underline hover:opacity-80">Good2Manufacture Local Deployment</a>',
             "Find Issues in GD&T and CAD",
-            "All Previous features",
-            "Local Installation",
             "One time purchase",
             "Unlimited Numbers of PC covered",
+            "All Previous features",
         ],
         buttonText: "Speak to Us",
         buttonUrl: app_login_url,
@@ -178,8 +181,8 @@ const pricingPlans = computed(() => [
                 :key="feature"
                 class="relative py-2 text-center before:content-['✓\a0\a0']"
                 :style="`color: ${themeColor}; --tw-before-color: ${themeColorOrange};`"
+                v-html="feature"
                 >
-                {{ feature }}
               </li>
             </ul>
           </div>
@@ -200,79 +203,11 @@ const pricingPlans = computed(() => [
 </template>
 
 <style scoped>
-.location-tag {
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: -0.05rem;
-    margin-bottom: 0.5rem;
-    color: v-bind(themeColorOrange);
-}
-
-.price {
-    font-size: 1.8rem;
-    margin: 1rem 0 0.9rem 0;
-    font-weight: 500;
-    text-align: center;
-    color: v-bind(themeColor);
-}
-
-.price sup {
-    font-size: 0.7rem;
-}
-
-.subtitle {
-    margin-bottom: 4rem;
-}
-
-.ul-check.primary li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.75rem;
-    font-weight: 500;
-    color: v-bind(themeColor)
-}
-
 ul li::before {
     color: v-bind(themeColorOrange);
 }
 
-.pricing {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 5rem;
-}
-
 .pricing-card {
     border-radius: 2rem;
-}
-
-.title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.8rem;
-    font-weight: 600;
-    color: v-bind(themeColor);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    margin-top: 0.7rem;
-    text-align: center;
-}
-
-.body {
-    background: linear-gradient(
-        145deg, 
-        v-bind(themeColorWhite) 0%, 
-        #e3e3e340 100%
-    );
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
-}
-
-.pricing:hover {
-    transform: scale(1.03);
-}
-
-.center {
-    text-align: center;
 }
 </style>

@@ -1,18 +1,18 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import { themeColor, survey_link, app_login_url, download_center_url } from "../config.js";
+import { themeColor, survey_link, app_login_url } from "../config.js";
 import short_logo from "../data/images/logo_short_black.webp";
+
+// Import SVGs as asset URLs for maximum compatibility without extra Vite plugin requirements
+import IconGoodTwoManufactured from "../data/images/Icon-good2manufactured.svg";
+import IconHuckster from "../data/images/Icon-huckster.svg";
+import IconMCP from "../data/images/Icon-MCP.svg";
+
 import {
-  Logo,
   DropdownCaret,
-  ServerIcon,
-  ClientIcon,
   ArticlesIcon,
   BookIcon,
   SurveyIcon,
-  Good2ManufacturedIcon,
-  Good2ManufactureIcon,
-  HucksterIcon
 } from "../helper/icons_generator.js";
 
 // Menu States
@@ -23,6 +23,8 @@ const isProductMenuOpen = ref(false);
 // Template DOM References
 const resourcesRef = ref(null);
 const productRef = ref(null);
+const navRef = ref(null);
+let resizeObserver = null;
 
 // Toggle Handlers
 function toggleResources() {
@@ -65,9 +67,6 @@ function handleClickOutside(event) {
   }
 }
 
-const navRef = ref(null);
-let resizeObserver = null;
-
 function syncHeaderOffset() {
   if (!navRef.value) return;
   const offset = Math.round(navRef.value.getBoundingClientRect().bottom);
@@ -78,8 +77,10 @@ function syncHeaderOffset() {
 onMounted(() => {
   document.addEventListener("click", handleClickOutside);
   syncHeaderOffset();
-  resizeObserver = new ResizeObserver(syncHeaderOffset);
-  if (navRef.value) resizeObserver.observe(navRef.value);
+  if (window.ResizeObserver && navRef.value) {
+    resizeObserver = new ResizeObserver(syncHeaderOffset);
+    resizeObserver.observe(navRef.value);
+  }
   window.addEventListener("resize", syncHeaderOffset);
 });
 
@@ -101,6 +102,7 @@ onUnmounted(() => {
 
         <!-- Hamburger button -->
         <button
+          type="button"
           class="hamburger"
           @click="isMenuOpen = !isMenuOpen"
           :aria-expanded="isMenuOpen"
@@ -119,6 +121,7 @@ onUnmounted(() => {
           <ul class="site-menu main-menu">
             <li><a href="/" class="pages-link" @click="closeMenu">Home</a></li>
             <li><a href="/product" class="pages-link" @click="closeMenu">How it Works</a></li>
+            
             <!-- PRODUCTS DROPDOWN -->
             <li
               ref="productRef"
@@ -132,7 +135,8 @@ onUnmounted(() => {
                 @click="toggleProduct"
               >
                 <span>Product</span>
-                <DropdownCaret
+                <component
+                  :is="DropdownCaret"
                   class="dropdown-caret"
                   :class="{ open: isProductMenuOpen }"
                   width="12"
@@ -143,30 +147,19 @@ onUnmounted(() => {
               <Transition name="dropdown-fade">
                 <div class="dropdown-menu" v-show="isProductMenuOpen">
                   <div class="dropdown-content">
-                    <a href="/good2manufacture"
-                       class="dropdown-item" @click="closeMenu">
+                    <a href="/good2manufacture" class="dropdown-item" @click="closeMenu">
                       <div class="item-icon">
-                        <Good2ManufactureIcon width="22" height="22" />
+                        <img :src="IconGoodTwoManufactured" width="22" height="22" alt="" />
                       </div>
                       <div class="item-text">
-                        <span class="item-title">Good2Manufacture Server</span>
-                        <span class="item-desc">Software Stack for Enterprise Usage only</span>
-                      </div>
-                    </a>
-
-                    <a href="/good2manufactured" class="dropdown-item" @click="closeMenu">
-                      <div class="item-icon">
-                        <Good2ManufacturedIcon width="22" height="22" />
-                      </div>
-                      <div class="item-text">
-                        <span class="item-title">Good2Manufactured Client</span>
-                        <span class="item-desc">Daemon to connect an Endpoint to Good2Manufacture Server</span>
+                        <span class="item-title">Good2Manufacture</span>
+                        <span class="item-desc">Server & Client stack, to enterprise install</span>
                       </div>
                     </a>
 
                     <a href="/huckster-interface" class="dropdown-item" @click="closeMenu">
                       <div class="item-icon">
-                        <HucksterIcon width="22" height="22" />
+                        <img :src="IconHuckster" width="22" height="22" alt="" />
                       </div>
                       <div class="item-text">
                         <span class="item-title">Huckster Interface</span>
@@ -174,15 +167,15 @@ onUnmounted(() => {
                       </div>
                     </a>
 
-                    <!-- <a href="/ai-model" class="dropdown-item" @click="closeMenu"> -->
-                    <!--   <div class="item-icon"> -->
-                    <!--     <Logo /> -->
-                    <!--   </div> -->
-                    <!--   <div class="item-text"> -->
-                    <!--     <span class="item-title"> AI Model for MFR </span> -->
-                    <!--     <span class="item-desc">Manufacturing Feature Recognition model with Open Weights</span> -->
-                    <!--   </div> -->
-                    <!-- </a> -->
+                    <a href="/mcp" class="dropdown-item" @click="closeMenu">
+                      <div class="item-icon">
+                        <img :src="IconMCP" width="22" height="22" alt="" />
+                      </div>
+                      <div class="item-text">
+                        <span class="item-title">MCP Server</span>
+                        <span class="item-desc">Agent driven issues spotting to check on your factory</span>
+                      </div>
+                    </a>
                   </div>
                 </div>
               </Transition>
@@ -206,7 +199,8 @@ onUnmounted(() => {
                 :aria-expanded="isResourcesMenuOpen"
               >
                 <span>Resources</span>
-                <DropdownCaret
+                <component
+                  :is="DropdownCaret"
                   class="dropdown-caret"
                   :class="{ open: isResourcesMenuOpen }"
                   width="12"
@@ -219,7 +213,7 @@ onUnmounted(() => {
                   <div class="dropdown-content">
                     <a href="/articles" class="dropdown-item" @click="closeMenu">
                       <div class="item-icon">
-                        <ArticlesIcon width="18" height="18" />
+                        <component :is="ArticlesIcon" width="18" height="18" />
                       </div>
                       <div class="item-text">
                         <span class="item-title">Articles</span>
@@ -229,7 +223,7 @@ onUnmounted(() => {
 
                     <a href="/docs" class="dropdown-item" @click="closeMenu">
                       <div class="item-icon">
-                        <BookIcon width="18" height="18" />
+                        <component :is="BookIcon" width="18" height="18" />
                       </div>
                       <div class="item-text">
                         <span class="item-title">Documentation</span>
@@ -239,7 +233,7 @@ onUnmounted(() => {
 
                     <a :href="survey_link" class="dropdown-item" @click="closeMenu">
                       <div class="item-icon">
-                        <SurveyIcon width="18" height="18" />
+                        <component :is="SurveyIcon" width="18" height="18" />
                       </div>
                       <div class="item-text">
                         <span class="item-title">Survey</span>
@@ -258,7 +252,8 @@ onUnmounted(() => {
                 <a
                   :href="app_login_url"
                   :style="{ color: themeColor }"
-                  @click="closeMenu" >
+                  @click="closeMenu"
+                >
                   Login
                 </a>
               </li>
@@ -273,288 +268,288 @@ onUnmounted(() => {
 <style scoped>
 /* Base Reset and Nav Layout */
 .site-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .nav-link:hover,
 .pages-link:hover {
-    color: v-bind(themeColor);
+  color: v-bind(themeColor);
 }
 
 /* Desktop Styles */
 @media (min-width: 769px) {
-    .site-nav {
-        position: fixed !important;
-        top: 20px;
-        left: 50% !important;
-        transform: translateX(-50%);
-        width: 90%;
-        max-width: 1300px;
-        border-radius: 16px;
-        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
-        background-color: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(12px);
-        transition: all 0.3s ease;
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        z-index: 1000;
-    }
-    
-    .nav-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.75rem 1.5rem;
-    }
-    
-    .dropdown-menu {
-        position: absolute;
-        top: calc(100% + 16px);
-        left: 50%;
-        transform: translateX(-50%);
-        min-width: 280px;
-        background: #ffffff;
-        border-radius: 12px;
-        padding: 0.5rem;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        z-index: 9999;
-    }
-    
-    /* Triangle Pointer */
-    .dropdown-menu::before {
-        content: "";
-        position: absolute;
-        top: -6px;
-        left: 50%;
-        transform: translateX(-50%) rotate(45deg);
-        width: 12px;
-        height: 12px;
-        background: #ffffff;
-        border-top: 1px solid rgba(226, 232, 240, 0.8);
-        border-left: 1px solid rgba(226, 232, 240, 0.8);
-    }
+  .site-nav {
+    position: fixed !important;
+    top: 20px;
+    left: 50% !important;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1300px;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    z-index: 1000;
+  }
+  
+  .nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 16px);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 280px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    z-index: 9999;
+  }
+  
+  /* Triangle Pointer */
+  .dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border-top: 1px solid rgba(226, 232, 240, 0.8);
+    border-left: 1px solid rgba(226, 232, 240, 0.8);
+  }
 }
 
 /* Dropdown Base Mechanics */
 .dropdown {
-    position: relative;
+  position: relative;
 }
 
 .dropdown-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 14px 14px; 
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: #334155;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px 14px; 
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #334155;
 }
 
 .dropdown-caret {
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    color: #64748b;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #64748b;
 }
 
 .dropdown-caret.open {
-    transform: rotate(180deg);
-    color: v-bind(themeColor);
+  transform: rotate(180deg);
+  color: v-bind(themeColor);
 }
 
 .dropdown-content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 /* Individual Item Design */
 .dropdown-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.625rem 0.75rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 .dropdown-item:hover .item-title {
-    color: var(--theme-color-orange);
+  color: var(--theme-color-orange, #f97316);
 }
 
 .dropdown-item:hover {
-    background-color: #f8fafc;
+  background-color: #f8fafc;
 }
 
 .item-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    background: #f1f5f9;
-    color: #475569;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-}
-
-.dropdown-item:hover .item-icon {
-    background: v-bind(themeColor);
-    color: var(--theme-color-lille);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  color: #475569;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .item-text {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .item-title {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #0f172a;
-    line-height: 1.25;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.25;
 }
 
 .item-desc {
-    font-size: 0.75rem;
-    color: #64748b;
-    line-height: 1.25;
-    margin-top: 2px;
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.25;
+  margin-top: 2px;
 }
 
-/* Smooth Transitions */
+/* Transitions */
 .dropdown-fade-enter-active,
 .dropdown-fade-leave-active {
-    transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .dropdown-fade-enter-from,
 .dropdown-fade-leave-to {
-    opacity: 0;
-    transform: translateX(-50%) translateY(8px);
+  opacity: 0;
+  transform: translateY(8px);
 }
 
-/* Enable smooth transitions for the image */
+@media (min-width: 769px) {
+  .dropdown-fade-enter-from,
+  .dropdown-fade-leave-to {
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
 .logo-img {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Rotate the image when hovering over the logo link */
 .logo:hover .logo-img {
   transform: rotate(-90deg);
 }
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
-    .site-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.97);
-        backdrop-filter: blur(8px);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-        z-index: 1000;
-    }
-    
-    .nav-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.65rem 1rem;
-    }
-    
-    .logo-img {
-        height: 30px;
-        width: auto;
-    }
-    
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 4px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        width: 44px;
-        height: 44px;
-        z-index: 1002;
-    }
-    
-    .hamburger span {
-        width: 24px;
-        height: 3px;
-        background: #333;
-        border-radius: 2px;
-        transition: 0.3s;
-    }
-    
-    .hamburger span.open:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .hamburger span.open:nth-child(2) { opacity: 0; }
-    .hamburger span.open:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-    
-    .menu-backdrop {
-        display: block;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.25);
-        z-index: 999;
-    }
-    
-    .menu-container {
-        position: fixed;
-        top: 62px;
-        left: 0;
-        right: 0;
-        background: white;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        flex-direction: column;
-        align-items: stretch;
-        padding: 0 1rem;
-        gap: 1rem;
-        max-height: 0;
-        overflow-y: auto;
-        opacity: 0;
-        transform: translateY(-8px);
-        pointer-events: none;
-        transition: max-height 0.3s ease, opacity 0.25s ease, transform 0.25s ease, padding 0.25s ease;
-        z-index: 1000;
-    }
-    
-    .menu-container.mobile-open {
-        display: flex;
-        max-height: calc(100vh - 62px);
-        opacity: 1;
-        transform: translateY(0);
-        padding: 1.25rem 1rem;
-        pointer-events: auto;
-    }
-    
-    .main-menu {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.5rem;
-    }
-    
-    .dropdown-toggle {
-        width: 100%;
-        justify-content: space-between;
-        padding: 14px 14px;
-        font-size: 1rem;
-    }
-    
-    .dropdown-menu {
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+  }
+  
+  .nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1rem;
+  }
+  
+  .logo-img {
+    height: 30px;
+    width: auto;
+  }
+  
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    z-index: 1002;
+  }
+  
+  .hamburger span {
+    width: 24px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+  
+  .hamburger span.open:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger span.open:nth-child(2) { opacity: 0; }
+  .hamburger span.open:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+  
+  .menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 999;
+  }
+  
+  .menu-container {
+    position: fixed;
+    top: 62px;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 1rem;
+    gap: 1rem;
+    max-height: 0;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: max-height 0.3s ease, opacity 0.25s ease, transform 0.25s ease, padding 0.25s ease;
+    z-index: 1000;
+  }
+  
+  .menu-container.mobile-open {
+    display: flex;
+    max-height: calc(100vh - 62px);
+    opacity: 1;
+    transform: translateY(0);
+    padding: 1.25rem 1rem;
+    pointer-events: auto;
+  }
+  
+  .main-menu {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .dropdown-toggle {
+    width: 100%;
+    justify-content: space-between;
+    padding: 14px 14px;
+    font-size: 1rem;
+  }
+  
+  .dropdown-menu {
     position: static;
     box-shadow: none;
     border: none;
@@ -562,12 +557,6 @@ onUnmounted(() => {
     border-radius: 0;
     margin-left: 0.5rem;
     padding: 0.25rem 0 0.25rem 0.5rem;
-  }
-
-  .dropdown-fade-enter-from,
-  .dropdown-fade-leave-to {
-    opacity: 0;
-    transform: translateY(-4px);
   }
 
   .cta-primary a {

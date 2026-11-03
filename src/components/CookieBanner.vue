@@ -87,7 +87,6 @@ button {
 
 .btn-primary { background: #223843; color: white; }
 .btn-secondary { background: #e5e7eb; color: #374151; }
-.btn-outline { background: transparent; border: 1px solid #2563eb; color: #2563eb; }
 
 .fade-enter-active, .fade-leave-active { transition: opacity 0.5s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }

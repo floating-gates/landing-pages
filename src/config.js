@@ -28,7 +28,7 @@ const contactInfo = {
     phone: '+39 3493822812',
     email: 'contact@floating-gates.com',
     website: 'https://floating-gates.com',
-    vat: 'IT01675720294'
+    vat: '01675720294'
 };
 
 // Exporting all

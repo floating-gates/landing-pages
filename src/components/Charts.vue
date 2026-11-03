@@ -237,33 +237,13 @@ onMounted(() => {
           </div>
           <div class="chart-visual">
             <div class="canvas-wrap">
-              <canvas ref="lineCanvas" role="img" aria-label="Line chart of issues and advices over 7 scans">
+              <canvas ref="lineCanvas" role="img" aria-label="Line chart of issues over 7 scans">
                 Issues trending down, advices stable.
               </canvas>
             </div>
           </div>
-        </div>
-        
-        <div class="chart-card" style="margin-bottom: 12px;">
-          <div class="chart-info">
-            <div class="title">Severity per feature type</div>
-            <div class="chart-subtitle">AAG feature recognition · current file</div>
-            <div class="legend-row">
-              <span class="legend-item"><span class="legend-dot" :style="{background: themeColorOrange}" />Critical</span>
-              <span class="legend-item"><span class="legend-dot" :style="{background: themeColorGold}" />Warning</span>
-              <span class="legend-item"><span class="legend-dot" :style="{background: themeColor}" />Info</span>
-            </div>
-          </div>
-          <div class="chart-visual">
-            <div class="canvas-wrap canvas-wrap--bar">
-              <canvas ref="barCanvas" role="img" aria-label="Stacked bar chart of severity per feature type">
-                Critical, warning and info issues per feature.
-              </canvas>
-            </div>
-          </div>
-        </div>
+        </div>        
       </div>
-      
     </div>
   </div>
 </div>
@@ -426,12 +406,6 @@ onMounted(() => {
     padding: 11px 13px;
 }
 
-.metric-label {
-    font-size: 11px;
-    color: #9ca3af;
-    margin-bottom: 3px;
-}
-
 .metric-val {
     font-size: 21px;
     font-weight: 600;
@@ -525,9 +499,5 @@ onMounted(() => {
     width: 100%;
     height: 100%;
     object-fit: contain; /* Prevents stretching; scales down proportionally */
-}
-
-.canvas-wrap--bar {
-    height: 110px;
 }
 </style>

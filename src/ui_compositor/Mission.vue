@@ -5,7 +5,7 @@ import Header from "../components/Header.vue";
 import background from "../data/images/background_pic.webp";
 import { PriceEstimationIcon, CircleCheckmarkIcon, BarChartSquareIcon } from "../helper/icons_generator.js";
 
-const missionSubHeading = "Scaling Automated Manufacturing"
+const missionSubHeading = "Making Manufacturing Autonomous"
 
 const features = [
     { 
@@ -151,40 +151,6 @@ const features = [
     font-weight: 400;
 }
 
-.mission-points {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.point-item {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    border-left: 4px solid v-bind("themeColorOrange");
-}
-
-.point-item:hover {
-    transform: translateX(8px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-
-.point-icon {
-    font-size: 2rem;
-    margin-right: 20px;
-    flex-shrink: 0;
-}
-
-.point-text {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #333;
-}
-
 /* Video Section */
 .video-container {
     position: relative;
@@ -200,27 +166,10 @@ const features = [
     transition: transform 0.2s;
 }
 
-.video-overlay {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 3;
-}
-
-.video-overlay:hover .video-container .hero-image {
-    transform: scale(1.05);
-}
-
 /* Achievement Section */
 .achievement-section {
     padding: 30px 0;
     position: relative;
-}
-
-.section-header {
-    margin-bottom: 60px;
 }
 
 .section-badge {
@@ -230,29 +179,8 @@ const features = [
     margin-bottom: 16px;
 }
 
-.section-title {
-    font-size: 2.4rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 20px;
-}
-
-.title-underline {
-    width: 65%;
-    height: 4px;
-    margin: 0 auto;
-    border-radius: 2px;
-}
-
 .strategy-content {
     padding-right: 40px;
-}
-
-.strategy-heading {
-    font-size: 2.2rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 24px;
 }
 
 .strategy-text {
@@ -333,48 +261,19 @@ const features = [
     .mission-title {
         font-size: 2.8rem;
     }
-    
     .strategy-content {
         padding-right: 0;
         margin-bottom: 40px;
     }
-    
-    .point-item {
-        padding: 16px;
-    }
-    
-    .point-icon {
-        font-size: 1.5rem;
-        margin-right: 16px;
-    }
 }
 
 @media (max-width: 768px) {
-    
     .mission-title {
         font-size: 2.2rem;
-    }
-    
-    .section-title {
-        font-size: 2.2rem;
-    }
-    
-    .strategy-heading {
-        font-size: 1.8rem;
     }
     
     .achievement-section {
         padding: 80px 0;
     }
-    
-    .play-button {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .video-pulse {
-    width: 100px;
-    height: 100px;
-  }
 }
 </style>

@@ -17,6 +17,7 @@ import {
     SmallCheckIcon,
     HucksterIcon
 } from "../helper/icons_generator.js";
+import IconHuckster from "../data/images/Icon-huckster.svg";
 
 const stakeholders = [
   {
@@ -54,9 +55,12 @@ const outcomes = [
     >
       <div class="w-full max-w-6xl">
         <div class="text-center mb-12" data-aos="fade-up">
-          <h1 class="heading">
-            Huckster <em>Interface</em>
-          </h1>
+          <div class="mt-4 flex flex-row items-center justify-center gap-3">
+            <img :src="IconHuckster" class="mr-3" width="42" height="42" alt="MCP server" />
+            <h1 class="heading">
+              Huckster <em>Interface</em>
+            </h1>
+          </div>
           <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-gray-600">
             The Huckster Interface is a public-facing web portal that gives
             stakeholders ( external suppliers, customers, and internal employees )
@@ -84,23 +88,6 @@ const outcomes = [
           />
         </div>
 
-        <div class="mb-16" data-aos="fade-up" data-aos-delay="100">
-          <h2 class="section-heading">One channel for every stakeholder</h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <article
-              v-for="item in stakeholders"
-              :key="item.title"
-              class="info-card"
-            >
-              <!-- <div class="item-icon"> -->
-              <!--   <component :is="item.icon" width="20" height="20" /> -->
-              <!-- </div> -->
-              <h3 class="card-title">{{ item.title }}</h3>
-              <p class="card-desc">{{ item.desc }}</p>
-            </article>
-          </div>
-        </div>
-
         <div
           class="outcome-card mb-8"
           data-aos="fade-up"
@@ -108,7 +95,7 @@ const outcomes = [
         >
           <div class="outcome-copy">
             <h2 class="section-heading section-heading--left">
-              Instant insight before production
+              One channel for every stakeholder
             </h2>
             <p class="card-desc mb-5">
               Uploaded CAD and GD&amp;T files are checked for manufacturing
@@ -177,21 +164,6 @@ const outcomes = [
   background: rgba(0, 0, 0, 0.04);
 }
 
-.screenshot-wrap {
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(34, 56, 67, 0.08);
-  border-radius: 20px;
-  padding: 12px;
-  box-shadow: 0 18px 40px rgba(34, 56, 67, 0.08);
-}
-
-.screenshot {
-  display: block;
-  width: 100%;
-  border-radius: 14px;
-  object-fit: cover;
-}
-
 .section-heading {
   color: v-bind(themeColor);
   font-size: clamp(1.4rem, 2vw, 2rem);
@@ -203,42 +175,6 @@ const outcomes = [
 
 .section-heading--left {
   text-align: left;
-}
-
-.info-card {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(4px);
-  border-radius: 16px;
-  padding: 1.4rem 1.35rem;
-  box-shadow: 0 8px 24px rgba(34, 56, 67, 0.05);
-  border: 1px solid rgba(34, 56, 67, 0.06);
-}
-
-.item-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  background: #f1f5f9;
-  color: v-bind(themeColor);
-  margin-bottom: 0.9rem;
-}
-
-.step-num {
-  display: inline-block;
-  color: v-bind(themeColorOrange);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.65rem;
-}
-
-.card-title {
-  color: v-bind(themeColor);
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
 }
 
 .card-desc {
