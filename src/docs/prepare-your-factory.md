@@ -4,6 +4,8 @@ title: Configure Factory to be Used
 description: Prepare your factory so your customers know what you can do
 ---
 
+![Overview of user surfaces and machine interactions](../data/images/dual_use.webp "full")
+
 Once you start setting up your factory, two pieces of information are required as a minimum:
 
 - Machines

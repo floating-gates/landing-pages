@@ -1,14 +1,8 @@
----
-id: how-it-works
-title: Core Components
-description: How Gates detects manufacturing flaws, secures IP, and automates accurate pricing.
----
-
-## How Gates Works
+## Core components
 
 Gates uses automated feasibility checks and rule-based evaluation to identify manufacturing flaws before production begins on the shop floor.
 
-![Overview of user surfaces and machine interactions](../data/images/dual_use.webp "full")
+![Network Components](../data/images/network.webp)
 
 ### DfM Rules Check
 
