@@ -1,12 +1,12 @@
 ---
-id: process-of-gates
-title: Interact with Factory
-description: The customer pipeline, step by step
+id: huckster-interface
+title: Huckster Interface
+description: MDB instructions
 ---
 
 The online platform is a streamlined pipeline, where each step unlocks the next gradually, so a part cannot be ordered before it has been checked against your rules and priced against your costs.
 
-![The customer pipeline](../data/images/docs-images/process-of-gates-pipeline.webp)
+![The customer pipeline](../data/images/screenshot.png)
 
 ### 1. Upload
 
