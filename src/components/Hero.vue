@@ -64,7 +64,7 @@ onBeforeUnmount(() => {
 <template>
 <div class="untree below-header" :style="{ backgroundImage: `url(${background})` }">
   <div class="hero-row flex flex-row w-full px-12 pb-12 items-center justify-center gap-14">
-    <div class="hero-copy min-w-fit">
+    <div class="hero-copy">
       <h1 class="heading" data-aos="fade-up" data-aos-delay="100">
         <!-- Autonomous Design Flaws <br> -->
         <!-- <em>Discovery for Engineers,</em> <br> -->
@@ -335,12 +335,26 @@ onBeforeUnmount(() => {
     to { opacity: 1; }
 }
 
+.hero-row {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 .hero-copy {
-    max-width: 560px;
+    flex: 0 1 auto;
+    width: max-content;
+    max-width: 100%;
+}
+
+.hero-copy .heading {
+    white-space: nowrap;
 }
 
 .mfg-shell {
-    width: 80%;
+    flex: 1 1 0;
+    width: min(100%, 780px);
+    min-width: 0;
     min-height: 600px;
     max-width: 780px;
     height: auto; /* Let content determine height */
@@ -350,7 +364,6 @@ onBeforeUnmount(() => {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
 }
 
 .mfg-grid-bg {
@@ -804,13 +817,25 @@ onBeforeUnmount(() => {
 /* ══════════════════════════════════════════
    RESPONSIVE — TABLET
    ══════════════════════════════════════════ */
+@media (max-width: 1400px) {
+    .hero-row {
+        gap: 2rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .hero-copy .heading {
+        font-size: clamp(1.6rem, 2.4vw, 2.8rem);
+    }
+}
+
 @media (max-width: 1024px) {
     .hero-row {
-        gap: 2.5rem;
+        gap: 1.75rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
     .mfg-shell {
-        width: 55%;
-        min-height: 600px;
+        min-height: 520px;
     }
 }
 
@@ -841,6 +866,10 @@ onBeforeUnmount(() => {
         max-width: 100%;
         min-width: 0;
         text-align: center;
+    }
+
+    .hero-copy .heading {
+        white-space: normal;
     }
     
     .heading {
