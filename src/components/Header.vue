@@ -172,7 +172,7 @@ onUnmounted(() => {
                         <img :src="IconMCP" width="22" height="22" alt="" />
                       </div>
                       <div class="item-text">
-                        <span class="item-title">MCP Server</span>
+                        <span class="item-title">AI Connects</span>
                         <span class="item-desc">Agent driven issues spotting to check on your factory</span>
                       </div>
                     </a>
@@ -266,6 +266,8 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 /* Base Reset and Nav Layout */
 .site-menu {
   list-style: none;
@@ -409,7 +411,7 @@ onUnmounted(() => {
 .item-title {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #0f172a;
+  color: var(--theme-color);
   line-height: 1.25;
 }
 

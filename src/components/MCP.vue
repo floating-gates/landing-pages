@@ -60,7 +60,7 @@ const outcomes = [
         <div class="mt-4 flex flex-row items-center justify-center gap-3">
           <img :src="IconMCP" class="mr-3" width="42" height="42" alt="MCP server" />
           <h1 class="heading">
-            MCP <em>Server</em>
+            AI <em>Connects</em>
           </h1>
         </div>
         <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-gray-600">

@@ -103,10 +103,10 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-<div class="faq-section flex flex-row w-full items-center justify-center min-h-screen"
+<div class="faq-section product-hero flex flex-row w-full items-center justify-center min-h-screen"
      :style="{ backgroundImage: `url(${background})` }">
  
-    <div class="mr-7">
+    <div class="product-copy">
       <h1 class="heading"
           data-aos="fade-up"
           data-aos-delay="100">
@@ -244,15 +244,72 @@ img {
     flex: 1;
 }
 
+.product-hero {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    gap: 1.75rem;
+}
+
+.product-copy {
+    flex: 0 1 auto;
+    width: max-content;
+    max-width: 100%;
+}
+
+.product-copy .heading {
+    white-space: nowrap;
+}
+
+.address-form,
+.address-input {
+    min-width: 0;
+}
+
 .chart-wrap {
+    flex: 1.3 1 26rem;
+    min-width: 0;
+    width: 100%;
+    max-width: 860px;
     max-height: 800px;
     display: flex;
     flex-direction: column;
 }
 
 .chart-wrap > :first-child {
-    flex: 1; 
+    flex: 1;
     width: 100%;
     height: 100%;
+    min-width: 0;
+}
+
+@media (max-width: 1400px) {
+    .product-copy .heading {
+        font-size: clamp(1.6rem, 2.4vw, 2.8rem);
+    }
+}
+
+@media (max-width: 1024px) {
+    .product-hero {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        gap: 2rem;
+    }
+
+    .product-copy,
+    .chart-wrap {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-copy .heading {
+        font-size: clamp(1.15rem, 5vw, 1.8rem);
+    }
 }
 </style>

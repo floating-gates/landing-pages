@@ -253,12 +253,16 @@ onMounted(() => {
 /* ── Shell ────────────────────────────────────────────────────────────────── */
 .gates-hero {
     display: flex;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
     height: 600px;
     border: 1px solid #e5e7eb;
     border-radius: 12px;
     overflow: hidden;
     font-size: 13px;
     background: #f5f5f4;
+    box-sizing: border-box;
 }
 
 /* ── Sidebar ──────────────────────────────────────────────────────────────── */
@@ -267,6 +271,8 @@ onMounted(() => {
     border-right: 1px solid #e5e7eb;
     display: flex;
     flex-direction: column;
+    min-width: 0;
+    flex: 0 1 11.5rem;
 }
 
 .sidebar-logo {
@@ -293,9 +299,17 @@ onMounted(() => {
     background: none;
     border: none;
     width: 100%;
+    min-width: 0;
     text-align: left;
     font-size: 13px;
     transition: background 0.12s;
+}
+
+.nav-item > span:not(.nav-badge) {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .nav-item:hover {
@@ -345,7 +359,9 @@ onMounted(() => {
     padding: 9px 18px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
+    min-width: 0;
 }
 
 .title {
@@ -394,7 +410,7 @@ onMounted(() => {
 /* ── Metrics ──────────────────────────────────────────────────────────────── */
 .metrics-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
     margin-bottom: 14px;
 }
@@ -498,6 +514,13 @@ onMounted(() => {
 .canvas-wrap img {
     width: 100%;
     height: 100%;
+    max-width: 100%;
     object-fit: contain; /* Prevents stretching; scales down proportionally */
+}
+
+@media (max-width: 720px) {
+    .metrics-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 </style>
