@@ -24,27 +24,23 @@ const faqs = [
     },
     {
         question: "What does Gates provides to Your Business?",
-        answer: "Internally to the factory, Gates automates feasability checks and provides real-time alerts for non-viable designs. While externally, by hosting a public-facing online Model-based Definition interface, the platform empowers customers/suppliers to self-engineer, price, and correct their parts before an order is even placed. This results in higher-quality leads, instant quoting, and a simplified interaction model that allows manufacturers to expand their client base while focusing only on feasible, ready-to-produce projects."
+        answer: "A way to discover mistakes before they are being produced or a heavy design revision session start. Automating feasability checks and provides alerts for non-viable designs and by hosting an Huckster interface, empowers customers and suppliers to self-engineer, price, and correct their parts before commiting."
     },
     {
         question: "What problem does it solve?",
-        answer: "It saves the huge amount of time spent on design revision. It streamlines quoting and automates technical checks, enabling manufacturers to operate more efficiently and focus on what they do best: building."
+        answer: "It avoids previously un-avoidable design mistakes and saves 90% of time spent on design revision. Enabling manufacturers to operate more efficiently and focus on what they do best: building."
     },
     {
         question: "What differentiates it from competitors?",
-        answer: "Unlike standalone tools, Gates work on the network and even if a designer forget to double check its project, Gates will flag errrors if found some. Gates do not interfere with your business decisions, instead we provide a framework around it, with the goal of improving operational efficiency."
-    },
-    {
-        question: "Can I be listed into one of the Certified Manufacturers list?",
-        answer: "Yes, we are starting a programme to collect a list a company who prefer to be listed into a wider network of makers so they can reach a wider customer base. Send us an email at contact@floating-gates.com if you would like a preview of the service."
+        answer: "It works headless, which means it lives on the network and even if a designer forget to double check its project, Good2Manufacture will flag errrors if found. Godd2Manufacture do not interfere with your business decisions, instead we provide a framework around it."
     },
     {
         question: "How is data handled and stored?",
-        answer: "For the Basic, Standard and Pro plans, we offer secure cloud access as well as on-premise options, with all data protected under GDPR-compliant practices. For enterprise customers, software and data governance are fully transferred to the purchaser."
+        answer: "For the Basic and Pro plans, we offer secure cloud access as well as on-premise options, with all data protected under GDPR and Cyber Resilient Act compliant infrastructure. For enterprise customers, software and data governance are fully transferred to the purchaser."
     },
     {
-        question: "What is a Custom address?",
-        answer: "Gates is a managed cloud service and it is going to host a server for the infrastructrure and its'services. For the Basic and Standard programme we are going to use the suffix floating-gates.com while for Enterprise customer we purchase a stand alone domain name"
+        question: "What is the address for Huckster Interface?",
+        answer: "Each Huckster Interface instance in Standard and Pro is hosted by Floating Gates as a managed cloud service, so you don't need to provide or maintain any infrastructure of your own. Your instance lives under the floating-gates.com domain, for example 'yourcompany'.floating-gates.com. Enterprise programme can decide to have or not a public Huckster interface."
     },
     {
         question: "Do you offer affiliate programs?",

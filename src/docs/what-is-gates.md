@@ -29,7 +29,19 @@ The more subtle version of the same problem is drift. Design guidelines exist an
 
 ---
 
+## Products
+
+Gates is delivered as four pieces that work together. The server evaluates files. The client fetches them. The Huckster Interface is the web frontend. AI Connect is how an LLM does the same work through MCP.
+
+| Product | What it is |
+| --- | --- |
+| [Huckster Interface](#huckster-interface) | Public web UI for suppliers, customers, and employees to submit CAD and check manufacturability |
+| [Good2Manufacture Server](#what-is-gates/install) | On-premises engine that sits behind your firewall and enforces your DfM playbook |
+| [Good2Manufacture Client](#good2manufactured) | Agent on Windows, Linux, and macOS that exposes the local CAD library to the server |
+| [AI Connect](#mcp) | MCP server that lets Claude, Mistral, or OpenAI agents drive those same checks |
+
 ## Core Modules
+
 
 The following are the core modules offered by Floating Gates, which can be used to manage the manufacturing hub.
 

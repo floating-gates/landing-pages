@@ -1,13 +1,10 @@
 <script setup>
-import { themeColor, themeColorOrange, themeColorWhite,
-         display_price_list, app_login_url } from "../config.js";
+import { display_price_list, app_login_url } from "../config.js";
 import { ref, computed } from 'vue';
 import background from "../data/images/background_pic.webp";
 import Header from '../components/Header.vue'
 import Refund from '../components/Refund.vue'
 import { ChevronDoubleRight } from "../helper/icons_generator.js";
-
-
 
 const heading = "Plans and Pricing";
 const subHeading = "Recurring plans cover hosting of the Huckster Interface for you. Enterprise solutions are tailored instead, we begin with a conversation so we can understand your real challenges before proposing anything.";
@@ -147,28 +144,17 @@ const pricingPlans = computed(() => [
         data-aos="fade-up"
         :data-aos-delay="50 * (index + 1)"
         >
-        <div class="h-full p-6 flex flex-col justify-between py-6"
-             :style="{ background: `linear-gradient(145deg, ${themeColorWhite} 0%, #e3e3e340 100%)` }"
-             >
+        <div class="pricing-card-body h-full p-6 flex flex-col justify-between py-6">
           <div>
-            <span 
-              class="flex justify-center items-center text-[2.8rem] font-semibold text-center mt-3 drop-shadow-[0_1px_2px_rgba(0,0,0,0.2)]"
-              :style="{ color: themeColor }"
-              >
+            <span class="flex justify-center items-center text-[2.8rem] font-semibold text-center mt-3 drop-shadow-[0_1px_2px_rgba(0,0,0,0.2)] text-brand-dark">
               {{ plan.name }}
             </span>
             
-            <div 
-              class="text-center text-base font-normal uppercase tracking-tighter mb-2"
-              :style="{ color: themeColorOrange }"
-              >
+            <div class="text-center text-base font-normal uppercase tracking-tighter mb-2 text-brand-orange">
               {{ plan.where }}
             </div>
             
-            <div 
-              class="text-[1.8rem] my-4 font-medium text-center"
-              :style="{ color: themeColor }"
-              >
+            <div class="text-[1.8rem] my-4 font-medium text-center text-brand-dark">
               <span>
                 {{ plan.price }}
                 <sup v-if="plan.suffix" class="text-[0.7rem] align-super ml-0.5">{{ plan.suffix }}</sup>
@@ -179,8 +165,7 @@ const pricingPlans = computed(() => [
               <li 
                 v-for="feature in plan.features" 
                 :key="feature"
-                class="relative py-2 text-center before:content-['✓\a0\a0']"
-                :style="`color: ${themeColor}; --tw-before-color: ${themeColorOrange};`"
+                class="relative py-2 text-center text-brand-dark before:content-['✓\a0\a0']"
                 v-html="feature"
                 >
               </li>
@@ -203,11 +188,17 @@ const pricingPlans = computed(() => [
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 ul li::before {
-    color: v-bind(themeColorOrange);
+    color: var(--theme-color-orange);
 }
 
 .pricing-card {
     border-radius: 2rem;
+}
+
+.pricing-card-body {
+    background: linear-gradient(145deg, var(--theme-color-white) 0%, #e3e3e340 100%);
 }
 </style>

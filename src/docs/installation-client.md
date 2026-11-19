@@ -1,89 +1,44 @@
 ---
 id: install-client
-title: Install Good2Manufactured Client
-description: System requirements, configuration, and setup steps for the Gates Enterprise stack.
+title: Install Good2Manufacture Client
+description: Put the Good2Manufacture agent on every Windows, Linux, or macOS machine that holds CAD or GD&T.
 ---
 
-### Client Requirements
+The Good2Manufacture Client is a small agent that runs next to your files. It speaks to the [Good2Manufacture Server](#what-is-gates/install) and fetches the latest CAD and GD&T revisions so the server can evaluate them.
+
+A client without a server cannot evaluate files. Install the server first, then put this agent on each endpoint.
+
+## Client Requirements
 
 | Component | Specification |
 | --- | --- |
-| Required Package | good2manufactured |
-| Operating System | Windows 10 or 11 (64-bit) |
-| Network Connection | Stable broadband (5 Mbps minimum) |
+| Required Package | `good2manufactured` |
+| Windows | Windows 10 or 11 (64-bit), package `good2manufactured.exe` |
+| Linux | x64 host, package `good2manufactured` |
+| macOS | macOS 12 or newer, package `good2manufactured` |
+| Memory | 4 GB RAM minimum |
+| Network | Reachable from the server on TCP port 9997 |
 
----
+## 1. Download the client
 
-## 1. Download the Software Bundle
+Log into the [Admin Panel](https://app.floating-gates.com/dashboard?menu=Admin) or open the [Good2Manufacture download page](https://floating-gates.com/good2manufacture) and take the binary for this operating system.
 
-Log into the [Admin Panel](https://app.floating-gates.com/dashboard?menu=Admin) to download the Enterprise stack archive and retrieve your license keys, which will be needed during initial setup.
+## 2. Open port 9997
 
-![Downloading the Enterprise bundle and license keys from the Admin Panel](../data/images/docs-images/download_bundle.png)
+The agent listens on port **9997**. Allow inbound TCP 9997 on the endpoint before you register it.
 
-## 2. Extract and Configure
+## 3. Start the agent
 
-Extract the downloaded archive and navigate into the stack directory:
+Platform-specific steps live in the client chapters:
 
-```bash
-tar -xzf floating-gates-enterprise-<version>.tar.gz
-cd stack-structure
-```
+- [Windows Install](#good2manufactured/install-good2manufactured-win)
+- [Linux Install](#good2manufactured/install-good2manufactured)
+- [macOS Install](#good2manufactured/install-good2manufactured-mac)
 
-Next, create a `.env` file in the root directory to store runtime variables and license information:
+## 4. Register the endpoint
 
-```env
-LICENCE_KEY=your-licence-key
-ACCOUNT_EMAIL=your-email-account
-PASSWD_EMAIL=email-account-password
-SMTP_EMAIL_SERVER=your-mail-server
-ENABLE_EMAIL=true
+Open [Endpoint Setup](https://app.floating-gates.com/?menu=Endpoints), enter the IP of the machine, and set the root directory that holds the CAD library.
 
-# Optional Stack Configuration
-STACK_PORT=8000
-DOMAIN_NAME=your-domain-name
-SERVER_SUBDOMAIN=app
-HOST_ADDR_GOOD2MANUFACTURED=169.254.1.2:9997
-DEMO_URL=http://demo.your-domain/
-```
+![Reachability test](../data/images/docs-images/reachable.png)
 
-## 3. Start the Stack
-
-Run `start_gates.sh`. This script configures and launches the NGINX reverse proxy, webserver pod, and floating-gates application pod, then waits for all services to settle before confirming status.
-
-```bash
-./start_gates.sh
-```
-
-Example startup output:
-
-```text
-Configuring nginx-pod...
-Configuring webserver...
-Configuring floating-gates.pod...
-Configuring config for good2manufactured...
-Waiting for services to settle...
-Verifying service status...
-OK: floating-gates-pod is active.
-OK: nginx-pod is active.
-OK: webserver is active.
-OK: good2manufactured is active.
-Configuring backup script...
-Configuring bundling script...
-----------------------------------------------------
-Deployment successful! The following ports are active:
- - Webserver: http://localhost:8000
- - HTTP Proxy: http://localhost:8080
-----------------------------------------------------
-You can check user systemd services at: ~/.config/systemd/user
-Done!
-```
-
-## 4. Post-Installation Verification
-
-Ensure all service status lines report `OK` before accessing the application. If services fail to reach an active status, check the logs via `journalctl --user -u floating-gates-pod` or your container runtime before attempting a restart.
-
-To manually restart the stack service if needed, run:
-
-```bash
-systemctl --user restart floating-gates-pod
-```
+When the row is healthy, the server can see the files on that PC and will keep parsing the latest revision.

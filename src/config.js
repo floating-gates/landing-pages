@@ -19,7 +19,7 @@ const display_price_list = [
     {name: 'Basic'     , price: 'Free' },
     {name: 'Standard'  , price: '49.00' },
     {name: 'Pro'       , price: 'Coming Soon' },
-    {name: 'Enterprise', price: 'Speak to us'}
+    {name: 'Enterprise', price: 'One-time Payment'}
 ];
 
 // Contact Info
