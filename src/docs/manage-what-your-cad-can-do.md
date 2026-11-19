@@ -1,10 +1,8 @@
 ---
 id: manage-what-your-cad-can-do
-title: Factory Features
+title: Huckster Interface
 description: Configure CAD feature availability, workflow permissions, and user capabilities across your organization.
 ---
-
-## Managing CAD Capabilities
 
 Gates provides granular feature controls to streamline collaboration between manufacturers, internal engineering teams, and external customers. You can enable or disable specific CAD operations, inspection tools, and workflow permissions depending on user role.
 

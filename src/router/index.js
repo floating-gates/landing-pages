@@ -10,7 +10,7 @@ import FAQ                            from '../ui_compositor/FAQ.vue'
 import CaseStudies                    from '../ui_compositor/CaseStudies.vue'
 import Articles                       from '../ui_compositor/Articles.vue'
 import Product                        from '../ui_compositor/Product.vue'
-import Good2manufactureDownload       from '../components/Good2manufactureDownload.vue'
+import Good2manufacture               from '../components/Good2manufacture.vue'
 import HucksterInterface              from '../components/HucksterInterface.vue'
 import Docs                           from '../components/Docs.vue'
 import FoundationalModel              from '../components/FoundationalModel.vue'
@@ -28,8 +28,8 @@ const routes = [
     { path: '/pricing', component: Pricing },
     { path: '/product', component: Product },
     { path: '/articles', component: Articles },
-    { path: '/good2manufacture', component: Good2manufactureDownload },
-    { path: '/good2manufactured', component: Good2manufactureDownload },
+    { path: '/good2manufacture', component: Good2manufacture },
+    // { path: '/good2manufactured', component: Good2manufactureDownload },
     { path: '/huckster-interface', component: HucksterInterface },
     { path: '/mcp', component: MCP },
     { path: '/ai-model', component: FoundationalModel },

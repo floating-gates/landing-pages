@@ -1,12 +1,22 @@
 ---
 id: huckster-interface
 title: Huckster Interface
-description: MDB instructions
+description: The public web UI where suppliers, customers, and employees submit CAD and see whether a part can be produced.
 ---
+
+The Huckster Interface is the frontend of Gates. It is a public-facing web portal on your hub address, used by external suppliers, customers, and internal employees to submit CAD and GD&T. Once a file is uploaded, it is checked for manufacturing feasibility, so the people sending you work know whether the design can actually be produced before it is discussed, quoted, or released downstream.
 
 The online platform is a streamlined pipeline, where each step unlocks the next gradually, so a part cannot be ordered before it has been checked against your rules and priced against your costs.
 
 ![The customer pipeline](../data/images/screenshot.png)
+
+## Who uses it
+
+- **External suppliers.** Send CAD and GD&T through the same factory channel, so incoming designs are checked against your manufacturing rules before they enter review.
+- **Customers.** Drop design files into a public portal and see immediately whether the part can be produced, instead of waiting for a manual feasibility pass.
+- **Internal employees.** Use one standardized intake for internal projects, keeping shop-floor, engineering, and sales files on the same manufacturability path.
+
+## The customer pipeline
 
 ### 1. Upload
 

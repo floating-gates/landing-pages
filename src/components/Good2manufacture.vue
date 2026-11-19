@@ -28,12 +28,12 @@ import { handleDownloadClick } from "../helper/download.js";
 
 const serverRelease = {
     version: "1.0.0",
-    date: "21 September 2026",
+    date: "21 November 2026",
 };
 
 const clientRelease = {
     version: "1.1.0",
-    date: "21 September 2026",
+    date: "21 November 2026",
 };
 
 const serverPlatform = {
@@ -86,7 +86,7 @@ const requirements = [
             Good<em>2Manufacture</em>
           </h1>
           <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-gray-600">
-            An network software that serves as a standalone quality control system for mechanical design documents. It functions as a digital error-checking system, operating 24/7, to ensure internal compliance with Design for Manufacturing (DFM) standards enforceable on all stakeholders.
+            It's a software that sits on your server. It serves as a detection system for design errors in mechanical technical documents. It operates 24/7, to ensure internal compliance with Design for Manufacturing (DFM) standards enforceable on all stakeholders.
           </p>
 
           <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-gray-600">
