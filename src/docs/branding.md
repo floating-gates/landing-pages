@@ -4,7 +4,7 @@ title: Branding
 description: How to make the online interface represent your company
 ---
 
-You can upload your logo at [floating-gates.com/profile](https://www.floating-gates.com/profile), in the following tab of the menu:
+You can upload your logo at [floating-gates.com/profile](https://app.floating-gates.com/profile), in the following tab of the menu:
 
 ![Branding tab](../data/images/docs-images/branding-1.png)
 

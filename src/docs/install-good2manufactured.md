@@ -1,25 +1,43 @@
-# Linux
+---
+id: install-good2manufactured
+title: Linux Install
+description: Install the Good2Manufacture Client on Linux and open it to the server on port 9997.
+---
 
-Before setting up an agent open the port 9997 to allow communication with server.
+Before starting the agent, open port **9997** so the Good2Manufacture server can reach this machine.
 
 ```sh
-➜ sudo firewall-cmd --permanent --add-port=9997/tcp
-success
-➜ sudo firewall-cmd --reload
+sudo apt install firewalld
+sudo firewall-cmd --permanent --add-port=9997/tcp
+sudo firewall-cmd --reload
 ```
 
-### Ephimeral test
+On Fedora or RHEL the firewall is already `firewalld`. On a host that uses `nftables` or `ufw` instead, allow TCP 9997 with that tool.
 
-Clicking via [Enpoint Setup](https://app.floating-gates.com/?menu=Endpoints) page:
+## Download and run
 
-You should be able to arrive with the IP of your computer to this scenario.
-
-![Reachably test](../data/images/docs-images/reachable.png)
-
-Likely finding those pseudo output on the good2manufactured standard output:
+Log into the [Admin Panel](https://app.floating-gates.com/dashboard?menu=Admin) or the [Good2Manufacture download page](https://floating-gates.com/good2manufacture) and take the Linux x64 binary `good2manufactured`.
 
 ```sh
-➜ ./good2manufactured.exe 
+chmod +x ./good2manufactured
+./good2manufactured
+```
+
+The process listens on port 9997 and starts checking the directory you later register as the endpoint root:
+
+```sh
 Server listening on port 9997 (UNIX Mode)...
 [CODE 4] Checking library presence at: /home/mattia/Downloads
 ```
+
+## Register the endpoint
+
+Open [Endpoint Setup](https://app.floating-gates.com/?menu=Endpoints), enter the IP of this computer, and set the root directory that holds the CAD library.
+
+You should reach this scenario:
+
+![Reachability test](../data/images/docs-images/reachable.png)
+
+## Keep it running
+
+For a lasting install, run the binary under systemd as a user service, then enable it so it comes back after reboot. The agent only needs network access to the server and read access to the CAD directory.

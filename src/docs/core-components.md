@@ -24,29 +24,8 @@ You configure your factory parameters once. Because quoting and DfM validation p
 
 | Surface | Environment | Primary Function |
 | --- | --- | --- |
+| Good2Manufacture Server | Linux host behind your firewall | Evaluates CAD and GD&T against your Design Playbook and drafts quotes from the same factory configuration. |
+| Good2Manufacture Client | Windows, Linux, or macOS endpoint | Watches the local CAD library and presents the latest revision to the server on port 9997. |
+| Huckster Interface | your-name.floating-gates.com | Public web UI where suppliers, customers, and employees submit files and see whether a part can be produced. |
+| AI Connect | An AI Frontier Lab | Lets Claude, Mistral, or OpenAI agents run the same factory checks through a standard connector. |
 | Manufacturing Hub | app.floating-gates.com | Configure factory parameters, inspect scan results, review incoming orders, and set final pricing. |
-| good2manufactured agent | Windows Service (Local Machine) | Monitors the file system and routes STEP files through the DfM pipeline prior to production. |
-| Online CAD | your-name.floating-gates.com | Web-based 3D workspace where internal teams configure parts, verify manufacturability, and view cost estimates. |
-
-These surfaces sit at the center of the request funnel, routing incoming CAD data to the appropriate processing pipelines.
-
-![Ingested request flow and production machine routing](../data/images/docs-images/how-gates-work-funnel.webp)
-
-Requests originate from internal teams, leads, existing clients, or inventory requirements. Online CAD and the Manufacturing Hub coordinate to validate and price each submission, then route the job to the appropriate manufacturing process (subtractive, forming, forging, or additive).
-
-### Deterministic Pricing Model
-
-Gates uses rule-based pricing derived directly from your setup in the Economics module, ensuring every line item on a quote is fully audit-traceable.
-
-| Quote Line Item | Source Calculation |
-| --- | --- |
-| Material Cost | Volume (cm³) × material unit cost |
-| Machining Time | Estimated run time × machine hourly rate |
-| Tolerance Adjustment | Configured tolerance surcharge matrix |
-| Surface Finish | Configured surface finish cost table |
-| Quantity Discount | Applied volume discount tiers |
-| Delivery Adjustment | Urgency and lead time surcharges |
-| Setup Fee | Standard setup cost for selected machine |
-| Price Per Unit / Total | Sum of line items multiplied by order quantity |
-
-Note: Automatically generated quotes serve as draft proposals. Operators review and approve all quotes before they are finalized for the customer.

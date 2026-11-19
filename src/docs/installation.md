@@ -1,8 +1,14 @@
 ---
 id: install
-title: Install Gates Enterprise Bundle
-description: System requirements, configuration, and setup steps for the Gates Enterprise stack.
+title: Good2Manufacture Server
+description: On-premises detection engine that sits behind your firewall and evaluates CAD and GD&T against your Design for Manufacturing rules.
 ---
+
+Good2Manufacture Server is the software that sits on your Linux host. It is the detection engine for design errors in mechanical documents. It runs continuously so every CAD file that a client presents is held up against the Design for Manufacturing rules you actually enforce.
+
+It does not modify geometry. It reports. A person still decides what to do about a flag.
+
+A server without clients cannot see factory files. After this stack is up, install a [Good2Manufacture Client](#what-is-gates/install-client) on every endpoint that holds CAD or GD&T.
 
 ## System Requirements
 
@@ -24,8 +30,8 @@ Before installing Gates, ensure your infrastructure meets the hardware and softw
 | Component | Specification |
 | --- | --- |
 | Required Package | good2manufactured |
-| Operating System | Windows 10 or 11 (64-bit) |
-| Network Connection | Stable broadband (5 Mbps minimum) |
+| Operating System | Windows 10/11, Linux, or macOS 12+ (64-bit) |
+| Network Connection | Reachable in/out on port 9997 |
 
 ---
 

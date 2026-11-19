@@ -1,4 +1,8 @@
-# Connect MCP to a top tier AI lab
+---
+id: connect-mcp-to-llm
+title: Connect to your LLM
+description: Register the AI Connect MCP server with Claude, Mistral, or OpenAI using your Gates API key.
+---
 
 As example It will be shown how to connect Gates for autonomous usage on [Mistral](https://console.mistral.ai/connectors).
 
