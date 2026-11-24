@@ -39,6 +39,6 @@ Platform-specific steps live in the client chapters:
 
 Open [Endpoint Setup](https://app.floating-gates.com/?menu=Endpoints), enter the IP of the machine, and set the root directory that holds the CAD library.
 
-![Reachability test](../data/images/docs-images/reachable.png)
+![Reachability test](../../src/data/images/docs-images/reachable.png)
 
 When the row is healthy, the server can see the files on that PC and will keep parsing the latest revision.

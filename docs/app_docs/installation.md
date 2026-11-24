@@ -39,7 +39,7 @@ Before installing Gates, ensure your infrastructure meets the hardware and softw
 
 Log into the [Admin Panel](https://app.floating-gates.com/dashboard?menu=Admin) to download the Enterprise stack archive and retrieve your license keys, which will be needed during initial setup.
 
-![Downloading the Enterprise bundle and license keys from the Admin Panel](../data/images/docs-images/download_bundle.png)
+![Downloading the Enterprise bundle and license keys from the Admin Panel](../../src/data/images/docs-images/download_bundle.png)
 
 ## 2. Extract and Configure
 

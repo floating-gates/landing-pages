@@ -18,7 +18,7 @@ Open PowerShell with Administrative permission and use `sc.exe` to query, stop, 
 
 Like below:
 
-![Restart Service on Windows](../data/images/docs-images/restart-good2manufactured-on-windows.jpg)
+![Restart Service on Windows](../../src/data/images/docs-images/restart-good2manufactured-on-windows.jpg)
 
 ## Register the endpoint
 
@@ -26,7 +26,7 @@ Open [Endpoint Setup](https://app.floating-gates.com/?menu=Endpoints), enter the
 
 You should reach this scenario:
 
-![Reachability test](../data/images/docs-images/reachable.png)
+![Reachability test](../../src/data/images/docs-images/reachable.png)
 
 If you start the binary in the foreground first, the standard output looks like this:
 

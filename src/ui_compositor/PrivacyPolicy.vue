@@ -2,7 +2,7 @@
 import { contactInfo } from "../config.js";
 import Header from "../components/Header.vue"
 
-const lastUpdated = 'February 10, 2026';
+const lastUpdated = 'November 24, 2026';
 
 function scrollTo(elementId) {
   const element = document.getElementById(elementId);
@@ -29,161 +29,262 @@ function scrollTo(elementId) {
       <nav class="table-of-contents">
         <h3>Table of Contents</h3>
         <ul>
-          <li><a href="#interpretation" @click="scrollTo('interpretation')">1. Interpretation & Definitions</a></li>
-          <li><a href="#data-collection" @click="scrollTo('data-collection')">2. Collecting and Using Your Personal Data</a></li>
-          <li><a href="#retention" @click="scrollTo('retention')">3. Retention of Your Personal Data</a></li>
-          <li><a href="#transfer" @click="scrollTo('transfer')">4. Transfer of Your Personal Data</a></li>
-          <li><a href="#delete" @click="scrollTo('delete')">5. Deleting Your Personal Data</a></li>
-          <li><a href="#disclosure" @click="scrollTo('disclosure')">6. Disclosure of Your Personal Data</a></li>
-          <li><a href="#security" @click="scrollTo('security')">7. Security of Your Personal Data</a></li>
-          <li><a href="#children" @click="scrollTo('children')">8. Children's Privacy</a></li>
-          <li><a href="#links" @click="scrollTo('links')">9. Links to Other Websites</a></li>
-          <li><a href="#changes" @click="scrollTo('changes')">10. Changes to this Privacy Policy</a></li>
-          <li><a href="#contact" @click="scrollTo('contact')">11. Contact Us</a></li>
+          <li><a href="#interpretation" @click="scrollTo('interpretation')">1. Interpretation &amp; Definitions</a></li>
+          <li><a href="#data-collection" @click="scrollTo('data-collection')">2. Personal Data We Collect</a></li>
+          <li><a href="#product-data" @click="scrollTo('product-data')">3. Product Files and Technical Data</a></li>
+          <li><a href="#ai-training" @click="scrollTo('ai-training')">4. AI Training and Third-Party Models</a></li>
+          <li><a href="#deployment" @click="scrollTo('deployment')">5. Cloud and On-Premises Processing</a></li>
+          <li><a href="#retention" @click="scrollTo('retention')">6. Retention</a></li>
+          <li><a href="#transfer" @click="scrollTo('transfer')">7. International Transfers</a></li>
+          <li><a href="#delete" @click="scrollTo('delete')">8. Your Rights</a></li>
+          <li><a href="#disclosure" @click="scrollTo('disclosure')">9. Disclosure</a></li>
+          <li><a href="#security" @click="scrollTo('security')">10. Security</a></li>
+          <li><a href="#children" @click="scrollTo('children')">11. Children's Privacy</a></li>
+          <li><a href="#links" @click="scrollTo('links')">12. Links to Other Websites</a></li>
+          <li><a href="#changes" @click="scrollTo('changes')">13. Changes to this Policy</a></li>
+          <li><a href="#contact" @click="scrollTo('contact')">14. Contact Us</a></li>
         </ul>
       </nav>
 
       <main class="terms-content">
         <section id="interpretation" class="term-section">
-          <h2>1. Interpretation & Definitions</h2>
+          <h2>1. Interpretation &amp; Definitions</h2>
           <p>
-            Words with an initial capital letter have meanings defined under the following conditions. 
-            These definitions apply consistently whether they appear in singular or plural form.
+            This Privacy Policy explains how Floating Gates di Mattia Samiolo ("Company", "we", "us") collects
+            and uses information when you use the Gates platform, the Huckster Interface, the MCP Server,
+            Good2Manufacture, and our websites (the "Service").
+          </p>
+          <p>
+            For Cloud Services we generally act as a data controller for account, billing, and website data.
+            When a factory or other Customer invites Stakeholders or uploads files that contain personal data,
+            we process that personal data as a processor on the Customer's instructions, except where we must
+            process it for our own legal obligations or, on the Basic / Freemium plan, for advertising and
+            proprietary model-training purposes described below.
           </p>
           <div class="definitions-grid">
-            <div class="definition-item"><strong>Account:</strong> A unique account created for You to access our Service or specific parts of it.</div>
-            <div class="definition-item"><strong>Affiliate:</strong> Any entity that controls, is controlled by, or is under common control with a party, where “control” means ownership of 50% or more of the shares, equity interest, or other securities entitled to vote for directors or other managing authority.</div>
-            <div class="definition-item"><strong>Application:</strong> Gates, the software platform provided by the Company to deliver our SaaS Service.</div>
-            <div class="definition-item"><strong>Company:</strong> Floating Gates srl, Via Vapitello Rasa 28, referred to as “the Company”, “We”, “Us”, or “Our”.</div>
+            <div class="definition-item"><strong>Account:</strong> A unique account created for You to access the Service or parts of it.</div>
+            <div class="definition-item"><strong>Company:</strong> Floating Gates di Mattia Samiolo, {{ contactInfo.address }}, VAT {{ contactInfo.vat }}, also referred to as “We”, “Us”, or “Our”.</div>
             <div class="definition-item"><strong>Country:</strong> Italy.</div>
-            <div class="definition-item"><strong>Device:</strong> Any electronic device capable of accessing the Service, such as a computer, smartphone, or tablet.</div>
-            <div class="definition-item"><strong>Cookies:</strong> Small files placed on Your Device that store details of your browsing history and preferences.</div>
-            <div class="definition-item"><strong>Personal Data:</strong> Any information relating to an identified or identifiable individual, such as name, contact details, account credentials, or online identifiers.</div>
-            <div class="definition-item"><strong>Service:</strong> Refers to the Application and all associated web services operated by the Company.</div>
-            <div class="definition-item"><strong>Service Provider:</strong> Any natural or legal person who processes data on behalf of the Company, such as cloud infrastructure or analytics providers.</div>
-            <div class="definition-item"><strong>Usage Data:</strong> Data collected automatically during use of the Service, including device information, activity logs, and performance metrics.</div>
-            <div class="definition-item"><strong>You:</strong> The individual, company, or other legal entity accessing or using the Service, as applicable.</div>
+            <div class="definition-item"><strong>Customer:</strong> The business that administers a Cloud or Enterprise workspace.</div>
+            <div class="definition-item"><strong>Device:</strong> Any electronic device used to access the Service.</div>
+            <div class="definition-item"><strong>Personal Data:</strong> Any information relating to an identified or identifiable individual.</div>
+            <div class="definition-item"><strong>Service:</strong> The Gates application, Huckster Interface, MCP Server, Good2Manufacture software, and associated websites.</div>
+            <div class="definition-item"><strong>Service Provider:</strong> A processor that handles data on our behalf, such as hosting, email, or payment providers.</div>
+            <div class="definition-item"><strong>User Content:</strong> CAD files, GD&amp;T drawings, project metadata, factory rules, and other materials submitted to the Service.</div>
+            <div class="definition-item"><strong>Usage Data:</strong> Data collected automatically during use of the Service, including device, log, and performance information.</div>
+            <div class="definition-item"><strong>You:</strong> The individual or organization accessing the Service, including Customers and invited Stakeholders.</div>
           </div>
         </section>
 
         <section id="data-collection" class="term-section">
-          <h2>2. Collecting and Using Your Personal Data</h2>
+          <h2>2. Personal Data We Collect</h2>
 
-          <h5>Types of Data Collected</h5>
-          <p>We collect different categories of information to provide, improve, and secure our Service:</p>
+          <h5>Account and contact data</h5>
+          <p>We collect the information needed to create and administer accounts and to communicate with You:</p>
           <ul>
-            <li><strong>Personal identification data:</strong> Email address, first and last name, and optionally phone number or company name.</li>
-            <li><strong>Account credentials:</strong> Encrypted passwords, authentication tokens, and user role assignments.</li>
-            <li><strong>Billing information:</strong> Payment details, invoices, and transaction records handled securely by third-party payment processors.</li>
-            <li><strong>Usage Data:</strong> Log data such as IP address, browser type, operating system, time spent on pages, feature usage, and diagnostic data.</li>
+            <li><strong>Identity and contact data:</strong> name, email address, company name, role, and optionally phone number.</li>
+            <li><strong>Account credentials:</strong> encrypted passwords, authentication tokens, and role assignments.</li>
+            <li><strong>Billing information:</strong> invoices, plan, VAT details, and transaction records. Payment-card data is handled by our payment processors, not stored by us in full.</li>
+            <li><strong>Support communications:</strong> messages You send to {{ contactInfo.email }} or through the Service.</li>
           </ul>
 
-          <h5>Tracking Technologies and Cookies</h5>
+          <h5>Usage Data</h5>
           <p>
-            We use technical cookies for the App to function. For profiling and marketing cookies, we request your explicit consent. 
-            You may change this preference at any time in the settings.
+            We collect IP address, browser type, operating system, pages visited, feature usage, diagnostic
+            logs, and similar technical data to operate, secure, and improve the Service.
           </p>
 
-          <h5>Use of Personal Data</h5>
-          <p>The Company may process Personal Data for the following purposes:</p>
-          <ul>
-            <li>To <strong>provide and maintain</strong> our Service, including monitoring its usage and performance.</li>
-            <li>To <strong>manage your Account</strong> and enable authentication and access control.</li>
-            <li>To <strong>perform contractual obligations</strong>, such as fulfilling subscriptions or service-level agreements.</li>
-            <li>To <strong>contact You</strong> regarding updates, security notifications, or service changes.</li>
-            <li>To <strong>send marketing communications</strong> or product information, where legally permitted and with Your consent.</li>
-            <li>To <strong>analyze user behavior</strong> and improve usability, performance, and features.</li>
-            <li>To <strong>protect the Service</strong> against misuse, fraud, and security threats.</li>
-            <li>To <strong>comply with legal obligations</strong> and enforce our rights under applicable laws.</li>
-          </ul>
-
-          <h5>Legal Basis for Processing (EU/EEA Users)</h5>
+          <h5>Cookies</h5>
           <p>
-            If You are located in the European Economic Area (EEA), we process your Personal Data under one or more of the following legal bases: 
-            (a) your consent, (b) performance of a contract, (c) compliance with a legal obligation, (d) legitimate interests, or (e) protection of vital interests.
+            Essential storage remembers your cookie choice. Google Analytics and any future marketing tags
+            are non-essential: they stay blocked until you give affirmative consent. There is no pre-ticked
+            box, and rejecting is as available as accepting. Consent is stored for 6 months.
+          </p>
+          <p>
+            The full inventory, lifetimes, vendors, and lawful bases are in the
+            <a href="/cookie-policy">Cookie Policy</a>.
+            You can withdraw or change consent at any time from
+            <a href="/cookie-policy#consent">Cookie settings</a>.
+          </p>
+
+          <h5>Purposes and legal bases (EU/EEA)</h5>
+          <ul>
+            <li>Provide and maintain the Service, including authentication and plan limits — contract</li>
+            <li>Bill paid subscriptions and keep tax records — contract and legal obligation</li>
+            <li>Send service, security, and product-change notices — contract and legitimate interests</li>
+            <li>Send marketing only where permitted and, where required, with consent — consent or legitimate interests</li>
+            <li>Secure the Service against misuse and abuse — legitimate interests</li>
+            <li>On the Basic / Freemium plan, use uploaded CAD and GD&amp;T for advertising and to train our proprietary AI models — legitimate interests or contract, as applicable</li>
+          </ul>
+        </section>
+
+        <section id="product-data" class="term-section">
+          <h2>3. Product Files and Technical Data</h2>
+          <p>
+            The Service is built to process mechanical design files. User Content typically includes STEP or
+            other CAD models, GD&amp;T drawings, file names, project identifiers, factory-specific rules, and
+            Analysis Output such as detected issues or feasibility results.
+          </p>
+          <p>
+            User Content is industrial and technical data. It may still contain Personal Data, for example
+            drafter names, email addresses, or employee identifiers embedded in title blocks or metadata.
+            Customers are responsible for minimizing that data and for telling Stakeholders what will be uploaded.
+          </p>
+          <p>
+            We use User Content to run manufacturability checks, show results in the Huckster Interface or
+            local clients, provide support you request, and enforce plan limits. We do not sell User Content.
+          </p>
+        </section>
+
+        <section id="ai-training" class="term-section">
+          <h2>4. AI Training and Third-Party Models</h2>
+          <p>
+            <strong>Basic / Freemium Cloud plan:</strong> CAD files, GD&amp;T documentation, and related
+            project materials uploaded on the free plan may be used (a) in advertising, marketing, case
+            studies, demos, and other promotional materials, and (b) to train, evaluate, and improve our
+            proprietary AI models. If you cannot allow those uses, choose Standard or Enterprise and do not
+            upload those files to a Basic workspace.
+          </p>
+          <p>
+            <strong>Standard Cloud plan:</strong> Projects are treated as private. We process them to provide
+            the Service and support, not to train general models.
+          </p>
+          <p>
+            <strong>MCP Server and connected models:</strong> If you enable the MCP Server or another AI
+            integration, prompts, tool schemas, and selected file excerpts or results may be sent to the
+            model provider you choose, such as Anthropic (Claude), Mistral, or OpenAI. Those providers process
+            that data under their own terms and privacy notices. You control which tools and resources are connected.
+          </p>
+          <p>
+            We do not use Standard or Enterprise User Content for advertising or to train our models or
+            third-party foundation models. Basic / Freemium training is performed on our proprietary models
+            and promotional materials, not published as a public dataset.
+          </p>
+        </section>
+
+        <section id="deployment" class="term-section">
+          <h2>5. Cloud and On-Premises Processing</h2>
+          <p>
+            <strong>Cloud Services</strong> (Huckster Interface and hosted MCP features) process User Content
+            on infrastructure we operate or that our hosting subprocessors operate. A Standard instance may
+            be reached at a hostname such as yourcompany.floating-gates.com.
+          </p>
+          <p>
+            <strong>Good2Manufacture</strong> is designed to run on a server and clients inside your network.
+            Factory files evaluated locally are not uploaded to us by default. We may receive license checks,
+            version information, crash reports, or support packages only if you enable them or send them to us.
+          </p>
+          <p>
+            A Customer that invites suppliers, customers, or employees is responsible for the information
+            those people submit and for the legal basis of that submission.
           </p>
         </section>
 
         <section id="retention" class="term-section">
-          <h2>3. Retention of Your Personal Data</h2>
+          <h2>6. Retention</h2>
+          <ul>
+            <li>Account data is kept while the account is active and for a reasonable period afterward if needed for security or dispute handling.</li>
+            <li>Cloud User Content is kept while the project or account remains active, subject to plan storage limits.</li>
+            <li>Billing and invoice data is kept for 10 years for Italian tax compliance.</li>
+            <li>Marketing data is kept until consent is withdrawn or you object.</li>
+            <li>Local Good2Manufacture files follow the Customer's own retention practices.</li>
+          </ul>
           <p>
-            Account data is kept while the account is active; billing data is kept for 10 years for Italian tax compliance; 
-            and marketing data is kept until consent is withdrawn. When data is no longer required, it will be securely deleted or anonymized.
+            When data is no longer required, it is deleted or anonymized. Backup copies may persist for a
+            limited period before they are overwritten.
           </p>
         </section>
 
         <section id="transfer" class="term-section">
-          <h2>4. Transfer of Your Personal Data</h2>
+          <h2>7. International Transfers</h2>
           <p>
-            If we transfer data outside the EEA (e.g., to US-based cloud providers), we ensure it is protected by 
-            <strong>Standard Contractual Clauses (SCCs)</strong> approved by the European Commission or Data Privacy Framework adequacy.
+            We are established in Italy. If we transfer Personal Data outside the EEA, including to US-based
+            hosting, email, payment, or AI providers, we rely on an adequacy decision or
+            <strong>Standard Contractual Clauses (SCCs)</strong> approved by the European Commission,
+            together with any supplementary measures required.
+          </p>
+          <p>
+            If you send data to a third-party model through the MCP Server, that transfer is initiated by
+            your configuration and may leave the EEA according to that provider's location.
           </p>
         </section>
 
         <section id="delete" class="term-section">
-          <h2>5. Deleting Your Personal Data</h2>
-          <p>Under the GDPR, you have the following rights regarding your data:</p>
+          <h2>8. Your Rights</h2>
+          <p>If GDPR applies to you, you may have the following rights:</p>
           <ul>
-            <li><strong>Right of Access:</strong> Request a copy of your data.</li>
-            <li><strong>Right to Rectification:</strong> Correct inaccurate data.</li>
-            <li><strong>Right to Erasure (Right to be Forgotten):</strong> Request data deletion.</li>
-            <li><strong>Right to Restrict Processing:</strong> Limit how we use your data.</li>
-            <li><strong>Right to Data Portability:</strong> Receive your data in a structured, machine-readable format.</li>
-            <li><strong>Right to Object:</strong> Object to processing based on legitimate interests or direct marketing.</li>
+            <li><strong>Access:</strong> request a copy of your Personal Data</li>
+            <li><strong>Rectification:</strong> correct inaccurate data</li>
+            <li><strong>Erasure:</strong> request deletion where the law allows</li>
+            <li><strong>Restriction:</strong> limit certain processing</li>
+            <li><strong>Portability:</strong> receive data you provided in a structured, machine-readable format</li>
+            <li><strong>Objection:</strong> object to processing based on legitimate interests or to direct marketing</li>
+            <li><strong>Withdraw consent:</strong> where processing is based on consent, without affecting prior lawful use</li>
           </ul>
           <p>
-            To exercise these rights, please contact us at {{ contactInfo.email }}. We will respond within 30 days.
-            Upon confirmation, your data will be permanently removed or anonymized within a reasonable timeframe.
+            Contact {{ contactInfo.email }}. We will respond within 30 days, or as otherwise required by law.
+            You may also lodge a complaint with the Garante per la protezione dei dati personali or another
+            competent supervisory authority.
+          </p>
+          <p>
+            If you use the Service through a Customer's workspace, we may redirect your request to that
+            Customer when they are the controller of the relevant data.
           </p>
         </section>
 
         <section id="disclosure" class="term-section">
-          <h2>6. Disclosure of Your Personal Data</h2>
+          <h2>9. Disclosure</h2>
           <ul>
-            <li><strong>Business Transactions:</strong> Personal Data may be transferred as part of a merger, acquisition, or asset sale. We will notify you before your data is transferred and becomes subject to a different privacy policy.</li>
-            <li><strong>Law Enforcement:</strong> We may disclose Personal Data if required by law or in response to valid legal requests from public authorities.</li>
-            <li><strong>Other Legal Requirements:</strong> We may disclose Personal Data to protect the rights, property, or safety of the Company, our users, or the public.</li>
+            <li><strong>Service Providers:</strong> hosting, email, analytics, and payment processors that need the data to work for us.</li>
+            <li><strong>AI providers you enable:</strong> model vendors reached through the MCP Server or similar integrations you turn on.</li>
+            <li><strong>Business transactions:</strong> data may transfer in a merger, acquisition, or asset sale. We will notify you before it becomes subject to a different policy where required.</li>
+            <li><strong>Legal requirements:</strong> we may disclose data if required by law or to protect the rights, property, or safety of the Company, our users, or the public.</li>
           </ul>
         </section>
 
         <section id="security" class="term-section">
-          <h2>7. Security of Your Personal Data</h2>
+          <h2>10. Security</h2>
           <p>
-            We use industry-standard encryption (TLS/SSL) and secure server protocols. In the event of a data breach, we will notify the
-            relevant supervisory authority and affected users within 72 hours where required by law.
-            We implement administrative, technical, and physical safeguards designed to protect your Personal Data from unauthorized access, 
-            loss, misuse, or disclosure. These include encryption in transit and at rest, restricted data access, and continuous monitoring.
+            We use TLS/SSL in transit, access controls, and monitoring on Cloud Services. In the event of a
+            personal-data breach we will notify the competent supervisory authority and affected users within
+            72 hours where required by law.
+          </p>
+          <p>
+            You are responsible for protecting credentials, MCP tokens, Stakeholder invitations, and the
+            servers on which Good2Manufacture is installed. No method of transmission or storage is completely secure.
           </p>
         </section>
 
         <section id="children" class="term-section">
-          <h2>8. Children's Privacy</h2>
+          <h2>11. Children's Privacy</h2>
           <p>
-            Our Service is not intended for individuals under 13 years of age, and we do not knowingly collect data from minors.
-            If you believe that a child has provided us with Personal Data, please contact us immediately so we can delete the information.
+            The Service is a professional manufacturing tool and is not intended for anyone under 18, or under
+            14 where that is the relevant digital-consent age in Italy. We do not knowingly collect Personal Data
+            from children. If you believe we have, contact us so we can delete it.
           </p>
         </section>
 
         <section id="links" class="term-section">
-          <h2>9. Links to Other Websites</h2>
+          <h2>12. Links to Other Websites</h2>
           <p>
-            Our Service may contain links to third-party websites or services. We have no control over, and assume no responsibility for, 
-            the content, privacy policies, or practices of any third-party sites. We encourage You to review the privacy policy of every site You visit.
+            The Service may link to third-party sites or model-provider dashboards. We are not responsible for
+            their content or privacy practices. Review the policy of every site or service you use.
           </p>
         </section>
 
         <section id="changes" class="term-section">
-          <h2>10. Changes to this Privacy Policy</h2>
+          <h2>13. Changes to this Privacy Policy</h2>
           <p>
-            We may update this Privacy Policy periodically. Any revisions will be posted on this page with an updated “Last Updated” date.
-            We encourage You to review this Policy regularly. Continued use of the Service following any updates constitutes your acceptance of the revised terms.
+            We may update this Policy from time to time. The new version will be posted on this page with a
+            revised “Last Updated” date. Where a change is material, we will also provide a more prominent notice
+            when required.
           </p>
         </section>
 
         <section id="contact" class="term-section">
-          <h2>11. Contact Us</h2>
+          <h2>14. Contact Us</h2>
           <p>
-            For any questions, requests, or concerns about this Privacy Policy or our data handling practices, please contact us at:
+            For questions or requests about this Privacy Policy or our data practices:
           </p>
           <div class="contact-info">
             <p>Email: {{ contactInfo.email }}</p>

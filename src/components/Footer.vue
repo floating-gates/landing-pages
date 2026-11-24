@@ -1,5 +1,6 @@
 <script setup>
 import { contactInfo, partner_app_login_url } from "../config.js";
+import { openCookieSettings } from "../utils/consent.js";
 import { ChevronRightIcon } from "../helper/icons_generator.js";
 import iconGithub from "../data/images/github-logo.svg";
 import iconSubstack from "../data/images/substack-logo.png";
@@ -100,9 +101,12 @@ const socialItems = [
             {{ copyrightText }}
             &nbsp;|&nbsp;
             <a href="/terms_and_services">Terms and Services</a>
-            and 
+            &nbsp;|&nbsp;
             <a href="/privacy-policy">Privacy Policy</a>
-            apply
+            &nbsp;|&nbsp;
+            <a href="/cookie-policy">Cookie Policy</a>
+            &nbsp;|&nbsp;
+            <button type="button" class="cookie-settings" @click="openCookieSettings">Cookie settings</button>
           </p>
         </div>
       </div>
@@ -115,5 +119,15 @@ const socialItems = [
 
 .footer-dots {
   position: absolute;
+}
+
+.cookie-settings {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
 }
 </style>

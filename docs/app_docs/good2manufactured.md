@@ -10,7 +10,7 @@ A server without clients cannot see factory files. A client without a server can
 
 The agent listens on port **9997**. You point the [Endpoints Manager](https://app.floating-gates.com/?menu=Endpoints) at the IP of the machine and at the root directory that contains the CAD you want checked.
 
-![2 Successfully set endpoints](../data/images/docs-images/2-endpoints.png)
+![2 Successfully set endpoints](../../src/data/images/docs-images/2-endpoints.png)
 
 > You have to set the IP address and the root directory to start a communication.
 

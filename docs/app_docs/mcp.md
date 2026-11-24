@@ -18,7 +18,7 @@ Instead of writing custom glue for each model, you register one connector. The a
 
 AI Connect follows the MCP specification, so any client that can add a custom connector can use it. The labs exercised in this documentation are Claude, Mistral, and OpenAI.
 
-![LLM usage](../data/images/mistral_output.png)
+![LLM usage](../../src/data/images/mistral_output.png)
 
 Tool schemas and resource capabilities are validated live during interaction, so the agent acts on current factory context rather than a stale copy of the files.
 

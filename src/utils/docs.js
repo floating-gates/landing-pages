@@ -1,12 +1,12 @@
 import { loadDocs } from './markdown.js';
 
-const markdownFiles = import.meta.glob('../docs/*.md', {
+const markdownFiles = import.meta.glob('/docs/app_docs/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
 });
 
-const docImages = import.meta.glob('../data/images/**/*.{png,jpg,jpeg,webp,svg}', {
+const docImages = import.meta.glob('/src/data/images/**/*.{png,jpg,jpeg,webp,svg}', {
   eager: true,
   import: 'default',
 });
@@ -210,7 +210,7 @@ export function buildDocs(contents) {
   return { chapters, tree };
 }
 
-// Chapter content lives in src/data/docs as Markdown. `chapters` is the flat
+// Chapter content lives in docs/app_docs as Markdown. `chapters` is the flat
 // reading order (used for previous/next), `tree` is the nested sidebar.
 export const { chapters, tree } = buildDocs(docsContents);
 
