@@ -2,7 +2,7 @@
 import { ref, onMounted, defineComponent, h } from 'vue'
 import { Chart, registerables } from 'chart.js'
 import short_logo from "../data/images/logo_short_black.webp"
-import { themeColor, themeColorLille, themeColorOrange, themeColorGold, themeColorWhite } from '../config.js'
+
 Chart.register(...registerables)
 import { PlugIcon, FileIcon, RulerIcon, FactoryIcon, AtomIcon, AlertIcon, SlidersIcon, CheckIcon,  HucksterIcon } from '../helper/icons_generator.js'
 
@@ -47,11 +47,21 @@ const metrics = [
     { label: 'Compliance', value: '91%', color: '#3B6D11', sub: '+3% vs baseline', trend: 'ok' },
 ]
 
+function themeVar(name, fallback) {
+    if (typeof document === 'undefined') return fallback
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback
+}
+
+const themeColor = themeVar('--theme-color', '#223843')
+const themeColorOrange = themeVar('--theme-color-orange', '#D77A61')
+const themeColorLille = themeVar('--theme-color-lille', '#D8D3D8')
+const themeColorGold = themeVar('--theme-color-gold', '#D8B4A0')
+
 const donutLegend = [
-    { label: 'Tolerance', color: themeColor },
-    { label: 'Geometry', color: themeColorLille },
-    { label: 'Material', color: themeColorGold },
-    { label: 'Fixture', color: themeColorOrange },
+    { label: 'Tolerance', color: 'var(--theme-color)' },
+    { label: 'Geometry', color: 'var(--theme-color-lille)' },
+    { label: 'Material', color: 'var(--theme-color-gold)' },
+    { label: 'Fixture', color: 'var(--theme-color-orange)' },
 ]
 
 const advices = [
@@ -231,8 +241,8 @@ onMounted(() => {
             <div class="title">Resolutions over time</div>
             <div class="chart-subtitle">Last 7 scan cycles</div>
             <div class="legend-row">
-              <span class="legend-item"><span class="legend-dot" :style="{background: themeColor}"  />Issues</span>
-              <span class="legend-item"><span class="legend-dot" style="outline: 1px dashed #378ADD; outline-offset: 1px;" :style="{background: themeColorGold}" />Advices</span>
+              <span class="legend-item"><span class="legend-dot bg-[var(--theme-color)]" />Issues</span>
+              <span class="legend-item"><span class="legend-dot bg-[var(--theme-color-gold)]" style="outline: 1px dashed #378ADD; outline-offset: 1px;" />Advices</span>
             </div>
           </div>
           <div class="chart-visual">
@@ -250,6 +260,8 @@ onMounted(() => {
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 /* ── Shell ────────────────────────────────────────────────────────────────── */
 .gates-hero {
     display: flex;
@@ -313,17 +325,17 @@ onMounted(() => {
 }
 
 .nav-item:hover {
-    background: v-bind(themeColorWhite);
+    background: var(--theme-color-white);
 }
 
 .nav-item.active {
-    background: v-bind(themeColor);
-    color: v-bind(themeColorWhite);
+    background: var(--theme-color);
+    color: var(--theme-color-white);
     font-weight: 500;
 }
 
 .nav-item.active .nav-icon {
-    color: v-bind(themeColorWhite);
+    color: var(--theme-color-white);
 }
 
 .nav-icon {
@@ -367,7 +379,7 @@ onMounted(() => {
 .title {
     font-size: 0.95rem;
     font-weight: 600;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     margin-bottom: 4px;
 }
 

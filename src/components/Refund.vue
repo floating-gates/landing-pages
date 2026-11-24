@@ -1,7 +1,10 @@
 <script setup>
 import { computed } from 'vue'; // Import computed
-import { themeColor, themeColorOrange, themeColorWhite,
-         display_price_list, app_login_url, contactInfo } from "../config.js";
+import {
+    display_price_list,
+    app_login_url,
+    contactInfo,
+} from "../config.js";
 import background from "../data/images/background_pic.webp";
 import Header from '../components/Header.vue'
 import { ReceiptTaxIcon } from '../helper/icons_generator.js'
@@ -17,7 +20,7 @@ import { ReceiptTaxIcon } from '../helper/icons_generator.js'
         <div class="row">
           <div class="col-12 text-center mb-5" data-aos="fade-up" data-aos-delay="0">
             <div class="refund-icon mb-4">
-              <ReceiptTaxIcon width="80" height="80" stroke-width="2" :stroke="themeColorOrange" class="size-6" />
+              <ReceiptTaxIcon width="80" height="80" stroke-width="2" stroke="var(--theme-color-orange)" class="size-6" />
             </div>
             <h3 class="refund-heading">
               100% Refund Guarantee
@@ -66,8 +69,9 @@ import { ReceiptTaxIcon } from '../helper/icons_generator.js'
 </div>
 </template>
 
-
 <style scoped>
+@reference "../main.css";
+
 .refund-guarantee {
     /* background: #f8f9fa; */
     padding: 5rem 0;
@@ -80,7 +84,7 @@ import { ReceiptTaxIcon } from '../helper/icons_generator.js'
 .refund-heading {
     font-size: 2.5rem;
     font-weight: 600;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
 }
 
 .refund-subtitle {
@@ -128,7 +132,7 @@ import { ReceiptTaxIcon } from '../helper/icons_generator.js'
 
 .step-arrow {
     font-size: 1.5rem;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     align-self: center;
     margin: 0 1rem;
 }
@@ -137,7 +141,7 @@ import { ReceiptTaxIcon } from '../helper/icons_generator.js'
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: v-bind(themeColor);
+    background: var(--theme-color);
     color: white;
     display: flex;
     align-items: center;
@@ -162,7 +166,7 @@ import { ReceiptTaxIcon } from '../helper/icons_generator.js'
 
 .step-arrow {
     font-size: 1.5rem;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     align-self: center;
     margin: 0 1rem;
 }

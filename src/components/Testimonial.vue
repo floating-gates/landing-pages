@@ -1,5 +1,5 @@
 <script setup>
-import { themeColor } from "../config.js";
+
 import { BootstrapArrowLeft, BootstrapArrowRight } from "../helper/icons_generator.js";
 
 const heading = "Testimonials";
@@ -39,7 +39,7 @@ const testimonials = [
           data-aos-delay="0"
         >
           <div class="mb-4">
-            <span class="caption" :style="[{ color: themeColor }]">{{
+            <span class="caption text-brand-dark">{{
               heading
             }}</span>
             <h2 class="heading">{{ subHeading }}</h2>

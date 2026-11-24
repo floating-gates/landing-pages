@@ -1,11 +1,10 @@
 <script setup>
-import { themeColor, themeColorOrange, themeColorWhite } from "../config.js";
 import mainPhoto from "../data/images/platform_logic_pic.webp";
 import Header from "../components/Header.vue";
 import background from "../data/images/background_pic.webp";
 import { PriceEstimationIcon, CircleCheckmarkIcon, BarChartSquareIcon } from "../helper/icons_generator.js";
 
-const missionSubHeading = "Making Manufacturing Autonomous"
+const missionSubHeading = "Truly Autonomous Manufacturing, Beyond Robots"
 
 const features = [
     { 
@@ -20,10 +19,6 @@ const features = [
         title: 'Immediate Price Estimation', 
         description: 'Provide to your customers fast and transparent quotes aligned with current market standards. Parsing bad prospects at the root.' 
     },
-    // { 
-    //     title: 'Device Optimization', 
-    //     description: 'Enhance device performance with optimization tools to make manufacturing easier and improving the customer satisfaction' 
-    // }
 ]
 </script>
 
@@ -73,7 +68,7 @@ const features = [
         </p>
         
         <div class="cta-section">
-          <a href="/faq" class="cta-button" :style="{ backgroundColor: themeColor, borderColor: themeColor }">
+          <a href="/faq" class="cta-button">
             Learn More About Our Platform
           </a>
         </div>
@@ -92,19 +87,19 @@ const features = [
               v-if="index === 2"
               width="32"
               height="32"
-              :stroke="themeColorOrange"
+              stroke="var(--theme-color-orange)"
             />
             <CircleCheckmarkIcon
               v-else-if="index === 1"
               width="32"
               height="32"
-              :stroke="themeColorOrange"
+              stroke="var(--theme-color-orange)"
             />
             <BarChartSquareIcon
               v-else-if="index === 0"
               width="32"
               height="32"
-              :stroke="themeColorOrange"
+              stroke="var(--theme-color-orange)"
             />
           </div>
           <div class="feature-content">
@@ -119,6 +114,8 @@ const features = [
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 .mission-hero-wrapper {
     width: 100%;
     background-size: cover;
@@ -141,7 +138,7 @@ const features = [
     line-height: 1.2;
     margin-bottom: 30px;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    color: v-bind("themeColor");
+    color: var(--theme-color);
 }
 
 .lead-text {
@@ -175,8 +172,9 @@ const features = [
 .section-badge {
     font-size: 1.4rem;
     font-weight: 350;
-    color: v-bind(themeColorOrange);
+    color: var(--theme-color-orange);
     margin-bottom: 16px;
+    margin-top: 16px;
 }
 
 .strategy-content {
@@ -196,6 +194,8 @@ const features = [
     padding: 16px 32px;
     border: none;
     border-radius: 50px;
+    background: var(--theme-color);
+    border-color: var(--theme-color);
     color: white;
     font-weight: 600;
     font-size: 1rem;

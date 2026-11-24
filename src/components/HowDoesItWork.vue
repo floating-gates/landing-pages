@@ -1,7 +1,9 @@
 <script setup>
 import mainPhoto from "../data/images/resume_platform.webp";
-import { themeColor, themeColorOrange, themeColorGold, themeColorWhite,
-         youtubeVideoUrl, app_login_url } from "../config.js";
+import {
+    youtubeVideoUrl,
+    app_login_url,
+} from "../config.js";
 import screenshot from "../data/images/screenshot.png";
 
 import { ref } from 'vue'
@@ -113,6 +115,8 @@ function clicking_tile(tile) {
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 /* ── Typography Enhancements ────────────────────────────────── */
 .title-line-2 {
     font-size: clamp(1.2rem, 2vw, 1.8rem);
@@ -120,7 +124,7 @@ function clicking_tile(tile) {
     font-weight: 400;  
     margin-top: 0.5rem;
     display: block;
-    color: #223843;
+    color: var(--theme-color);
 }
 
 .heading {

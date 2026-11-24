@@ -51,6 +51,8 @@ const saveConsent = (settings) => {
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 .cookie-banner {
   position: fixed;
   bottom: 24px;   /* Distance from bottom */

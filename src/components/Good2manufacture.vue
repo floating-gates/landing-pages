@@ -12,8 +12,6 @@ import {
     CheckInCircle,
 } from "../helper/icons_generator.js";
 import {
-    themeColor,
-    themeColorOrange,
     install_docs_url,
     install_client_docs_url,
 } from "../config.js";
@@ -306,7 +304,7 @@ const requirements = [
     align-items: center;
     gap: 0.45rem;
     margin-bottom: 0.9rem;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -323,7 +321,7 @@ const requirements = [
 .download-title h2 {
     font-size: 1.35rem;
     font-weight: 700;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     line-height: 1.2;
 }
 
@@ -333,7 +331,7 @@ const requirements = [
 }
 
 .accent {
-    color: v-bind(themeColorOrange);
+    color: var(--theme-color-orange);
 }
 
 .version-line {
@@ -368,7 +366,7 @@ const requirements = [
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
 }
 
 a.btn-primary-cta {
@@ -388,7 +386,7 @@ a.btn-primary-cta {
     justify-content: center;
     font-size: 2rem;
     font-weight: 700;
-    color: v-bind(themeColorOrange);
+    color: var(--theme-color-orange);
 }
 
 @media (min-width: 900px) {

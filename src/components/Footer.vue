@@ -1,5 +1,5 @@
 <script setup>
-import { contactInfo, themeColorOrange, partner_app_login_url } from "../config.js";
+import { contactInfo, partner_app_login_url } from "../config.js";
 import { ChevronRightIcon } from "../helper/icons_generator.js";
 import iconGithub from "../data/images/github-logo.svg";
 import iconSubstack from "../data/images/substack-logo.png";
@@ -45,7 +45,7 @@ const socialItems = [
                   <h3 class="text-base font-semibold mb-3 inline-flex items-center ">
                     Become a Partner
                     <ChevronRightIcon
-                      :stroke="themeColorOrange"
+                      stroke="var(--theme-color-orange)"
                       stroke-width="4"
                       class="h-[1em] w-auto shrink-0"
                     />
@@ -111,6 +111,8 @@ const socialItems = [
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 .footer-dots {
   position: absolute;
 }

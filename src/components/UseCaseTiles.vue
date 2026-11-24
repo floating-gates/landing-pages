@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, watchEffect } from "vue";
-import { themeColor, themeColorOrange, themeColorWhite } from "../config.js";
+
 import Header from "../components/Header.vue";
 import { useRoute, useRouter } from "vue-router";
 import background from "../data/images/background_pic.webp";
@@ -68,8 +68,7 @@ const closeArticle = () => {
         <div
           v-for="article in paginatedArticles"
           :key="article.id"
-          class="group relative rounded-3xl overflow-hidden border-2 border-transparent transition-all duration-300 shadow-[0_20px_40px_rgba(0,0,0,0.2)] hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
-          :style="{ backgroundColor: themeColorWhite }"
+          class="group relative rounded-3xl overflow-hidden border-2 border-transparent transition-all duration-300 shadow-[0_20px_40px_rgba(0,0,0,0.2)] hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] bg-brand-light"
         >
           <div class="relative grid place-items-center h-[240px] bg-neutral-100 overflow-hidden">
             <img
@@ -86,8 +85,7 @@ const closeArticle = () => {
             <p class="text-base leading-relaxed mb-8 opacity-80 font-medium">Author: {{ article.author }}</p>
             
             <button
-              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-[15px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)] group/btn"
-              :style="{ backgroundColor: themeColorOrange, color: themeColorWhite }"
+              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-[15px] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)] group/btn bg-brand-orange text-brand-light"
               @click="openArticle(article)"
             >
               <span>Read Case Study</span>
@@ -101,13 +99,9 @@ const closeArticle = () => {
     <div class="max-w-[1200px] mx-auto px-8 pb-16">
       <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
         <button
-          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-[15px] border-2 cursor-pointer transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50 enabled:hover:-translate-y-0.5 enabled:hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-[15px] border-2 cursor-pointer transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50 enabled:hover:-translate-y-0.5 enabled:hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)] border-brand-dark"
           :disabled="currentPage === 1"
-          :style="{ 
-            backgroundColor: currentPage === 1 ? 'transparent' : themeColor, 
-            color: currentPage === 1 ? themeColor : themeColorWhite,
-            borderColor: themeColor
-          }"
+          :class="currentPage === 1 ? 'bg-transparent text-brand-dark' : 'bg-brand-dark text-brand-light'"
           @click="currentPage--"
         >
           <ChevronLeftIcon class="w-4 h-4" stroke-width="2" />
@@ -121,13 +115,9 @@ const closeArticle = () => {
         </div>
         
         <button
-          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-[15px] border-2 cursor-pointer transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50 enabled:hover:-translate-y-0.5 enabled:hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-[15px] border-2 cursor-pointer transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50 enabled:hover:-translate-y-0.5 enabled:hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)] border-brand-dark"
           :disabled="currentPage === totalPages"
-          :style="{ 
-            backgroundColor: currentPage === totalPages ? 'transparent' : themeColor, 
-            color: currentPage === totalPages ? themeColor : themeColorWhite,
-            borderColor: themeColor
-          }"
+          :class="currentPage === totalPages ? 'bg-transparent text-brand-dark' : 'bg-brand-dark text-brand-light'"
           @click="currentPage++"
         >
           Next
@@ -143,15 +133,13 @@ const closeArticle = () => {
       @click="closeArticle"
     >
       <div
-        class="w-full max-w-[900px] max-h-[90vh] rounded-3xl overflow-hidden shadow-[0_25px_50px_rgba(0,0,0,0.3)] flex flex-col animate-modalEnter"
-        :style="{ backgroundColor: themeColorWhite, color: themeColor }"
+        class="w-full max-w-[900px] max-h-[90vh] rounded-3xl overflow-hidden shadow-[0_25px_50px_rgba(0,0,0,0.3)] flex flex-col animate-modalEnter bg-brand-light text-brand-dark"
         @click.stop
       >
         <div class="flex items-center justify-between p-6 md:p-8 pb-4 border-b border-black/10">
           <h2 class="text-2xl md:text-3xl font-bold leading-tight m-0">{{ selectedArticle.title }}</h2>
           <button
-            class="flex items-center justify-center w-10 h-10 rounded-lg border-none cursor-pointer transition-transform duration-200 hover:scale-105 shrink-0 ml-4"
-            :style="{ backgroundColor: themeColorOrange, color: themeColorWhite }"
+            class="flex items-center justify-center w-10 h-10 rounded-lg border-none cursor-pointer transition-transform duration-200 hover:scale-105 shrink-0 ml-4 bg-brand-orange text-brand-light"
             @click="closeArticle"
           >
             <CloseIcon class="w-5 h-5" stroke-width="2" />
@@ -188,8 +176,7 @@ const closeArticle = () => {
             :href="selectedArticle.callToActionLink" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-3 mt-8 px-8 py-4 text-lg font-bold rounded-xl transition-all duration-250 hover:-translate-y-0.5 hover:scale-[1.02] shadow-[0_6px_15px_rgba(255,107,45,0.35)] hover:shadow-[0_12px_24px_rgba(255,107,45,0.45)] group/cta"
-            :style="{ backgroundColor: themeColorOrange, color: themeColor }"
+            class="inline-flex items-center justify-center gap-3 mt-8 px-8 py-4 text-lg font-bold rounded-xl transition-all duration-250 hover:-translate-y-0.5 hover:scale-[1.02] shadow-[0_6px_15px_rgba(255,107,45,0.35)] hover:shadow-[0_12px_24px_rgba(255,107,45,0.45)]"
           >
             {{ selectedArticle.callToActionText }}
             <ChevronRightIcon class="w-5 h-5 transition-transform duration-250 group-hover/cta:translate-x-1" stroke-width="2" />
@@ -201,8 +188,10 @@ const closeArticle = () => {
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 .heading-card {
-  color: #223843;
+  color: var(--theme-color);
   line-height: 1.5rem;
   letter-spacing: -0.03em;  
   font-weight: 700;

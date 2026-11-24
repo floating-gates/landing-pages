@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
-import { themeColor, themeColorOrange } from "../config.js";
+
 import { ChevronRightIcon } from "../helper/icons_generator.js";
 
 // One row in the docs sidebar. Recurses into itself for sub-chapters, which is
@@ -66,6 +66,8 @@ watch(containsCurrent, (inside) => {
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 .nav-item {
   list-style: none;
 }
@@ -90,17 +92,17 @@ watch(containsCurrent, (inside) => {
 
 .nav-link:hover {
   background: #f3f4f6;
-  color: v-bind(themeColor);
+  color: var(--theme-color);
 }
 
 .nav-link.is-ancestor {
-  color: v-bind(themeColor);
+  color: var(--theme-color);
   font-weight: 600;
 }
 
 .nav-link.is-active {
   background: #f3f4f6;
-  color: v-bind(themeColorOrange);
+  color: var(--theme-color-orange);
   font-weight: 700;
 }
 
@@ -118,7 +120,7 @@ watch(containsCurrent, (inside) => {
 }
 
 .nav-toggle:hover {
-  color: v-bind(themeColor);
+  color: var(--theme-color);
 }
 
 .nav-toggle svg {
