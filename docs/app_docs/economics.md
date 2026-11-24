@@ -6,7 +6,7 @@ description: How to make the factory recognize the costs of the device
 
 The Economics module is what allows the factory to "understand" the cost of the device: every request that enters the system is translated into concrete, rule-based costs before any material is cut. This page explains how incoming requests are routed through that cost recognition pipeline.
 
-![Ingested request flow and production machine routing](../data/images/docs-images/how-gates-work-funnel.webp)
+![Ingested request flow and production machine routing](../../src/data/images/docs-images/how-gates-work-funnel.webp)
 
 Requests originate from internal teams, leads, existing clients, or inventory requirements. The Huckster Interface and the Manufacturing Hub coordinate to validate each submission, estimate its resource consumption (material, machine time, finish work), and assign it to the appropriate manufacturing process: subtractive, forming, forging, or additive. At this point the device exists only as CAD data; the Economics module is what turns that geometry into a priced, auditable cost breakdown.
 

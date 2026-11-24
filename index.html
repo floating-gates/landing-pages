@@ -43,13 +43,19 @@
       rel="stylesheet" 
       />
 
-    <!--  Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEL1434K2G"></script>
+    <!-- Google consent defaults: denied until the Vue CMP grants analytics. Do not load gtag.js here. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag("js", new Date());
-      gtag("config", "G-MEL1434K2G");
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "granted",
+        security_storage: "granted",
+        wait_for_update: 500
+      });
     </script>
   </head>
 

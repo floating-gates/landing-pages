@@ -4,7 +4,6 @@ import HowDoesItWork from "../components/HowDoesItWork.vue";
 import Why from "../components/Why.vue";
 import Testimonial from "../components/Testimonial.vue";
 import Contact from "../components/Contact.vue";
-import CookieBanner from "../components/CookieBanner.vue";
 import Hero from "../components/Hero.vue";
 </script>
 
@@ -13,5 +12,4 @@ import Hero from "../components/Hero.vue";
     <Hero />
     <HowDoesItWork />
     <Why />
-    <CookieBanner />
 </template>

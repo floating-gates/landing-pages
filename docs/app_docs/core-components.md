@@ -2,7 +2,7 @@
 
 Gates uses automated feasibility checks and rule-based evaluation to identify manufacturing flaws before production begins on the shop floor.
 
-![Network Components](../data/images/network.webp)
+![Network Components](../../src/data/images/network.webp)
 
 ### DfM Rules Check
 

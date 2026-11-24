@@ -4,6 +4,7 @@ import Pricing                        from '../ui_compositor/Pricing.vue'
 import Mission                        from '../ui_compositor/Mission.vue'
 import TermsService                   from '../ui_compositor/TermsService.vue'
 import PrivacyPolicy                  from '../ui_compositor/PrivacyPolicy.vue'
+import CookiePolicy                    from '../ui_compositor/CookiePolicy.vue'
 import Services                       from '../ui_compositor/Services.vue'
 import Guide                          from '../ui_compositor/Guide.vue'
 import FAQ                            from '../ui_compositor/FAQ.vue'
@@ -23,6 +24,7 @@ const routes = [
     { path: '/services', component: Services },
     { path: '/terms_and_services', component: TermsService },
     { path: '/privacy-policy', component: PrivacyPolicy },
+    { path: '/cookie-policy', component: CookiePolicy },
     { path: '/guide', component: Guide },
     { path: '/faq',   component: FAQ },
     { path: '/pricing', component: Pricing },

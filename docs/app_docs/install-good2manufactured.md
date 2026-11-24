@@ -36,7 +36,7 @@ Open [Endpoint Setup](https://app.floating-gates.com/?menu=Endpoints), enter the
 
 You should reach this scenario:
 
-![Reachability test](../data/images/docs-images/reachable.png)
+![Reachability test](../../src/data/images/docs-images/reachable.png)
 
 ## Keep it running
 

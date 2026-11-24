@@ -8,7 +8,7 @@ The Huckster Interface is the frontend of Gates. It is a public-facing web porta
 
 The online platform is a streamlined pipeline, where each step unlocks the next gradually, so a part cannot be ordered before it has been checked against your rules and priced against your costs.
 
-![The customer pipeline](../data/images/screenshot.png)
+![The customer pipeline](../../src/data/images/screenshot.png)
 
 ## Who uses it
 

@@ -5,8 +5,8 @@ import {
   extractHeadings,
   buildDocs,
   slugify,
+  docsContents,
 } from './docs.js';
-import { docsContents } from '../data/docs/index.js';
 import {
   parseMarkdown,
   parseFrontmatter,
@@ -123,6 +123,19 @@ describe('parseFrontmatter and SUMMARY', () => {
     });
     expect(contents[0].title).toBe('Plain Title');
     expect(contents[0].blocks).toEqual([{ type: 'text', text: 'Hello.' }]);
+  });
+
+  it('resolves screenshots from docs/app_docs against the image glob', () => {
+    const contents = loadDocs(
+      {
+        '/docs/app_docs/SUMMARY.md': '- [Intro](intro.md)\n',
+        '/docs/app_docs/intro.md': '![Alt](../../src/data/images/docs-images/a.png)\n',
+      },
+      { images: { '/src/data/images/docs-images/a.png': '/assets/a.123.png' } },
+    );
+    expect(contents[0].blocks).toEqual([
+      { type: 'figure', img: '/assets/a.123.png', caption: 'Alt' },
+    ]);
   });
 });
 

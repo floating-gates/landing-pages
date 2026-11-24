@@ -40,10 +40,10 @@ It is especially beneficial for companies who interact a lot with third party ac
 
 ## Documentation
 
-Content is written as Markdown in [`src/data/docs/`](src/data/docs/), one file per chapter, with
-[`src/data/docs/SUMMARY.md`](src/data/docs/SUMMARY.md) declaring the order and nesting. 
+Content is written as Markdown in [`docs/app_docs/`](docs/app_docs/), one file per chapter, with
+[`docs/app_docs/SUMMARY.md`](docs/app_docs/SUMMARY.md) declaring the order and nesting. 
 
-See [`src/docs/README.md`](src/docs/README.md) for how to add a chapter.
+See [`docs/app_docs/README.md`](docs/app_docs/README.md) for how to add a chapter.
 
 ## Building and Deploying
 

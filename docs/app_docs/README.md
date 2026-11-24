@@ -19,7 +19,7 @@ Quotes are produced from geometry and material.
 
 ## Automatic quotes
 
-![The quote panel](../data/images/docs-images/quoting-1.png)
+![The quote panel](../../src/data/images/docs-images/quoting-1.png)
 
 Use `**bold**`, `*italic*`, lists, tables, and fenced code as usual.
 ```
@@ -73,11 +73,11 @@ sidebar. Nothing to maintain by hand.
 
 ## Images
 
-Screenshots live in [`src/data/images/docs-images/`](../data/images/docs-images/)
+Screenshots live in [`src/data/images/docs-images/`](../../src/data/images/docs-images/)
 and are referenced with a path relative to the chapter file:
 
 ```md
-![Selecting materials](../data/images/docs-images/set-the-factory-3.png)
+![Selecting materials](../../src/data/images/docs-images/set-the-factory-3.png)
 ```
 
 Vite fingerprints the file at build time, so a typo fails the build instead of
@@ -92,6 +92,6 @@ npm test                # renderer, parser, and table-of-contents tests
 npm run build-local     # fails loudly if a chapter breaks the build
 ```
 
-The parser is [`src/utils/markdown.js`](../../utils/markdown.js); the renderer
-is [`src/utils/docs.js`](../../utils/docs.js); the component that lays the page
-out is [`src/components/Docs.vue`](../../components/Docs.vue).
+The parser is [`src/utils/markdown.js`](../../src/utils/markdown.js); the renderer
+is [`src/utils/docs.js`](../../src/utils/docs.js); the component that lays the page
+out is [`src/components/Docs.vue`](../../src/components/Docs.vue).
