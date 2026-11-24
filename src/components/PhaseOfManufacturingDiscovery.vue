@@ -1,10 +1,5 @@
 <script setup>
-import {
-  themeColor,
-  themeColorOrange,
-  themeColorGold,
-  themeColorWhite
-} from "../config.js";
+
 import processImg from "../data/images/path.webp";
 </script>
 
@@ -58,6 +53,8 @@ import processImg from "../data/images/path.webp";
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 .how-section {
   padding: 80px 0;
   background-color: #e3e3e340; 
@@ -77,7 +74,7 @@ import processImg from "../data/images/path.webp";
 }
 
 .accent {
-  color: v-bind(themeColorOrange);
+  color: var(--theme-color-orange);
   font-weight: bold;
 }
 
@@ -118,13 +115,13 @@ import processImg from "../data/images/path.webp";
 
 .feature-card {
   padding: 20px;
-  border-top: 4px solid v-bind(themeColorGold);
+  border-top: 4px solid var(--theme-color-gold);
 }
 
 .feature-title {
   font-size: 1.7rem;
   margin-bottom: 10px;
-  color: v-bind(themeColor);
+  color: var(--theme-color);
   line-height: 1.18;
   letter-spacing: -0.02em;  
   font-weight: 650;

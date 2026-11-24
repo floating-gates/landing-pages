@@ -1,5 +1,5 @@
 <script setup>
-import { themeColor, themeColorOrange, themeColorLille } from "../config.js";
+
 import { ref } from "vue";
 import background from "../data/images/background_pic.webp"
 import Header from "../components/Header.vue";
@@ -52,7 +52,6 @@ const faqs = [
     }
 ];
 
-
 const openIndex = ref(null); // If you only want one open at a time
 
 const toggleItem = (index) => {
@@ -68,7 +67,7 @@ const isOpen = (index) => openIndex.value === index;
      :style="{ backgroundImage: `url(${background})` }">
   <div class="row justify-content-center">
     
-    <h2 class="faq-header heading">Got Questions?  <em :style="{color: themeColorOrange}">We've Got Answers</em></h2>
+    <h2 class="faq-header heading">Got Questions?  <em class="text-brand-orange">We've Got Answers</em></h2>
 
     <div class="faq-container">
       <div
@@ -106,6 +105,8 @@ const isOpen = (index) => openIndex.value === index;
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 .faq-header {
     text-align: center;
     margin-top: 0;
@@ -114,20 +115,21 @@ const isOpen = (index) => openIndex.value === index;
 
 .faq-item {
     background: #fff;
-    -webkit-text-fill-color: v-bind(themeColor); /* Force white when open */
+    -webkit-text-fill-color: var(--theme-color); /* Force white when open */
     border-radius: 16px;
     margin-bottom: 1.2rem;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     border: 2px solid transparent;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     overflow: hidden;
     transition: all 0.3s ease;
     position: relative;
 }
 
-.faq-item.is-open {
-    color: v-bind(themeColorWhite); /* Force white when open */ 
-    -webkit-text-fill-color: v-bind(themeColorWhite); 
+.faq-item.is-open .faq-question {
+    background: var(--theme-color);
+    color: var(--theme-color-white);
+    -webkit-text-fill-color: var(--theme-color-white);
 }
 
 .faq-item::before {
@@ -137,7 +139,7 @@ const isOpen = (index) => openIndex.value === index;
     left: 0;
     right: 0;
     height: 3px;
-    background: v-bind(themeColorLille);
+    background: var(--theme-color-lille);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
@@ -149,12 +151,12 @@ const isOpen = (index) => openIndex.value === index;
 }
 
 .faq-item.is-open {
-    border-color: v-bind(themeColor);
+    border-color: var(--theme-color);
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
 }
 
 .faq-item.is-open::before {
-    background: v-bind(themeColor);
+    background: var(--theme-color);
     transform: scaleX(1);
 }
 
@@ -172,8 +174,8 @@ const isOpen = (index) => openIndex.value === index;
 }
 
 .faq-item.is-open .faq-question {
-    background: v-bind(themeColor);
-    color: #fff;
+    background: var(--theme-color);
+    color: var(--theme-color-lille);
 }
 
 .question-left {
@@ -185,7 +187,7 @@ const isOpen = (index) => openIndex.value === index;
 .question-number {
     font-size: 2rem;
     font-weight: 700;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     opacity: 0.8;
     min-width: 30px;
     transition: all 0.3s ease;
@@ -206,11 +208,11 @@ const isOpen = (index) => openIndex.value === index;
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: v-bind(themeColorLille);
+    background: var(--theme-color-lille);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     transition: all 0.3s ease;
 }
 
@@ -235,7 +237,6 @@ const isOpen = (index) => openIndex.value === index;
 }
 
 .answer-text {
-    color: v-bind(themeColor);
     font-size: 1.4rem;
     line-height: 1.6;
     padding: 2rem;

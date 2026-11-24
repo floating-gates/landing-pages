@@ -1,5 +1,5 @@
 <script setup>
-import { themeColor, contactInfo } from "../config.js";
+import { contactInfo } from "../config.js";
 
 const heading = "Get In Touch";
 const subHeading = "Far from the countries Vokalia and Consonantia";
@@ -55,11 +55,7 @@ const labels = {
             </div>
             <button
               type="submit"
-              class="btn btn-primary"
-              :style="[
-                { backgroundColor: themeColor },
-                { borderColor: themeColor },
-              ]"
+              class="btn btn-primary bg-brand-dark border-brand-dark"
             >
               {{ buttonSendMessage }}
             </button>

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { themeColor, themeColorOrange, themeColorLille, contactInfo } from "../config.js";
+import { contactInfo } from "../config.js";
 import Header from "../components/Header.vue";
 import simulation_service_img from "../data/images/simulation_service.jpg";
 import stochastic_img from "../data/images/stochastic_img.webp";
@@ -99,8 +99,7 @@ const selectService = (index) => {
               :key="index"
               @click="selectService(index)"
               class="px-5 py-4 cursor-pointer transition-all duration-200 font-medium text-gray-800 border-b border-gray-200 last:border-b-0 hover:bg-gray-100"
-              :class="{ 'font-semibold text-white!': selectedIndex === index }"
-              :style="selectedIndex === index ? { backgroundColor: themeColor } : {}"
+              :class="selectedIndex === index ? 'font-semibold text-white! bg-brand-dark' : ''"
             >
               {{ service.name }}
             </li>
@@ -111,8 +110,7 @@ const selectService = (index) => {
         <div class="lg:col-span-8 flex items-center">
           <div class="w-full bg-white p-5 sm:p-8 rounded-xl shadow-lg border border-gray-200">
             <h3 
-              class="font-semibold text-2xl mb-4"
-              :style="{ color: themeColor }"
+              class="font-semibold text-2xl mb-4 text-brand-dark"
             >
               {{ services[selectedIndex].name }}
             </h3>
@@ -133,8 +131,7 @@ const selectService = (index) => {
             <!-- Outcome Section -->
             <div class="mb-6">
               <h4 
-                class="font-semibold text-base mb-3"
-                :style="{ color: themeColor }"
+                class="font-semibold text-base mb-3 text-brand-dark"
               >
                 Outcome
               </h4>
@@ -145,8 +142,7 @@ const selectService = (index) => {
                   class="text-gray-700 mb-2 pl-6 relative leading-normal"
                 >
                   <span 
-                    class="absolute left-0 font-bold"
-                    :style="{ color: themeColorOrange }"
+                    class="absolute left-0 font-bold text-brand-orange"
                   >✓</span>
                   {{ item }}
                 </li>
@@ -156,8 +152,7 @@ const selectService = (index) => {
             <!-- Advantages Section -->
             <div class="mb-6">
               <h4 
-                class="font-semibold text-base mb-3"
-                :style="{ color: themeColor }"
+                class="font-semibold text-base mb-3 text-brand-dark"
               >
                 Advantages
               </h4>
@@ -168,8 +163,7 @@ const selectService = (index) => {
                   class="text-gray-700 mb-2 pl-6 relative leading-normal"
                 >
                   <span 
-                    class="absolute left-0 font-bold"
-                    :style="{ color: themeColorOrange }"
+                    class="absolute left-0 font-bold text-brand-orange"
                   >✓</span>
                   {{ item }}
                 </li>

@@ -20,6 +20,8 @@ const isHtml = computed(() => typeof props.html_content === 'string');
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 .doc-template {
   width: 100%;
 }

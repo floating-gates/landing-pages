@@ -1,6 +1,6 @@
 <script setup>
 import advantages_yoy from "../data/images/dual_use.webp";
-import { themeColor, themeColorOrange, themeColorWhite, app_login_url } from "../config.js";
+import { app_login_url } from "../config.js";
 import background from "../data/images/background_pic.webp";
 import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from "../helper/icons_generator.js";
 </script>
@@ -60,13 +60,12 @@ import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from 
               </div>
             </li>
 
-
-            <li class="advantage-item advantage-item-cta" :style="{ backgroundColor: themeColor }">
+            <li class="advantage-item advantage-item-cta">
               <a :href="app_login_url" class="cta-link">
-                <span class="item-icon" :style="{ backgroundColor: themeColorWhite }">
-                  <ChevronDoubleRight stroke-width="1.5" :stroke="themeColor" />
+                <span class="item-icon">
+                  <ChevronDoubleRight stroke-width="1.5" stroke="currentColor" />
                 </span>
-                <h3 class="item-title" :style="{ fontSize: '1.25rem', color: themeColorWhite }">
+                <h3 class="item-title">
                   All Stakeholders Adheres to your Design Rules.
                 </h3>
               </a>
@@ -88,6 +87,8 @@ import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from 
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 .untree {
     width: 100%;
     background-size: cover;
@@ -119,7 +120,7 @@ import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from 
 .section-title {
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
-  color: v-bind(themeColor);
+  color: var(--theme-color);
   position: relative;
   display: block; /* changed from inline-block to allow natural wrapping */
   margin-bottom: 1rem;
@@ -129,7 +130,7 @@ import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from 
 }
 
 .section-title .dot {
-    color: v-bind(themeColorOrange);
+    color: var(--theme-color-orange);
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
@@ -169,6 +170,18 @@ import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from 
    desktop, where a mis-tap just means trying again with a mouse. */
 .advantage-item-cta {
   padding: 0;
+  background: var(--theme-color);
+}
+
+.advantage-item-cta .item-icon {
+  background: var(--theme-color-white);
+  color: var(--theme-color);
+}
+
+.advantage-item-cta .item-title {
+  font-size: 1.25rem;
+  color: var(--theme-color-white);
+  margin-bottom: 0;
 }
 
 .cta-link {
@@ -188,7 +201,7 @@ import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from 
   display: flex;
   align-items: center;
   justify-content: center;
-  background: v-bind(themeColor);
+  background: var(--theme-color);
   color: white;
   border-radius: 10px;
   margin-right: 1.25rem;
@@ -202,7 +215,7 @@ import { CheckInCircle, BarChartIcon, ReceiptTaxIcon, ChevronDoubleRight } from 
 .item-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: v-bind(themeColor);
+  color: var(--theme-color);
   margin-bottom: 0.5rem;
 }
 

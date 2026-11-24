@@ -99,7 +99,6 @@ const pricingPlans = computed(() => [
 ]);
 </script>
 
-
 <template>
 <!-- Added pb-24 here to create the spacing at the bottom before the footer appears -->
 <div class="untree below-header" :style="{ backgroundImage: `url(${background})` }">  

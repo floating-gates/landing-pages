@@ -1,5 +1,5 @@
 <script setup>
-import { themeColor, contactInfo } from "../config.js";
+import { contactInfo } from "../config.js";
 import Header from "../components/Header.vue"
 
 const lastUpdated = 'February 10, 2026';
@@ -197,6 +197,8 @@ function scrollTo(elementId) {
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 /* Same styles as your Terms of Service component */
 .terms-container {
   max-width: 1800px;
@@ -216,7 +218,7 @@ function scrollTo(elementId) {
 .main-title {
     font-size: 2.5rem;
     margin: 0 0 20px 0;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     font-weight: 700;
 }
 
@@ -260,7 +262,7 @@ function scrollTo(elementId) {
 }
 
 .table-of-contents a:hover {
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     text-decoration: underline;
 }
 
@@ -274,7 +276,7 @@ function scrollTo(elementId) {
 }
 
 .term-section h2 {
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     font-size: 1.4rem;
     margin: 0 0 15px 0;
     padding-bottom: 8px;
@@ -305,7 +307,7 @@ function scrollTo(elementId) {
     background: #f8f9fa;
     padding: 4px;
     border-radius: 4px;
-    border-color: v-bind(themeColor);
+    border-color: var(--theme-color);
 }
 
 .contact-info {

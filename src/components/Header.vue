@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import { themeColor, survey_link, app_login_url } from "../config.js";
+import { survey_link, app_login_url } from "../config.js";
 import short_logo from "../data/images/logo_short_black.webp";
 
 // Import SVGs as asset URLs for maximum compatibility without extra Vite plugin requirements
@@ -251,7 +251,7 @@ onUnmounted(() => {
               <li class="cta-primary">
                 <a
                   :href="app_login_url"
-                  :style="{ color: themeColor }"
+                  class="text-brand-dark"
                   @click="closeMenu"
                 >
                   Login
@@ -280,7 +280,7 @@ onUnmounted(() => {
 
 .nav-link:hover,
 .pages-link:hover {
-  color: v-bind(themeColor);
+  color: var(--theme-color);
 }
 
 /* Desktop Styles */
@@ -360,7 +360,7 @@ onUnmounted(() => {
 
 .dropdown-caret.open {
   transform: rotate(180deg);
-  color: v-bind(themeColor);
+  color: var(--theme-color);
 }
 
 .dropdown-content {
@@ -565,7 +565,7 @@ onUnmounted(() => {
     display: block;
     text-align: center;
     padding: 0.75rem 1rem;
-    border: 1.5px solid v-bind(themeColor);
+    border: 1.5px solid var(--theme-color);
     border-radius: 10px;
     font-weight: 600;
     text-decoration: none;

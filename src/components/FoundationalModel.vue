@@ -6,12 +6,6 @@ import output_image from "../data/images/output.png";
 import short_logo from "../data/images/logo_short_black.webp";
 import Header from "./Header.vue"
 import { WindowsIcon, AppleIcon, DownloadIcon, SmallCheckIcon } from "../helper/icons_generator.js"
-import { 
-  themeColor, 
-  themeColorOrange, 
-  themeColorLille, 
-  themeColorWhite, 
-} from "../config.js";
 
 const hoveredPlatform = ref(null);
 const showModal = ref(false);
@@ -105,7 +99,7 @@ const handleDownloadClick = (platform) => {
       <h1 class="heading">
         Good2Manufacture
       </h1>
-      <p class="tagline mb-2" :style="{ color: themeColorOrange }">
+      <p class="tagline mb-2 text-brand-orange">
         The AI Foundational Model that revolutionises Design for Manufacturing
       </p>
       
@@ -270,6 +264,8 @@ const handleDownloadClick = (platform) => {
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 .brand-logo {
     max-width: 180px;
     height: auto;
@@ -288,8 +284,8 @@ const handleDownloadClick = (platform) => {
 }
 
 .tech-card {
-    background: v-bind(themeColorWhite);
-    border: 0.5px solid v-bind(themeColor);
+    background: var(--theme-color-white);
+    border: 0.5px solid var(--theme-color);
     border-radius: 12px;
     padding: 20px;
     display: flex;
@@ -300,12 +296,12 @@ const handleDownloadClick = (platform) => {
 .tech-card__title {
     font-size: 1rem;
     font-weight: 600;
-    color: v-bind(themeColorOrange);
+    color: var(--theme-color-orange);
 }
 
 .tech-card__desc {
     font-size: 0.88rem;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     opacity: 0.8;
     line-height: 1.5;
 }

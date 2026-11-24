@@ -3,10 +3,8 @@ import Header from "./Header.vue";
 import background from "../data/images/background_pic.webp";
 import screenshot from "../data/images/screenshot.png";
 import {
-  themeColor,
-  themeColorOrange,
-  demo_url,
-  app_login_url,
+    demo_url,
+    app_login_url,
 } from "../config.js";
 import {
     FileIcon,
@@ -36,7 +34,6 @@ const stakeholders = [
     // icon: ClientIcon,
   },
 ];
-
 
 const outcomes = [
   "One public-facing channel for suppliers, customers, and employees",
@@ -75,7 +72,7 @@ const outcomes = [
             </a>
             <a class="btn-ghost-cta font-bold" :href="app_login_url">
               Start for Free
-              <ChevronDoubleRight stroke-width="2.5" :stroke="themeColor" width="13" height="13" />
+              <ChevronDoubleRight stroke-width="2.5" stroke="currentColor" class="text-brand-dark" width="13" height="13" />
             </a>
           </div>
         </div>
@@ -87,6 +84,9 @@ const outcomes = [
             class="screenshot"
           />
         </div>
+            <h2 class="section-heading section-heading--left">
+              One channel for every stakeholder
+            </h2>
 
         <div
           class="outcome-card mb-8"
@@ -94,9 +94,6 @@ const outcomes = [
           data-aos-delay="140"
         >
           <div class="outcome-copy">
-            <h2 class="section-heading section-heading--left">
-              One channel for every stakeholder
-            </h2>
             <p class="card-desc mb-5">
               Uploaded CAD and GD&amp;T files are checked for manufacturing
               feasibility, so stakeholders know whether a design can actually be
@@ -110,10 +107,6 @@ const outcomes = [
                 <span>{{ item }}</span>
               </li>
             </ul>
-            <a class="btn-primary-cta mt-6" :href="demo_url">
-              Try the Huckster Interface
-              <ChevronDoubleRight stroke-width="2.5" />
-            </a>
           </div>
           <div class="outcome-visual">
             <div class="visual-chip">
@@ -152,8 +145,8 @@ const outcomes = [
   gap: 8px;
   padding: 0.75rem 1.4rem;
   background: transparent;
-  color: v-bind(themeColor);
-  border: 2px solid v-bind(themeColor);
+  color: var(--theme-color);
+  border: 2px solid var(--theme-color);
   border-radius: 10px;
   font-weight: 600;
   text-decoration: none;
@@ -165,7 +158,7 @@ const outcomes = [
 }
 
 .section-heading {
-  color: v-bind(themeColor);
+  color: var(--theme-color);
   font-size: clamp(1.4rem, 2vw, 2rem);
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -220,7 +213,7 @@ const outcomes = [
   border-radius: 999px;
   background: var(--theme-color-white);
   border: 1px solid var(--theme-color-lille);
-  color: v-bind(themeColor);
+  color: var(--theme-color);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -238,7 +231,7 @@ const outcomes = [
   padding: 0.9rem 1rem;
   border-radius: 14px;
   background: #f8fafc;
-  color: v-bind(themeColor);
+  color: var(--theme-color);
   font-weight: 600;
   border: 1px solid rgba(34, 56, 67, 0.06);
 }

@@ -71,6 +71,8 @@
 </script>
 
 <style scoped>
+@reference "../main.css";
+
 .guide-container {
   max-width: 800px;
   margin: 40px auto;

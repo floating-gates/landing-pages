@@ -3,8 +3,10 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 import mainPhoto from "../data/images/hero_pic.webp";
 import mainPhoto2 from "../data/images/output.png"
 import background from "../data/images/background_pic.webp";
-import { themeColor, themeColorOrange, themeColorWhite, themeColorLille,
-         app_login_url, youtubeVideoUrl } from "../config.js";
+import {
+    app_login_url,
+    youtubeVideoUrl,
+} from "../config.js";
 
 import Charts from "./Charts.vue"
 import { ChevronDoubleRight } from "../helper/icons_generator.js";
@@ -145,8 +147,8 @@ onBeforeUnmount(() => {
       </form>
       <div v-else class="address-form">
         <button type="button" class="progress-btn w-full"
-                :style="{ background: `linear-gradient(90deg, ${themeColorOrange} ${progress}%, ${themeColor} ${progress}%)`,
-                        borderColor: themeColorOrange }">
+                :style="{ background: `linear-gradient(90deg, var(--theme-color-orange) ${progress}%, var(--theme-color) ${progress}%)`,
+                        borderColor: 'var(--theme-color-orange)' }">
           Setting up hub... {{ Math.floor(progress) }}%
         </button>
       </div>
@@ -158,6 +160,8 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 img {
     margin-top: 2rem;
 }
@@ -177,13 +181,13 @@ img {
     padding: 0.8rem 1.0rem;
     border: none;
     border-radius: 14px;
-    background-color: v-bind(themeColorWhite);
+    background-color: var(--theme-color-white);
     transition: background-color 0.3s ease;
 }
 
 .address-input:focus {
     background-color: #fff;
-    box-shadow: inset 0 0 0 2px v-bind(themeColor);
+    box-shadow: inset 0 0 0 2px var(--theme-color);
 }
 
 .address-submit {
@@ -198,10 +202,10 @@ img {
     gap: 12px;
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
-    color: v-bind(themeColorWhite);
+    color: var(--theme-color-white);
     background: linear-gradient(
         145deg, 
-        v-bind(themeColor) 0%, 
+        var(--theme-color) 0%, 
         #1a1d23 100% /* Slightly darker shade of your theme color */
     );
     box-shadow:
@@ -216,7 +220,7 @@ img {
 
 .address-submit svg {
     width: 20px;
-    stroke: v-bind(themeColorWhite);
+    stroke: var(--theme-color-white);
     transition: stroke 0.3s ease, transform 0.3s ease;
 }
 
@@ -240,7 +244,7 @@ img {
     justify-content: center;
     transition: background-color 0.3s ease, transform 0.2s ease;
     color: white;
-    background-color: v-bind(themeColor);
+    background-color: var(--theme-color);
     flex: 1;
 }
 

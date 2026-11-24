@@ -1,8 +1,10 @@
 <script setup>
 import { ref, watch, nextTick, onMounted, onBeforeUnmount } from "vue";
 import background from "../data/images/background_pic.webp";
-import { themeColor, themeColorOrange, themeColorLille, themeColorWhite,
-         app_login_url, demo_url } from "../config.js";
+import {
+    app_login_url,
+    demo_url,
+} from "../config.js";
 import {
     SmallCheckIcon,
     ChevronDoubleRight,
@@ -31,9 +33,10 @@ function startCadViewport() {
     stopCad?.();
     stopCad = null;
     if (!cadCanvas.value) return;
+    const styles = getComputedStyle(document.documentElement);
     stopCad = startBushmanCad(cadCanvas.value, {
-        ink: themeColor,
-        accent: themeColorOrange,
+        ink: styles.getPropertyValue("--theme-color").trim() || "#223843",
+        accent: styles.getPropertyValue("--theme-color-orange").trim() || "#D77A61",
         grid: "rgba(34, 56, 67, 0.12)",
     });
 }
@@ -107,7 +110,7 @@ onBeforeUnmount(() => {
         </a>
         <a class="btn-ghost-cta font-bold" :href="demo_url">
           Demo using Huckster Interface
-          <ChevronDoubleRight stroke-width="2.5" :stroke="themeColor" width="13" height="13" />
+          <ChevronDoubleRight stroke-width="2.5" stroke="currentColor" class="text-brand-dark" width="13" height="13" />
         </a>
       </div>
     </div>
@@ -146,7 +149,7 @@ onBeforeUnmount(() => {
                 <FolderIcon width="12" height="12" fill="white" />
               </div>
               <div class="search-pill">
-                <SearchIcon width="11" height="11" fill="currentColor" :style="{color: themeColor, flexShrink: 0}" />
+                <SearchIcon width="11" height="11" fill="currentColor" class="text-brand-dark shrink-0" />
                 <span style="font-size:10px;">Search</span>
               </div>
             </div>
@@ -320,6 +323,8 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+@reference "../main.css";
+
 /* ── Shell ── */
 
 @keyframes gridReveal {
@@ -359,7 +364,7 @@ onBeforeUnmount(() => {
     max-width: 780px;
     height: auto; /* Let content determine height */
     border-radius: 25px;
-    background: v-bind(themeColorWhite);
+    background: var(--theme-color-white);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -369,7 +374,7 @@ onBeforeUnmount(() => {
 .mfg-grid-bg {
     position: absolute;
     inset: 0;
-    background: v-bind(themeColorWhite);
+    background: var(--theme-color-white);
     background-size: 48px 48px;
     background-position: 24px 24px;
     animation: 2500ms cubic-bezier(0.22, 1, 0.36, 1) forwards gridReveal;
@@ -397,10 +402,10 @@ onBeforeUnmount(() => {
 
 .seg-btn {
     border: none;
-    background: v-bind(themeColor);
+    background: var(--theme-color);
     padding: 6px 20px;
     font-size: 15px;
-    color: v-bind(themeColorWhite);
+    color: var(--theme-color-white);
     
     border-radius: 8px;
     cursor: pointer;
@@ -411,7 +416,7 @@ onBeforeUnmount(() => {
 }
 
 .seg-btn.active {
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     background: transparent;
 }
 
@@ -470,8 +475,8 @@ onBeforeUnmount(() => {
 }
 
 .panel-card {
-    background: v-bind(themeColorWhite);
-    border: 0.5px solid v-bind(themeColor);
+    background: var(--theme-color-white);
+    border: 0.5px solid var(--theme-color);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 12px 28px rgba(0,0,0,0.12);
@@ -482,13 +487,13 @@ onBeforeUnmount(() => {
     align-items: center;
     gap: 8px;
     padding: 8px 10px;
-    border-bottom: 0.5px solid v-bind(themeColorLille);
+    border-bottom: 0.5px solid var(--theme-color-lille);
 }
 
 .icon-blue {
     width: 20px; height: 20px;
     border-radius: 4px;
-    background: v-bind(themeColorOrange);
+    background: var(--theme-color-orange);
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
 }
@@ -498,7 +503,7 @@ onBeforeUnmount(() => {
     display: flex;
     align-items: center;
     gap: 6px;
-    background: v-bind(themeColorLille);
+    background: var(--theme-color-lille);
     border-radius: 6px;
     padding: 4px 8px;
 }
@@ -521,7 +526,7 @@ onBeforeUnmount(() => {
     height: 108px;
     margin-left: -41px;
     background: linear-gradient(180deg, #fffefb 0%, #f6f3ef 100%);
-    border: 0.5px solid v-bind(themeColor);
+    border: 0.5px solid var(--theme-color);
     border-radius: 3px;
     overflow: hidden;
     box-shadow:
@@ -545,7 +550,7 @@ onBeforeUnmount(() => {
 
 .pdf-sheet:nth-child(3) {
     box-shadow:
-        0 0 0 1px v-bind(themeColorOrange),
+        0 0 0 1px var(--theme-color-orange),
         0 1px 0 rgba(255,255,255,0.75) inset,
         0 10px 20px rgba(34, 56, 67, 0.2);
 }
@@ -562,7 +567,7 @@ onBeforeUnmount(() => {
     font-size: 7px;
     line-height: 1.1;
     text-align: center;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     padding: 2px 5px 0;
     white-space: nowrap;
     overflow: hidden;
@@ -574,7 +579,7 @@ onBeforeUnmount(() => {
     position: absolute;
     top: 0;
     left: 0;
-    background: v-bind(themeColorOrange);
+    background: var(--theme-color-orange);
     color: #fff;
     font-size: 6px;
     font-weight: 700;
@@ -590,7 +595,7 @@ onBeforeUnmount(() => {
     right: 0;
     border-style: solid;
     border-width: 0 11px 11px 0;
-    border-color: transparent v-bind(themeColorLille) #f3eee8 transparent;
+    border-color: transparent var(--theme-color-lille) #f3eee8 transparent;
     filter: drop-shadow(-0.5px 0.5px 0 rgba(34,56,67,0.18));
     z-index: 2;
 }
@@ -611,26 +616,26 @@ onBeforeUnmount(() => {
     justify-content: flex-end;
     gap: 8px;
     padding: 6px 10px;
-    border-top: 0.5px solid v-bind(themeColorLille);
+    border-top: 0.5px solid var(--theme-color-lille);
 }
 
 .btn-cancel {
-    border: 0.5px solid v-bind(themeColor);
-    background: v-bind(themeColorWhite);
+    border: 0.5px solid var(--theme-color);
+    background: var(--theme-color-white);
     border-radius: 6px;
     padding: 2px 14px;
     font-size: 10px;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     cursor: pointer;
 }
 
 .btn-open {
-    background: v-bind(themeColor);
+    background: var(--theme-color);
     border: none;
     border-radius: 6px;
     padding: 2px 14px;
     font-size: 10px;
-    color: v-bind(themeColorWhite);
+    color: var(--theme-color-white);
     cursor: pointer;
 }
 
@@ -650,9 +655,9 @@ onBeforeUnmount(() => {
     align-items: center;
     font-size: 1.1rem;
     font-weight: 750;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     justify-content: space-between;
-    border-bottom: 0.5px solid v-bind(themeColorLille);
+    border-bottom: 0.5px solid var(--theme-color-lille);
     padding: 12px 24px 10px;
 }
 
@@ -664,12 +669,12 @@ onBeforeUnmount(() => {
     border-radius: 8px;
 }
 
-.check-row:hover { background: v-bind(themeColorLille); }
+.check-row:hover { background: var(--theme-color-lille); }
 
 .check-circle {
     width: 20px; height: 20px;
     border-radius: 50%;
-    background: v-bind(themeColor);
+    background: var(--theme-color);
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
     margin-top: 1px;
@@ -677,14 +682,14 @@ onBeforeUnmount(() => {
 }
 
 .check-circle.warn {
-    background: v-bind(themeColorOrange);
+    background: var(--theme-color-orange);
 }
 
 .check-text {
     font-size: 13px;
     text-decoration: line-through;
     line-height: 1.4;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
 }
 
 .check-text.warn {
@@ -735,7 +740,7 @@ onBeforeUnmount(() => {
 }
 
 .cad-badge {
-    background: v-bind(themeColorOrange);
+    background: var(--theme-color-orange);
     color: #fff;
     font-size: 8px;
     font-weight: 700;
@@ -751,7 +756,7 @@ onBeforeUnmount(() => {
     font-size: 9px;
     font-weight: 600;
     letter-spacing: 0.08em;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     pointer-events: none;
 }
 
@@ -766,7 +771,7 @@ onBeforeUnmount(() => {
     list-style: none;
     padding: 0;
     margin: 0 0 2rem 0;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -782,10 +787,10 @@ onBeforeUnmount(() => {
 .feat-check {
     width: 18px; height: 18px;
     border-radius: 50%;
-    background: v-bind(themeColor);
+    background: var(--theme-color);
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
-    color: v-bind(themeColorWhite);
+    color: var(--theme-color-white);
 }
 
 .cta-row {
@@ -802,8 +807,8 @@ onBeforeUnmount(() => {
     gap: 8px;
     padding: 0.75rem 1.4rem;
     background: transparent;
-    color: v-bind(themeColor);
-    border: 2px solid v-bind(themeColor); /* Reduced border width */
+    color: var(--theme-color);
+    border: 2px solid var(--theme-color); /* Reduced border width */
     border-radius: 10px; /* Slightly smaller radius */
     font-weight: 600;
     text-decoration: none;

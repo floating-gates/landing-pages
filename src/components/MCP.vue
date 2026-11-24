@@ -10,8 +10,6 @@ import mistralLogo from "../data/images/mistral.webp";
 import openaiLogo  from "../data/images/openai.webp";
 
 import {
-    themeColor,
-    themeColorOrange,
     demo_url,
     app_login_url,
 } from "../config.js";
@@ -72,7 +70,7 @@ const outcomes = [
         <div class="cta-row">
           <a class="btn-ghost-cta font-bold" :href="app_login_url">
             Start for Free
-            <ChevronDoubleRight stroke-width="2.5" :stroke="themeColor" width="13" height="13" />
+            <ChevronDoubleRight stroke-width="2.5" stroke="currentColor" class="text-brand-dark" width="13" height="13" />
           </a>
         </div>
       </div>
@@ -157,8 +155,8 @@ const outcomes = [
     gap: 8px;
     padding: 0.75rem 1.4rem;
     background: transparent;
-    color: v-bind(themeColor);
-    border: 2px solid v-bind(themeColor);
+    color: var(--theme-color);
+    border: 2px solid var(--theme-color);
     border-radius: 10px;
     font-weight: 600;
     text-decoration: none;
@@ -170,7 +168,7 @@ const outcomes = [
 }
 
 .section-heading {
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     font-size: clamp(1.4rem, 2vw, 2rem);
     font-weight: 700;
     letter-spacing: -0.03em;
@@ -234,7 +232,7 @@ const outcomes = [
     border-radius: 999px;
     background: var(--theme-color-white);
     border: 1px solid var(--theme-color-lille);
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     flex-shrink: 0;
     margin-top: 2px;
 }
@@ -252,7 +250,7 @@ const outcomes = [
     padding: 0.9rem 1rem;
     border-radius: 14px;
     background: #f8fafc;
-    color: v-bind(themeColor);
+    color: var(--theme-color);
     font-weight: 600;
     border: 1px solid rgba(34, 56, 67, 0.06);
 }
