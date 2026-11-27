@@ -3,10 +3,7 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 import mainPhoto from "../data/images/hero_pic.webp";
 import mainPhoto2 from "../data/images/output.png"
 import background from "../data/images/background_pic.webp";
-import {
-    app_login_url,
-    youtubeVideoUrl,
-} from "../config.js";
+import { app_login_url, youtubeVideoUrl } from "../config.js";
 
 import Charts from "./Charts.vue"
 import { ChevronDoubleRight } from "../helper/icons_generator.js";
@@ -109,20 +106,24 @@ onBeforeUnmount(() => {
      :style="{ backgroundImage: `url(${background})` }">
  
     <div class="product-copy">
+      <!-- <h3> -->
+      <!--   <em>Good2Manufacture is a set of tools for your Agents/Engineers to discover issues in your CAD</em> <br>
+        -->
+      <!-- </h3> -->
       <h1 class="heading"
           data-aos="fade-up"
           data-aos-delay="100">
-          <em>Search </em> your Factory Network<br>
-          <em>Check </em> your CAD and GD&T<br>
-          <em>Allow </em> Customers' files Drop<br>
-          <em>Warn </em> if Issues are found<br>
+        <em>Search</em> across your entire factory network<br>
+        <em>Verify</em> your CAD models and GD&amp;T<br>
+        <em>Accept</em> file drops from your customers<br>
+        <em>Get warned</em> the moment issues are found<br>
       </h1>
       
       <div class="excerpt"
            data-aos="fade-up"
            data-aos-delay="100">
         <p>
-          Gates will scan your network in search of CAD models & GD&T, warning you if it finds
+          Good2Manufacture will scan your network in search of CAD models & GD&T, warning you if it finds
           manufacturing problems! We highlighting what could go wrong in production.
         </p>
       </div>
@@ -265,6 +266,7 @@ img {
 
 .product-copy .heading {
     white-space: nowrap;
+    font-size: clamp(1.4rem, 1.8vw, 2.8rem); 
 }
 
 .address-form,
